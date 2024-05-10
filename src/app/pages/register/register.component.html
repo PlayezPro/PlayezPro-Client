@@ -1,0 +1,68 @@
+<form [formGroup]="formNewUser">
+<ion-list>
+  <ion-input 
+    class="container"
+    type="username"
+    formControlName="name"
+    label="Username"
+    labelPlacement="floating"
+    helperText="Enter a valid username"
+    errorText="Invalid username"
+    email>
+    <div *ngIf="username.invalid"></div>
+  </ion-input>
+
+  <ion-input
+    class="container"
+    type="name"
+    formControlName="name"
+    label="Name"
+    labelPlacement="floating"
+    helperText="Enter a valid name"
+    errorText="Invalid name"
+    email>
+    <div *ngIf="name.invalid"></div>
+  </ion-input>
+  
+  <ion-input
+    class="container"
+    type="lastname"
+    formControlName="lastname"
+    label="Lastname"
+    labelPlacement="floating"
+    helperText="Enter a valid lastname"
+    errorText="Invalid lastname"
+    email>
+    <div *ngIf="lastname.invalid"></div>
+  </ion-input>
+
+  <ion-input
+    class="container"
+    type="password"
+    formControlName="password"
+    label="Password"
+    labelPlacement="floating"
+    helperText="Enter a valid password"
+    errorText="Invalid password"
+    email>
+  </ion-input>  
+
+  <ion-input
+    class="container"
+    type="repeatpassword"
+    formControlName="repeatPassword"
+    label="Repeat Password"
+    labelPlacement="floating"
+    helperText="Enter a valid repeatpassword"
+    errorText="Invalid repeatpassword"
+    email>
+  </ion-input>  
+
+  <ion-checkbox>I agree to the terms and conditions</ion-checkbox>
+
+</ion-list>
+</form>
+
+<button>
+  Enviar
+</button>
