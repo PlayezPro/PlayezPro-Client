@@ -1,0 +1,11 @@
+.post-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .label {
+    flex-grow: 1; /* Hace que el contenido de ion-label ocupe todo el espacio disponible */
+  }
+  
+  

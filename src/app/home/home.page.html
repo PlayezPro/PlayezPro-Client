@@ -1,19 +1,44 @@
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
-      <ion-icon name="home-outline"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button tab="radio">
-      <ion-icon name="search"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button tab="library">
-      <ion-icon name="add-circle-outline"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button tab="search">
-      <ion-icon name="cog-outline"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button tab="search">
-      <ion-icon name="person-circle-outline"></ion-icon>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+
+<ion-tabs >
+        <ion-content style="position: absolute; z-index: 1;"  >
+        <ion-list  style="margin-bottom: 90px;">
+          <div *ngFor="let post of posts " class="post-item" style="margin-top: 5%;">
+            <div>
+              <img *ngIf="isImage(post.file); else videoContent" [src]="post.file" alt="Imagen">
+              <ng-template #videoContent>
+                <video  [src]="post.file" autoplay>
+                </video> 
+              </ng-template>
+            </div>
+            <ion-label class="label" style="z-index: 3; position: absolute; margin-top: -25%;">
+              <h2>{{ post.title }}</h2>
+              <p>{{ post.description }}</p>
+              <p>Categoría: {{ post.category }}</p>
+            </ion-label>
+          </div>
+          
+        </ion-list>
+        <!-- <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)">
+          <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll> -->
+
+      </ion-content>
+      <ion-tab-bar slot="bottom" >
+        <ion-tab-button tab="home">
+          <ion-icon name="home-outline"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button tab="radio">
+          <ion-icon name="search"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button tab="library">
+          <ion-icon name="add-circle-outline"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button tab="search">
+          <ion-icon name="cog-outline"></ion-icon>
+        </ion-tab-button>
+        <ion-tab-button tab="search">
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </ion-tab-button>
+      </ion-tab-bar>
+    
+</ion-tabs> 
