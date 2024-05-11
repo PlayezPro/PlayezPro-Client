@@ -15,15 +15,13 @@ export class CreatePostPage{
   post: any = {};
   constructor(private PostService: PostServiceService ) { }
 
-  CreatePost() {
-    this.PostService.CreatePost(this.post).subscribe(
-      (response) => {
-        console.log('Blog creado exitosamente:', response);
-        this.post = {}; // Para limpiar el objeto post después de enviarlo
-      },
-      (error) => {
-        console.error('Error al crear el Post:', error);
-      }
-    );
+  async CreatePost() {
+    try {
+      await this.PostService.CreatePost(this.post);
+      console.log('Post creado exitosamente');
+      this.post = {}; // Para limpiar el objeto post después de enviarlo
+    } catch (error) {
+      console.error('Error al crear el Post:', error);
+    }
   }
     }
