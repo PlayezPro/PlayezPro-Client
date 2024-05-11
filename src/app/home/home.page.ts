@@ -6,6 +6,7 @@ import { InfiniteScrollCustomEvent } from '@ionic/angular';
 
 // import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../services/userService/user.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -17,7 +18,7 @@ export class HomePage implements OnInit{
 
   posts :any[]=[];
   isImagetrue : boolean = false;
-  constructor(private postService: PostServiceService) {
+  constructor(private postService: PostServiceService, private userService:UserService) {
     
   }
   menuType: string = 'overlay'
@@ -26,12 +27,16 @@ export class HomePage implements OnInit{
      this.generatePost()
   }
   
-  async  generatePost(){
+  async  generatePost():Promise<any>{
     try {
      const response= await this.postService.getAllPost()
      this.posts = response.data
-     
-     console.log(this.posts)
+     for (const post of this.posts) {
+      const userDetails = await this.userService.getUserById(post.users_id);
+      post.userDetails = userDetails;
+      console.log(userDetails);
+    }
+    
         
       } catch (error) {
         console.error('Error to fetch Posts')
@@ -49,4 +54,10 @@ export class HomePage implements OnInit{
     const isImage = /\.(gif|jpe?g|tiff?|png|webp|bmp)(\?.*)?$/i.test(file);
     return isImage;
   }  
+  handleRefresh(event:any) {
+    setTimeout(() => {
+      // Any calls to load data go here
+      event.target.complete();
+    }, 2000);
+  }
 }

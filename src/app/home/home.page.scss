@@ -4,8 +4,16 @@
     align-items: flex-start;
   }
   
-  .label {
-    flex-grow: 1; /* Hace que el contenido de ion-label ocupe todo el espacio disponible */
-  }
+.likeMenu {
+  margin-top: 10px;
+  margin-left: 10px;
+  height: 40px;
+  display: flex;
+  gap: 15px;
+}
+
+.label {
+  margin-left: 10px;
+}
   
   
