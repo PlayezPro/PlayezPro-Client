@@ -6,9 +6,9 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class PostServiceService {
-  private apiUrl = 'http://localhost:3000/posts'
+  private apiUrl: string = 'http://localhost:3000/posts'
 
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
   async CreatePost(newPost: any): Promise<any>{
     const formData = new FormData();
@@ -61,20 +61,20 @@ export class PostServiceService {
     }
   }
   
-  getAllPost(): Observable<any> {
-    return this.http.get(this.apiUrl);
+  async getAllPost()  {
+    return axios.get(this.apiUrl);
   }
 
-  getPostById(posts_id: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/${posts_id}`);
-  }
+//   getPostById(posts_id: string): Observable<any> {
+//     return this.http.get(`${this.apiUrl}/${posts_id}`);
+//   }
 
-  updatePost(posts_id: string, updatePost: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${posts_id}`, updatePost);
-  }
+//   updatePost(posts_id: string, updatePost: any): Observable<any> {
+//     return this.http.put(`${this.apiUrl}/${posts_id}`, updatePost);
+//   }
 
-  deletePost(posts_id: string): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${posts_id}`);
-  }
+//   deletePost(posts_id: string): Observable<any> {
+//     return this.http.delete(`${this.apiUrl}/${posts_id}`);
+//   }
 
 }

@@ -11,13 +11,14 @@ import { CommentService } from 'src/app/services/commentService/comment.service'
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-notice',
+  templateUrl: './notice.page.html',
+  styleUrls: ['./notice.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule,FormsModule,NavbarComponent, GoogleloginComponent],
+  imports: [IonicModule, CommonModule,FormsModule,NavbarComponent, GoogleloginComponent]
 })
-export class HomePage implements OnInit{
+export class NoticePage implements OnInit {
+
   isModalOpen = false;
   posts :any[]=[];
   comments : any[] = []
@@ -74,5 +75,6 @@ export class HomePage implements OnInit{
   setOpen(post:any, isOpen: boolean) {
     post.isModalOpen = isOpen;
   }
+
 
 }
