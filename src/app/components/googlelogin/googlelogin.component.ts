@@ -38,6 +38,9 @@ export class GoogleloginComponent  implements OnInit {
     if (credential) {
       // Si se obtienen las credenciales, obtener el token de acceso
       const token = credential.accessToken;
+      if (token !== undefined) {
+        localStorage.setItem('accessToken', token);
+      }
       // Hacer algo con el token de acceso...
   } else {
       // Manejar el caso en el que no se proporcionaron credenciales

@@ -1,13 +1,32 @@
 import { Routes } from '@angular/router';
+import { CreatePostPage } from './pages/create-post/create-post.page';
+import { PerfilPage } from './pages/perfil/perfil.page';
+import { ManageUserPage } from './pages/manage-user/manage-user.page';
+import { ManagePostPage } from './pages/manage-post/manage-post.page';
+import { HomePage } from './pages/home/home.page';
 
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pages/home/home.page').then((m) => m.HomePage),
+    component: HomePage
   },
   {
     path: 'create-post',
-    loadComponent: () => import('./pages/create-post/create-post.page').then( m => m.CreatePostPage)
+    component: CreatePostPage
   },
+  {
+    path: 'perfil',
+    component: PerfilPage
+  },
+  {
+    path: 'manage-user',
+    component: ManageUserPage
+  },
+  {
+    path: 'manage-post',
+    component: ManagePostPage
+  },
+
+
 
 ];

@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './create-post.page.html',
   styleUrls: ['./create-post.page.scss'],
   standalone: true,
-  imports: [IonicModule, NavbarComponent, FormsModule]
+  imports: [IonicModule, NavbarComponent, FormsModule, NavbarComponent]
 })
 export class CreatePostPage{
   post: any = {};
