@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
+import { HomePage } from './pages/home/home.page';
+import { CreatePostPage } from './pages/create-post/create-post.page';
 
 
 
@@ -10,11 +12,11 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
+    component: HomePage
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    path: 'create-post',
+    component: CreatePostPage
   },
+
 ];
