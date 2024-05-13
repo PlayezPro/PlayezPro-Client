@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 
 
@@ -7,7 +8,7 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [NavbarComponent],
+  imports: [NavbarComponent, GoogleloginComponent],
 })
 export class HomePage {
   constructor() {}
