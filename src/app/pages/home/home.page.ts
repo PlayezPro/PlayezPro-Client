@@ -1,11 +1,10 @@
 import { Component} from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-// import { IonModal } from '@ionic/angular';
 import { PostServiceService } from 'src/app/services/postService/post.service';
 import { OnInit } from '@angular/core';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import { UserService } from 'src/app/services/userService/user.service';
-// import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
+import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 // import { BrowserModule } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { CommentService } from 'src/app/services/commentService/comment.service';
@@ -16,7 +15,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule,FormsModule],
+  imports: [IonicModule, CommonModule,FormsModule,NavbarComponent],
 })
 export class HomePage implements OnInit{
   isModalOpen = false;
