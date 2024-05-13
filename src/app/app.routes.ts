@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomePage } from './home/home.page';
+import { HomePage } from './pages/home/home.page';
 
 export const routes: Routes = [
   {
@@ -7,8 +7,8 @@ export const routes: Routes = [
     component: HomePage
   },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
+    path: 'create-post',
+    loadComponent: () => import('./pages/create-post/create-post.page').then( m => m.CreatePostPage)
   },
+
 ];
