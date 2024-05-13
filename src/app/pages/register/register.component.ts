@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { FormGroup, FormControl, Validator, AbstractControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, FormControl, AbstractControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UsersSerive } from '../../services/users.service'
+
 
 @Component({
   selector: 'app-register',
@@ -27,6 +29,10 @@ export class RegisterComponent {
     return this.formNewUser.get('lastname') as FormControl
   }
 
+  get email () {
+    return this.formNewUser.get('email') as FormControl
+  }
+
   get password () {
     return this.formNewUser.get('password') as FormControl
   }
@@ -42,6 +48,8 @@ export class RegisterComponent {
     'name': new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)]),
 
     'lastname': new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)]),
+
+    'email': new FormControl('', [Validators.required, Validators.email]),
 
     'password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]),
 
@@ -64,3 +72,18 @@ export class RegisterComponent {
 
 
 }
+
+
+
+// areAllFIeldsFilled() : boolean{
+//   const formValues = this.formUser.value as {[key:string]: string | null };
+//   for ( const key in formValues) {
+//     if (formValues.hasOwnProperty(key)){
+//       const value: string | null = formValues[key];
+//       if (!value) {
+//         return false;
+//       }
+//     }
+//     return true;
+//   }
+// }
