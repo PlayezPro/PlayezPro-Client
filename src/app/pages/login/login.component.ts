@@ -2,6 +2,7 @@ import { Component} from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import {FormGroup, FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UsersService } from '../../services/users.service'; 
 import { Router } from '@angular/router';
 
 @Component({
