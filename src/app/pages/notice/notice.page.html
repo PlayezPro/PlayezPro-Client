@@ -17,16 +17,24 @@
           <video [src]="post.file" loop controls></video>
         </ng-template>
       </div>
+      <div style="display: flex; flex-direction: row; gap: 15px;">
+          <ion-button color="dark" style="margin-top: -4px;" fill="clear" (click)="addLike(post._id)">
+            <ion-icon slot="icon-only" size="large" [name]="post.hasLikes ? 'heart' : 'heart-outline'"></ion-icon>
+          </ion-button>
+          
+          <ion-button color="dark" style="margin-top: -4px;" fill="clear" expand="block" (click)="setOpen(post, true)">
+            <ion-icon slot="icon-only" size="large" name="chatbubble-outline"></ion-icon>
+          </ion-button>
+          <ion-icon size="large" name="share-outline"></ion-icon>
+      </div>
       <ion-label class="label">
-        <h2>{{ post.title }}</h2>
-        <p>{{ post.description }}</p>
-        <p>{{ post.allComments?.[0]?.comments }}</p>
+        <div style="display: flex; flex-direction: row; gap: 5px; margin-top: 10px;">
+          <p>{{ post.userDetails?.[0]?.name }}</p>
+          <p>{{ post.description }}</p>
+        </div>
       </ion-label>
       <ion-list lines="full" class="likeMenu">
-        <ion-icon size="large" name="heart-outline"></ion-icon>
-        <ion-button color="dark" style="margin-top: -4px;" fill="clear" expand="block" (click)="setOpen(post, true)">
-          <ion-icon slot="icon-only" size="large" name="chatbubble-outline"></ion-icon>
-        </ion-button>
+        
         <ion-modal [isOpen]="post.isModalOpen">
           <ng-template>
             <ion-header>
@@ -37,23 +45,31 @@
                 </ion-buttons>
               </ion-toolbar>
             </ion-header>
-            <ion-content class="ion-padding">
-              <ion-list>
+            <ion-content class="ion-padding"  style="display: flex; flex-direction: column;">
+              <ion-list style="flex: 1;">
                 <ng-container *ngFor="let comment of post.allComments">
-                  <!-- Mostrar el contenido de cada comentario -->
-                  <ion-item>
-                    <!-- Puedes mostrar cualquier propiedad del comentario aquí -->
-                    <ion-label>{{ comment.comments }}</ion-label>
-                  </ion-item>
+                  <ion-card>
+                    <ion-card-content>{{ comment.comments }}</ion-card-content>
+                  </ion-card>
                 </ng-container>
               </ion-list>
+              
             </ion-content>
+            <ion-footer style="height: 100px;">
+              <ion-item>
+                <ion-input placeholder="Añade un comentario" (input)="toggleIcon($event)"></ion-input>
+                <ion-icon color="primary" name="arrow-up-outline" slot="end" *ngIf="mostrarIcono" (click)="addComment(post._id, comentarioTexto)"></ion-icon>
+              </ion-item>
+              
+            </ion-footer>
           </ng-template>
+         
         </ion-modal>
-        <ion-icon size="large" name="share-outline"></ion-icon>
+       
       </ion-list>
     </div>
   </ion-list>
 </ion-content>
+
 
 <app-navbar></app-navbar>

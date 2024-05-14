@@ -18,4 +18,13 @@ export class CommentService {
     }
    
   }
+
+  async writeComment(postsID:string, userID:string,comments:string){
+    try {
+      const data = {posts_id:postsID, users_id:userID, comments};
+      const response = await axios.post(this.commentUrl, data)
+    } catch (error) {
+      console.error("no se ha añadido el comentario")
+    }
+  }
 }
