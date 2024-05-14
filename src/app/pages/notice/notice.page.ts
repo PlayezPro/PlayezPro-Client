@@ -8,6 +8,7 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { CommentService } from 'src/app/services/commentService/comment.service';
 import { FormsModule } from '@angular/forms';
+import { LikesService } from 'src/app/services/likesService/likes.service';
 
 @Component({
   selector: 'app-notice',
@@ -17,13 +18,15 @@ import { FormsModule } from '@angular/forms';
   imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, GoogleloginComponent]
 })
 export class NoticePage implements OnInit {
-
+  userId: string | null = null;
+  comentarioTexto: string = ''!;
   isModalOpen = false;
   posts: any[] = [];
   comments: any[] = [];
   isImageTrue: boolean = false;
+  mostrarIcono: boolean = false;
 
-  constructor(private postService: PostServiceService, private userService: UserService, private commentService: CommentService) {}
+  constructor(private postService: PostServiceService, private userService: UserService, private commentService: CommentService,private likeService:LikesService) {}
 
   menuType: string = 'overlay';
 
@@ -35,6 +38,7 @@ export class NoticePage implements OnInit {
     try {
       const response = await this.postService.getAllPost();
       this.posts = response.data;
+      const currentUserId = localStorage.getItem('users_id')!;
       
       for (const post of this.posts) {
         const userDetails = await this.userService.getUserById(post.users_id);
@@ -42,6 +46,10 @@ export class NoticePage implements OnInit {
         const postComments = await this.commentService.getCommentsPost(post._id);
         post.allComments = postComments;
         post.isModalOpen = false;
+
+        const hasLikesResponse = await this.likeService.checkLikes(post._id, currentUserId);
+        post.hasLikes = hasLikesResponse;
+        console.log(`Post ID: ${post._id}, isLiked: ${hasLikesResponse}`);
       }
 
       // Ordenar los posts por fecha de creación (createdAt) de forma descendente.
@@ -89,4 +97,41 @@ export class NoticePage implements OnInit {
   setOpen(post: any, isOpen: boolean): void {
     post.isModalOpen = isOpen;
   }
+
+  async addLike(postId:string):Promise<void>{
+    this.userId = localStorage.getItem('users_id');
+    if (this.userId) {
+      // Llama a tu servicio para agregar el like, pasando el postId y el userId
+      await this.likeService.addLike(postId, this.userId);
+      const postIndex = this.posts.findIndex(post => post._id === postId);
+        if (postIndex !== -1) {
+          this.posts[postIndex].hasLikes = !this.posts[postIndex].hasLikes;
+        
+    } else {
+      console.error('No se puede agregar el like: userId no encontrado en el localStorage');
+    }
+  }
+}
+toggleIcon(event: any) {
+  const texto = event.target.value|| '';
+  this.mostrarIcono = event.target.value.trim() !== '';
+  this.comentarioTexto = texto.trim();
+}
+async addComment(postId: string, comentarioTexto:string) {
+  if (this.comentarioTexto !== null) {
+      this.userId = localStorage.getItem('users_id')!;
+      const datosComentario = {
+        postId: postId,
+        userId: this.userId,
+        comments: comentarioTexto
+      };
+      try {
+          await this.commentService.writeComment(postId, this.userId, datosComentario.comments);
+          this.comentarioTexto = '';
+      } catch (error) {
+          // Manejar errores aquí
+      }
+  }
+}
+
 }
