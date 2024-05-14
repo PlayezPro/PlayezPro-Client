@@ -10,7 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'notice',
     loadComponent: () => import('./pages/notice/notice.page').then(c => c.NoticePage )
   },
   {
