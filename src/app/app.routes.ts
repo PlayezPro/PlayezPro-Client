@@ -8,7 +8,7 @@ import { NoticePage } from './pages/notice/notice.page';
 export const routes: Routes = [
   {
     path: '',
-    component: NoticePage
+    loadComponent: () => import('./pages/notice/notice.page').then(c => c.NoticePage )
   },
   {
     path: 'create-post',
@@ -26,12 +26,4 @@ export const routes: Routes = [
     path: 'manage-post',
     component: ManagePostPage
   },
-  {
-    path: 'notice',
-    loadComponent: () => import('./pages/notice/notice.page').then( m => m.NoticePage)
-  },
-
-
-
-
 ];
