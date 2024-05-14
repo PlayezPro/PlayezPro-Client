@@ -60,11 +60,16 @@
   border-radius: 25px;
   transition: .4s ease-in-out;
 }
-
-// .form:hover {
-//   transform: scale(1.05);
-//   border: 1px solid black;
-// }
+.z-logo{
+  width: 40%;
+  height: auto;
+  padding: 10%;
+  margin-bottom: 10%;
+}
+.z-logo:hover {
+  transform: scale(1.05);
+  border: 1px solid black;
+}
 
 #heading {
   text-align: center;

@@ -23,7 +23,7 @@ export class LoginComponent {
   }
   //controladores
   formUser = new FormGroup({
-    'email': new FormControl('', [Validators.required, Validators.email]),
+    'email': new FormControl('', [Validators.required]),
     'password': new FormControl('', [Validators.required])
 
     // areAllFieldsFilled(): boolean {
@@ -42,7 +42,7 @@ export class LoginComponent {
 
   //Constructor para las rutas de navegación de la página
 
-  constructor(private userService: UsersService, private router: Router) { }
+  constructor(private usersService: UsersService, private router: Router) { }
 
   navigateToRegister() { //Ruta hacia Registro en el botón
     this.router.navigate(["/register"])
@@ -57,43 +57,40 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.formUser.valid) {
-      const credentials = {
-        email: this.formUser.value.email,
-        password: this.formUser.value.password
-      }
+        const credentials = {
+            email: this.formUser.value.email,
+            password: this.formUser.value.password
+        };
 
-      this.userService.loginUser(credentials).subscribe(
-        (response) => {
-          console.log('login con éxito', response);
-          localStorage.setItem('Token de Usuario', response.tokenLog)
-          this.alertMessage = '¡Bienvenido, ' + credentials.email + ' !';
-          this.AlertMessage = true;
-          setTimeout(() => {
-            this.navigateToHome();
-          }, 2000);
-        },
+        this.usersService.loginUser(credentials).subscribe(
+            (response) => {
+                console.log('Login con éxito:', response);
+                localStorage.setItem('token de admin',response.tokenLog)
+                this.alertMessage = '¡Bienvenido!';
+                this.AlertMessage = true;
+                setTimeout(() => {
+                    this.navigateToHome();
+                }, 2000);
+            },
+            (error) => {
+                console.error('Error al logear:', error);
+                this.alertMessage = 'Error en usuario/contraseña';
+                this.AlertMessage = true; // Mostrar la alerta
+                this.showAlert = true;
 
-        (error) => {
-          console.error('Error al logear:', error);
-          this.alertMessage = 'Error en usuario/contraseña';
-          this.AlertMessage = true; // Mostrar la alerta
-          this.showAlert = true;
-
-          // Ocultar la alerta después de 3 segundos
-          setTimeout(() => {
-            this.AlertMessage = false;
-          }, 2000);
-        }
-      );
-
+                // Ocultar la alerta después de 3 segundos
+                setTimeout(() => {
+                    this.AlertMessage = false;
+                }, 2000);
+            }
+        );
     } else {
-      this.alertMessage = 'Por favor, complete todos los campos correctamente.';
-      this.AlertMessage = true; // Mostrar la alerta
-      this.showAlert = true;
-      setTimeout(() => {
-        this.AlertMessage = false;
-      }, 2000);
+        this.alertMessage = 'Por favor, complete todos los campos correctamente.';
+        this.AlertMessage = true; // Mostrar la alerta
+        this.showAlert = true;
+        setTimeout(() => {
+            this.AlertMessage = false;
+        }, 2000);
     }
-
-  }
+}
 }
