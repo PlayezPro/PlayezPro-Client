@@ -12,8 +12,8 @@
           </svg>
           <input autocomplete="off" placeholder="Usuario" class="input-field" type="text" FormControl="email">
         </div>
-        <div ngIf="email.invalid && (email.dirty || email.touched)" class="text-red-500">
-          <span ngIf="email.errors?.['required']">El nombre de usuario es
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-red-500">
+          <span *ngIf="email.errors?.['required']">El nombre de usuario es
             obligatorio</span>
         </div>
       </section>
@@ -27,8 +27,8 @@
           </svg>
           <input placeholder="Password" class="input-field" type="password" FormControl="password">
         </div>
-        <div ngIf="password.invalid && (password.dirty || password.touched)" class="text-red-500">
-          <span ngIf="password.errors?.['required']">El password es
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-red-500">
+          <span *ngIf="password.errors?.['required']">El password es
             obligatorio</span>
         </div>
       </section>
@@ -67,6 +67,7 @@
         </svg>
       </button>
       <button class="button3">Forgot Password?</button>
+      <button (click)="navigateToRegister()" class="button3">No tienes cuenta?</button>
     </form>
   </div>
 </div>
