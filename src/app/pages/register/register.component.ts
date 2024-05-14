@@ -107,8 +107,7 @@ export class RegisterComponent {
 
   showTermsError = false;
 
-  onSubmit() {
-    if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value) {
+  Create() {
       this.showTermsError = false;
 
       this.userService.createUser(this.formNewUser.value).subscribe(
@@ -119,15 +118,9 @@ export class RegisterComponent {
             this.navigateToHome();
           }, 2300);
         },
-          error => {
-            console.error('Error al crear el usuario', error)
-          }
-      )
-    } else {
-      this.showTermsError = true;
-      if (this.formNewUser.hasError('mismatch')){
-        //vacio por ahora
-    }
-  }
+        (error: any) => { // Especifica el tipo de 'error' como 'any'
+          console.error('Error al crear el usuario', error);
+        }
+      );      
 }
 }
