@@ -18,7 +18,7 @@ export class UsersService {
             password: newUser.password,
             repeatPassword: newUser.repeatPassword
         };
-        return this.http.post('https://localhost:3000', userData)
+        return this.http.post('http://localhost:3000/auth/signup', userData)
     }
 
     loginUser(credentials: any): Observable<any> {
@@ -26,7 +26,7 @@ export class UsersService {
             email: credentials.email,
             password: credentials.password,
         };
-        return this.http.post('https://localhost:3000', loginData)
+        return this.http.post('http://localhost:3000/auth/signin', loginData)
 
 
     }

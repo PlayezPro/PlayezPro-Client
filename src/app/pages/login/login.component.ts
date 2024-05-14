@@ -65,7 +65,7 @@ export class LoginComponent {
         this.usersService.loginUser(credentials).subscribe(
             (response) => {
                 console.log('Login con éxito:', response);
-                localStorage.setItem('token de admin',response.tokenLog)
+                localStorage.setItem('token de admin',response.token)
                 this.alertMessage = '¡Bienvenido!';
                 this.AlertMessage = true;
                 setTimeout(() => {
