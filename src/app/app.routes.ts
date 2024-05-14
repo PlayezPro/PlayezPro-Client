@@ -4,6 +4,9 @@ import { PerfilPage } from './pages/perfil/perfil.page';
 import { ManageUserPage } from './pages/manage-user/manage-user.page';
 import { ManagePostPage } from './pages/manage-post/manage-post.page';
 import { NoticePage } from './pages/notice/notice.page';
+import { LoginComponent } from './pages/login/login.component';
+
+
 
 export const routes: Routes = [
   {
@@ -25,5 +28,9 @@ export const routes: Routes = [
   {
     path: 'manage-post',
     component: ManagePostPage
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
 ];
