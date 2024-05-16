@@ -101,26 +101,28 @@ export class RegisterComponent {
   navigateToLogin() {
     this.router.navigate(["/login"])
   }
-  navigateToHome() {
+  navigateToNotice() {
     this.router.navigate(["/notice"])
   }
 
   showTermsError = false;
-
+  
   Create() {
+    if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value){
       this.showTermsError = false;
-
+  
       this.userService.createUser(this.formNewUser.value).subscribe(
         response => {
           console.log('Usuario creado con éxito', response);
           this.showSuccessMessage = true;
           setTimeout(() => {
-            this.navigateToHome();
+            this.navigateToNotice();
           }, 2300);
         },
         (error: any) => { // Especifica el tipo de 'error' como 'any'
           console.error('Error al crear el usuario', error);
         }
-      );      
+      );
+    }
 }
 }
