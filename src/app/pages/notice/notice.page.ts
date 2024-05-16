@@ -18,6 +18,8 @@ import { LikesService } from 'src/app/services/likesService/likes.service';
   imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, GoogleloginComponent]
 })
 export class NoticePage implements OnInit {
+  showContent : boolean =false ;
+  showProgressBar: boolean = true;
   userId: string | null = null;
   comentarioTexto: string = ''!;
   isModalOpen = false;
@@ -31,25 +33,43 @@ export class NoticePage implements OnInit {
   menuType: string = 'overlay';
 
   async ngOnInit(): Promise<void> {
+    
     await this.generatePost();
   }
 
+  ionViewDidEnter() {
+    setTimeout(() => {
+      this.showProgressBar = false;
+      this.showContent = true;
+    }, 9000);
+      
+  }
   async generatePost(): Promise<void> {
     try {
       const response = await this.postService.getAllPost();
       this.posts = response.data;
       const currentUserId = localStorage.getItem('users_id')!;
+      console.log(this.posts)
       
       for (const post of this.posts) {
+
+        const totallyLikes = await this.likeService.totalLikes(post._id);
+        post.totalLikes = totallyLikes
+
         const userDetails = await this.userService.getUserById(post.users_id);
         post.userDetails = userDetails;
+
         const postComments = await this.commentService.getCommentsPost(post._id);
         post.allComments = postComments;
+        for(const comments of postComments){
+          const commentByUser = await this.userService.getUserById(comments.users_id)  
+          comments.userComment = commentByUser;
+                
+        }
         post.isModalOpen = false;
 
         const hasLikesResponse = await this.likeService.checkLikes(post._id, currentUserId);
         post.hasLikes = hasLikesResponse;
-        console.log(`Post ID: ${post._id}, isLiked: ${hasLikesResponse}`);
       }
 
       // Ordenar los posts por fecha de creación (createdAt) de forma descendente.
@@ -87,11 +107,16 @@ export class NoticePage implements OnInit {
     return isImage;
   }
 
-  handleRefresh(event: any): void {
-    setTimeout(() => {
-      // Cualquier llamada para cargar datos iría aquí
+  async handleRefresh(event: any): Promise<void> {
+    try {
+      // Llama a generatePost() para actualizar los datos
+      await this.generatePost();
+    } catch (error) {
+      console.error('Error al cargar los datos:', error);
+    } finally {
+      // Indica que la operación de actualización ha finalizado
       event.target.complete();
-    }, 2000);
+    }
   }
 
   setOpen(post: any, isOpen: boolean): void {
@@ -111,27 +136,46 @@ export class NoticePage implements OnInit {
       console.error('No se puede agregar el like: userId no encontrado en el localStorage');
     }
   }
-}
-toggleIcon(event: any) {
-  const texto = event.target.value|| '';
-  this.mostrarIcono = event.target.value.trim() !== '';
-  this.comentarioTexto = texto.trim();
-}
-async addComment(postId: string, comentarioTexto:string) {
-  if (this.comentarioTexto !== null) {
-      this.userId = localStorage.getItem('users_id')!;
-      const datosComentario = {
-        postId: postId,
-        userId: this.userId,
-        comments: comentarioTexto
-      };
-      try {
-          await this.commentService.writeComment(postId, this.userId, datosComentario.comments);
-          this.comentarioTexto = '';
-      } catch (error) {
-          // Manejar errores aquí
-      }
+ }
+
+ // Aqui se encuentran los metodos para los comentarios //
+
+  getUserId(): string | null {
+    return localStorage.getItem('users_id');
   }
-}
+
+  async addComment(postId: string, comentarioTexto:string) {
+    if (this.comentarioTexto !== null) {
+        this.userId = localStorage.getItem('users_id')!;
+        const datosComentario = {
+          postId: postId,
+          userId: this.userId,
+          comments: comentarioTexto
+        };
+        try {
+            await this.commentService.writeComment(postId, this.userId, datosComentario.comments);
+            this.comentarioTexto = '';
+        } catch (error) {
+            // Manejar errores aquí
+        }
+    }
+  }
+
+  async deleteComment(postId:string){
+    try {
+      await this.commentService.deleteComment(postId)
+      console.log(postId)
+    } catch (error) {
+      
+    }
+  }
+
+  toggleIcon(event: any) {
+    const texto = event.target.value|| '';
+    this.mostrarIcono = event.target.value.trim() !== '';
+    this.comentarioTexto = texto.trim();
+  }
+
+  // Fin de los metodos para los comentarios
 
 }

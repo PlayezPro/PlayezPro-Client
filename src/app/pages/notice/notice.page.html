@@ -1,6 +1,6 @@
-<app-googlelogin></app-googlelogin>
-
-<ion-content>
+<!-- <app-googlelogin></app-googlelogin> -->
+<ion-progress-bar *ngIf="showProgressBar" type="indeterminate" color="success"></ion-progress-bar>
+<ion-content *ngIf="showContent">
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
@@ -27,9 +27,12 @@
           </ion-button>
           <ion-icon size="large" name="share-outline"></ion-icon>
       </div>
-      <ion-label class="label">
+      <ion-label style="margin-top: 5px;" class="label">
+        <div>
+          <p>{{post.totalLikes}} Me gusta</p>
+        </div>
         <div style="display: flex; flex-direction: row; gap: 5px; margin-top: 10px;">
-          <p>{{ post.userDetails?.[0]?.name }}</p>
+          <p style="color: green;">{{ post.userDetails?.[0]?.name }}</p>
           <p>{{ post.description }}</p>
         </div>
       </ion-label>
@@ -48,9 +51,16 @@
             <ion-content class="ion-padding"  style="display: flex; flex-direction: column;">
               <ion-list style="flex: 1;">
                 <ng-container *ngFor="let comment of post.allComments">
-                  <ion-card>
-                    <ion-card-content>{{ comment.comments }}</ion-card-content>
-                  </ion-card>
+                  <div style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
+                    <img style="width: 10%; height: 10%; " src="../../assets/userPic/profileIcon.png" alt="profile">
+                    <div style="display: flex; flex-direction: column;">
+                      <p style="font-size: 10px;">{{ comment.userComment?.[0]?.name }}</p>
+                      <div style="display: flex; flex-direction: row; gap: 25px;">
+                        <p style="margin-top: 1px;">{{ comment.comments }}</p>
+                        <ion-icon color="danger"  *ngIf="comment.users_id === getUserId()" name="trash-outline" (click)="deleteComment(comment._id)"></ion-icon>
+                      </div>
+                  </div>  
+                  </div>
                 </ng-container>
               </ion-list>
               
