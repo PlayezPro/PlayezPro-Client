@@ -7,8 +7,6 @@ import { ManageUserPage } from './pages/manage-user/manage-user.page';
 import { ManagePostPage } from './pages/manage-post/manage-post.page';
 import { NoticePage } from './pages/notice/notice.page';
 
-
-
 export const routes: Routes = [
   {
     path: 'notice',

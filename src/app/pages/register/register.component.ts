@@ -110,7 +110,6 @@ export class RegisterComponent {
   Create() {
     if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value){
       this.showTermsError = false;
-  
       this.userService.createUser(this.formNewUser.value).subscribe(
         response => {
           console.log('Usuario creado con éxito', response);
