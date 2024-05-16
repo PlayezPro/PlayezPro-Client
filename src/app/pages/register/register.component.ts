@@ -123,6 +123,12 @@ export class RegisterComponent {
           console.error('Error al crear el usuario', error);
         }
       );
+    } else {
+      this.showTermsError = true;
+      if (this.formNewUser.hasError('mismatch')) {
+        console.error
+      }
     }
-}
+  }
+
 }
