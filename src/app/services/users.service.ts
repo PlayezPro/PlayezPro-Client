@@ -11,10 +11,11 @@ export class UsersService {
 
     createUser(newUser: any): Observable<any> {
         const userData = {
-            username: newUser.username,
+            userName: newUser.userName,
             name: newUser.name,
-            lastname: newUser.lastname,
+            lastName: newUser.lastName,
             email: newUser.email,
+            phoneNumber: newUser.phoneNumber,
             password: newUser.password,
             repeatPassword: newUser.repeatPassword
         };

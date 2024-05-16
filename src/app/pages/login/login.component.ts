@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 
 export class LoginComponent {
-  //validacion email y contraseña
+  // Validación email y contraseña
   get email() {
     return this.formUser.get('email') as FormControl;
   }
@@ -48,7 +48,7 @@ export class LoginComponent {
     this.router.navigate(["/register"])
   }
   navigateToHome() { //Ruta hacia Registro en el botón
-    this.router.navigate(["/home"])
+    this.router.navigate(["/notice"])
   }
 
   showAlert = false;
@@ -65,7 +65,7 @@ export class LoginComponent {
         this.usersService.loginUser(credentials).subscribe(
             (response) => {
                 console.log('Login con éxito:', response);
-                localStorage.setItem('token de admin',response.token)
+                localStorage.setItem('Token',response.token)
                 this.alertMessage = '¡Bienvenido!';
                 this.AlertMessage = true;
                 setTimeout(() => {
