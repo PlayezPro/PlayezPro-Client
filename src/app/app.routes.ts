@@ -1,14 +1,11 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { HomePage } from './pages/home/home.page';
-import { CreatePostPage } from './pages/create-post/create-post.page';
-
-
+// import { HomePage } from './pages/home/home.page';
 import { CreatePostPage } from './pages/create-post/create-post.page';
 import { PerfilPage } from './pages/perfil/perfil.page';
 import { ManageUserPage } from './pages/manage-user/manage-user.page';
 import { ManagePostPage } from './pages/manage-post/manage-post.page';
-import { NoticePage } from './pages/notice/notice.page';
+// import { NoticePage } from './pages/notice/notice.page';
 
 export const routes: Routes = [
   {
