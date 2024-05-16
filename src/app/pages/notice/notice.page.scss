@@ -15,3 +15,23 @@
 .label {
   margin-left: 10px;
 }
+
+.loading-spinner {
+  /* Hace que el div que contiene el spinner ocupe todo el espacio disponible */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  /* Utiliza flexbox para centrar el contenido tanto horizontal como verticalmente */
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  
+  /* Aplica un fondo semitransparente para resaltar el spinner */
+  background-color: rgba(255, 255, 255, 0.5);
+  
+  /* Opcional: añade un z-index alto para que esté por encima del contenido */
+  z-index: 9999;
+}

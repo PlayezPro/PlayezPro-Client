@@ -9,22 +9,25 @@ import { CommonModule } from '@angular/common';
 import { CommentService } from 'src/app/services/commentService/comment.service';
 import { FormsModule } from '@angular/forms';
 import { LikesService } from 'src/app/services/likesService/likes.service';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @Component({
   selector: 'app-notice',
   templateUrl: './notice.page.html',
   styleUrls: ['./notice.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, GoogleloginComponent]
+  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, GoogleloginComponent, NgxSpinnerModule]
 })
 export class NoticePage implements OnInit {
   userId: string | null = null;
-  comentarioTexto: string = ''!;
+  comentarioTexto: string = '';
   isModalOpen = false;
   posts: any[] = [];
   comments: any[] = [];
   isImageTrue: boolean = false;
   mostrarIcono: boolean = false;
+  isLoading: boolean = true;
+  isLoadingPosts: boolean[] = [];
 
   constructor(private postService: PostServiceService, private userService: UserService, private commentService: CommentService,private likeService:LikesService) {}
 
@@ -36,11 +39,14 @@ export class NoticePage implements OnInit {
 
   async generatePost(): Promise<void> {
     try {
+      this.isLoading = true; // Iniciar carga
       const response = await this.postService.getAllPost();
       this.posts = response.data;
+      this.isLoadingPosts = new Array(this.posts.length).fill(true); // Inicializar todos los posts como cargando
       const currentUserId = localStorage.getItem('users_id')!;
-      
-      for (const post of this.posts) {
+      this.isLoading = false; // Finalizar carga
+      for (let i = 0; i < this.posts.length; i++) {
+        const post = this.posts[i];
         const userDetails = await this.userService.getUserById(post.users_id);
         post.userDetails = userDetails;
         const postComments = await this.commentService.getCommentsPost(post._id);
@@ -49,6 +55,7 @@ export class NoticePage implements OnInit {
 
         const hasLikesResponse = await this.likeService.checkLikes(post._id, currentUserId);
         post.hasLikes = hasLikesResponse;
+        this.isLoadingPosts[i] = false; // Marcar el post actual como cargado
         console.log(`Post ID: ${post._id}, isLiked: ${hasLikesResponse}`);
       }
 
@@ -57,6 +64,7 @@ export class NoticePage implements OnInit {
 
     } catch (error) {
       console.error('Error al obtener los posts:', error);
+      this.isLoading = false; // Finalizar carga en caso de error
     }
   }
 
@@ -104,34 +112,34 @@ export class NoticePage implements OnInit {
       // Llama a tu servicio para agregar el like, pasando el postId y el userId
       await this.likeService.addLike(postId, this.userId);
       const postIndex = this.posts.findIndex(post => post._id === postId);
-        if (postIndex !== -1) {
-          this.posts[postIndex].hasLikes = !this.posts[postIndex].hasLikes;
-        
-    } else {
-      console.error('No se puede agregar el like: userId no encontrado en el localStorage');
+      if (postIndex !== -1) {
+        this.posts[postIndex].hasLikes = !this.posts[postIndex].hasLikes;
+      } else {
+        console.error('No se puede agregar el like: userId no encontrado en el localStorage');
+      }
     }
   }
-}
-toggleIcon(event: any) {
-  const texto = event.target.value|| '';
-  this.mostrarIcono = event.target.value.trim() !== '';
-  this.comentarioTexto = texto.trim();
-}
-async addComment(postId: string, comentarioTexto:string) {
-  if (this.comentarioTexto !== null) {
+
+  toggleIcon(event: any) {
+    const texto = event.target.value || '';
+    this.mostrarIcono = texto.trim() !== '';
+    this.comentarioTexto = texto.trim();
+  }
+
+  async addComment(postId: string) {
+    if (this.comentarioTexto !== null) {
       this.userId = localStorage.getItem('users_id')!;
       const datosComentario = {
         postId: postId,
         userId: this.userId,
-        comments: comentarioTexto
+        comments: this.comentarioTexto
       };
       try {
-          await this.commentService.writeComment(postId, this.userId, datosComentario.comments);
-          this.comentarioTexto = '';
+        await this.commentService.writeComment(postId, this.userId, datosComentario.comments);
+        this.comentarioTexto = '';
       } catch (error) {
-          // Manejar errores aquí
+        // Manejar errores aquí
       }
+    }
   }
-}
-
 }

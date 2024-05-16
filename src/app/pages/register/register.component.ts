@@ -102,7 +102,7 @@ export class RegisterComponent {
     this.router.navigate(["/login"])
   }
   navigateToHome() {
-    this.router.navigate(["/home"])
+    this.router.navigate(["/notice"])
   }
 
   showTermsError = false;
