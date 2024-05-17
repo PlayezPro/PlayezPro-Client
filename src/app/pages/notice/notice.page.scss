@@ -34,3 +34,7 @@
   /* Opcional: añade un z-index alto para que esté por encima del contenido */
   z-index: 9999;
 }
+
+.img {
+  aspect-ratio: 1 / 1; /* Relación de aspecto cuadrada */
+}

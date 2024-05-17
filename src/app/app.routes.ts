@@ -5,7 +5,6 @@ import { CreatePostPage } from './pages/create-post/create-post.page';
 import { PerfilPage } from './pages/perfil/perfil.page';
 import { ManageUserPage } from './pages/manage-user/manage-user.page';
 import { ManagePostPage } from './pages/manage-post/manage-post.page';
-import { NoticePage } from './pages/notice/notice.page';
 
 export const routes: Routes = [
   {
@@ -31,7 +30,8 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  },  {
+  },  
+  {
     path: 'register',
     component: RegisterComponent,
   }
