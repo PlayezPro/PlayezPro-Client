@@ -39,13 +39,27 @@ export class LikesService {
         const data = { posts_id: postId, users_id: userId };
         const response = await axios.post(`${this.likesUrl}/likecheck`, data );
         const isLiked = response.data.isLiked as boolean;
-        console.log(`El usuario dio like al post? ${isLiked ? 'Sí' : 'No'}`); // Mostrar en consola
         return isLiked; 
     } catch (error) {
         console.error('Error al verificar si el usuario dio like al post:', error);
         return false; // En caso de error, devolvemos false
     }
 }
+  
+  async totalLikes(postId:string):Promise<any> {
+    try {
+      const response = await axios.get(`${this.likesUrl}/totallikes/${postId}`)
+      if(response.data.totalLikes !== 0){
+      return response.data.totalLikes;  
+      }else {
+        return 0;
+      }
+      
+    } catch (error) {
+      console.error("Error al obtener el total de likes:", error);
+    }
   }
+
+ }
 
 
