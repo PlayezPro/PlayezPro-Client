@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
 })
 
 export class FollowService {
-    private followersUrl: string = 'http://localhost:3000/followers'
+    private followersUrl: string = 'http://localhost:3000/follow'
     constructor(private http: HttpClient) { }
 
     getFollowers(userId:string): Observable<string[]> {
