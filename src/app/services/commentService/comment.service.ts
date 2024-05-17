@@ -27,4 +27,12 @@ export class CommentService {
       console.error("no se ha añadido el comentario")
     }
   }
+
+  async deleteComment(commentId:string){
+    try {
+      await axios.delete(`${this.commentUrl}/${commentId}`)
+    } catch (error) {
+      console.error("error al borrar el comentario")
+    }
+  }
 }
