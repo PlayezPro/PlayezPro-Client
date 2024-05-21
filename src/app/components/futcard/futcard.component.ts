@@ -26,7 +26,7 @@ export class FutcardComponent  implements OnInit {
   async generateCard() {
     try {
       // Obtener el valor de user de localStorage
-      this.userId = localStorage.getItem('user');
+      this.userId = localStorage.getItem('users_id');
   
       // Verificar si this.userId es null
       if (this.userId === null) {
@@ -34,11 +34,13 @@ export class FutcardComponent  implements OnInit {
         console.error('El valor de user en localStorage es null');
         return; // Salir del método ya que no hay nada más que hacer
       }
+      
   
       // Si userId no es null, obtener los datos del usuario
       const response = await this.userServices.getUserById(this.userId);
+      console.log(this.userId)
       this.userDetail = response.data;
-      console.log(response);
+      console.log(this.userDetail);
       // Hacer algo con la respuesta, como generar la tarjeta
     } catch (error) {
       console.error('Error al generar la tarjeta:', error);

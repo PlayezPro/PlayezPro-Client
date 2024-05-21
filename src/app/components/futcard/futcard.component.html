@@ -11,7 +11,7 @@
 <!-- ## fut-player-card ## -->
 
 <!-- *ngFor="let detail of userDetail"> -->
-<div class="card-container">
+<div  *ngFor="let detail of userDetail" class="card-container">
   <div class="fut-player-card">
     <div class="player-card-top">
       <div class="player-master-info">
@@ -41,7 +41,7 @@
       <div class="player-info">
         <!-- Player Name-->
         <div class="player-name">
-          <span>Pedro</span>
+          <p>{{detail.name}}</p>
         </div>
         <!-- Player Features-->
         <div class="player-features">
