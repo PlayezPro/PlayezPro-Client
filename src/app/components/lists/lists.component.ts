@@ -12,6 +12,8 @@ import { UserService } from 'src/app/services/userService/user.service';
 })
 export class ListsComponent implements OnInit {
   details: any[] = [];
+  filteredDetails: any[] = [];
+  searchTerm: string = '';
   constructor(private DetailService: DetailUsersService, private userService: UserService) { }
 
   ngOnInit() {
@@ -22,7 +24,7 @@ export class ListsComponent implements OnInit {
     try {
       const response = await this.DetailService.getAllDetails();
       this.details = response.data;
-      console.log(response);
+      console.log(this.details);
 
       for (const detail of this.details) {
         const userDetails = await this.userService.getUserById(detail.userId);
@@ -31,5 +33,10 @@ export class ListsComponent implements OnInit {
     } catch (error) {
       console.error(error);
     }
+    this.filteredDetails = this.details;
   }
+
 }
+
+  
+
