@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
+import axios from "axios";
 
 @Injectable({
     providedIn: 'root'
@@ -21,19 +22,22 @@ export class FollowService {
     }
 
     // Agregar un nuevo seguidor
-    addFollower(userId: string, followerId: string): Observable<any> {
-        const url = `${this.followersUrl}`;
-        const body = { followerId, userId };
 
+    async addFollower(userId:any, followerId:any) {
+        const url = `${this.followersUrl}`;
+        const body = { userfollow: userId, userfollower: followerId };
+    
         try {
-            return this.http.post<any>(url, body, {
-                headers: new HttpHeaders({
+            const response = await axios.post(url, body, {
+                headers: {
                     'Content-Type': 'application/json'
-                })
+                }
             });
+            return response.data;
         } catch (error) {
             console.error('Error al añadir seguidor:', error);
             throw error;
         }
     }
+    
 }
