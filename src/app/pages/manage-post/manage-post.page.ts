@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
-import { IonicModule } from '@ionic/angular';
 import { DetailUsersService } from 'src/app/services/detailUsers/detail-users.service';
-import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { ListsComponent } from 'src/app/components/lists/lists.component';
 import { UserService } from 'src/app/services/userService/user.service';
 
 @Component({
@@ -14,17 +14,20 @@ import { UserService } from 'src/app/services/userService/user.service';
   standalone: true
 })
 export class ManagePostPage implements OnInit {
-  details: any = {};
+  details: any[] = [];
+  filteredDetails: any[] = [];
+  searchTerm: string = '';
   constructor(private DetailService: DetailUsersService, private userService: UserService) { }
 
   ngOnInit() {
-    this.userAllDetails()
+    this.userAllDetails();
   }
+
   async userAllDetails() {
     try {
       const response = await this.DetailService.getAllDetails();
       this.details = response.data;
-      console.log(response);
+      console.log(response.data);
 
       for (const detail of this.details) {
         const userDetails = await this.userService.getUserById(detail.userId);
@@ -33,5 +36,22 @@ export class ManagePostPage implements OnInit {
     } catch (error) {
       console.error(error);
     }
+    this.filteredDetails = this.details;
+    console.log(this.filterDetails)
+  }
+  filterDetails(event: any) {
+    const searchTerm = event.target.value.toLowerCase();
+
+    if (searchTerm === '') {
+      // Si el término de búsqueda está vacío, mostrar todos los detalles
+      this.filteredDetails = this.details;
+    } else {
+      // Filtrar los detalles basándose en el término de búsqueda
+      this.filteredDetails = this.details.filter(detail => 
+        detail.userDetails && detail.userDetails[0] && detail.userDetails[0].name &&
+        detail.userDetails[0].name.toLowerCase().includes(searchTerm)
+      );
+    }
+    console.log(this.filteredDetails); // Aquí imprimimos los resultados filtrados
   }
 }

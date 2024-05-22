@@ -1,29 +1,43 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
+import axios from "axios";
 
 @Injectable({
     providedIn: 'root'
 })
-
 export class FollowService {
-    private followersUrl: string = 'http://localhost:3000/followers'
+    private followersUrl: string = 'http://localhost:3000/follow';
+
     constructor(private http: HttpClient) { }
 
-    getFollowers(userId:string): Observable<string[]> {
+    // Obtener la lista de seguidores
+    getFollowers(userId: string): Observable<string[]> {
         try {
-
-            return this.http.get<string[]>(`${this.followersUrl}/${userId}`)
+            return this.http.get<string[]>(`${this.followersUrl}/${userId}`);
         } catch (error) {
-            console.error('Error al obtener seguidores de:', error);
+            console.error('Error al obtener seguidores:', error);
             throw error;
-
         }
-
-
-
-
-
     }
 
+    // Agregar un nuevo seguidor
+
+    async addFollower(userId:any, followerId:any) {
+        const url = `${this.followersUrl}`;
+        const body = { userfollow: userId, userfollower: followerId };
+    
+        try {
+            const response = await axios.post(url, body, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            return response.data;
+        } catch (error) {
+            console.error('Error al añadir seguidor:', error);
+            throw error;
+        }
+    }
+    
 }

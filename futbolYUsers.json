@@ -1,0 +1,404 @@
+[{
+  "_id": {
+    "$oid": "6639e474ce15f81e52ea5906"
+  },
+  "name": "Jean Carlos",
+  "lastName": "Perez ",
+  "userName": "JeanCarlos",
+  "email": "jeanc@gmail.com",
+  "phoneNumber": 685775350,
+  "password": "$2a$10$R7/h9KutGGrntEt/jNH.TOcnLND6pQCl6cHMIulsoSTKeiebXii3e",
+  "roles": [
+    {
+      "$oid": "6639dbc70fc2fd0ef9038cdd"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-05-07T08:21:08.821Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T10:52:25.314Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c57d0da06892ac9175ccd"
+  },
+  "name": "Pedro",
+  "lastName": "Fernandez",
+  "userName": "Pedro",
+  "email": "pedrito@gmail.com",
+  "phoneNumber": 123456789,
+  "password": "$2a$10$QfO4Tg0NEHLJb.floviAmuKnh3/ks.9XL6uxAcDA1Ngr9jwA.w6j2",
+  "repeatPassword": "$2a$10$HVNhG/mOh.e9RNObc6I98uLGP9ITF8xLWMZoeE4o9w1vOjpbHnAEq",
+  "roles": [
+    {
+      "$oid": "6639dbc70fc2fd0ef9038cde"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T08:14:08.270Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T08:16:30.247Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c79061f6b50c9e54559bd"
+  },
+  "name": "Mayo",
+  "lastName": "Ramirez",
+  "userName": "Gepetto",
+  "email": "mayo@gmail.com",
+  "phoneNumber": 123456788,
+  "password": "$2a$10$OMwIXD8Axbc5zOR4WeeIOO34pVOMp31aiYkj966X/KFizU1ozVx/W",
+  "repeatPassword": "$2a$10$c5W/uZz6RktYmLwnlxlviOongGbkAljAmyvTzL.EPc4RuX29rlmnu",
+  "roles": [
+    {
+      "$oid": "6639dbc70fc2fd0ef9038cde"
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T10:35:50.842Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T10:37:32.123Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c82a6d123a5554adf26fa"
+  },
+  "name": "Marcos",
+  "lastName": "van Basten",
+  "userName": "vanbasten",
+  "email": "vanbasten@gmail.com",
+  "phoneNumber": 1234567890,
+  "password": "$2a$10$DMWNC2hRcoHAzgxHGKqNZu2L4jKpWivi.Zd/bivLmEQfD.ut.zg.S",
+  "repeatPassword": "$2a$10$kko/xg16z6TC8bSeMkS6EOVxw5NhBEwDY6ICfMJ6OlUnWCtPleo7i",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:16:54.900Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T12:05:11.300Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c8431344c7668f7692b17"
+  },
+  "name": "Jean-Pierre",
+  "lastName": "Papin",
+  "userName": "jppapin",
+  "email": "jppapin@gmail.com",
+  "phoneNumber": 123456782,
+  "password": "$2a$10$zFrdgHdYzD.qewh2RU0N2usO2iCRYt35dEi1tgScpgY3XYBYT8XL6",
+  "repeatPassword": "$2a$10$OTURrT9k31fUbJQhPSbUpeOQ5MWNSI4OyaJkOSVhgr9RuFK6LqhrC",
+  "roles": [
+    "ObjectId('6639dbc70fc2fd0ef9038cde')"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:23:29.161Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T12:05:22.580Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c844a344c7668f7692b1d"
+  },
+  "name": "Hristo",
+  "lastName": "Stoichkov",
+  "userName": "stoichkov",
+  "email": "stoichkov@gmail.com",
+  "phoneNumber": 123456783,
+  "password": "$2a$10$q6E0IXVnq5dqX7mz.mo0ZuYdzLETVPoUZfYwncK/c5GQR7.8I.JZa",
+  "repeatPassword": "$2a$10$QNTNoTaDJcWgPx3Xcjwoc.KDMMHWQNaC1xAuU/3vw7WUUuqE8BPZu",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:23:54.890Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:59:58.753Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c845b344c7668f7692b23"
+  },
+  "name": "Gabriel",
+  "lastName": "Batistuta",
+  "userName": "batistuta",
+  "email": "batistuta@gmail.com",
+  "phoneNumber": 123456784,
+  "password": "$2a$10$vUiYiyBsgAXH4GQ.9dpgauX4hgSXXdoYDnJn6cBZpg3W6zeLpHDCG",
+  "repeatPassword": "$2a$10$vUiYiyBsgAXH4GQ.9dpgauX4hgSXXdoYDnJn6cBZpg3W6zeLpHDCG",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:24:11.086Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:24:11.086Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c846c344c7668f7692b29"
+  },
+  "name": "Ally",
+  "lastName": "McCoist",
+  "userName": "mcCoist",
+  "email": "mcCoist@gmail.com",
+  "phoneNumber": 123456785,
+  "password": "$2a$10$cdFnc6D/0VqVCzd.PrEtDuRzKJ2VksCXd48qiMg6yCjMz6M0P8PTC",
+  "repeatPassword": "$2a$10$cdFnc6D/0VqVCzd.PrEtDuRzKJ2VksCXd48qiMg6yCjMz6M0P8PTC",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:24:28.574Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:24:28.574Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c847c344c7668f7692b2f"
+  },
+  "name": "Hugo",
+  "lastName": "Sánchez",
+  "userName": "hugosan",
+  "email": "hugosan@gmail.com",
+  "phoneNumber": 123456786,
+  "password": "$2a$10$RDT6R1jAhheoGrzBHZZsheGmscTHTlGgdwFO7UI6q8IEEaHnatCkm",
+  "repeatPassword": "$2a$10$RDT6R1jAhheoGrzBHZZsheGmscTHTlGgdwFO7UI6q8IEEaHnatCkm",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:24:45.016Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:24:45.016Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c84ee344c7668f7692b35"
+  },
+  "name": "Gary",
+  "lastName": "Lineker",
+  "userName": "lineker",
+  "email": "lineker@gmail.com",
+  "phoneNumber": 123456787,
+  "password": "$2a$10$R15OWloUBFVo1lMk4L7ppep1nAHahdpLY4nnbxGzW7SeXpQkNuNlG",
+  "repeatPassword": "$2a$10$R15OWloUBFVo1lMk4L7ppep1nAHahdpLY4nnbxGzW7SeXpQkNuNlG",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:26:38.746Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:26:38.746Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c8515344c7668f7692b3f"
+  },
+  "name": "Ronaldo",
+  "lastName": "Nazário",
+  "userName": "ronaldo",
+  "email": "ronaldo@gmail.com",
+  "phoneNumber": 123456701,
+  "password": "$2a$10$39tSNWYqsSW3hVW3dq1W8OoIR.2eC3mHtm.nZciojxcLG3f3Rl4kO",
+  "repeatPassword": "$2a$10$39tSNWYqsSW3hVW3dq1W8OoIR.2eC3mHtm.nZciojxcLG3f3Rl4kO",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:27:17.229Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:27:17.229Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c8525344c7668f7692b45"
+  },
+  "name": "Raúl",
+  "lastName": "González",
+  "userName": "raul",
+  "email": "raul@gmail.com",
+  "phoneNumber": 923456790,
+  "password": "$2a$10$vWBti0SNcRLjBOhwClTC/.OwOJqHGo2B6vjrObxnjTi7Yp6Sax.PW",
+  "repeatPassword": "$2a$10$vWBti0SNcRLjBOhwClTC/.OwOJqHGo2B6vjrObxnjTi7Yp6Sax.PW",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:27:33.293Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:27:33.293Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c8535344c7668f7692b4b"
+  },
+  "name": "Andriy",
+  "lastName": "Shevchenko",
+  "userName": "shevchenko",
+  "email": "shevchenko@gmail.com",
+  "phoneNumber": 983456791,
+  "password": "$2a$10$gQalnm5ck6FbUBCNEw.F/OrXY2zso2eYQ043cmp4PNOhJqBGNnYuu",
+  "repeatPassword": "$2a$10$gQalnm5ck6FbUBCNEw.F/OrXY2zso2eYQ043cmp4PNOhJqBGNnYuu",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:27:49.226Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:27:49.226Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c8546344c7668f7692b51"
+  },
+  "name": "Thierry",
+  "lastName": "Henry",
+  "userName": "henry",
+  "email": "henry@gmail.com",
+  "phoneNumber": 777456792,
+  "password": "$2a$10$1.YLWTJoklgUEIRCcKET6OFrFslO97WgdTZfSL/ameDXmtocKYsEG",
+  "repeatPassword": "$2a$10$1.YLWTJoklgUEIRCcKET6OFrFslO97WgdTZfSL/ameDXmtocKYsEG",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:28:06.767Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:28:06.767Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c85cb344c7668f7692b5a"
+  },
+  "name": "Lothar",
+  "lastName": "Matthäus",
+  "userName": "matthaus",
+  "email": "matthaus@gmail.com",
+  "phoneNumber": 123456793,
+  "password": "$2a$10$Dzu5rYUs1zbkwohHHdLa7uVA.yMwGXsen8ZYsapUeL4IR8n8KLUW6",
+  "repeatPassword": "$2a$10$Dzu5rYUs1zbkwohHHdLa7uVA.yMwGXsen8ZYsapUeL4IR8n8KLUW6",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:30:19.364Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:30:19.364Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c85d7344c7668f7692b60"
+  },
+  "name": "Cafu",
+  "lastName": "Moreira",
+  "userName": "cafu",
+  "email": "cafu@gmail.com",
+  "phoneNumber": 123456794,
+  "password": "$2a$10$G2WmXu7tFGqVr80oQZsJNOylPS/eTzcaowZmYxr8wHsfIFNiw8IYK",
+  "repeatPassword": "$2a$10$G2WmXu7tFGqVr80oQZsJNOylPS/eTzcaowZmYxr8wHsfIFNiw8IYK",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:30:31.972Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:30:31.972Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c85e4344c7668f7692b66"
+  },
+  "name": "Antonio",
+  "lastName": "Carvajal",
+  "userName": "carvajal",
+  "email": "carvajal@gmail.com",
+  "phoneNumber": 123456795,
+  "password": "$2a$10$4FPUAtaEP4P5DQ5guq.iqee7qdLaKaVpnQ2IdcpzP01PUxnPzpGX.",
+  "repeatPassword": "$2a$10$4FPUAtaEP4P5DQ5guq.iqee7qdLaKaVpnQ2IdcpzP01PUxnPzpGX.",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:30:44.388Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:30:44.388Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c85fa344c7668f7692b6c"
+  },
+  "name": "Rafael",
+  "lastName": "Márquez",
+  "userName": "marquez",
+  "email": "marquez@gmail.com",
+  "phoneNumber": 123456796,
+  "password": "$2a$10$kGZUjK2p1JGqbHl1wgacSuuEsf6tRUQkhCH8emGbSIcryoAonZI.K",
+  "repeatPassword": "$2a$10$kGZUjK2p1JGqbHl1wgacSuuEsf6tRUQkhCH8emGbSIcryoAonZI.K",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:31:06.612Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T11:31:06.612Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "664c860d344c7668f7692b72"
+  },
+  "name": "Gianluigi",
+  "lastName": "Buffon",
+  "userName": "buffon",
+  "email": "buffon@gmail.com",
+  "phoneNumber": 123456798,
+  "password": "$2a$10$FzjXTy0nQkz.g5UrISJd0e3CEqMnLciBFBKX8uF/.olFvmFpuMCzS",
+  "repeatPassword": "$2a$10$D.xrGUMUkOW1adfnEfkOZe5rco45IdebsoBGioKAoKnoZeBhvTMKi",
+  "roles": [
+    "6639dbc70fc2fd0ef9038cde"
+  ],
+  "createdAt": {
+    "$date": "2024-05-21T11:31:25.047Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-21T12:02:45.386Z"
+  }
+}]
