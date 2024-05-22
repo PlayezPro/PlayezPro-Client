@@ -3,8 +3,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { CreatePostPage } from './pages/create-post/create-post.page';
 import { PerfilPage } from './pages/perfil/perfil.page';
-import { ManageUserPage } from './pages/manage-user/manage-user.page';
 import { ManagePostPage } from './pages/manage-post/manage-post.page';
+import { RankingSystemComponent } from './pages/Rankings/ranking-system/ranking-system.page';
 
 export const routes: Routes = [
   {
@@ -20,10 +20,6 @@ export const routes: Routes = [
     component: PerfilPage
   },
   {
-    path: 'manage-user',
-    component: ManageUserPage
-  },
-  {
     path: 'manage-post',
     component: ManagePostPage
   },
@@ -34,6 +30,11 @@ export const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
-  }
+  },
+  {
+    path: 'ranking',
+    component: RankingSystemComponent
+    // loadComponent: () => import('./pages/Rankings/ranking-system/ranking-system.page').then( m => m.RankingSystemComponent)
+  },
 
 ];
