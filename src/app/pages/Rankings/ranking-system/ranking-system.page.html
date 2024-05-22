@@ -1,0 +1,18 @@
+<app-topbar></app-topbar>
+
+<ion-content>
+
+  <div *ngFor="let post of posts">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ post.title }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ post.description }}</p>
+        <ion-card-subtitle>Likes: {{ post.likesCount }}</ion-card-subtitle>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<app-navbar></app-navbar>
