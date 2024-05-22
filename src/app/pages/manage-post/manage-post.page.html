@@ -1,14 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>managePost</ion-title>
+    <ion-title>managePostureo</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+ <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">managePost</ion-title>
+      <ion-title size="large">managePosttrtrtr</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-item>
+    <ion-searchbar (ionInput)="filterDetails($event)"></ion-searchbar>
+  </ion-item>
+  <div *ngFor="let detail of filteredDetails" class="max-w-sm mx-auto mt-10">
+    <div class="p-3 flex items-center justify-between border-t cursor-pointer hover:bg-gray-200">
+      <div class="flex items-center">
+        <img class="rounded-full h-10 w-10" src="https://loremflickr.com/g/600/600/girl">
+        <div class="ml-2 flex flex-col">
+          <div class="leading-snug text-sm text-gray-900 font-bold">{{  detail.userDetails?.[0]?.name  }}</div>
+        
+        </div>
+      </div>
+      <button class="h-8 px-3 text-md font-bold text-blue-400 border border-blue-400 rounded-full hover:bg-blue-100">Follow</button>
+    </div>
+  </div>
 </ion-content>
 <app-navbar/>
