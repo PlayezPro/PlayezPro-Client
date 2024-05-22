@@ -60,6 +60,17 @@ export class LikesService {
     }
   }
 
+  async getRankedPosts(): Promise<any[]> {
+    try {
+      const response = await axios.get(`${this.likesUrl}/rankedLikes`);
+      return response.data.ranking;
+    } catch (error) {
+      console.error("Error al obtener el ranking de posts:", error);
+      return [];
+    }
+  }
+
+
  }
 
 
