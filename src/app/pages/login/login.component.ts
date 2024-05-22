@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -66,6 +67,11 @@ export class LoginComponent {
             (response) => {
                 console.log('Login con éxito:', response);
                 localStorage.setItem('Token',response.token)
+                const tokenOne = localStorage.getItem('Token')
+                if(tokenOne){
+                  const decodedToken: any = jwtDecode(tokenOne);
+                  localStorage.setItem('users_Id', decodedToken.id)
+                }
                 this.alertMessage = '¡Bienvenido!';
                 this.AlertMessage = true;
                 setTimeout(() => {
