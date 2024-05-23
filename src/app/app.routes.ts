@@ -5,6 +5,7 @@ import { CreatePostPage } from './pages/create-post/create-post.page';
 import { PerfilPage } from './pages/perfil/perfil.page';
 import { ManagePostPage } from './pages/manage-post/manage-post.page';
 import { RankingSystemComponent } from './pages/Rankings/ranking-system/ranking-system.page';
+import { RanksPagePage } from './pages/ranks-page/ranks-page.page';
 
 export const routes: Routes = [
   {
@@ -33,12 +34,17 @@ export const routes: Routes = [
   },
   {
     path: 'ranking',
-    component: RankingSystemComponent
-    // loadComponent: () => import('./pages/Rankings/ranking-system/ranking-system.page').then( m => m.RankingSystemComponent)
-  },  {
+    component: RanksPagePage
+  },
+  {
+    path: 'ranked-goals',
+    component: RankingSystemComponent 
+  },
+  {
     path: 'reel',
     loadComponent: () => import('./pages/reel/reel.page').then( m => m.ReelPage)
   },
+
 
 
 ];

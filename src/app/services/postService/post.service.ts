@@ -78,4 +78,14 @@ export class PostServiceService {
 //     return this.http.delete(`${this.apiUrl}/${posts_id}`);
 //   }
 
+async getAllPostsOrderedByLikes(): Promise<any> {
+  try {
+    const response = await axios.get(`${this.apiUrl}/rankedLikes`);
+    return response.data;
+  } catch (error) {
+    console.error('Error al obtener los posts ordenados por likes:', error);
+    throw error;
+  }
+}
+
 }
