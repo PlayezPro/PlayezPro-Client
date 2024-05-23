@@ -1,5 +1,20 @@
-<app-futcard />
-  <button (click)="createUser()" >
-    hola
-  </button>
-<app-navbar />
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Modo Oscuro</ion-label>
+    <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleTheme($event)"></ion-toggle>
+  </ion-item>
+
+  <app-futcard></app-futcard>
+  
+  <ion-button expand="full" (click)="createUser()">
+    Hola
+  </ion-button>
+
+  <app-navbar></app-navbar>
+</ion-content>
