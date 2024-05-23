@@ -40,6 +40,7 @@ export class ManagePostPage implements OnInit {
     this.filteredDetails = this.details;
     console.log(this.filterDetails)
   }
+  
   filterDetails(event: any) {
     const searchTerm = event.target.value.toLowerCase();
 
