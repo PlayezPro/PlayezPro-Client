@@ -11,11 +11,9 @@ export class LikesService {
   async addLike(postId: string, userId: string): Promise<void> {
     try {
       const data = { posts_id: postId, users_id: userId };
-      const response = await axios.post(this.likesUrl, data);
       console.log('Like añadido correctamente');
     } catch (error:any) {
-      if (error.response && error.response.status === 400) {
-        console.error('El usuario ya ha dado like a este post');
+      if (error.response && error.response.status === 400) {;
         await this.deleteLike(postId, userId);
         console.log("el like ha sido borrado")
       } else {

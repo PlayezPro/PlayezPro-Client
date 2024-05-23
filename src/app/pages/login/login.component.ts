@@ -70,7 +70,7 @@ export class LoginComponent {
                 const tokenOne = localStorage.getItem('Token')
                 if(tokenOne){
                   const decodedToken: any = jwtDecode(tokenOne);
-                  localStorage.setItem('users_Id', decodedToken.id)
+                  localStorage.setItem('users_id', decodedToken.id)
                 }
                 this.alertMessage = '¡Bienvenido!';
                 this.AlertMessage = true;

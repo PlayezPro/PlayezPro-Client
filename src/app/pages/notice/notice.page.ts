@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { LikesService } from 'src/app/services/likesService/likes.service';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { LoaderComponent } from 'src/app/components/loader/loader.component';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-notice',
@@ -30,7 +31,7 @@ export class NoticePage implements OnInit {
   isLoading: boolean = true;
   isLoadingPosts: boolean[] = [];
 
-  constructor(private postService: PostServiceService, private userService: UserService, private commentService: CommentService, private likeService: LikesService) { }
+  constructor(private postService: PostServiceService, private userService: UserService, private commentService: CommentService, private likeService: LikesService, private cd: ChangeDetectorRef) { }
 
   async ngOnInit(): Promise<void> {
 
@@ -142,15 +143,30 @@ export class NoticePage implements OnInit {
   async addLike(postId: string): Promise<void> {
     this.userId = localStorage.getItem('users_id');
     if (this.userId) {
-      // Llama a tu servicio para agregar el like, pasando el postId y el userId
-      await this.likeService.addLike(postId, this.userId);
-      const postIndex = this.posts.findIndex(post => post._id === postId);
-      if (postIndex !== -1) {
-        this.posts[postIndex].hasLikes = !this.posts[postIndex].hasLikes;
-
-      } else {
-        console.error('No se puede agregar el like: userId no encontrado en el localStorage');
+      try {
+        // Llama a tu servicio para agregar el like, pasando el postId y el userId
+        await this.likeService.addLike(postId, this.userId);
+        
+        // Encuentra el post en la lista de posts y actualiza su estado de likes
+        const postIndex = this.posts.findIndex(post => post._id === postId);
+        if (postIndex !== -1) {
+          // Actualiza el estado de likes y el contador de totalLikes
+          this.posts[postIndex].hasLikes = !this.posts[postIndex].hasLikes;
+          if (this.posts[postIndex].hasLikes) {
+            this.posts[postIndex].totalLikes++;
+          } else {
+            this.posts[postIndex].totalLikes--;
+          }
+          // Forzar la detección de cambios
+          this.cd.detectChanges();
+        } else {
+          console.error('No se puede agregar el like: post no encontrado');
+        }
+      } catch (error) {
+        console.error('Error al agregar el like:', error);
       }
+    } else {
+      console.error('No se puede agregar el like: userId no encontrado en el localStorage');
     }
   }
 

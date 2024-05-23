@@ -4,14 +4,9 @@
   </ion-toolbar>
 </ion-header>
 
-<!-- FONT (OPTIONAL) -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700" />
 
-
-<!-- ## fut-player-card ## -->
-
-<!-- *ngFor="let detail of userDetail"> -->
-<div  *ngFor="let detail of userDetail" class="card-container">
+<div *ngFor="let detail of userDetail" class="card-container">
   <div class="fut-player-card">
     <div class="player-card-top">
       <div class="player-master-info">
@@ -24,10 +19,6 @@
         <div class="player-nation">
           <img src="https://selimdoyranli.com/cdn/fut-player-card/img/argentina.svg" alt="ecuador" draggable="false" />
         </div>
-        <!-- <div class="player-club">
-          <img src="https://selimdoyranli.com/cdn/fut-player-card/img/barcelona.svg" alt="Barcelona"
-            draggable="false" />
-        </div> -->
       </div>
       <div class="player-picture">
         <img src="../../../assets/images/pedro.png" alt="Pedro" draggable="false" />
@@ -39,12 +30,9 @@
     </div>
     <div class="player-card-bottom">
       <div class="player-info">
-        <!-- Player Name-->
         <div class="player-name">
           <p>{{detail.name}}</p>
-          <!-- <p>Juansito</p> -->
         </div>
-        <!-- Player Features-->
         <div class="player-features">
           <div class="player-features-col">
             <span>
@@ -74,6 +62,66 @@
               <div class="player-feature-title">PHY</div>
             </span>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<button (click)="openModal()" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
+  Añadir Detalle
+</button>
+
+<div *ngIf="showModal" class="fixed z-10 inset-0 overflow-y-auto">
+  <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+      <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+    </div>
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+    <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+      <div>
+        <div class="text-lg leading-6 font-medium text-gray-900">
+          Añadir Detalle
+        </div>
+        <div class="mt-2">
+          <form (ngSubmit)="createDetail()">
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2">Año de Nacimiento:</label>
+              <input type="number" [(ngModel)]="newDetail.birthYear" name="birthYear" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2">Nacionalidad:</label>
+              <input type="text" [(ngModel)]="newDetail.nationality" name="nationality" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2">Equipo Actual:</label>
+              <input type="text" [(ngModel)]="newDetail.currentTeam" name="currentTeam" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2">Dorsal:</label>
+              <input type="number" [(ngModel)]="newDetail.dorsal" name="dorsal" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2">Posición Favorita:</label>
+              <input type="text" [(ngModel)]="newDetail.favPosition" name="favPosition" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2">Pie Dominante:</label>
+              <input type="text" [(ngModel)]="newDetail.mainFoot" name="mainFoot" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2">Peso:</label>
+              <input type="text" [(ngModel)]="newDetail.weight" name="weight" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 font-bold mb-2">Altura:</label>
+              <input type="text" [(ngModel)]="newDetail.height" name="height" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+            </div>
+            <div class="flex justify-end">
+              <button type="button" (click)="closeModal()" class="bg-gray-500 text-white font-bold py-2 px-4 rounded mr-2">Cancelar</button>
+              <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">Guardar</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

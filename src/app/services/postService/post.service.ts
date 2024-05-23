@@ -33,17 +33,6 @@ export class PostServiceService {
         formData.forEach((value, key) => {
           console.log(`${key}: ${value}`);
         });
-      //   try {
-      //     return this.http.post(this.apiUrl, formData, {
-      //       headers: {
-      //         'Content-Type': 'multipart/form-data' // Asegúrate de establecer el encabezado adecuado para FormData
-      //       }
-      //     });
-          
-      //   } catch (error) {
-      //     throw error;
-      //   }
-      // };
   
         try {
           const response = await axios.post(this.apiUrl, formData, {
@@ -65,17 +54,4 @@ export class PostServiceService {
     return axios.get(this.apiUrl);
     
   }
-
-//   getPostById(posts_id: string): Observable<any> {
-//     return this.http.get(`${this.apiUrl}/${posts_id}`);
-//   }
-
-//   updatePost(posts_id: string, updatePost: any): Observable<any> {
-//     return this.http.put(`${this.apiUrl}/${posts_id}`, updatePost);
-//   }
-
-//   deletePost(posts_id: string): Observable<any> {
-//     return this.http.delete(`${this.apiUrl}/${posts_id}`);
-//   }
-
 }
