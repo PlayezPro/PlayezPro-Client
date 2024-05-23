@@ -321,3 +321,285 @@ section .bi-x-lg{
     user-select: none;
     opacity: .8;
 }
+
+/* comment section */
+.reels_section .reels-container .vid .comment_counter .Comment_Box{
+    position: relative;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box h4{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .underline{
+    height: 2.8px;
+    margin-bottom: 20px;
+    background: rgba(0,0,0,0.7);
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box{
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 15px;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box img{
+    margin-left: 5px;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box .commentBox{
+    display: flex;
+    flex-direction: column;
+    width: 72%;
+    height: auto;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box .commentBox .username{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box .commentBox .username p{
+    margin-left: 4px;
+    display: fle;
+    justify-content: space-evenly;
+    width: 38%;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box .commentBox .username p a{
+    text-decoration: none;
+    color: rgb(9, 154, 244);
+    font-weight: 600;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box .commentBox p{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 17px;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box .commentBox .re_comment{
+    display: flex;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box .commentBox .re_comment a{
+    font-size: 13px;
+    text-decoration: none;
+    opacity: .8;
+    color: #333;
+    font-weight: 600;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box .commentBox .re_comment a:nth-child(2){
+    margin-left: 15px;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box .comment_like{
+    flex-direction: column;
+    margin-right: 10px;
+    opacity: .8;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box .comment_like i{
+    font-size: 20px;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .Box .comment_like p{
+    margin-top: -4px;
+}
+.reels_section .reels-container .vid .comment_counter .Comment_Box .underline.outside{
+    background: rgba(0,0,0,0.1);
+    height: 2px;
+}
+.reels_section .reels-container .vid .comment_counter .Box.absolute{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f8f8;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.reels_section .reels-container .vid .comment_counter .Box.absolute i{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 30px;
+}
+.reels_section .reels-container .vid .comment_counter .Box.absolute input{
+    margin-left: -5px;
+    width: 72%;
+    border: none;
+    outline: none;
+    padding: 10px 5px;
+    font-size: 16px;
+    letter-spacing: 0;
+    border-radius: 10px;
+}
+.reels_section .reels-container .vid .comment_counter .Box.absolute a{
+    text-decoration: none;
+    color: rgb(9, 115, 236);
+    margin: 3px;
+    margin-right: 5px;
+    padding: 7px 0;
+}
+
+.reels_section .reels-container .vid .profile{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 85%;
+    height: auto;
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+    background: transparent;    
+}
+.reels_section .reels-container .vid .profile .row{
+    display: flex;
+    align-items: center;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.reels_section .reels-container .vid .profile .row h4{
+    font-weight: 500;
+    margin: 0 10px;
+}
+.reels_section .reels-container .vid .profile .row button{
+    border: none;
+    outline: none;
+    background: transparent;
+    border: 1px solid #fff;
+    padding: 4px 15px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: .3s ease;
+}
+.reels_section .reels-container .vid .profile .row button:active{
+    transform: scale(0.9);
+}
+.reels_section .reels-container .vid .profile .row p{
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+}
+.reels_section .reels-container .vid .profile .row2 p{
+    max-height: 42px;
+}
+.reels_section .reels-container .vid .profile .row p.audio{
+    -webkit-line-clamp: 1;
+    font-size: 12px;
+}
+
+
+/* Send video section */
+.reels_section .reels-container .send_video input{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 8px 12px;
+    font-size: 18px;
+}
+.reels_section .reels-container .send_video .input{
+    margin-top: 10px;
+}
+.reels_section .reels-container .send_video .search_div{
+    position: relative;
+    margin-top: 10px;
+}
+.reels_section .reels-container .send_video .search_div i{
+    position: absolute;
+    font-size: 20px;
+}
+.reels_section .reels-container .send_video .search_div i:nth-child(1){
+    left: 25px;
+}
+.reels_section .reels-container .send_video .search_div i:nth-child(2){
+    right: 25px;
+}
+.reels_section .reels-container .send_video .search_div input{
+    width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+    background: #eee;
+    width: 92%;
+    border-radius: 15px;
+}
+.reels_section .reels-container .send_video .userDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+.reels_section .reels-container .send_video .userDiv img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.reels_section .reels-container .send_video .userDiv a{
+    width: 75%;
+    text-decoration: none;
+    color: #111;
+}
+.reels_section .reels-container .send_video .userDiv i{
+    margin-right: 10px;
+}
+
+
+/* Share video section */
+.reels_section .reels-container .vid .share_video.active{
+    height: 40%;
+}
+.reels_section .reels-container .vid .share_video .icons{
+    margin-top: 30px;
+    justify-content: space-evenly;
+}
+.reels_section .reels-container .vid .share_video .icons div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.reels_section .reels-container .vid .share_video .icons div i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    padding: 10px 15px;
+    border-radius: 50%;
+    border: 1.8px solid #aaa;
+    margin-bottom: 5px;
+}
+.reels_section .reels-container .vid .share_video .icons div small{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 80px;
+    text-align: center;
+}
+.reels_section .reels-container .vid .share_video .underline{
+    height: 3px;
+    background: #ccc;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.reels_section .reels-container .vid .share_video .i-interested, .reels_section .reels-container .vid .share_video .report{
+    width: 100%;
+}
+.reels_section .reels-container .vid .share_video .n-interested i, .reels_section .reels-container .vid .share_video .report i{
+    margin-right: 5px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+.reels_section .reels-container .vid .share_video .n-interested a, .reels_section .reels-container .vid .share_video .report a{
+    text-decoration: none;
+    color: #000;
+}
+.reels_section .reels-container .vid .share_video .report{
+    margin-top: 10px;
+}
+.reels_section .reels-container .vid .share_video .report i, .reels_section .reels-container .vid .share_video .report a{
+    color: red;
+}
+
