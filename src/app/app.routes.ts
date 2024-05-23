@@ -44,6 +44,10 @@ export const routes: Routes = [
     path: 'reel',
     loadComponent: () => import('./pages/reel/reel.page').then( m => m.ReelPage)
   },
+  {
+    path: 'manage-user/:users_id',
+    loadComponent: () => import('./pages/manage-user/manage-user.page').then(m => m.ManageUserPage)
+  },
 
 
 
