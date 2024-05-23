@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { UserService } from 'src/app/services/userService/user.service';
+// import { UserService } from 'src/app/services/userService/user.service';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { SkillService } from 'src/app/services/skillService/skill.service';
-import { ChartDataset, ChartOptions } from 'chart.js';
+// import { ChartDataset, ChartOptions } from 'chart.js';
 import { Chart} from 'chart.js/auto';
 @Component({
   selector: 'app-skills-graphics',
