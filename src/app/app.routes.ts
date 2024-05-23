@@ -48,7 +48,10 @@ export const routes: Routes = [
     path: 'manage-user/:users_id',
     loadComponent: () => import('./pages/manage-user/manage-user.page').then(m => m.ManageUserPage)
   },
-
+  {
+    path: 'noticeV',
+    loadComponent: () => import('./pages/noticeV/noticeV.page').then(c => c.NoticePageV )
+  },
 
 
 ];
