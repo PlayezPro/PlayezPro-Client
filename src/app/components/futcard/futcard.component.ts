@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { UserService } from 'src/app/services/userService/user.service';
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
+import { SkillService } from 'src/app/services/skillService/skill.service';
 
 
 @Component({
@@ -11,40 +12,62 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [ IonContent, IonHeader, IonTitle, IonToolbar, CommonModule ]
 })
-export class FutcardComponent  implements OnInit {
-
+export class FutcardComponent  implements OnInit, OnChanges {
+  @Input() users_id: string | null = null;
   userId: string | null = null;
   userDetail: any [] = [];
 
 
-  constructor(private userServices: UserService) { }
+  constructor(private userServices: UserService, private skillService:SkillService) { }
 
   ngOnInit() {
-    this.generateCard();
+    if (this.users_id) {
+      this.cardVisitor(this.users_id);
+    } else {
+      this.generateCard();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['users_id'] && changes['users_id'].currentValue) {
+      this.cardVisitor(changes['users_id'].currentValue);
+    }
   }
 
   async generateCard() {
     try {
       // Obtener el valor de user de localStorage
-      this.userId = localStorage.getItem('users_Id');
-  
-      // Verificar si this.userId es null
+      this.userId = localStorage.getItem('users_id');
       if (this.userId === null) {
-        // Manejar el caso en que userId sea null, por ejemplo, mostrar un mensaje al usuario
+       
         console.error('El valor de user en localStorage es null');
-        return; // Salir del método ya que no hay nada más que hacer
+        return; 
       }
-      
-  
-      // Si userId no es null, obtener los datos del usuario
       const response = await this.userServices.getUserById(this.userId);
-      console.log(this.userId)
-      this.userDetail = response.data;
-      console.log(this.userDetail);
-      // Hacer algo con la respuesta, como generar la tarjeta
+      this.userDetail = response;
+      for(const detail of this.userDetail){
+        const userSkill = await this.skillService.getUserSkill(this.userId)
+        detail.userSkills= userSkill;
+      }
+
     } catch (error) {
       console.error('Error al generar la tarjeta:', error);
-      // Manejar el error de manera apropiada, por ejemplo, mostrar un mensaje al usuario
+      
+    }
+  }
+
+  async cardVisitor(users_id: string) {
+    try {
+      const response = await this.userServices.getUserById(users_id);
+      console.log(users_id);
+      this.userDetail = response// Asegúrate de que estás accediendo correctamente a la propiedad `data` de la respuesta
+      console.log(this.userDetail);
+      for(const detail of this.userDetail){
+        const userSkill = await this.skillService.getUserSkill(users_id)
+        detail.userSkills= userSkill;
+      }
+    } catch (error) {
+      console.error('Error al generar la tarjeta del visitante:', error);
     }
   }
 }

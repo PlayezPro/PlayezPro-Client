@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { LikesService } from 'src/app/services/likesService/likes.service';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { LoaderComponent } from 'src/app/components/loader/loader.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-notice',
@@ -30,7 +31,7 @@ export class NoticePage implements OnInit {
   isLoading: boolean = true;
   isLoadingPosts: boolean[] = [];
 
-  constructor(private postService: PostServiceService, private userService: UserService, private commentService: CommentService, private likeService: LikesService) { }
+  constructor(private postService: PostServiceService, private userService: UserService, private commentService: CommentService, private likeService: LikesService, private router:Router) { }
 
   async ngOnInit(): Promise<void> {
 
@@ -188,6 +189,10 @@ export class NoticePage implements OnInit {
     const texto = event.target.value || '';
     this.mostrarIcono = event.target.value.trim() !== '';
     this.comentarioTexto = texto.trim();
+  }
+
+  passUserId(users_id: string) {
+    this.router.navigate(['/manage-user', users_id]);
   }
 
 }

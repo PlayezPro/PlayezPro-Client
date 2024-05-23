@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { DetailUsersService } from 'src/app/services/detailUsers/detail-users.service';
 import { IonicModule } from '@ionic/angular';
-import { ListsComponent } from 'src/app/components/lists/lists.component';
+import { CommonModule } from '@angular/common';
 import { UserService } from 'src/app/services/userService/user.service';
 
 @Component({

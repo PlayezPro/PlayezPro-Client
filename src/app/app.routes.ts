@@ -36,5 +36,9 @@ export const routes: Routes = [
     component: RankingSystemComponent
     // loadComponent: () => import('./pages/Rankings/ranking-system/ranking-system.page').then( m => m.RankingSystemComponent)
   },
+  {
+    path: 'manage-user/:users_id',
+    loadComponent: () => import('./pages/manage-user/manage-user.page').then(m => m.ManageUserPage)
+  },
 
 ];
