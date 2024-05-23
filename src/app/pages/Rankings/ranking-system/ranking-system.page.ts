@@ -17,37 +17,52 @@ import { PostServiceService } from 'src/app/services/postService/post.service';
 export class RankingSystemComponent implements OnInit {
   posts: any[] = [];
   isLoadingPosts: boolean[] = [];
+  selectedCategory: string = '';
+  categories: string[] = ['Gol', 'Jugadas', 'Asistencias', 'Defensa']; // Ejemplo de categorías
 
   constructor(private postService: PostServiceService, private likeService: LikesService) { }
 
   async ngOnInit(): Promise<void> {
-    this.postsByLikes();
+    await this.loadPosts();
   }
 
-  async postsByLikes(): Promise<void> {
+  async loadPosts(): Promise<void> {
     try {
       const response = await this.postService.getAllPost();
-      this.posts = response.data;
+      const allPosts = response.data;
+      this.posts = allPosts.filter((post: { category: string; }) => post.category === 'Gol'); // Filtrar por la categoría de "gol"
+  
       this.isLoadingPosts = new Array(this.posts.length).fill(true); 
-      const currentUserId = localStorage.getItem('users_id')!;
+  
       console.log(this.posts);
-
+  
       for (let i = 0; i < this.posts.length; i++) {
         const post = this.posts[i];
-
-        const totallyLikes = await this.likeService.totalLikes(post._id);
-        post.totalLikes = totallyLikes;
+        const totalLikes = await this.likeService.totalLikes(post._id);
+        post.totalLikes = totalLikes;
       }
-      //Order por cantidad de likes
-      this.sortByLikes();
-
+      this.sortByLikesAndCategory();
     } catch (error) {
-      console.error('Error al obtener los posts ordenados por likes:', error);
+      console.error('Error al obtener los posts:', error);
     }
   }
 
-  //Funcion ordenar por likes
-  sortByLikes(): void {
+  sortByLikesAndCategory(): void {
+    if (this.selectedCategory) {
+      this.posts = this.posts.filter(post => post.category === this.selectedCategory);
+    }
     this.posts.sort((a, b) => b.totalLikes - a.totalLikes);
   }
+
+  filterPosts(): void {
+    this.sortByLikesAndCategory();
+  }
 }
+
+
+// posts: Post[] = [];
+//   this.likesService.getRankedPosts().then(posts => {
+//     this.posts = posts;
+//   }).catch(error => {
+//     console.error("Error al obtener el ranking de posts:", error);
+//   });
