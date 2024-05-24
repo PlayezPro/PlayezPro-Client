@@ -9,28 +9,28 @@ import { RanksPagePage } from './pages/ranks-page/ranks-page.page';
 
 export const routes: Routes = [
   {
-    path: 'notice',
-    loadComponent: () => import('./pages/notice/notice.page').then(c => c.NoticePage )
-  },
-  {
-    path: 'create-post',
-    component: CreatePostPage
-  },
-  {
-    path: 'perfil',
-    component: PerfilPage
-  },
-  {
-    path: 'manage-post',
-    component: ManagePostPage
-  },
-  {
-    path: 'login',
+    path: '',
     component: LoginComponent
   },  
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'home',
+    loadComponent: () => import('./pages/notice/notice.page').then(c => c.NoticePage )
+  },
+  {
+    path: 'reel',
+    loadComponent: () => import('./pages/reel/reel.page').then( m => m.ReelPage)
+  },
+  {
+    path: 'search',
+    component: ManagePostPage
+  },
+  {
+    path: 'create-post',
+    component: CreatePostPage
   },
   {
     path: 'ranking',
@@ -49,12 +49,12 @@ export const routes: Routes = [
   //   component: RankingSystemComponent 
   // },
   // {
-  //   path: 'ranked-defense',
-  //   component: RankingSystemComponent 
-  // },
+    //   path: 'ranked-defense',
+    //   component: RankingSystemComponent 
+    // },
   {
-    path: 'reel',
-    loadComponent: () => import('./pages/reel/reel.page').then( m => m.ReelPage)
+    path: 'profile',
+    component: PerfilPage
   },
   {
     path: 'manage-user/:users_id',
