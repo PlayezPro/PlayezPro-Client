@@ -5,6 +5,7 @@ import { DetailUsersService } from 'src/app/services/detailUsers/detail-users.se
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { UserService } from 'src/app/services/userService/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-post',
@@ -17,7 +18,8 @@ export class ManagePostPage implements OnInit {
   details: any[] = [];
   filteredDetails: any[] = [];
   searchTerm: string = '';
-  constructor(private DetailService: DetailUsersService, private userService: UserService) { }
+  selectedPosition: string = '';
+  constructor(private DetailService: DetailUsersService, private userService: UserService,private router:Router) { }
 
   ngOnInit() {
     this.userAllDetails();
@@ -39,20 +41,33 @@ export class ManagePostPage implements OnInit {
     this.filteredDetails = this.details;
     console.log(this.filterDetails)
   }
-  
-  filterDetails(event: any) {
-    const searchTerm = event.target.value.toLowerCase();
 
-    if (searchTerm === '') {
-      // Si el término de búsqueda está vacío, mostrar todos los detalles
-      this.filteredDetails = this.details;
-    } else {
-      // Filtrar los detalles basándose en el término de búsqueda
-      this.filteredDetails = this.details.filter(detail => 
-        detail.userDetails && detail.userDetails[0] && detail.userDetails[0].name &&
-        detail.userDetails[0].name.toLowerCase().includes(searchTerm)
-      );
-    }
+  filterDetails(event: any) {
+    this.searchTerm = event.target.value.toLowerCase();
+    this.applyFilters();
+  }
+
+  filterByPosition(event: any) {
+    this.selectedPosition = event.detail.value.toLowerCase();
+    this.applyFilters();
+  }
+
+  applyFilters() {
+    this.filteredDetails = this.details.filter(detail => {
+      const matchesSearchTerm = this.searchTerm === '' || 
+      (detail.userDetails && detail.userDetails[0] && detail.userDetails[0].name &&
+        detail.userDetails[0].name.toLowerCase().includes(this.searchTerm)) ||
+      (detail.currentTeam && detail.currentTeam.toLowerCase().includes(this.searchTerm)) ||
+      (detail.nationality && detail.nationality.toLowerCase().includes(this.searchTerm));
+      const matchesPosition = this.selectedPosition === '' || 
+        (detail.favPosition && detail.favPosition.toLowerCase() === this.selectedPosition);
+      return matchesSearchTerm && matchesPosition;
+    });
     console.log(this.filteredDetails); // Aquí imprimimos los resultados filtrados
   }
+  passUserId(userId: string) {
+    this.router.navigate(['/manage-user', userId]);
+  }
+
+  
 }

@@ -1,5 +1,8 @@
 <app-loader *ngIf="isLoading" />
 <ion-content *ngIf="!isLoading">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ion-list>
     <div *ngFor="let post of posts; let i = index" class="post-item" style="margin-top: 5%;">
       <div

@@ -194,5 +194,6 @@ export class NoticePage implements OnInit {
   passUserId(users_id: string) {
     this.router.navigate(['/manage-user', users_id]);
   }
+  
 
 }
