@@ -40,6 +40,18 @@ export const routes: Routes = [
     path: 'ranked-goals',
     component: RankingSystemComponent 
   },
+  // {
+  //   path: 'ranked-plays',
+  //   component: RankingSystemComponent 
+  // },
+  // {
+  //   path: 'ranked-assistance',
+  //   component: RankingSystemComponent 
+  // },
+  // {
+  //   path: 'ranked-defense',
+  //   component: RankingSystemComponent 
+  // },
   {
     path: 'reel',
     loadComponent: () => import('./pages/reel/reel.page').then( m => m.ReelPage)
@@ -48,7 +60,5 @@ export const routes: Routes = [
     path: 'manage-user/:users_id',
     loadComponent: () => import('./pages/manage-user/manage-user.page').then(m => m.ManageUserPage)
   },
-
-
 
 ];

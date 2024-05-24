@@ -3,13 +3,14 @@ import { IonicModule } from '@ionic/angular';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { PostServiceService } from 'src/app/services/postService/post.service';
 import { FormsModule } from '@angular/forms';
+import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.page.html',
   styleUrls: ['./create-post.page.scss'],
   standalone: true,
-  imports: [IonicModule, NavbarComponent, FormsModule, NavbarComponent]
+  imports: [IonicModule, NavbarComponent, FormsModule, NavbarComponent, TopbarComponent]
 })
 export class CreatePostPage{
   post: any = {};
