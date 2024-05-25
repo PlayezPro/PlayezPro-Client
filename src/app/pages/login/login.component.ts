@@ -66,7 +66,6 @@ export class LoginComponent {
         this.usersService.loginUser(credentials).subscribe(
             (response) => {
                 console.log('Login con éxito:', response);
-                localStorage.setItem('Token',response.token)
                 const tokenOne = localStorage.getItem('Token')
                 if(tokenOne){
                   const decodedToken: any = jwtDecode(tokenOne);

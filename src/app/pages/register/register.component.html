@@ -1,15 +1,15 @@
-<main class="container-main">
+<div class="main-screen">
+  <main class="container-main">
+  <p id="heading"></p>
+    <div>
+      <img src="../../../assets/icon/playez.svg" alt="icono de playez" class="z-logo">
+    </div>
+  
   <form class="form" [formGroup]="formNewUser" (ngSubmit)="Create()">
     <!-- //Nombre de Usuario -->
     <section>
       <label class="field">
-        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-          viewBox="0 0 16 16">
-          <path
-              d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z">
-            </path>
-        </svg>
-        <input type="text" formControlName="userName" class="" placeholder="Usuario" />
+        <input class="input-field" type="text" formControlName="userName" placeholder="Usuario" />
       </label>
       <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="text-red-500">
         <span *ngIf="userName.errors?.['required']">El nombre de usuario es obligatorio</span>
@@ -18,27 +18,15 @@
     <!-- //Nombre -->
     <section>
       <label class="field">
-        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-          viewBox="0 0 16 16">
-          <path
-            d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z">
-          </path>
-        </svg>
-        <input type="text" formControlName="name" placeholder="Nombre">
+        <input class="input-field" type="text" formControlName="name" placeholder="Nombre">
       </label>
-      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-red-500">>
+      <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-red-500">
       </div>
     </section>
     <!-- //Apellido -->
     <section>
       <label class="field">
-        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-          viewBox="0 0 16 16">
-          <path
-            d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z">
-          </path>
-        </svg>
-        <input type="text" formControlName="lastName" placeholder="Apellidos">
+        <input class="input-field" type="text" formControlName="lastName" placeholder="Apellidos">
       </label>
       <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="text-red-500">
       </div>
@@ -46,13 +34,7 @@
     <!-- //email -->
     <section>
       <label class="field">
-        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-          viewBox="0 0 16 16">
-          <path
-            d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z">
-          </path>
-        </svg>
-        <input type="email" formControlName="email" placeholder="Correo">
+        <input class="input-field" type="email" formControlName="email" placeholder="Correo">
       </label>
       <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-red-500">
         <span *ngIf="email.errors?.['required']">Por favor introduce tu email</span>
@@ -62,13 +44,7 @@
     <!-- //telefono -->
     <section>
       <label class="field">
-        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-          viewBox="0 0 16 16">
-          <path
-            d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z">
-          </path>
-        </svg>
-        <input type="number" formControlName="phoneNumber" placeholder="Número movil">
+        <input class="input-field" type="number" formControlName="phoneNumber" placeholder="Número movil">
       </label>
       <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="text-red-500">
         <span *ngIf="phoneNumber.errors?.['required']">Por favor introduce tu número</span>
@@ -77,13 +53,7 @@
     <!-- //Contraseña -->
     <section>
       <label class="field">
-        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-          viewBox="0 0 16 16">
-          <path
-            d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z">
-          </path>
-        </svg>
-        <input type="password" formControlName="password" placeholder="Contraseña">
+        <input class="input-field" type="password" formControlName="password" placeholder="Contraseña">
       </label>
       <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-red-500">
         <span *ngIf="password.errors?.['required']">Por favor crea una contraseña</span>
@@ -94,13 +64,7 @@
     <!-- //Repetir contraseña -->
     <section>
       <label class="field">
-        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-          viewBox="0 0 16 16">
-          <path
-            d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z">
-          </path>
-        </svg>
-        <input type="password" formControlName="repeatPassword" placeholder="Repita la contraseña">
+        <input class="input-field" type="password" formControlName="repeatPassword" placeholder="Repita la contraseña">
       </label>
       <div *ngIf="repeatPassword.invalid && (repeatPassword.dirty || repeatPassword.touched)" class="text-red-500">
         <span *ngIf="repeatPassword.errors?.['required']">Las contraseñas deben coincidir</span>
@@ -117,10 +81,27 @@
             <span *ngIf="terms.errors?.['required']">Debes aceptar los términos y condiciones</span>
         </div>
       </div>
-      <!-- <div>
-        <button class="btn btn-ghost btn-xs"(click)="navigateToLogin()">¿Ya tienes cuenta?</button>
-      </div> -->
     </section>
-      <button type="submit">probando</button>
+    <!-- Boton submit -->
+    <button class="animated-button" (click)="Create()">
+      <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+        </path>
+      </svg>
+      <span class="text">Registrarse</span>
+      <span class="circle"></span>
+      <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+        </path>
+      </svg>
+    </button> 
+     
+    <!-- Cuenta existente -->
+    <button (click)="navigateToLogin()" class="button3"
+    >Ya tengo una cuenta</button>
+
   </form>
 </main>
+</div>
