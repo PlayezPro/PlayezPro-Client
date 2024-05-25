@@ -6,13 +6,14 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { FutcardComponent } from 'src/app/components/futcard/futcard.component';
 import { FollowService } from 'src/app/services/userService/follows.service';
 import { ThemeService } from 'src/app/services/theme.service';
+import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, FutcardComponent]
+  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, TopbarComponent, FutcardComponent]
 })
 export class PerfilPage implements OnInit {
   isDarkMode: boolean = false; // Inicialización de isDarkMode

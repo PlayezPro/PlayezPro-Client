@@ -3,6 +3,7 @@ import { FormGroup, FormControl, AbstractControl, ReactiveFormsModule, Validator
 import { CommonModule } from '@angular/common';
 import {  UsersService } from '../../services/users.service'
 import { Router } from '@angular/router';
+import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, GoogleloginComponent],
 })
 export class RegisterComponent {
   //Validaciones

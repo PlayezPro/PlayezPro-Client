@@ -5,13 +5,14 @@ import { CommonModule } from '@angular/common';
 import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [IonicModule, ReactiveFormsModule, CommonModule],
+  imports: [IonicModule, ReactiveFormsModule, CommonModule, GoogleloginComponent],
 })
 
 export class LoginComponent {

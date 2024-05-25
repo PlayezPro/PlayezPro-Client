@@ -6,12 +6,13 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { UserService } from 'src/app/services/userService/user.service';
 import { Router } from '@angular/router';
+import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 
 @Component({
   selector: 'app-manage-post',
   templateUrl: './manage-post.page.html',
   styleUrls: ['./manage-post.page.scss'],
-  imports: [ CommonModule, FormsModule, NavbarComponent, IonicModule],
+  imports: [ CommonModule, FormsModule, NavbarComponent, TopbarComponent, IonicModule],
   standalone: true
 })
 export class ManagePostPage implements OnInit {

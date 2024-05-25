@@ -1,3 +1,5 @@
+<app-topbar></app-topbar>
+
 <app-loader *ngIf="isLoading" />
 <ion-content *ngIf="!isLoading">
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
@@ -79,4 +81,5 @@
     </div>
   </ion-list>
 </ion-content>
+
 <app-navbar />
