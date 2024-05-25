@@ -49,7 +49,7 @@ export class LoginComponent {
     this.router.navigate(["/register"])
   }
   navigateToHome() { //Ruta hacia Registro en el botón
-    this.router.navigate(["/notice"])
+    this.router.navigate(["/home"])
   }
 
   showAlert = false;

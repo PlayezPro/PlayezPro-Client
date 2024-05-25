@@ -1,4 +1,4 @@
-#Fri May 10 09:10:29 CEST 2024
+#Fri May 24 15:33:08 CEST 2024
 base.0=C\:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\14\\classes.dex
 base.2=C\:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\2\\classes.dex
