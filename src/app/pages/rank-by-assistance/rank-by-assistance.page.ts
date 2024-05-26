@@ -35,7 +35,7 @@ export class RankByAssistanceComponent implements OnInit {
     try {
       const response = await this.postService.getAllPost();
       const allPosts = response.data;
-      this.posts = allPosts.filter((post: { category: string; }) => post.category === 'Jugadas'); // Filtrar por la categoría de "gol"
+      this.posts = allPosts.filter((post: { category: string; }) => post.category === 'Asistencias'); // Filtrar por la categoría de "gol"
   
       this.isLoadingPosts = new Array(this.posts.length).fill(true); 
   
