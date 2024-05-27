@@ -1,9 +1,7 @@
-module.exports = {
-  content: ["./src/**/*.{html,js}"],
-  theme: {
-    extend: {},
-  },
-  plugins: [
-    require('tailwindcss-animated')
-  ],
+export const content = ["./src/**/*.{html,js}"];
+export const theme = {
+  extend: {},
 };
+export const plugins = [
+  require('tailwindcss-animated')
+];
