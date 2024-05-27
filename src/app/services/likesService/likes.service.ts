@@ -5,7 +5,7 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class LikesService {
-  private likesUrl: string = 'http://localhost:3000/likes'
+  private likesUrl: string = 'https://playezpro-server.onrender.com/likes'
   constructor() { }
   
   async addLike(postId: string, userId: string): Promise<void> {

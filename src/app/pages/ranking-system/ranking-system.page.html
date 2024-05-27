@@ -1,0 +1,19 @@
+<app-topbar></app-topbar>
+
+<ion-content class="bg-base-dark">
+  <ion-title>Ranking System</ion-title>
+  <ion-card *ngFor="let post of posts; let i = index">
+    <ion-card-header>
+      <ion-card-title>{{ post.title }}</ion-card-title>
+      <ion-card-subtitle>Author: {{ post.users_id }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{ post.content }}</p>
+      <p><strong>Total Likes:</strong> {{ post.totalLikes }}</p>
+      <p><strong>Category:</strong> {{ post.category }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<app-navbar></app-navbar>

@@ -12,13 +12,14 @@ import { LikesService } from 'src/app/services/likesService/likes.service';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { LoaderComponent } from 'src/app/components/loader/loader.component';
 import { Router } from '@angular/router';
+import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 
 @Component({
   selector: 'app-notice',
   templateUrl: './notice.page.html',
   styleUrls: ['./notice.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, GoogleloginComponent, NgxSpinnerModule, LoaderComponent]
+  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, TopbarComponent, GoogleloginComponent, NgxSpinnerModule, LoaderComponent]
 })
 export class NoticePage implements OnInit {
   userId: string | null = null;
@@ -194,5 +195,6 @@ export class NoticePage implements OnInit {
   passUserId(users_id: string) {
     this.router.navigate(['/manage-user', users_id]);
   }
+  
 
 }

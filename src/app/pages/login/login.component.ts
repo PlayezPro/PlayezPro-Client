@@ -5,13 +5,14 @@ import { CommonModule } from '@angular/common';
 import { UsersService } from '../../services/users.service';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [IonicModule, ReactiveFormsModule, CommonModule],
+  imports: [IonicModule, ReactiveFormsModule, CommonModule, GoogleloginComponent],
 })
 
 export class LoginComponent {
@@ -49,7 +50,7 @@ export class LoginComponent {
     this.router.navigate(["/register"])
   }
   navigateToHome() { //Ruta hacia Registro en el botón
-    this.router.navigate(["/notice"])
+    this.router.navigate(["/home"])
   }
 
   showAlert = false;
@@ -66,7 +67,7 @@ export class LoginComponent {
         this.usersService.loginUser(credentials).subscribe(
             (response) => {
                 console.log('Login con éxito:', response);
-                localStorage.setItem('Token',response.token)
+                localStorage.setItem('Token', response.token)
                 const tokenOne = localStorage.getItem('Token')
                 if(tokenOne){
                   const decodedToken: any = jwtDecode(tokenOne);

@@ -1,13 +1,12 @@
+import axios from 'axios';
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
-
 export class UsersService {
-    constructor(private http: HttpClient) { }
+    constructor() { }
 
     createUser(newUser: any): Observable<any> {
         const userData = {
@@ -19,7 +18,16 @@ export class UsersService {
             password: newUser.password,
             repeatPassword: newUser.repeatPassword
         };
-        return this.http.post('http://localhost:3000/auth/signup', userData)
+        return new Observable(observer => {
+            axios.post('https://playezpro-server.onrender.com/auth/signup', userData)
+                .then(response => {
+                    observer.next(response.data);
+                    observer.complete();
+                })
+                .catch(error => {
+                    observer.error(error);
+                });
+        });
     }
 
     loginUser(credentials: any): Observable<any> {
@@ -27,8 +35,49 @@ export class UsersService {
             email: credentials.email,
             password: credentials.password,
         };
-        return this.http.post('http://localhost:3000/auth/signin', loginData)
-
-
+        return new Observable(observer => {
+            axios.post('https://playezpro-server.onrender.com/auth/signin', loginData)
+                .then(response => {
+                    observer.next(response.data);
+                    observer.complete();
+                })
+                .catch(error => {
+                    observer.error(error);
+                });
+        });
     }
 }
+
+
+// import { Injectable } from "@angular/core";
+// import { HttpClient } from "@angular/common/http";
+// import { Observable } from "rxjs";
+
+// @Injectable({
+//     providedIn: 'root'
+// })
+
+// export class UsersService {
+//     constructor(private http: HttpClient) { }
+
+//     createUser(newUser: any): Observable<any> {
+//         const userData = {
+//             userName: newUser.userName,
+//             name: newUser.name,
+//             lastName: newUser.lastName,
+//             email: newUser.email,
+//             phoneNumber: newUser.phoneNumber,
+//             password: newUser.password,
+//             repeatPassword: newUser.repeatPassword
+//         };
+//         return this.http.post('https://playezpro-server.onrender.com/auth/signup', userData)
+//     }
+
+//     loginUser(credentials: any): Observable<any> {
+//         const loginData = {
+//             email: credentials.email,
+//             password: credentials.password,
+//         };
+//         return this.http.post('https://playezpro-server.onrender.com/auth/signin', loginData)
+//     }
+// }
