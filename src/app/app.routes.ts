@@ -68,7 +68,7 @@ export const routes: Routes = [
     path: 'noticeV',
     loadComponent: () => import('./pages/noticeV/noticeV.page').then(c => c.NoticePageV )
   },
-=======
+=========
     path: 'rank-by-goal',
     loadComponent: () => import('./pages/rank-by-goal/rank-by-goal.page').then( m => m.RankByGoalComponent)
   },
@@ -86,7 +86,7 @@ export const routes: Routes = [
   },
 
 
->>>>>>> 81274255d876368a77eb7c398a244343ae716bff
+>>>>>>>>> Temporary merge branch 2
 
 
 ];

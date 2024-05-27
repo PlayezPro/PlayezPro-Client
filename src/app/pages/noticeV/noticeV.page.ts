@@ -200,5 +200,7 @@ export class NoticePageV implements OnInit {
   passUserId(users_id: string) {
     this.router.navigate(['/manage-user', users_id]);
   }
-
+  async toggleComments(post: any): Promise<void> {
+    post.showComments = !post.showComments;
+  }
 }
