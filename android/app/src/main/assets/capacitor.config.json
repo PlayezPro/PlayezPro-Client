@@ -1,5 +1,5 @@
 {
 	"appId": "com.playez.app",
-	"appName": "Playez",
-	"webDir": "www"
+	"appName": "PlayezPro",
+	"webDir": "dist/client"
 }
