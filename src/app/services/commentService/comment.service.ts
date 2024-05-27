@@ -5,7 +5,7 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class CommentService {
-  private commentUrl:string = 'http://localhost:3000/comment'
+  private commentUrl:string = 'https://playezpro-server.onrender.com/comment'
   constructor() { }
 
   async getCommentsPost(postId:string){

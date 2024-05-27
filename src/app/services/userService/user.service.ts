@@ -5,7 +5,7 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class UserService {
-private userUri:string = `http://localhost:3000/user`
+private userUri:string = `https://playezpro-server.onrender.com/user`
   constructor() {}
 
   async getUserById(userId: string) {
