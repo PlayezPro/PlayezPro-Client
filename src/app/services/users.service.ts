@@ -28,7 +28,5 @@ export class UsersService {
             password: credentials.password,
         };
         return this.http.post('https://playezpro-server.onrender.com/auth/signin', loginData)
-
-
     }
 }
