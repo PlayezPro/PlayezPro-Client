@@ -81,7 +81,7 @@ export class LoginComponent {
             },
             (error) => {
                 console.error('Error al logear:', error);
-                this.alertMessage = 'Error en usuario/contraseña';
+                this.alertMessage = error.message || 'Error en usuario/contraseña';
                 this.AlertMessage = true; // Mostrar la alerta
                 this.showAlert = true;
 
@@ -99,5 +99,5 @@ export class LoginComponent {
             this.AlertMessage = false;
         }, 2000);
     }
-}
+  }
 }

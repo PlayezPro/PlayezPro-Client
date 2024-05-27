@@ -25,7 +25,7 @@ export class UsersService {
                     observer.complete();
                 })
                 .catch(error => {
-                    observer.error(error);
+                    observer.error({ message: 'Error al crear usuario', error: error });
                 });
         });
     }
@@ -42,7 +42,7 @@ export class UsersService {
                     observer.complete();
                 })
                 .catch(error => {
-                    observer.error(error);
+                    observer.error({ message: 'Error al iniciar sesión', error: error });
                 });
         });
     }
