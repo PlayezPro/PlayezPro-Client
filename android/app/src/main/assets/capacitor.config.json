@@ -3,7 +3,6 @@
 	"appName": "PlayezPro",
 	"webDir": "dist/client",
 	"server": {
-		"url": "https://playezpro-server.onrender.com",
 		"cleartext": true,
 		"allowNavigation": [
 			"http://localhost:4200"

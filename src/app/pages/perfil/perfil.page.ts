@@ -29,22 +29,22 @@ export class PerfilPage implements OnInit {
     this.themeService.updateBodyClass(this.isDarkMode);
   }
 
-  async createUser(): Promise<void> {
-    try {
-      const usersId = localStorage.getItem('users_id');
-      const followedID = localStorage.getItem('follow_id');
+  // async createUser(): Promise<void> {
+  //   try {
+  //     const usersId = localStorage.getItem('users_id');
+  //     const followedID = localStorage.getItem('follow_id');
 
-      // Verifica que los IDs no sean null antes de usarlos
-      if (usersId && followedID) {
-        await this.userFollow.addFollower(usersId, followedID);  // No necesitas toPromise aquí
-        console.log('Follower added successfully');
-      } else {
-        console.error('User ID or Followed ID is missing');
-      }
-    } catch (error) {
-      console.error('Error adding follower:', error);
-    }
-  }
+  //     // Verifica que los IDs no sean null antes de usarlos
+  //     if (usersId && followedID) {
+  //       await this.userFollow.addFollower(usersId, followedID);  // No necesitas toPromise aquí
+  //       console.log('Follower added successfully');
+  //     } else {
+  //       console.error('User ID or Followed ID is missing');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error adding follower:', error);
+  //   }
+  // }
 
   toggleTheme(event: any) {
     this.themeService.toggleDarkMode();
