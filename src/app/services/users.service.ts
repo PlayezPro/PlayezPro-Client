@@ -27,8 +27,6 @@ export class UsersService {
             email: credentials.email,
             password: credentials.password,
         };
-        return this.http.post('http://localhost:3000/auth/signin', loginData)
-
-
+        return this.http.post('https://playezpro-server.onrender.com/auth/signin', loginData)
     }
 }
