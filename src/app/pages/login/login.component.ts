@@ -57,6 +57,10 @@ export class LoginComponent {
   alertMessage: string = '';
   AlertMessage = false;
 
+  clearForm() {
+    this.formUser.reset();
+  }
+
   onSubmit() {
     if (this.formUser.valid) {
         const credentials = {
@@ -73,10 +77,12 @@ export class LoginComponent {
                   const decodedToken: any = jwtDecode(tokenOne);
                   localStorage.setItem('users_id', decodedToken.id)
                 }
+                this.clearForm()
                 this.alertMessage = '¡Bienvenido!';
                 this.AlertMessage = true;
                 setTimeout(() => {
                     this.navigateToHome();
+                    this.AlertMessage = false;
                 }, 2000);
             },
             (error) => {
