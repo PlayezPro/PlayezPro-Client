@@ -4,6 +4,25 @@
             "outputFile": "com.playez.app-mergeDebugResources-24:/values/values.xml",
             "map": [
                 {
+                    "source": "C:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\node_modules\\@capacitor\\android\\capacitor\\build\\intermediates\\packaged_res\\debug\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,10",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "100,175,251,331,598",
+                        "endLines": "2,3,4,5,12",
+                        "endColumns": "74,75,79,79,22",
+                        "endOffsets": "170,246,326,406,708"
+                    },
+                    "to": {
+                        "startLines": "39,40,41,327,3294",
+                        "startColumns": "4,4,4,4,4",
+                        "startOffsets": "2725,2800,2876,21419,177086",
+                        "endLines": "39,40,41,327,3296",
+                        "endColumns": "74,75,79,79,22",
+                        "endOffsets": "2795,2871,2951,21494,177196"
+                    }
+                },
+                {
                     "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\b7681978623fb5a34dc59f8ae14b69b9\\transformed\\fragment-1.6.2\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,10",
@@ -61,7 +80,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\src\\main\\res\\values\\ic_launcher_background.xml",
+                    "source": "C:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\android\\app\\src\\main\\res\\values\\ic_launcher_background.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -75,23 +94,6 @@
                         "startOffsets": "3637",
                         "endColumns": "56",
                         "endOffsets": "3689"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "2,5,4,3",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "57,221,164,105",
-                        "endColumns": "46,60,55,57",
-                        "endOffsets": "99,277,215,158"
-                    },
-                    "to": {
-                        "startLines": "318,326,328,331",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "20800,21358,21499,21679",
-                        "endColumns": "46,60,55,57",
-                        "endOffsets": "20842,21414,21550,21732"
                     }
                 },
                 {
@@ -146,25 +148,6 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\node_modules\\@capacitor\\android\\capacitor\\build\\intermediates\\packaged_res\\debug\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,10",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "100,175,251,331,598",
-                        "endLines": "2,3,4,5,12",
-                        "endColumns": "74,75,79,79,22",
-                        "endOffsets": "170,246,326,406,708"
-                    },
-                    "to": {
-                        "startLines": "39,40,41,327,3294",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "2725,2800,2876,21419,177086",
-                        "endLines": "39,40,41,327,3296",
-                        "endColumns": "74,75,79,79,22",
-                        "endOffsets": "2795,2871,2951,21494,177196"
-                    }
-                },
-                {
                     "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\2b19c49b9055d666a310de3e6f33c8a9\\transformed\\startup-runtime-1.1.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -182,7 +165,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\df72a2f8f860ffef94040cce25609171\\transformed\\lifecycle-runtime-2.6.1\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "42",
+                        "endOffsets": "93"
+                    },
+                    "to": {
+                        "startLines": "279",
+                        "startColumns": "4",
+                        "startOffsets": "18199",
+                        "endColumns": "42",
+                        "endOffsets": "18237"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "4,11,18",
                         "startColumns": "4,4,4",
@@ -198,23 +198,6 @@
                         "endLines": "342,347,350",
                         "endColumns": "12,12,12",
                         "endOffsets": "22458,22707,22858"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Administrator\\.gradle\\caches\\transforms-3\\df72a2f8f860ffef94040cce25609171\\transformed\\lifecycle-runtime-2.6.1\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "42",
-                        "endOffsets": "93"
-                    },
-                    "to": {
-                        "startLines": "279",
-                        "startColumns": "4",
-                        "startOffsets": "18199",
-                        "endColumns": "42",
-                        "endOffsets": "18237"
                     }
                 },
                 {
@@ -253,6 +236,23 @@
                         "endLines": "2026,2032,2042,3103,3107",
                         "endColumns": "24,24,24,24,24",
                         "endOffsets": "131548,131726,132010,169199,169326"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "2,5,4,3",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "57,221,164,105",
+                        "endColumns": "46,60,55,57",
+                        "endOffsets": "99,277,215,158"
+                    },
+                    "to": {
+                        "startLines": "318,326,328,331",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "20800,21358,21499,21679",
+                        "endColumns": "46,60,55,57",
+                        "endOffsets": "20842,21414,21550,21732"
                     }
                 },
                 {

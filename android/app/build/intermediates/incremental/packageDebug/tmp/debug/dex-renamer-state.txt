@@ -1,13 +1,13 @@
-#Mon May 27 09:13:22 CEST 2024
-base.0=C\:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\14\\classes.dex
-base.2=C\:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\2\\classes.dex
-base.3=C\:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\4\\classes.dex
-base.4=C\:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\5\\classes.dex
-base.5=C\:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\7\\classes.dex
-base.6=C\:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\8\\classes.dex
-base.7=C\:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.8=C\:\\Users\\Administrator\\Documents\\BOOTCAMP FS+CIBER\\EJERCICIOS\\12 PLAYEZ\\PlayezPro-Client\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
+#Mon May 27 09:33:31 CEST 2024
+base.0=C\:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\android\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=C\:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\14\\classes.dex
+base.2=C\:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\2\\classes.dex
+base.3=C\:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\4\\classes.dex
+base.4=C\:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\5\\classes.dex
+base.5=C\:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\7\\classes.dex
+base.6=C\:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\android\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\8\\classes.dex
+base.7=C\:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.8=C\:\\Users\\Administrator\\Desktop\\Full Stack\\PlayezPro\\client\\android\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
 path.0=classes.dex
 path.1=14/classes.dex
 path.2=2/classes.dex
