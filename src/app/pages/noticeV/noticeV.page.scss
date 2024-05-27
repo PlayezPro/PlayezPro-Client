@@ -39,7 +39,28 @@
   aspect-ratio: 1 / 1; /* Relación de aspecto cuadrada */
 }
 
+.ball {
+    width: 36px; /* Ajusta según el tamaño del icono */
+    height: 36px; /* Ajusta según el tamaño del icono */
+    mask: url('../../../assets/icon/ball.svg') no-repeat center;
+    -webkit-mask: url('../../../assets/icon/ball.svg') no-repeat center;
+    background-color: #fff; /* Color cuando no tiene like */
+  }
+  
+  .ball-fill {
+    width: 36px; /* Ajusta según el tamaño del icono */
+    height: 36px; /* Ajusta según el tamaño del icono */
+    mask: url('../../../assets/icon/ball.svg') no-repeat center;
+    -webkit-mask: url('../../../assets/icon/ball.svg') no-repeat center;
+    background-color: #e7ff0d; /* Color cuando tiene like */
+  }
 
+  .profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-top: 10px;
+  }
 
 * {
   margin: 0;
@@ -48,11 +69,11 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-.container {
-    position: relative;
-    width: 360px;
-    height: 630px;
-}
+// .container {
+//     position: relative;
+//     width: 360px;
+//     height: 630px;
+// }
 
 .container {
   section {
@@ -67,9 +88,9 @@
   }
 }
 
-section.reels_section {
-    display: none;
-}
+// section.reels_section {
+//     display: none;
+// }
 
 section.home_section.active,
 section.search_section.active,
@@ -193,6 +214,8 @@ i.bi {
                   border-radius: 10px;
                   border: 4px solid #fff;
               }
+             
+
           }
 
           .like_counter,

@@ -153,8 +153,9 @@ export class NoticePageV implements OnInit {
       await this.likeService.addLike(postId, this.userId);
       const postIndex = this.posts.findIndex(post => post._id === postId);
       if (postIndex !== -1) {
-        this.posts[postIndex].hasLikes = !this.posts[postIndex].hasLikes;
-
+        const post = this.posts[postIndex];
+        post.hasLikes = !post.hasLikes;
+        post.totalLikes += post.hasLikes ? 1 : -1;
       } else {
         console.error('No se puede agregar el like: userId no encontrado en el localStorage');
       }
