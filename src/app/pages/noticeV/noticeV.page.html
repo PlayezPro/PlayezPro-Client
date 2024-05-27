@@ -20,11 +20,11 @@
             <div (click)="addLike(post._id)">
               <i class="bi bi-heart" [attr.name]="post.hasLikes ? 'heart' : 'heart-outline'"
                 [ngClass]="post.hasLikes ? 'bi-heart-fill' : 'bi-heart'"></i>
-              <span>27.5k</span>
+              <span>{{post.totalLikes}}</span>
             </div>
             <div>
               <i class="bi bi-chat"></i>
-              <span>11.1k</span>
+              <span>{{post.totalLikes}}</span>
             </div>
             <div>
               <i class="bi bi-send"></i>

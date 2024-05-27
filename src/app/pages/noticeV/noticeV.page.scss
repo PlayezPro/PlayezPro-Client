@@ -48,11 +48,11 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-// .container {
-//     position: relative;
-//     width: 360px;
-//     height: 630px;
-// }
+.container {
+    position: relative;
+    width: 360px;
+    height: 630px;
+}
 
 .container {
   section {
@@ -67,9 +67,9 @@
   }
 }
 
-// section.reels_section {
-//     display: none;
-// }
+section.reels_section {
+    display: none;
+}
 
 section.home_section.active,
 section.search_section.active,
