@@ -4,19 +4,21 @@
 
 // Light theme
 :root {
-    --ion-background-color: #ffffff;
-    --ion-text-color: #000000;
-    --ion-color-primary: #3880ff;
-    --ion-color-secondary: #3dc2ff;
-    // Añade más variables según sea necesario
-  }
+    --ion-background-color: linear-gradient(to bottom, #2A2D32, #32332D);
+    --ion-text-color: #F2F2F2;
+    --ion-color-primary: #E7FF0D;
+    --ion-color-secondary: #BBBF39;
+    --ion-color-tertiary:  linear-gradient(to right, #BBBF39, #E7FF0D); // Color de información
+    --ion-color-warning: #bf3939; // Color de advertencia
+    --ion-color-success: #54bf39; // Color de éxito
+}
   
   // Dark theme
   body.dark-mode {
-    --ion-background-color: #000000;
-    --ion-text-color: #ffffff;
-    --ion-color-primary: #222428;
-    --ion-color-secondary: #3dc2ff;
+    --ion-background-color: #F2F2F2;
+    --ion-text-color: #32332D;
+    --ion-color-primary:  #BBBF39;
+    --ion-color-secondary: #E7FF0D;;
     // Añade más variables según sea necesario
   }
   

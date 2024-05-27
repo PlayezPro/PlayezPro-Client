@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Playez</string>
-    <string name="title_activity_main">Playez</string>
+    <string name="app_name">PlayezPro</string>
+    <string name="title_activity_main">PlayezPro</string>
     <string name="package_name">com.playez.app</string>
     <string name="custom_url_scheme">com.playez.app</string>
 </resources>
