@@ -23,7 +23,7 @@ export class GoogleloginComponent  implements OnInit {
   };
 
    app = initializeApp(this.firebaseConfig);
-   analytics = getAnalytics(this.app);
+  //  analytics = getAnalytics(this.app);
    auth = getAuth();
   constructor() { }
 
