@@ -66,6 +66,10 @@ export class PostServiceService {
     
   }
 
+  async getUserPosts(users_id:any):Promise<any> {
+    return axios.get(`${this.apiUrl}/users/${users_id}`)
+  }
+
 //   getPostById(posts_id: string): Observable<any> {
 //     return this.http.get(`${this.apiUrl}/${posts_id}`);
 //   }
