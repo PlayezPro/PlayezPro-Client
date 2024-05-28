@@ -78,7 +78,11 @@ export const routes: Routes = [
   {
     path: 'rank-by-defense',
     loadComponent: () => import('./pages/rank-by-defense/rank-by-defense.page').then( m => m.RankByDefenseComponent)
+  },  {
+    path: 'setting',
+    loadComponent: () => import('./pages/setting/setting.page').then( m => m.SettingPage)
   },
+
 
 
 
