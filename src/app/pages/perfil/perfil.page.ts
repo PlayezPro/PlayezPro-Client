@@ -19,8 +19,7 @@ export class PerfilPage implements OnInit {
   isDarkMode: boolean = false; // Inicialización de isDarkMode
 
   constructor(private themeService: ThemeService) { }
-
-  ngOnInit() {
+ngOnInit() {
     // Suscribirse a los cambios del tema oscuro
     this.themeService.darkMode$.subscribe(isDark => {
       this.isDarkMode = isDark;
