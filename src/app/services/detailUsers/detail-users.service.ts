@@ -6,7 +6,7 @@ import axios from 'axios';
 })
 
 export class DetailUsersService {
-  private detailURL: string = "http://localhost:3000/details"
+  private detailURL: string = "https://playezpro-server.onrender.com/details"
 
   constructor() { }
 
@@ -14,5 +14,15 @@ export class DetailUsersService {
   async getAllDetails() {
     return axios.get(this.detailURL);
 
+  }
+
+  async createDetailUser(detailUserData: any): Promise<any> {
+    try {
+      const response = await axios.post(this.detailURL, detailUserData);
+      return response.data;
+    } catch (error) {
+      console.error('There was an error creating the detail user:', error);
+      throw error;
+    }
   }
 }

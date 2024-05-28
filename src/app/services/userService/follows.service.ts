@@ -7,7 +7,7 @@ import axios from "axios";
     providedIn: 'root'
 })
 export class FollowService {
-    private followersUrl: string = 'http://localhost:3000/follow';
+    private followersUrl: string = 'https://playezpro-server.onrender.com/follow';
 
     constructor(private http: HttpClient) { }
 

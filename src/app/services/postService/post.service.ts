@@ -6,7 +6,7 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class PostServiceService {
-  private apiUrl: string = 'http://localhost:3000/posts'
+  private apiUrl: string = 'https://playezpro-server.onrender.com/posts'
 
   constructor() { }
 

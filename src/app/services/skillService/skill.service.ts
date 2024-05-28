@@ -5,7 +5,7 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class SkillService {
-  private skillUrl = "http://localhost:3000/skill"
+  private skillUrl = "https://playezpro-server.onrender.com/skill"
   constructor() { }
 
   async getUserSkill(userId:string){
