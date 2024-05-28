@@ -26,12 +26,12 @@ export class DetailUsersService {
     }
   }
 
-  async updateDetailById(userId: string, updatedDetailData: any): Promise<any> {
+  async updateDetailById(_id: string, updatedDetailData: any): Promise<any> {
     try {
-      const response = await axios.put(`${this.detailURL}/${userId}`, updatedDetailData);
+      const response = await axios.put(`${this.detailURL}/${_id}`, updatedDetailData);
       return response.data;
     } catch (error) {
-      console.error(`There was an error updating details for user with ID ${userId}:`, error);
+      console.error(`There was an error updating details for user with ID ${_id}:`, error);
       throw error;
     }
   }

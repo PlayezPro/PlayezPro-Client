@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, AbstractControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import {  UsersService } from '../../services/users.service'
+import {  UsersService } from '../../services/authService/auth.service'
 import { Router } from '@angular/router';
 import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
 

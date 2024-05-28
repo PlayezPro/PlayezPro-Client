@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonicModule } from '@ionic/angular';
 import { UserService } from 'src/app/services/userService/user.service';
+import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-setting-user',
   templateUrl: './setting-user.component.html',
   styleUrls: ['./setting-user.component.scss'],
   standalone: true,
-  imports:[CommonModule, FormsModule, IonicModule]
+  imports:[CommonModule, FormsModule,IonContent, IonHeader, IonTitle, IonToolbar],
+  providers: [UserService]
 })
 export class SettingUserComponent  implements OnInit  {
   user: any = {
@@ -17,7 +18,9 @@ export class SettingUserComponent  implements OnInit  {
     lastName: '',
     userName: '',
     email: '',
-    phoneNumber: ''
+    phoneNumber: '',
+    // password: '',
+    // repeatPassword:'',
   };
   userId: string | null = null;
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { DetailUsersService } from 'src/app/services/detailUsers/detail-users.service';
+import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
 
 @Component({
   selector: 'app-setting-details',
