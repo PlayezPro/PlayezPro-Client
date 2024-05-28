@@ -8,7 +8,9 @@ export class ThemeService {
   private darkMode = new BehaviorSubject<boolean>(this.getStoredTheme());
   darkMode$ = this.darkMode.asObservable();
 
-  constructor() {}
+  constructor() {
+    this.updateBodyClass(this.darkMode.value);
+  }
 
   toggleDarkMode() {
     const isDarkMode = !this.darkMode.value;
@@ -17,12 +19,17 @@ export class ThemeService {
     this.updateBodyClass(isDarkMode);
   }
 
-  public updateBodyClass(isDarkMode: boolean) { // Cambiar a public
+  public updateBodyClass(isDarkMode: boolean) {
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
     } else {
       document.body.classList.remove('dark-mode');
     }
+  }
+
+  public synchronizeTheme() {
+    const isDarkMode = this.darkMode.value;
+    this.updateBodyClass(isDarkMode);
   }
 
   private getStoredTheme(): boolean {
