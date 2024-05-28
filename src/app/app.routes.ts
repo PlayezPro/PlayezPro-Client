@@ -57,7 +57,7 @@ export const routes: Routes = [
     },
   {
     path: 'profile',
-    component: PerfilPage
+    loadComponent: () => import('./pages/perfil/perfil.page').then(m => m.PerfilPage)
   },
   {
     path: 'manage-user/:users_id',
