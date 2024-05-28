@@ -2,15 +2,13 @@
 
 <ion-content>
   <ion-item>
-    <ion-label>Modo Claro</ion-label>
+    <ion-label>Modo Oscuro</ion-label>
     <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleTheme($event)"></ion-toggle>
   </ion-item>
-  <app-create-details/>
+
   <app-futcard></app-futcard>
-  
-  <ion-button expand="full" (click)="createUser()">
-    Hola
-  </ion-button>
+
+  <app-navbar></app-navbar>
 </ion-content>
 
-<app-navbar/>
+<app-navbar />
