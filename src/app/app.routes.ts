@@ -57,7 +57,7 @@ export const routes: Routes = [
   },
   {
     path: 'profile',
-    component: PerfilPage
+    loadComponent: () => import('./pages/perfil/perfil.page').then(m => m.PerfilPage)
   },
   {
     path: 'manage-user/:users_id',
@@ -81,7 +81,11 @@ export const routes: Routes = [
   },
   {
     path: 'rank-by-defense',
-    loadComponent: () => import('./pages/rank-by-defense/rank-by-defense.page').then(m => m.RankByDefenseComponent)
+    loadComponent: () => import('./pages/rank-by-defense/rank-by-defense.page').then( m => m.RankByDefenseComponent)
+  },
+  {
+    path: 'setting',
+    loadComponent: () => import('./pages/setting/setting.page').then( m => m.SettingPage)
   },
 
 

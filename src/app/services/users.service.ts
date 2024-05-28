@@ -20,7 +20,16 @@ export class UsersService {
             password: newUser.password,
             repeatPassword: newUser.repeatPassword
         };
-        return this.http.post('https://playezpro-server.onrender.com/auth/signup', userData)
+        return new Observable(observer => {
+            axios.post('https://playezpro-server.onrender.com/auth/signup', userData)
+                .then(response => {
+                    observer.next(response.data);
+                    observer.complete();
+                })
+                .catch(error => {
+                    observer.error({ message: 'Error al crear usuario', error: error });
+                });
+        });
     }
 
     loginUser(credentials: any): Observable<any> {
@@ -28,9 +37,16 @@ export class UsersService {
             email: credentials.email,
             password: credentials.password,
         };
-        return this.http.post('https://playezpro-server.onrender.com/auth/signin', loginData)
-
-
+        return new Observable(observer => {
+            axios.post('https://playezpro-server.onrender.com/auth/signin', loginData)
+                .then(response => {
+                    observer.next(response.data);
+                    observer.complete();
+                })
+                .catch(error => {
+                    observer.error({ message: 'Error al iniciar sesión', error: error });
+                });
+        });
     }
 }
 

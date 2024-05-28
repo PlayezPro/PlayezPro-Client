@@ -9,5 +9,11 @@
     <ion-button slot="end" class="icon-button">
       <ion-icon slot="icon-only" color="secondary" name="mail-outline" aria-hidden="true"></ion-icon>
     </ion-button>
+    <ion-button slot="end" class="icon-button" [routerLink]="'/setting'">
+      <ion-icon slot="icon-only" color="secondary" name="settings-outline" aria-hidden="true"></ion-icon>
+    </ion-button>
+    <ion-button slot="end" class="icon-button" (click)="onClickLogout()">
+      <ion-icon slot="icon-only" color="secondary" name="log-out-outline" aria-hidden="true"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>

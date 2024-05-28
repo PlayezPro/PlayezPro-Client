@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { PostServiceService } from 'src/app/services/postService/post.service';
@@ -12,9 +12,19 @@ import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
   standalone: true,
   imports: [IonicModule, NavbarComponent, FormsModule, NavbarComponent, TopbarComponent]
 })
-export class CreatePostPage{
-  post: any = {};
+export class CreatePostPage implements OnInit{
+
+
+  post: any = {
+    userId: ''
+  };
   constructor(private PostService: PostServiceService ) { }
+
+  ngOnInit(): void {
+    // Aquí puedes recuperar el userId del localStorage
+    this.post.userId = localStorage.getItem('users_id') || '';
+    console.log(this.post.userId)
+  }
 
   async CreatePost() {
     try {
