@@ -7,8 +7,8 @@ import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { CommentService } from 'src/app/services/commentService/comment.service';
-import { FormsModule } from '@angular/forms';
 import { LikesService } from 'src/app/services/likesService/likes.service';
+import { FormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { LoaderComponent } from 'src/app/components/loader/loader.component';
 import { Router } from '@angular/router';
