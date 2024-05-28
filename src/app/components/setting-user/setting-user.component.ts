@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonicModule } from '@ionic/angular';
 import { UserService } from 'src/app/services/userService/user.service';
 
 @Component({
-  selector: 'app-setting',
-  templateUrl: './setting.page.html',
-  styleUrls: ['./setting.page.scss'],
+  selector: 'app-setting-user',
+  templateUrl: './setting-user.component.html',
+  styleUrls: ['./setting-user.component.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule],
-  providers: [UserService]
+  imports:[CommonModule, FormsModule, IonicModule]
 })
-export class SettingPage implements OnInit {
+export class SettingUserComponent  implements OnInit  {
   user: any = {
     name: '',
     lastName: '',
@@ -37,7 +36,7 @@ export class SettingPage implements OnInit {
       const userDetails = await this.userService.getUserById(userId);
       if (userDetails && userDetails.length > 0) {
         this.user = userDetails[0];
-        console.log('User details:', this.user);
+        console.log('User data:', this.user);
       } else {
         console.error('No se encontraron detalles del usuario.');
       }

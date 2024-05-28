@@ -16,6 +16,26 @@ export class DetailUsersService {
 
   }
 
+  async getDetailById(userId: string): Promise<any> {
+    try {
+      const response = await axios.get(`${this.detailURL}/${userId}`);
+      return response.data;
+    } catch (error) {
+      console.error(`There was an error fetching details for user with ID ${userId}:`, error);
+      throw error;
+    }
+  }
+
+  async updateDetailById(userId: string, updatedDetailData: any): Promise<any> {
+    try {
+      const response = await axios.put(`${this.detailURL}/${userId}`, updatedDetailData);
+      return response.data;
+    } catch (error) {
+      console.error(`There was an error updating details for user with ID ${userId}:`, error);
+      throw error;
+    }
+  }
+
   async createDetailUser(detailUserData: any): Promise<any> {
     try {
       const response = await axios.post(this.detailURL, detailUserData);
