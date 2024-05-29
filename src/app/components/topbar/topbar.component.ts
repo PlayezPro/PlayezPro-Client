@@ -11,7 +11,13 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class TopbarComponent  implements OnInit {
 
-  constructor(private Router: Router) { }
+  constructor(private router: Router) { }
+  // reloadPage() {
+  //   // Recargar la página actual
+  //   this.router.navigateByUrl('/home', { skipLocationChange: true }).then(() => {
+  //     this.router.navigate(['/home']);
+  //   });
+  // }
 
   ngOnInit() {}
 
@@ -19,7 +25,7 @@ export class TopbarComponent  implements OnInit {
     localStorage.removeItem('Token');
     localStorage.removeItem('users_id');
     localStorage.removeItem('dark-mode');
-    this.Router.navigate(['/'])
+    this.router.navigate(['/'])
   }
 
 }

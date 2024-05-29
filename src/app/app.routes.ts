@@ -21,12 +21,12 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    loadComponent: () => import('./pages/notice/notice.page').then(c => c.NoticePage)
+    loadComponent: () => import('./pages/noticeV/noticeV.page').then(c => c.NoticePageV)
   },
-  {
-    path: 'reel',
-    loadComponent: () => import('./pages/reel/reel.page').then(m => m.ReelPage)
-  },
+  // {
+  //   path: 'reel',
+  //   loadComponent: () => import('./pages/reel/reel.page').then(m => m.ReelPage)
+  // },
   {
     path: 'search',
     component: ManagePostPage
@@ -63,10 +63,10 @@ export const routes: Routes = [
     path: 'manage-user/:users_id',
     loadComponent: () => import('./pages/manage-user/manage-user.page').then(m => m.ManageUserPage)
   },
-  {
-    path: 'noticeV',
-    loadComponent: () => import('./pages/noticeV/noticeV.page').then(c => c.NoticePageV)
-  },
+  // {
+  //   path: 'noticeV',
+  //   loadComponent: () => import('./pages/noticeV/noticeV.page').then(c => c.NoticePageV)
+  // },
   {
     path: 'rank-by-goal',
     loadComponent: () => import('./pages/rank-by-goal/rank-by-goal.page').then(m => m.RankByGoalComponent)
