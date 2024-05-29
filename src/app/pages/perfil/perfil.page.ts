@@ -7,13 +7,14 @@ import { FutcardComponent } from 'src/app/components/futcard/futcard.component';
 import { ThemeService } from 'src/app/services/themeServices/theme.service';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { CreateDetailsComponent } from 'src/app/components/create-details/create-details.component';
+import { CreateSkillComponent } from 'src/app/components/create-skill/create-skill.component';
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, TopbarComponent, FutcardComponent, CreateDetailsComponent]
+  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, TopbarComponent, FutcardComponent, CreateDetailsComponent, CreateSkillComponent]
 })
 export class PerfilPage implements OnInit {
   isDarkMode: boolean = false; // Inicialización de isDarkMode
