@@ -1,0 +1,30 @@
+<div class="container mx-auto">
+  <h1 class="text-4xl font-bold text-center mt-6">Skills</h1>
+  <form class="max-w-lg mx-auto mt-8" >
+    <div >
+      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
+      <input type="number" [(ngModel)]="userSkill.pace" name="pace" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <div >
+      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
+      <input type="text" [(ngModel)]="userSkill.shot" name="shot" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <div >
+      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
+      <input type="text" [(ngModel)]="userSkill.pas" name="pas" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <div >
+      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
+      <input type="number" [(ngModel)]="userSkill.dribble" name="dribble" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <div >
+      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
+      <input type="text" [(ngModel)]="userSkill.defense" name="defense" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <div >
+      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
+      <input type="text" [(ngModel)]="userSkill.physical" name="physical" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-6" (click)="updateSkills()">Actualizar</button>
+  </form>
+</div>

@@ -13,7 +13,6 @@ export class DetailUsersService {
 
   async getAllDetails() {
     return axios.get(this.detailURL);
-
   }
 
   async getDetailById(userId: string): Promise<any> {

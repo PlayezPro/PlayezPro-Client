@@ -18,6 +18,15 @@ export class SkillService {
     }
   }
 
+  async getAllUserSkill() {
+    try {
+      const response = await axios.get(`${this.skillUrl}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener las skills del usuario:', error);
+    }
+  }
+
   async createUserSkill(skillData: any): Promise<any> {
     try {
       const response = await axios.post(this.skillUrl, skillData);
