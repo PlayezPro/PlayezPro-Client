@@ -2,6 +2,9 @@
 
 <ion-content [fullscreen]="true">
   <ion-list>
+    <ion-item no-lines>
+      <input type="hidden" [(ngModel)]="post.users_id">
+    </ion-item>
     <ion-item>
       <ion-label position="stacked">Contenido</ion-label>
       <ion-input type="file" [(ngModel)]="post.file" placeholder="URL de tu imagen" autofocus></ion-input>
