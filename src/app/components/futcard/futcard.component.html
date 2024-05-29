@@ -72,8 +72,7 @@
     </div>
   </div>
   <div>
-    <p>Has Relation: {{ detail.hasRelation }}</p>
-    <ion-button  expand="full" (click)="createRelation(detail._id)">
+    <ion-button  *ngIf="detail.hasRelation === false" expand="full" (click)="createRelation(detail._id)">
       Seguir
     </ion-button>
     <ion-button *ngIf="detail.hasRelation === true" expand="full">
