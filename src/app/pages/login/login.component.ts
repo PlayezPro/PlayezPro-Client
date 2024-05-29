@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UsersService } from '../../services/users.service';
+import { UsersService } from '../../services/authService/auth.service';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';

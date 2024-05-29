@@ -17,4 +17,14 @@ private userUri:string = `https://playezpro-server.onrender.com/user`
       throw error; // Puedes manejar este error según tus necesidades
     }
   }
+
+  async updateUser(userId: string, userData: any) {
+    try {
+      const response = await axios.put(`${this.userUri}/${userId}`, userData);
+      return response.data; // Retorna los detalles actualizados del usuario
+    } catch (error) {
+      console.error('Error al actualizar los detalles del usuario:', error);
+      throw error; // Puedes manejar este error según tus necesidades
+    }
+  }
 }

@@ -1,20 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { Component } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { SettingDetailsComponent } from 'src/app/components/setting-details/setting-details.component';
+import { SettingUserComponent } from 'src/app/components/setting-user/setting-user.component';
 
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.page.html',
   styleUrls: ['./setting.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonicModule, SettingDetailsComponent, SettingUserComponent]
 })
-export class SettingPage implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class SettingPage  {
 
 }

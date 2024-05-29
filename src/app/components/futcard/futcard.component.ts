@@ -3,7 +3,7 @@ import { UserService } from 'src/app/services/userService/user.service';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { SkillService } from 'src/app/services/skillService/skill.service';
-import { FollowService } from 'src/app/services/userService/follows.service';
+import { FollowService } from 'src/app/services/followService/follows.service';
 
 
 @Component({
