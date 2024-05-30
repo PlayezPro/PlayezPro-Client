@@ -1,88 +1,85 @@
-<ion-progress-bar *ngIf="showProgressBar" type="indeterminate" color="success"></ion-progress-bar>
-<ion-content *ngIf="showContent">
+<app-topbar></app-topbar>
+
+<app-loader *ngIf="isLoading" />
+<ion-content *ngIf="!isLoading">
   <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
-
-  <div *ngIf="isLoading" class="loading-spinner">
-    <!-- Spinner de carga para la página completa -->
-    <ion-spinner></ion-spinner>
-  </div>
-
   <ion-list>
     <div *ngFor="let post of posts; let i = index" class="post-item" style="margin-top: 5%;">
-      <div *ngIf="isLoadingPosts[i]" class="loading-spinner">
-        <!-- Spinner de carga para cada tarjeta individual -->
-        <ion-spinner></ion-spinner>
+      <div
+        style="display: flex; flex-direction: row; align-items: center; gap: 20px; margin-left: 10px; position: absolute;">
+        <img style="width: 5%; height: 5%; " src="../../assets/userPic/profileIcon.png" alt="profile">
+        <p (click)="passUserId(post.users_id)" style="color: green; cursor: pointer;">
+          {{ post.userDetails?.[0]?.name }}
+        </p>
       </div>
-
-      <div *ngIf="!isLoadingPosts[i]">
-        <div style="display: flex; flex-direction: row; align-items: center; gap: 20px; margin-left: 10px; position: absolute;">
-          <img style="width: 5%; height: 5%; " src="../../assets/userPic/profileIcon.png" alt="profile">
-          <p style="color: white;">{{ post.userDetails?.[0]?.name }}</p>
+      <div style="margin-bottom: 10px;">
+        <ion-img class="img" *ngIf="isImage(post.file); else videoContent" [src]="post.file" alt="Imagen"></ion-img>
+        <ng-template #videoContent>
+          <video [src]="post.file" loop controls></video>
+        </ng-template>
+      </div>
+      <div style="display: flex; flex-direction: row; gap: 15px;">
+        <ion-button color="dark" style="margin-top: -4px;" fill="clear" (click)="addLike(post._id)">
+          <ion-icon slot="icon-only" size="large" [name]="post.hasLikes ? 'heart' : 'heart-outline'"></ion-icon>
+        </ion-button>
+        <ion-button color="dark" style="margin-top: -4px;" fill="clear" expand="block" (click)="setOpen(post, true)">
+          <ion-icon slot="icon-only" size="large" name="chatbubble-outline"></ion-icon>
+        </ion-button>
+        <ion-icon size="large" name="share-outline"></ion-icon>
+      </div>
+      <ion-label class="label">
+        <div>
+          <p>{{post.totalLikes}} Me gusta</p>
         </div>
-        <div style="margin-bottom: 10px;">
-          <ion-img *ngIf="isImage(post.file); else videoContent" [src]="post.file" alt="Imagen"></ion-img>
-          <ng-template #videoContent>
-            <video [src]="post.file" loop controls></video>
-          </ng-template>
+        <div style="display: flex; flex-direction: row; gap: 5px; margin-top: 10px;">
+          <p (click)="passUserId(post.users_id)" style="color: green; cursor: pointer;">
+            {{ post.userDetails?.[0]?.name }}
+          </p>
+          <p>{{ post.description }}</p>
         </div>
-        <div style="display: flex; flex-direction: row; gap: 15px;">
-          <ion-button color="dark" style="margin-top: -4px;" fill="clear" (click)="addLike(post._id)">
-            <ion-icon slot="icon-only" size="large" [name]="post.hasLikes ? 'heart' : 'heart-outline'"></ion-icon>
-          </ion-button>
-          <ion-button color="dark" style="margin-top: -4px;" fill="clear" expand="block" (click)="setOpen(post, true)">
-            <ion-icon slot="icon-only" size="large" name="chatbubble-outline"></ion-icon>
-          </ion-button>
-          <ion-icon size="large" name="share-outline"></ion-icon>
-        </div>
-        <ion-label class="label">
-          <div>
-            <p>{{post.totalLikes}} Me gusta</p>
-          </div>
-          <div style="display: flex; flex-direction: row; gap: 5px; margin-top: 10px;">
-            <p>{{ post.userDetails?.[0]?.name }}</p>
-            <p>{{ post.description }}</p>
-          </div>
-        </ion-label>
-        <ion-list lines="full" class="likeMenu">
-          <ion-modal [isOpen]="post.isModalOpen">
-            <ng-template>
-              <ion-header>
-                <ion-toolbar>
-                  <ion-title>Comentarios</ion-title>
-                  <ion-buttons slot="end">
-                    <ion-button (click)="setOpen(post, false)">Close</ion-button>
-                  </ion-buttons>
-                </ion-toolbar>
-              </ion-header>
-              <ion-content class="ion-padding" style="display: flex; flex-direction: column;">
-                <ion-list style="flex: 1;">
-                  <ng-container *ngFor="let comment of post.allComments">
-                    <div style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
-                      <img style="width: 10%; height: 10%; " src="../../assets/userPic/profileIcon.png" alt="profile">
-                      <div style="display: flex; flex-direction: column;">
-                        <p style="font-size: 10px;">{{ comment.userComment?.[0]?.name }}</p>
-                        <div style="display: flex; flex-direction: row; gap: 25px;">
-                          <p style="margin-top: 1px;">{{ comment.comments }}</p>
-                          <ion-icon color="danger" *ngIf="comment.users_id === getUserId()" name="trash-outline" (click)="deleteComment(comment._id)"></ion-icon>
-                        </div>
+      </ion-label>
+      <ion-list lines="full" class="likeMenu">
+        <ion-modal [isOpen]="post.isModalOpen">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>Comentarios</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button (click)="setOpen(post, false)">Close</ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding" style="display: flex; flex-direction: column;">
+              <ion-list style="flex: 1;">
+                <ng-container *ngFor="let comment of post.allComments">
+                  <div style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
+                    <img style="width: 10%; height: 10%; " src="../../assets/userPic/profileIcon.png" alt="profile">
+                    <div style="display: flex; flex-direction: column;">
+                      <p style="font-size: 10px;">{{ comment.userComment?.[0]?.name }}</p>
+                      <div style="display: flex; flex-direction: row; gap: 25px;">
+                        <p style="margin-top: 1px;">{{ comment.comments }}</p>
+                        <ion-icon color="danger" *ngIf="comment.users_id === getUserId()" name="trash-outline"
+                          (click)="deleteComment(comment._id)"></ion-icon>
                       </div>
                     </div>
-                  </ng-container>
-                </ion-list>
-              </ion-content>
-              <ion-footer style="height: 100px;">
-                <ion-item>
-                  <ion-input placeholder="Añade un comentario" (input)="toggleIcon($event)"></ion-input>
-                  <ion-icon color="primary" name="arrow-up-outline" slot="end" *ngIf="mostrarIcono" (click)="addComment(post._id, comentarioTexto)"></ion-icon>
-                </ion-item>
-              </ion-footer>
-            </ng-template>
-          </ion-modal>
-        </ion-list>
-      </div>
+                  </div>
+                </ng-container>
+              </ion-list>
+            </ion-content>
+            <ion-footer style="height: 100px;">
+              <ion-item>
+                <ion-input placeholder="Añade un comentario" (input)="toggleIcon($event)"></ion-input>
+                <ion-icon color="primary" name="arrow-up-outline" slot="end" *ngIf="mostrarIcono"
+                  (click)="addComment(post._id, comentarioTexto)"></ion-icon>
+              </ion-item>
+            </ion-footer>
+          </ng-template>
+        </ion-modal>
+      </ion-list>
     </div>
   </ion-list>
 </ion-content>
-<app-navbar/>
+
+<app-navbar />

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, AbstractControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import {  UsersService } from '../../services/users.service'
+import {  UsersService } from '../../services/authService/auth.service'
 import { Router } from '@angular/router';
+import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
 
 
 @Component({
@@ -10,13 +11,10 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, GoogleloginComponent],
 })
 export class RegisterComponent {
-  showSuccessMessage = false;
-
   //Validaciones
-
   //Getters
   
   get name () {
@@ -99,13 +97,18 @@ export class RegisterComponent {
   constructor (private userService: UsersService, private router: Router ) {} 
 
   navigateToLogin() {
-    this.router.navigate(["/login"])
+    this.router.navigate([""])
   }
-  navigateToNotice() {
-    this.router.navigate(["/notice"])
+  navigateToHome() {
+    this.router.navigate(["/home"])
   }
 
   showTermsError = false;
+  showAlert = false;
+  alertMessage: string = '';
+  AlertMessage = false;
+  showSuccessMessage = false;
+
   
   Create() {
     if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value){
@@ -114,12 +117,16 @@ export class RegisterComponent {
         response => {
           console.log('Usuario creado con éxito', response);
           this.showSuccessMessage = true;
+          alert('Gracias por registrarte'); 
           setTimeout(() => {
-            this.navigateToNotice();
-          }, 2300);
+            this.navigateToHome();
+          }, 2000);
         },
         (error: any) => { // Especifica el tipo de 'error' como 'any'
           console.error('Error al crear el usuario', error);
+          setTimeout(() => {
+            this.AlertMessage = false;
+        }, 2000);
         }
       );
     } else {
@@ -127,7 +134,13 @@ export class RegisterComponent {
       if (this.formNewUser.hasError('mismatch')) {
         console.error
       }
+      this.alertMessage = 'Por favor, complete todos los campos correctamente.';
+      this.AlertMessage = true; 
+      this.showAlert = true;
+      setTimeout(() => {
+          this.AlertMessage = false;
+      }, 2000);
+      }
+
     }
   }
-
-}

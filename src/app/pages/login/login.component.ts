@@ -2,15 +2,17 @@ import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UsersService } from '../../services/users.service';
+import { UsersService } from 'src/app/services/authService/auth.service';
 import { Router } from '@angular/router';
+import { jwtDecode } from 'jwt-decode';
+import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [IonicModule, ReactiveFormsModule, CommonModule],
+  imports: [IonicModule, ReactiveFormsModule, CommonModule, GoogleloginComponent],
 })
 
 export class LoginComponent {
@@ -48,12 +50,16 @@ export class LoginComponent {
     this.router.navigate(["/register"])
   }
   navigateToHome() { //Ruta hacia Registro en el botón
-    this.router.navigate(["/notice"])
+    this.router.navigate(["/home"])
   }
 
   showAlert = false;
   alertMessage: string = '';
   AlertMessage = false;
+
+  clearForm() {
+    this.formUser.reset();
+  }
 
   onSubmit() {
     if (this.formUser.valid) {
@@ -65,16 +71,23 @@ export class LoginComponent {
         this.usersService.loginUser(credentials).subscribe(
             (response) => {
                 console.log('Login con éxito:', response);
-                localStorage.setItem('Token',response.token)
+                localStorage.setItem('Token', response.token)
+                const tokenOne = localStorage.getItem('Token')
+                if(tokenOne){
+                  const decodedToken: any = jwtDecode(tokenOne);
+                  localStorage.setItem('users_id', decodedToken.id)
+                }
+                this.clearForm()
                 this.alertMessage = '¡Bienvenido!';
                 this.AlertMessage = true;
                 setTimeout(() => {
                     this.navigateToHome();
+                    this.AlertMessage = false;
                 }, 2000);
             },
             (error) => {
                 console.error('Error al logear:', error);
-                this.alertMessage = 'Error en usuario/contraseña';
+                this.alertMessage = error.message || 'Error en usuario/contraseña';
                 this.AlertMessage = true; // Mostrar la alerta
                 this.showAlert = true;
 
@@ -92,5 +105,5 @@ export class LoginComponent {
             this.AlertMessage = false;
         }, 2000);
     }
-}
+  }
 }

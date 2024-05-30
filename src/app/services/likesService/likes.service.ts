@@ -5,7 +5,7 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class LikesService {
-  private likesUrl: string = 'http://localhost:3000/likes'
+  private likesUrl: string = 'https://playezpro-server.onrender.com/likes'
   constructor() { }
   
   async addLike(postId: string, userId: string): Promise<void> {
@@ -59,7 +59,17 @@ export class LikesService {
       console.error("Error al obtener el total de likes:", error);
     }
   }
+  
+}
 
- }
 
 
+// async getRankedPosts(): Promise<any[]> {
+//   try {
+//     const response = await axios.get(`${this.likesUrl}/rankedLikes`);
+//     return response.data.ranking;
+//   } catch (error) {
+//     console.error("Error al obtener el ranking de posts:", error);
+//     return [];
+//   }
+// }

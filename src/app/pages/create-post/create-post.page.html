@@ -1,17 +1,12 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Create new Post</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-topbar></app-topbar>
 
 <ion-content [fullscreen]="true">
   <ion-list>
-    <ion-item>
-      <ion-label position="stacked">User</ion-label>
-      <ion-input type="text" [(ngModel)]="post.users_id" placeholder="User" autofocus></ion-input>
+    <ion-item no-lines>
+      <input type="hidden" [(ngModel)]="post.users_id">
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Imagen</ion-label>
+      <ion-label position="stacked">Contenido</ion-label>
       <ion-input type="file" [(ngModel)]="post.file" placeholder="URL de tu imagen" autofocus></ion-input>
     </ion-item>
     <ion-item>
@@ -24,10 +19,21 @@
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Categoría</ion-label>
-      <ion-input type="text" [(ngModel)]="post.category" placeholder="Categoría"></ion-input>
+      <ion-select [(ngModel)]="post.category" placeholder="Selecciona una categoría">
+        <ion-select-option value="Goal">Gol</ion-select-option>
+        <ion-select-option value="Play">Jugadas</ion-select-option>
+        <ion-select-option value="Assistance">Asistencia</ion-select-option>
+        <ion-select-option value="Defense">Acción Defensiva</ion-select-option>
+      </ion-select>
     </ion-item>
   </ion-list>
   <ion-button (click)="CreatePost()">Guardar</ion-button>
 </ion-content>
 
 <app-navbar></app-navbar>
+
+
+ <!-- <ion-item>
+      <ion-label position="stacked">User</ion-label>
+      <ion-input type="text" [(ngModel)]="post.users_id" placeholder="User" autofocus></ion-input>
+    </ion-item> -->

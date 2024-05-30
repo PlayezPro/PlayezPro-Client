@@ -1,0 +1,83 @@
+<!-- FONT (OPTIONAL) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700" />
+
+
+<!-- ## fut-player-card ## -->
+<div  *ngFor="let detail of userDetail" class="card-container">
+  <div class="fut-player-card">
+    <div class="player-card-top">
+      <div class="player-master-info">
+        <div class="player-rating">
+          <span>97</span>
+        </div>
+        <div class="player-position">
+          <span>RW</span>
+        </div>
+        <div class="player-nation">
+          <img src="https://selimdoyranli.com/cdn/fut-player-card/img/argentina.svg" alt="ecuador" draggable="false" />
+        </div>
+        <div class="player-club">
+          <span class="player-position">#7</span>
+          <!-- <img src="https://selimdoyranli.com/cdn/fut-player-card/img/barcelona.svg" alt="Barcelona"
+            draggable="false" /> -->
+        </div>
+      </div>
+      <div class="player-picture">
+        <img src="../../../assets/images/pedro.png" alt="Pedro" draggable="false" />
+        <div class="player-extra">
+          <span>{{detail.currentTeam}}</span>
+          <!-- <span>2*WF</span> -->
+        </div>
+      </div>
+    </div>
+    <div class="player-card-bottom">
+      <div class="player-info">
+        <!-- Player Name-->
+        <div class="player-name">
+          <p>{{detail.name}}</p>
+          <!-- <p>Juansito</p> -->
+        </div>
+        <!-- Player Features-->
+        <div class="player-features">
+          <div class="player-features-col">
+            <span>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.pace}}</div>
+              <div class="player-feature-title">PACE</div>
+            </span>
+            <span>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.shot}}</div>
+              <div class="player-feature-title">SHO</div>
+            </span>
+            <span>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.pas}}</div>
+              <div class="player-feature-title">PAS</div>
+            </span>
+          </div>
+          <div class="player-features-col">
+            <span>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.dribble}}</div>
+              <div class="player-feature-title">DRI</div>
+            </span>
+            <span>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.defense}}</div>
+              <div class="player-feature-title">DEF</div>
+            </span>
+            <span>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.physical}}</div>
+              <div class="player-feature-title">PHY</div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <ion-button  *ngIf="detail.hasRelation === false" expand="full" (click)="createRelation(detail._id)">
+      Seguir
+    </ion-button>
+    <ion-button *ngIf="detail.hasRelation === true" expand="full">
+      Siguiendo
+    </ion-button>
+  </div>
+  
+</div>

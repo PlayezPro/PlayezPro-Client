@@ -1,17 +1,87 @@
- <ion-tab-bar slot="bottom">
-    <ion-tab-button  [routerLink]="'/notice'" tab="home">
-      <ion-icon name="home-outline"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button  [routerLink]="'/manage-post'" tab="search">
-      <ion-icon name="search"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button  [routerLink]="'/create-post'" tab="library">
-      <ion-icon name="add-circle-outline"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button  [routerLink]="'/manage-user'" tab="cog-outline">
-      <ion-icon name="cog-outline"></ion-icon>
-    </ion-tab-button>
-    <ion-tab-button  [routerLink]="'/perfil'" tab="person-circle-outline">
-      <ion-icon name="person-circle-outline"></ion-icon>
-    </ion-tab-button>
-  </ion-tab-bar>
+<ion-tab-bar slot="bottom" class="navbar">
+  <ion-tab-button [routerLink]="'/home'" tab="home" routerLinkActive="active">
+    <ion-icon name="home-outline" class="icon home"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button [routerLink]="'/search'" tab="search" routerLinkActive="active">
+    <ion-icon name="search-outline" class="icon"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button [routerLink]="'/create-post'" class="central-button" routerLinkActive="active">
+    <ion-icon name="add-outline" class="central-icon"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button [routerLink]="'/ranking'" tab="ranks" routerLinkActive="active">
+    <ion-icon name="trophy-outline" class="icon"></ion-icon>
+  </ion-tab-button>
+  <ion-tab-button [routerLink]="'/profile'" tab="profile" routerLinkActive="active">
+    <ion-icon name="settings-outline" class="icon"></ion-icon>
+  </ion-tab-button>
+</ion-tab-bar>
+
+<!-- <style>
+ .navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #1b1b1d;
+  padding: 10px 0;
+  position: relative;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 60px;
+  z-index: 1; /* Ensure navbar is on top */
+}
+
+.navbar ion-tab-button {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  position: relative;
+}
+
+.navbar ion-icon {
+  font-size: 28px; /* Larger font size for icons */
+  color: #ffffff; /* Default color for icons */
+  --ionicon-stroke-width: 48px; /* Thicker stroke width, if supported */
+}
+
+.navbar ion-tab-button.active ion-icon {
+  color: #c7fa04; /* Neon yellow for the active icon */
+}
+
+.navbar .central-button {
+  position: absolute;
+  top: -30px;  /* Adjusted to make sure it is above the navbar */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #303030; /* Darker background for the central button */
+  color: #c7fa04;
+  width: 70px;  /* Slightly larger button */
+  height: 70px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  z-index: 100;  /* Ensure it's above other elements */
+}
+
+.navbar .central-button::before {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -4;
+}
+
+.navbar .central-button ion-icon.central-icon {
+  font-size: 36px; /* Larger font size for central icon */
+  color: #c7fa04; /* Neon yellow for the central icon */
+}
+</style> -->
