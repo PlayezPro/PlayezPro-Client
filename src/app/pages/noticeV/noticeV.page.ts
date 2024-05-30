@@ -96,7 +96,7 @@ export class NoticePageV implements OnInit {
       await this.sortPosts();
 
       // Espera 9 segundos antes de finalizar la carga
-      await this.delay(7000);
+      await this.delay(70000);
       this.isLoading = false; // Finalizar carga
     } catch (error) {
       console.error('Error al obtener los posts:', error);
