@@ -87,9 +87,4 @@ export const routes: Routes = [
     path: 'setting',
     loadComponent: () => import('./pages/setting/setting.page').then( m => m.SettingPage)
   },
-
-
-
-
-
 ];
