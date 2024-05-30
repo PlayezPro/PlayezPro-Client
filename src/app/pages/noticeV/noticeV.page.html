@@ -27,12 +27,14 @@
               <i class="bi bi-chat" (click)="setOpen(post, true)"></i>
               <span>{{post.totalLikes}}</span>
             </div>
+            <!-- Action Sheet button -->
             <div>
-              <i class="bi bi-send"></i>
+              <ion-button (click)="sharePost(post._id)" class="bg-transparent">
+                <ion-icon fill="clear" name="share-social"></ion-icon>
+              </ion-button>              
             </div>
-            <i class="bi bi-three-dots-vertical"></i>
-            <!-- <img src="../../../assets/images/2.jpg"> -->
           </div>
+
           <div class="profile">
             <div class="row">
               <img class="profile-img" src="../../../assets/images/2.jpg">

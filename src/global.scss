@@ -25,6 +25,19 @@ $text-color: #F2F2F2; // Color del texto
 $primary-color-dark: #F2F2F2; // Color primario en modo oscuro
 $text-color-dark: #32332D; // Color del texto en modo oscuro
 
+// Estilos para actionsheet
+ion-action-sheet.custom-action-sheet {
+    --background: #ffffff; /* Fondo blanco */
+    --color: #000000; /* Texto negro */
+    --button-background-hover: #e0e0e0; /* Fondo de botón al pasar el ratón */
+    --button-background-focused: #e0e0e0; /* Fondo de botón al enfocarse */
+    --button-background-activated: #e0e0e0; /* Fondo de botón al activarse */
+    --button-color: #000000; /* Color del texto de los botones */
+  
+    .green-accent {
+      --color: #6fdb39; /* Verde para los acentos */
+    }
+  }
 
 //THEMES
 body {
@@ -41,3 +54,6 @@ body {
     background-color: $primary-color-dark;
     color: $text-color-dark;
 }
+
+
+  
