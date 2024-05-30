@@ -13,13 +13,14 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { LoaderComponent } from 'src/app/components/loader/loader.component';
 import { Router } from '@angular/router';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
+import { BtnFollowComponent } from 'src/app/components/ui_ux/btn-follow/btn-follow.component';
 
 @Component({
   selector: 'app-noticeV',
   templateUrl: './noticeV.page.html',
   styleUrls: ['./noticeV.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, TopbarComponent,  GoogleloginComponent, NgxSpinnerModule, LoaderComponent]
+  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, TopbarComponent,  GoogleloginComponent, NgxSpinnerModule, LoaderComponent, BtnFollowComponent]
 })
 export class NoticePageV implements OnInit {
   userId: string | null = null;

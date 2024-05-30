@@ -1,0 +1,30 @@
+button {
+    min-width: 75vw;
+    color: #e7ff0d;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-weight: bold;
+    font-size: 17px;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    background: #373737;
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.25),
+                -6px -6px 12px rgb(255 255 255 / 14%);
+
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  button:active {
+    color: #e7ff0d;
+    background: #373737;
+    box-shadow: 
+      inset 6px 6px 12px rgba(0, 0, 0, 0.25),   /* Dark shadow */
+      inset -6px -6px 12px rgba(255, 255, 255, 0.25);  /* Light shadow */
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .icon {
+    margin-right: 8px;  /* Espacio entre el icono y el texto */
+    width: 20px;
+    height: 20px;
+  }
