@@ -4,6 +4,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/a
 import { CommonModule } from '@angular/common';
 import { SkillService } from 'src/app/services/skillService/skill.service';
 import { FollowService } from 'src/app/services/followService/follows.service';
+import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class FutcardComponent  implements OnInit, OnChanges {
   userDetail: any [] = [];
 
 
-  constructor(private userServices: UserService, private skillService:SkillService, private followService:FollowService,private cdr: ChangeDetectorRef) { }
+  constructor(private detailsService:DetailUsersService,private userServices: UserService, private skillService:SkillService, private followService:FollowService,private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
     
@@ -49,9 +50,13 @@ export class FutcardComponent  implements OnInit, OnChanges {
       }
       const response = await this.userServices.getUserById(this.userId);
       this.userDetail = response;
+     
       for(const detail of this.userDetail){
         const userSkill = await this.skillService.getUserSkill(this.userId)
         detail.userSkills= userSkill;
+        const userDetails = await this.detailsService.getDetailById(this.userId)
+        detail.userDetails = userDetails;
+         console.log(userDetails)
       }
 
     } catch (error) {
@@ -69,10 +74,12 @@ export class FutcardComponent  implements OnInit, OnChanges {
       for(const detail of this.userDetail){
         const userSkill = await this.skillService.getUserSkill(users_id)
         detail.userSkills= userSkill;
+        const userDetails = await this.detailsService.getDetailById(users_id)
+        detail.userDetails = userDetails;
       const follower = localStorage.getItem('users_id')!;        
       const verifyRelation = await this.followService.checkRelation(detail._id,follower)
       detail.hasRelation = verifyRelation;
-      this.cdr.detectChanges();
+      // this.cdr.detectChanges();
       console.log(`Post ID: ${detail._id},followerID:${follower}, isRelation: ${verifyRelation}`);
       
       }
