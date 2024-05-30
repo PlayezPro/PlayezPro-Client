@@ -85,7 +85,7 @@
                         <div style="display: flex; flex-direction: row; gap: 25px;">
                           <p style="margin-top: 1px;">{{ comment.comments }}</p>
                           <ion-icon color="danger" *ngIf="comment.users_id === getUserId()" name="trash-outline"
-                            (click)="deleteComment(comment._id)"></ion-icon>
+                          (click)="deleteComment(post._id, comment._id)"></ion-icon>
                         </div>
                       </div>
                     </div>

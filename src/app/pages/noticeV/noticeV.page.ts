@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { PostServiceService } from 'src/app/services/postService/post.service';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
@@ -37,7 +37,8 @@ export class NoticePageV implements OnInit {
     private userService: UserService, 
     private commentService: CommentService, 
     private likeService: LikesService, 
-    private router:Router
+    private router:Router,
+    private cdr: ChangeDetectorRef
     ) { }
 
   async ngOnInit(): Promise<void> {
@@ -79,6 +80,7 @@ export class NoticePageV implements OnInit {
 
         const postComments = await this.commentService.getCommentsPost(post._id);
         post.allComments = postComments;
+        this.cdr.detectChanges();
         for (const comments of postComments) {
           const commentByUser = await this.userService.getUserById(comments.users_id);
           comments.userComment = commentByUser;
@@ -157,6 +159,7 @@ export class NoticePageV implements OnInit {
         const post = this.posts[postIndex];
         post.hasLikes = !post.hasLikes;
         post.totalLikes += post.hasLikes ? 1 : -1;
+        this.cdr.detectChanges();
       } else {
         console.error('No se puede agregar el like: userId no encontrado en el localStorage');
       }
@@ -177,21 +180,55 @@ export class NoticePageV implements OnInit {
       };
       try {
         await this.commentService.writeComment(postId, this.userId, datosComentario.comments);
+        
+        // Encuentra el post correspondiente y actualiza su lista de comentarios
+        const postIndex = this.posts.findIndex(post => post._id === postId);
+        if (postIndex !== -1) {
+          const post = this.posts[postIndex];
+          const postComments = await this.commentService.getCommentsPost(post._id);
+          post.allComments = postComments;
+  
+          for (const comment of postComments) {
+            const commentByUser = await this.userService.getUserById(comment.users_id);
+            comment.userComment = commentByUser;
+          }
+        }
+        
         this.comentarioTexto = '';
+        this.cdr.detectChanges(); // Forzar la detección de cambios
       } catch (error) {
         // Manejar errores aquí
+        console.error('Error al agregar comentario:', error);
       }
     }
   }
+  
 
-  async deleteComment(postId: string) {
+  async deleteComment(postId: string, commentId: string) {
     try {
-      await this.commentService.deleteComment(postId)
-      console.log(postId)
+      // Elimina el comentario utilizando el commentId
+      await this.commentService.deleteComment(commentId);
+      console.log(`Comentario eliminado: ${commentId}`);
+      
+      // Encuentra el post correspondiente y actualiza su lista de comentarios
+      const postIndex = this.posts.findIndex(post => post._id === postId);
+      if (postIndex !== -1) {
+        const post = this.posts[postIndex];
+        const postComments = await this.commentService.getCommentsPost(post._id);
+        post.allComments = postComments;
+  
+        for (const comment of postComments) {
+          const commentByUser = await this.userService.getUserById(comment.users_id);
+          comment.userComment = commentByUser;
+        }
+      }
+  
+      this.cdr.detectChanges(); // Forzar la detección de cambios
     } catch (error) {
-
+      console.error('Error al eliminar comentario:', error);
     }
   }
+  
 
   toggleIcon(event: any) {
     const texto = event.target.value || '';
