@@ -227,8 +227,7 @@ export class NoticePageV implements OnInit {
     } catch (error) {
       console.error('Error al eliminar comentario:', error);
     }
-  }
-  
+  }  
 
   toggleIcon(event: any) {
     const texto = event.target.value || '';
