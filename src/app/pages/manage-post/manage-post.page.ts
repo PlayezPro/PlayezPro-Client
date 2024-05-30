@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
-import { DetailUsersService } from 'src/app/services/detailUsers/detail-users.service';
+import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { UserService } from 'src/app/services/userService/user.service';

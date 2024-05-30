@@ -1,9 +1,9 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges,ChangeDetectorRef} from '@angular/core';
 import { UserService } from 'src/app/services/userService/user.service';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { SkillService } from 'src/app/services/skillService/skill.service';
-import { FollowService } from 'src/app/services/userService/follows.service';
+import { FollowService } from 'src/app/services/followService/follows.service';
 
 
 @Component({
@@ -19,14 +19,17 @@ export class FutcardComponent  implements OnInit, OnChanges {
   userDetail: any [] = [];
 
 
-  constructor(private userServices: UserService, private skillService:SkillService, private followService:FollowService) { }
+  constructor(private userServices: UserService, private skillService:SkillService, private followService:FollowService,private cdr: ChangeDetectorRef) { }
 
   ngOnInit() {
+    
     if (this.users_id) {
       this.cardVisitor(this.users_id);
+      
     } else {
       this.generateCard();
     }
+    
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -66,6 +69,12 @@ export class FutcardComponent  implements OnInit, OnChanges {
       for(const detail of this.userDetail){
         const userSkill = await this.skillService.getUserSkill(users_id)
         detail.userSkills= userSkill;
+      const follower = localStorage.getItem('users_id')!;        
+      const verifyRelation = await this.followService.checkRelation(detail._id,follower)
+      detail.hasRelation = verifyRelation;
+      this.cdr.detectChanges();
+      console.log(`Post ID: ${detail._id},followerID:${follower}, isRelation: ${verifyRelation}`);
+      
       }
     } catch (error) {
       console.error('Error al generar la tarjeta del visitante:', error);
@@ -77,7 +86,7 @@ export class FutcardComponent  implements OnInit, OnChanges {
   
       // Verifica que los IDs no sean null antes de usarlos
       if (userFollower && followedID) {
-        await this.followService.addFollower(userFollower, followedID); 
+        await this.followService.addFollower(followedID,userFollower); 
         console.log('Follower added successfully');
       } else {
         console.error('User ID or Followed ID is missing');

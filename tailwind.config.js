@@ -23,3 +23,6 @@ module.exports = {
     // require('tailwindcss-animated')
   ],
 };
+export const plugins = [
+  require('tailwindcss-animated')
+];

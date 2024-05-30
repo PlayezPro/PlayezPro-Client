@@ -15,24 +15,37 @@ import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 export class CreatePostPage implements OnInit{
 
 
-  post: any = {
-    userId: ''
-  };
+  post: any = {};
+  userId: string = '';
   constructor(private PostService: PostServiceService ) { }
 
   ngOnInit(): void {
-    // Aquí puedes recuperar el userId del localStorage
-    this.post.userId = localStorage.getItem('users_id') || '';
-    console.log(this.post.userId)
+    // Recuperar el users_id del localStorage
+    const userId = localStorage.getItem('users_id');
+    if (userId) {
+      this.post.users_id = userId;
+    } else {
+      console.error('users_id no encontrado en localStorage');
+    }
   }
 
   async CreatePost() {
+    // Asegurarse de que users_id esté presente en el post antes de enviar
+    const userId = localStorage.getItem('users_id');
+    if (userId) {
+      this.post.users_id = userId;
+    } else {
+      console.error('users_id no encontrado en localStorage');
+      return; // Salir si no se encuentra users_id
+    }
+
     try {
       await this.PostService.CreatePost(this.post);
-      console.log('Post creado exitosamente');
-      this.post = {}; // Para limpiar el objeto post después de enviarlo
+      console.log('Post creado exitosamente', this.post);
+      this.post = {}; // Limpiar el objeto post después de enviarlo, pero mantener users_id
     } catch (error) {
       console.error('Error al crear el Post:', error);
     }
   }
-    }
+}
+ 

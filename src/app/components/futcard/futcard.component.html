@@ -41,29 +41,29 @@
         <div class="player-features">
           <div class="player-features-col">
             <span>
-              <div class="player-feature-value">{{detail.userSkills?.[0].pace}}</div>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.pace}}</div>
               <div class="player-feature-title">PACE</div>
             </span>
             <span>
-              <div class="player-feature-value">{{detail.userSkills?.[0].shot}}</div>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.shot}}</div>
               <div class="player-feature-title">SHO</div>
             </span>
             <span>
-              <div class="player-feature-value">{{detail.userSkills?.[0].pas}}</div>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.pas}}</div>
               <div class="player-feature-title">PAS</div>
             </span>
           </div>
           <div class="player-features-col">
             <span>
-              <div class="player-feature-value">{{detail.userSkills?.[0].dribble}}</div>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.dribble}}</div>
               <div class="player-feature-title">DRI</div>
             </span>
             <span>
-              <div class="player-feature-value">{{detail.userSkills?.[0].defense}}</div>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.defense}}</div>
               <div class="player-feature-title">DEF</div>
             </span>
             <span>
-              <div class="player-feature-value">{{detail.userSkills?.[0].physical}}</div>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.physical}}</div>
               <div class="player-feature-title">PHY</div>
             </span>
           </div>
@@ -72,6 +72,12 @@
     </div>
   </div>
   <div>
-    <ion-button expand="full" (click)="createRelation(detail._id)">Seguir</ion-button>
+    <ion-button  *ngIf="detail.hasRelation === false" expand="full" (click)="createRelation(detail._id)">
+      Seguir
+    </ion-button>
+    <ion-button *ngIf="detail.hasRelation === true" expand="full">
+      Siguiendo
+    </ion-button>
   </div>
+  
 </div>

@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 @Injectable({
     providedIn: 'root'
 })
+
 export class UsersService {
     constructor() { }
 
@@ -47,7 +48,6 @@ export class UsersService {
         });
     }
 }
-
 
 // import { Injectable } from "@angular/core";
 // import { HttpClient } from "@angular/common/http";

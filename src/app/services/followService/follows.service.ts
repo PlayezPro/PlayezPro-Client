@@ -39,5 +39,19 @@ export class FollowService {
             throw error;
         }
     }
+
+    async checkRelation(followed:string, follower:string): Promise<boolean>{
+        try {
+            const data = {userfollow:followed, userfollower:follower};
+            console.log('Sending data to server:', data);
+            const response = await axios.post('https://playezpro-server.onrender.com/follow/relation/',data)
+            console.log('Server response:', response.data);
+            const isRelation = response.data.inRelation as boolean;
+            console.log('Is relation:', isRelation);
+        return isRelation; 
+        } catch (error) {
+          return false;
+        }
+    }
     
 }

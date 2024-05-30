@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DetailUsersService } from 'src/app/services/detailUsers/detail-users.service';
+import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
 
 @Component({
   selector: 'app-create-details',

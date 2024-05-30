@@ -14,18 +14,18 @@ export const routes: Routes = [
   {
     path: '',
     component: LoginComponent
-  },  
+  },
   {
     path: 'register',
     component: RegisterComponent,
   },
   {
     path: 'home',
-    loadComponent: () => import('./pages/notice/notice.page').then(c => c.NoticePage )
+    loadComponent: () => import('./pages/noticeV/noticeV.page').then(c => c.NoticePageV)
   },
   {
     path: 'reel',
-    loadComponent: () => import('./pages/reel/reel.page').then( m => m.ReelPage)
+    loadComponent: () => import('./pages/reel/reel.page').then(m => m.ReelPage)
   },
   {
     path: 'search',
@@ -41,7 +41,7 @@ export const routes: Routes = [
   },
   {
     path: 'ranked-goals',
-    component:  RankByGoalComponent
+    component: RankByGoalComponent
   },
   {
     path: 'ranked-plays',
@@ -52,9 +52,9 @@ export const routes: Routes = [
     component: RankByAssistanceComponent
   },
   {
-      path: 'ranked-defense',
-      component: RankByDefenseComponent
-    },
+    path: 'ranked-defense',
+    component: RankByDefenseComponent
+  },
   {
     path: 'profile',
     loadComponent: () => import('./pages/perfil/perfil.page').then(m => m.PerfilPage)
@@ -63,24 +63,28 @@ export const routes: Routes = [
     path: 'manage-user/:users_id',
     loadComponent: () => import('./pages/manage-user/manage-user.page').then(m => m.ManageUserPage)
   },
+  // {
+  //   path: 'noticeV',
+  //   loadComponent: () => import('./pages/noticeV/noticeV.page').then(c => c.NoticePageV)
+  // },
   {
     path: 'rank-by-goal',
-    loadComponent: () => import('./pages/rank-by-goal/rank-by-goal.page').then( m => m.RankByGoalComponent)
+    loadComponent: () => import('./pages/rank-by-goal/rank-by-goal.page').then(m => m.RankByGoalComponent)
   },
   {
     path: 'rank-by-play',
-    loadComponent: () => import('./pages/rank-by-play/rank-by-play.page').then( m => m.RankByPlayComponent)
+    loadComponent: () => import('./pages/rank-by-play/rank-by-play.page').then(m => m.RankByPlayComponent)
   },
   {
     path: 'rank-by-assistance',
-    loadComponent: () => import('./pages/rank-by-assistance/rank-by-assistance.page').then( m => m.RankByAssistanceComponent)
+    loadComponent: () => import('./pages/rank-by-assistance/rank-by-assistance.page').then(m => m.RankByAssistanceComponent)
   },
   {
     path: 'rank-by-defense',
     loadComponent: () => import('./pages/rank-by-defense/rank-by-defense.page').then( m => m.RankByDefenseComponent)
   },
-
-
-
-
+  {
+    path: 'setting',
+    loadComponent: () => import('./pages/setting/setting.page').then( m => m.SettingPage)
+  },
 ];
