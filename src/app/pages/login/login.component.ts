@@ -7,13 +7,14 @@ import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
 import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
+import { LogoAnimationComponent } from 'src/app/components/ui_ux/logo-animation/logo-animation.component';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [IonicModule, ReactiveFormsModule, CommonModule, GoogleloginComponent, ButtonPlayezComponent],
+  imports: [IonicModule, ReactiveFormsModule, CommonModule, GoogleloginComponent, ButtonPlayezComponent, LogoAnimationComponent],
 })
 
 export class LoginComponent {

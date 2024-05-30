@@ -72,9 +72,10 @@
     </div>
   </div>
   <div>
-    <ion-button  *ngIf="detail.hasRelation === false" expand="full" (click)="createRelation(detail._id)">
+    <app-button-playez  *ngIf="detail.hasRelation === false" expand="full" (click)="createRelation(detail._id)"[buttonText]="' Seguir'"></app-button-playez>
+    <!-- <ion-button  *ngIf="detail.hasRelation === false" expand="full" (click)="createRelation(detail._id)">
       Seguir
-    </ion-button>
+    </ion-button> -->
     <ion-button *ngIf="detail.hasRelation === true" expand="full">
       Siguiendo
     </ion-button>
