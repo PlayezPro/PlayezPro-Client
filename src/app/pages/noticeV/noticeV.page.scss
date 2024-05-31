@@ -161,7 +161,7 @@ i.bi {
       .vid {
           position: relative;
           width: 100%;
-          min-height: 89vh;
+          min-height: 100vh;
           padding: 1px 1px 0;
           scroll-snap-align: start;
 
@@ -171,12 +171,13 @@ i.bi {
               object-fit: fill;
           }
           .info{
+            position: sticky;
             display: flex;
             flex-direction: column;
           }
           .options {
               position: absolute;
-              bottom: 82px;
+              bottom: 16px;
               right: 0;
               width: auto;
               height: auto;
