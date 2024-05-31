@@ -32,6 +32,7 @@ export class NoticePageV implements OnInit {
   mostrarIcono: boolean = false;
   isLoading: boolean = true;
   isLoadingPosts: boolean[] = [];
+  imageSrc: string = '../../../assets/icon/playezWhite.svg'; // Define la propiedad imageSrc
 
   constructor(
     private postService: PostServiceService,
@@ -42,7 +43,6 @@ export class NoticePageV implements OnInit {
     ) { }
 
   async ngOnInit(): Promise<void> {
-
     await this.generatePost();
   }
 
@@ -104,7 +104,6 @@ export class NoticePageV implements OnInit {
     }
   }
 
-
   async sortPosts(): Promise<void> {
     this.posts.sort((a, b) => {
       const dateA = new Date(this.parseDate(a.Created_At));
@@ -158,6 +157,7 @@ export class NoticePageV implements OnInit {
         const post = this.posts[postIndex];
         post.hasLikes = !post.hasLikes;
         post.totalLikes += post.hasLikes ? 1 : -1;
+        this.changeImage(); // Cambia la imagen
       } else {
         console.error('No se puede agregar el like: userId no encontrado en el localStorage');
       }
@@ -206,4 +206,11 @@ export class NoticePageV implements OnInit {
   async toggleComments(post: any): Promise<void> {
     post.showComments = !post.showComments;
   }
+
+  changeImage() {
+    this.imageSrc = this.imageSrc === '../../../assets/icon/playezWhite.svg'
+     ? '../../../assets/icon/playez.svg'
+      : '../../../assets/icon/playezWhite.svg';
+  }
+  
 }

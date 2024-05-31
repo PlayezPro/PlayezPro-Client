@@ -1,4 +1,7 @@
-/* Quitar el fondo de los botones de icono y bordes */
+// Importar el módulo math al principio del archivo
+@use 'sass:math';
+
+// Quitar el fondo de los botones de icono y bordes
 // ion-button.icon-button {
 //     --background: transparent;
 //     --background-activated: transparent;
@@ -9,23 +12,20 @@
 //     --border-radius: 0;
 //     --box-shadow: none;
 //     --color: inherit;
-//   }
-  
-//   /* Asegurar que los iconos se alineen a la derecha */
-//   ion-toolbar ion-buttons[slot="end"] {
+// }
+
+// // Asegurar que los iconos se alineen a la derecha
+// ion-toolbar ion-buttons[slot="end"] {
 //     margin-left: auto;
 //     display: flex;
 //     align-items: center;
-//   }
-  
-//   /* Ajustar el tamaño de los iconos si es necesario */
-//   ion-button.icon-button ion-icon {
+// }
+
+// // Ajustar el tamaño de los iconos si es necesario
+// ion-button.icon-button ion-icon {
 //     font-size: 24px; /* Ajusta el tamaño según tu necesidad */
 //     color: black;
-//   }
-  
-
-// @import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+// }
 
 $nav-links: about, products, media, contact us;
 
@@ -33,20 +33,20 @@ $nav-links: about, products, media, contact us;
   box-sizing: border-box;
 }
 
-html,
-body {
-  height: 100%;
-  width: 100%;
-}
+// html,
+// body {
+//   height: 100%;
+//   width: 100%;
+// }
 
-body {
-  background: #404040;
-  display: table;
-}
+// body {
+//   background: #404040;
+//   display: table;
+// }
 
-a {
-  text-decoration: none;
-}
+// a {
+//   text-decoration: none;
+// }
 
 // Mobile mockup design
 .mobile-wrapper {
@@ -94,12 +94,14 @@ a {
     height: 60px;
     // position: relative;
   }
+
   .nav-links {
     display: block;
     position: absolute;
     top: 60px;
     left: 0;
     width: 100%;
+    z-index: 9;
     // Dark overlay on open nav
     &::before {
       background: rgba(0, 0, 0, .5);
@@ -120,8 +122,8 @@ a {
       transform: translateY(-20px);
       transition: all .3s;
       a {
-        background: #fff;
-        color: #404040;
+        background: #373737;
+        color: #e7ff0c;
         display: block;
         font-size: 18px;
         font-weight: 700;
@@ -137,7 +139,7 @@ a {
   }
 }
 
-// Hidden checkbox to triger mobile nav
+// Hidden checkbox to trigger mobile nav
 input[type="checkbox"] {
   position: absolute;
   opacity: 0;
@@ -182,10 +184,10 @@ input[type="checkbox"] {
       opacity: 1;
       visibility: visible;
       transform: translateY(0);
-      
+
       @for $i from 1 through length($nav-links) {
         &:nth-child(#{$i}) {
-          transition-delay: ($i - 1)/10+s;
+          transition-delay: math.div($i - 1, 10)s;
         }
       }
     }

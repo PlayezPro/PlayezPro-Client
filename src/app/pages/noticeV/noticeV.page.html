@@ -9,16 +9,22 @@
     <div class="reels_video" *ngFor="let post of posts">
       <!-- contendor de video -->
       <div class="vid">
-        <!-- <video #videoPlayer src="../../../assets/videos/1.mp4"></video> -->
-        <video #videoPlayer [src]="post.file" autoplay loop></video>
+        <video #videoPlayer src="../../../assets/videos/1.mp4"></video>
+        <!-- <video #videoPlayer [src]="post.file" autoplay loop></video> -->
         <!-- controladores con informacion del reel  -->
         <div class="info">
           <div class="options">
             <div>
-              <ion-button fill="clear" (click)="addLike(post._id)">
+              <!-- <ion-button fill="clear" (click)="addLike(post._id)">
                 <ion-icon slot="icon-only" size="large" [ngClass]="{'ball-fill': post.hasLikes, 'ball': !post.hasLikes}"></ion-icon>
               </ion-button>
-               <span>{{post.totalLikes}}</span>             
+               <span>{{post.totalLikes}}</span>      -->
+               <div>
+                <img [src]="imageSrc" class="h-8 ml-3 border-none" alt="PlayezPro Logo" (click)="changeImage(); addLike(post._id)">
+
+                <!-- <i (click)="addLike(post._id)" [ngClass]="{'ball-fill': post.hasLikes, 'ball': !post.hasLikes}"></i>-->
+                <span>{{post.totalLikes}}</span> 
+              </div>        
             
             </div>
             <div>
