@@ -9,19 +9,23 @@
     <div class="reels_video" *ngFor="let post of posts">
       <!-- contendor de video -->
       <div class="vid">
-        <!-- <video #videoPlayer src="../../../assets/videos/1.mp4"></video> -->
-        <video #videoPlayer [src]="post.file" autoplay loop></video>
+        <!-- VIDEO PARA TESTING, ELIMINAR AL PASAR A DESPILEGUE-->
+        <video #videoPlayer src="../../../assets/videos/1.mp4"></video> 
+        <!-- <video #videoPlayer [src]="post.file" autoplay loop></video> -->
         <!-- controladores con informacion del reel  -->
         <div class="info">
           <div class="options">
             <div>
-              <ion-button fill="clear" (click)="addLike(post._id)">
-                <ion-icon slot="icon-only" size="large" [ngClass]="{'ball-fill': post.hasLikes, 'ball': !post.hasLikes}"></ion-icon>
-              </ion-button>
-               <span>{{post.totalLikes}}</span>             
-              <!-- <ion-button color="white" style="margin-top: -4px;" fill="clear" expand="block" (click)="setOpen(post, true)">
-                <ion-icon slot="icon-only" size="large" name="chatbubble-outline"></ion-icon>
-              </ion-button> -->            
+              <div>
+                <img 
+                [src]="imageSrc" 
+                class="h-8 ml-3 border-none" 
+                alt="PlayezPro Logo"
+                (click)="changeImage(); addLike(post._id)"
+                >
+                <span>{{post.totalLikes}}</span>
+              </div>
+
             </div>
             <div>
               <i class="bi bi-chat" (click)="setOpen(post, true)"></i>
@@ -31,13 +35,13 @@
               <i class="bi bi-send"></i>
             </div>
             <i class="bi bi-three-dots-vertical"></i>
-            <!-- <img src="../../../assets/images/2.jpg"> -->
           </div>
           <div class="profile">
             <div class="row">
               <img class="profile-img" src="../../../assets/images/2.jpg">
               <h4> {{ post.userDetails?.[0]?.name }}</h4>
-              <button (click)="passUserId(post.users_id)">Follow</button>
+              <!-- <button (click)="passUserId(post.users_id)">Follow</button> -->
+              <app-btn-follow (click)="passUserId(post.users_id)" />
             </div>
             <div class="row row2">
               <p>{{ post.title }} | {{ post.category }}</p>
@@ -47,21 +51,6 @@
             </div>
           </div>
         </div>
-
-
-        <!-- <div class="reels_video">
-          <img style="width: 5%; height: 5%; " src="../../assets/userPic/profileIcon.png" alt="profile">
-          <p (click)="passUserId(post.users_id)" style="color: green; cursor: pointer;">
-            {{ post.userDetails?.[0]?.name }}
-          </p>
-        </div> -->
-
-        <!-- <div style="margin-bottom: 10px;"> -->
-        <!-- <ion-img class="img" *ngIf="isImage(post.file); else videoPlayer" [src]="post.file" alt="Imagen"></ion-img> -->
-        <!-- <ng-template #videoPlayer>
-            <video [src]="post.file" loop></video>
-          </ng-template> -->
-        <!-- </div> -->
 
         <!-- Modal de comentarios -->
         <ion-list lines="h-[50%] full" class="likeMenu">

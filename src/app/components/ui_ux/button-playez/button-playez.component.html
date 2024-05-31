@@ -1,0 +1,9 @@
+<button>
+  <ng-container *ngIf="iconUrl; else svgTpl">
+    <img [src]="iconUrl" alt="icon" *ngIf="iconUrl" class="icon">
+  </ng-container>
+  <ng-template #svgTpl>
+    <div [innerHTML]="svgContent" *ngIf="svgContent" class="icon"></div>
+  </ng-template>
+  {{ buttonText }}
+</button>

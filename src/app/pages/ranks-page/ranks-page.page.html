@@ -1,6 +1,6 @@
 <app-topbar></app-topbar>
 
-<div class="mt-2">
+<!-- <div class="mt-2">
   <ion-card (click)="navigateToRankGoals()" color="tertiary">
     <ion-card-header>
       <ion-card-title>GOLES</ion-card-title>
@@ -28,6 +28,33 @@
       <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
     </ion-card-header>
   </ion-card>
-</div>
-
-<app-navbar></app-navbar>
+</div> -->
+<section>
+  <div class="p-2">
+    <div class="card flex justify-center">
+      <div class="pb-8">
+        <p class="text-4xl font-bold p-4 flex justify-center text-[#E7FF0C]">GOLES</p>
+        <app-button-playez (click)="navigateToRankGoals()" [buttonText]="'VER'"></app-button-playez>
+      </div>
+    </div>
+    <div class="card flex justify-center">
+      <div class="pb-8">
+        <p class="text-4xl font-bold p-4 flex justify-center text-[#E7FF0C]">JUGADAS</p>
+        <app-button-playez (click)="navigateToRankPlays()" [buttonText]="'VER'"></app-button-playez>
+      </div>
+    </div>
+    <div class="card flex justify-center">
+      <div class="pb-8">
+        <p class="text-4xl font-bold p-4 flex justify-center text-[#E7FF0C]">ASISTENCIAS</p>
+        <app-button-playez (click)="navigateToRankAssistance()" [buttonText]="'VER'"></app-button-playez>
+      </div>
+    </div>
+    <div class="card flex justify-center">
+      <div class="pb-8">
+        <p class="text-4xl font-bold p-4 flex justify-center text-[#E7FF0C]">DEFENSAS</p>
+        <app-button-playez (click)=" navigateToRankDefense()" [buttonText]="'VER'"></app-button-playez>
+      </div>
+    </div>
+  </div>
+</section>
+<app-navbar />

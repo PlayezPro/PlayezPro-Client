@@ -13,13 +13,14 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { LoaderComponent } from 'src/app/components/loader/loader.component';
 import { Router } from '@angular/router';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
+import { BtnFollowComponent } from 'src/app/components/ui_ux/btn-follow/btn-follow.component';
 
 @Component({
   selector: 'app-noticeV',
   templateUrl: './noticeV.page.html',
   styleUrls: ['./noticeV.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, TopbarComponent,  GoogleloginComponent, NgxSpinnerModule, LoaderComponent]
+  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, TopbarComponent,  GoogleloginComponent, NgxSpinnerModule, LoaderComponent, BtnFollowComponent]
 })
 export class NoticePageV implements OnInit {
   userId: string | null = null;
@@ -31,6 +32,7 @@ export class NoticePageV implements OnInit {
   mostrarIcono: boolean = false;
   isLoading: boolean = true;
   isLoadingPosts: boolean[] = [];
+  imageSrc: string = '../../../assets/icon/playezWhite.svg'; // Define la propiedad imageSrc
 
   constructor(
     private postService: PostServiceService,
@@ -41,7 +43,6 @@ export class NoticePageV implements OnInit {
     ) { }
 
   async ngOnInit(): Promise<void> {
-
     await this.generatePost();
   }
 
@@ -95,14 +96,13 @@ export class NoticePageV implements OnInit {
       await this.sortPosts();
 
       // Espera 9 segundos antes de finalizar la carga
-      await this.delay(7000);
+      await this.delay(70000);
       this.isLoading = false; // Finalizar carga
     } catch (error) {
       console.error('Error al obtener los posts:', error);
       this.isLoading = false; // Finalizar carga en caso de error
     }
   }
-
 
   async sortPosts(): Promise<void> {
     this.posts.sort((a, b) => {
@@ -157,6 +157,7 @@ export class NoticePageV implements OnInit {
         const post = this.posts[postIndex];
         post.hasLikes = !post.hasLikes;
         post.totalLikes += post.hasLikes ? 1 : -1;
+        this.changeImage(); // Cambia la imagen
       } else {
         console.error('No se puede agregar el like: userId no encontrado en el localStorage');
       }
@@ -205,4 +206,11 @@ export class NoticePageV implements OnInit {
   async toggleComments(post: any): Promise<void> {
     post.showComments = !post.showComments;
   }
+
+  changeImage() {
+    this.imageSrc = this.imageSrc === '../../../assets/icon/playezWhite.svg'
+     ? '../../../assets/icon/playez.svg'
+      : '../../../assets/icon/playezWhite.svg';
+  }
+  
 }

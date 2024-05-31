@@ -6,13 +6,16 @@ import { UsersService } from 'src/app/services/authService/auth.service';
 import { Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
+import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
+import { LogoAnimationComponent } from 'src/app/components/ui_ux/logo-animation/logo-animation.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   standalone: true,
-  imports: [IonicModule, ReactiveFormsModule, CommonModule, GoogleloginComponent],
+  imports: [IonicModule, ReactiveFormsModule, CommonModule, GoogleloginComponent, ButtonPlayezComponent, LogoAnimationComponent, RouterLink],
 })
 
 export class LoginComponent {

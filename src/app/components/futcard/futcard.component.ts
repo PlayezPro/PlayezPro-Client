@@ -4,14 +4,14 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/a
 import { CommonModule } from '@angular/common';
 import { SkillService } from 'src/app/services/skillService/skill.service';
 import { FollowService } from 'src/app/services/followService/follows.service';
-
+import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
 
 @Component({
   selector: 'app-futcard',
   templateUrl: './futcard.component.html',
   styleUrls: ['./futcard.component.scss'],
   standalone: true,
-  imports: [ IonContent, IonHeader, IonTitle, IonToolbar, CommonModule,IonButton]
+  imports: [ IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, IonButton, ButtonPlayezComponent ]
 })
 export class FutcardComponent  implements OnInit, OnChanges {
   @Input() users_id: string | null = null;

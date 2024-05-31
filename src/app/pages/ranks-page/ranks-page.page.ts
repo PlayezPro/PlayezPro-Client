@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { Router } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
+import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
 
 @Component({
   selector: 'app-ranks-page',
   templateUrl: './ranks-page.page.html',
   styleUrls: ['./ranks-page.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, CommonModule, FormsModule, NavbarComponent, TopbarComponent]
+  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, TopbarComponent, ButtonPlayezComponent]
 })
 export class RanksPagePage {
 

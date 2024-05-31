@@ -3,13 +3,14 @@ import { initializeApp } from 'firebase/app';
 import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithPopup, GoogleAuthProvider,  } from "firebase/auth";
 import { IonicModule } from '@ionic/angular';
+import { ButtonPlayezComponent } from '../ui_ux/button-playez/button-playez.component';
 
 @Component({
   selector: 'app-googlelogin',
   templateUrl: './googlelogin.component.html',
   styleUrls: ['./googlelogin.component.scss'],
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule, ButtonPlayezComponent],
 })
 export class GoogleloginComponent  implements OnInit {
    firebaseConfig = {
