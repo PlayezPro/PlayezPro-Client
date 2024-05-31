@@ -14,6 +14,7 @@ import { LoaderComponent } from 'src/app/components/loader/loader.component';
 import { Router } from '@angular/router';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { BtnFollowComponent } from 'src/app/components/ui_ux/btn-follow/btn-follow.component';
+import { ActionSheetService } from 'src/app/services/action-sheet.service';
 
 @Component({
   selector: 'app-noticeV',
@@ -38,11 +39,13 @@ export class NoticePageV implements OnInit {
     private userService: UserService, 
     private commentService: CommentService, 
     private likeService: LikesService, 
+    private actionSheetService: ActionSheetService,
     private router:Router,
     private cdr: ChangeDetectorRef
     ) { }
 
-  async ngOnInit(): Promise<void> {
+    
+    async ngOnInit(): Promise<void> {
 
     await this.generatePost();
   }
@@ -242,4 +245,17 @@ export class NoticePageV implements OnInit {
   async toggleComments(post: any): Promise<void> {
     post.showComments = !post.showComments;
   }
+
+
+  // Método para abrir el ActionSheet al hacer clic en compartir
+  presentActionSheet(postUrl: string) {
+    this.actionSheetService.presentActionSheet(postUrl);
+  }
+
+  async sharePost(postId: string) {
+    const postUrl = `https://playezpro-client.netlify.app/post/${postId}`;
+    this.presentActionSheet(postUrl);
+  }
+
+
 }
