@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
-import { ThemeService } from './services/theme.service';
+import { ThemeService } from './services/themeServices/theme.service';
 
 @Component({
   selector: 'app-root',

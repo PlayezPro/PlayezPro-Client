@@ -4,14 +4,14 @@ import { CommonModule } from '@angular/common';
 import {  UsersService } from '../../services/authService/auth.service'
 import { Router } from '@angular/router';
 import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
-
+import { RegisterButtonComponent } from 'src/app/components/ui/register-button/register-button.component';  // Importa el nuevo componente
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, GoogleloginComponent],
+  imports: [CommonModule, ReactiveFormsModule, GoogleloginComponent, RegisterButtonComponent],
 })
 export class RegisterComponent {
   //Validaciones
@@ -59,7 +59,7 @@ export class RegisterComponent {
 
     'phoneNumber': new FormControl('', Validators.required),
 
-    'password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]),
+    'password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$%*?&])[A-Za-z\d@$%*?&]+$/)]),
 
     'repeatPassword': new FormControl('', Validators.required),
 
@@ -109,7 +109,6 @@ export class RegisterComponent {
   AlertMessage = false;
   showSuccessMessage = false;
 
-  
   Create() {
     if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value){
       this.showTermsError = false;
@@ -122,25 +121,31 @@ export class RegisterComponent {
             this.navigateToHome();
           }, 2000);
         },
-        (error: any) => { // Especifica el tipo de 'error' como 'any'
+        error => {
           console.error('Error al crear el usuario', error);
+          this.AlertMessage = true;
+          this.alertMessage = 'Ocurrió un error al crear el usuario. Por favor, inténtalo de nuevo más tarde.';
           setTimeout(() => {
             this.AlertMessage = false;
-        }, 2000);
+          }, 2000);
         }
       );
     } else {
       this.showTermsError = true;
       if (this.formNewUser.hasError('mismatch')) {
-        console.error
+        this.alertMessage = 'Las contraseñas no coinciden.';
+      } else {
+        this.alertMessage = 'Por favor, complete todos los campos correctamente.';
       }
-      this.alertMessage = 'Por favor, complete todos los campos correctamente.';
       this.AlertMessage = true; 
       this.showAlert = true;
       setTimeout(() => {
           this.AlertMessage = false;
       }, 2000);
-      }
-
     }
   }
+
+  onSubmit() {
+    this.Create();
+  }
+}
