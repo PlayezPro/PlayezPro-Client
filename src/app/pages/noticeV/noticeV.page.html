@@ -10,8 +10,8 @@
       <!-- contendor de video -->
       <div class="vid">
         <!-- VIDEO PARA TESTING, ELIMINAR AL PASAR A DESPILEGUE-->
-        <!-- <video #videoPlayer src="../../../assets/videos/1.mp4"></video>  -->
-        <video #videoPlayer [src]="post.file" autoplay loop></video>
+        <video #videoPlayer src="../../../assets/videos/1.mp4"></video> 
+        <!-- <video #videoPlayer [src]="post.file" autoplay loop></video> -->
         <!-- controladores con informacion del reel  -->
         <div class="info">
           <div class="options">
@@ -34,7 +34,7 @@
             <!-- Action Sheet button -->
             <div>
               <ion-button (click)="sharePost(post._id)" class="bg-transparent">
-                <ion-icon fill="clear" name="share-social"></ion-icon>
+                <ion-icon fill="clear" name="share-social" class="bg-transparent"></ion-icon>
               </ion-button>              
             </div>
             <i class="bi bi-three-dots-vertical"></i>

@@ -2,8 +2,11 @@
   <h1 class="text-4xl font-bold text-center">Usuario</h1>
   <form class="space-y-4">
     <div>
-      <label for="name" class="block text-sm font-medium text-gray-700">Nombre:</label>
-      <input type="text" id="name" [(ngModel)]="user.name" name="name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <label for="name" class="block text-sm font-medium text-white">Nombre:</label>
+      <input type="text" id="name" [(ngModel)]="user.name" name="name" class="field input-field">
+      <label class="field">
+        <!-- <input class="input-field" type="text" formControlName="name" placeholder="Nombre"> -->
+      </label>
     </div>
     <div>
       <label for="lastName" class="block text-sm font-medium text-gray-700">Apellidos:</label>
