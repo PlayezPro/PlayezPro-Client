@@ -19,25 +19,39 @@
 @tailwind components;
 @tailwind utilities; 
 
-/* Definición de variables */
-$primary-color: #32332D; // Color primario
-$text-color: #F2F2F2; // Color del texto
-$primary-color-dark: #F2F2F2; // Color primario en modo oscuro
-$text-color-dark: #32332D; // Color del texto en modo oscuro
+
+// Estilos para actionsheet
+ion-action-sheet.custom-action-sheet {
+    --background: #ffffff; /* Fondo blanco */
+    --color: #000000; /* Texto negro */
+    --button-background-hover: #e0e0e0; /* Fondo de botón al pasar el ratón */
+    --button-background-focused: #e0e0e0; /* Fondo de botón al enfocarse */
+    --button-background-activated: #e0e0e0; /* Fondo de botón al activarse */
+    --button-color: #000000; /* Color del texto de los botones */
+    
+  }
+  
+  // /* Definición de variables */
+  // $primary-color: #32332D; // Color primario
+  // $text-color: #F2F2F2; // Color del texto
+  // $primary-color-dark: #F2F2F2; // Color primario en modo oscuro
+  // $text-color-dark: #32332D; // Color del texto en modo oscuro
+
+// //THEMES
+// body {
+//     font-family: Arial, sans-serif;
+//     background-color: $primary-color;
+//     color: $text-color;
+//     display: flex;
+//     // justify-content: center;
+//     // align-items: center;
+//     height: 100vh;
+// }
+
+// .dark-mode {
+//     background-color: $primary-color-dark;
+//     color: $text-color-dark;
+// }
 
 
-//THEMES
-body {
-    font-family: Arial, sans-serif;
-    background-color: $primary-color;
-    color: $text-color;
-    display: flex;
-    // justify-content: center;
-    // align-items: center;
-    height: 100vh;
-}
-
-.dark-mode {
-    background-color: $primary-color-dark;
-    color: $text-color-dark;
-}
+  

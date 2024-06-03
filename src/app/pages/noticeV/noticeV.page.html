@@ -31,11 +31,15 @@
               <i class="bi bi-chat" (click)="setOpen(post, true)"></i>
               <span>{{post.totalLikes}}</span>
             </div>
+            <!-- Action Sheet button -->
             <div>
-              <i class="bi bi-send"></i>
+              <ion-button (click)="sharePost(post._id)" class="bg-transparent">
+                <ion-icon fill="clear" name="share-social"></ion-icon>
+              </ion-button>              
             </div>
             <i class="bi bi-three-dots-vertical"></i>
           </div>
+
           <div class="profile">
             <div class="row">
               <img class="profile-img" src="../../../assets/images/2.jpg">
@@ -74,7 +78,7 @@
                         <div style="display: flex; flex-direction: row; gap: 25px;">
                           <p style="margin-top: 1px;">{{ comment.comments }}</p>
                           <ion-icon color="danger" *ngIf="comment.users_id === getUserId()" name="trash-outline"
-                            (click)="deleteComment(comment._id)"></ion-icon>
+                          (click)="deleteComment(post._id, comment._id)"></ion-icon>
                         </div>
                       </div>
                     </div>

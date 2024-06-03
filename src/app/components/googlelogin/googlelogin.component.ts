@@ -49,7 +49,9 @@ export class GoogleloginComponent  implements OnInit {
   }
     // The signed-in user info.
     const user = result.user;
-    console.log(result.user)
+    const users_id = user.uid
+    localStorage.setItem('users_id', users_id);
+    console.log(users_id)
     // IdP data available using getAdditionalUserInfo(result)
     // ...
   }).catch((error) => {

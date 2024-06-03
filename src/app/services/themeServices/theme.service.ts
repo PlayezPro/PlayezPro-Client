@@ -19,7 +19,7 @@ export class ThemeService {
     this.updateBodyClass(isDarkMode);
   }
 
-  public updateBodyClass(isDarkMode: boolean) {
+  updateBodyClass(isDarkMode: boolean) {
     if (isDarkMode) {
       document.body.classList.add('dark-mode');
     } else {
@@ -27,7 +27,7 @@ export class ThemeService {
     }
   }
 
-  public synchronizeTheme() {
+  synchronizeTheme() {
     const isDarkMode = this.darkMode.value;
     this.updateBodyClass(isDarkMode);
   }
