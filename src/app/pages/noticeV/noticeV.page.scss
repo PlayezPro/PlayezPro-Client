@@ -42,16 +42,16 @@
 .ball {
     width: 36px; /* Ajusta según el tamaño del icono */
     height: 36px; /* Ajusta según el tamaño del icono */
-    mask: url('../../../assets/icon/ball.svg') no-repeat center;
-    -webkit-mask: url('../../../assets/icon/ball.svg') no-repeat center;
+    mask: url('../../../assets/icon/playez.svg') no-repeat center;
+    -webkit-mask: url('../../../assets/icon/playez.svg') no-repeat center;
     background-color: #fff; /* Color cuando no tiene like */
   }
   
   .ball-fill {
     width: 36px; /* Ajusta según el tamaño del icono */
     height: 36px; /* Ajusta según el tamaño del icono */
-    mask: url('../../../assets/icon/ball.svg') no-repeat center;
-    -webkit-mask: url('../../../assets/icon/ball.svg') no-repeat center;
+    mask: url('../../../assets/icon/playez.svg') no-repeat center;
+    -webkit-mask: url('../../../assets/icon/playez.svg') no-repeat center;
     background-color: #e7ff0d; /* Color cuando tiene like */
   }
 
@@ -121,8 +121,8 @@ i.bi {
 .reels_section {
   .reels-container {
       position: relative;
-      width: 100%;
-      max-height: 100%; // Establece una altura máxima para la sección de reels
+      width: 100dvw;
+      max-height: 100dvh; // Establece una altura máxima para la sección de reels
       overflow-y: auto; // Habilita el desplazamiento vertical cuando el contenido excede la altura máxima
       z-index: 1;
 
@@ -161,7 +161,7 @@ i.bi {
       .vid {
           position: relative;
           width: 100%;
-          min-height: 89vh;
+          min-height: 100dvh;
           padding: 1px 1px 0;
           scroll-snap-align: start;
 
@@ -171,12 +171,13 @@ i.bi {
               object-fit: fill;
           }
           .info{
+            position: sticky;
             display: flex;
             flex-direction: column;
           }
           .options {
               position: absolute;
-              bottom: 5px;
+              bottom: 16px;
               right: 0;
               width: auto;
               height: auto;
@@ -193,6 +194,7 @@ i.bi {
                   display: flex;
                   flex-direction: column;
                   margin-bottom: 10px;
+                  align-items: center;
 
                   span {
                       font-size: 13px;
@@ -204,15 +206,15 @@ i.bi {
               }
 
               img, .profile .row img {
-                  width: 40px;
-                  height: 40px;
+                  width: 60px;
+                  height: 60px;
                   border-radius: 50%;
                   margin-top: 10px;
               }
 
               img {
                   border-radius: 10px;
-                  border: 4px solid #fff;
+                //   border: 4px solid #fff;
               }
              
 

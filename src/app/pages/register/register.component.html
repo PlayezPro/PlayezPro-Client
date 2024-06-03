@@ -2,7 +2,7 @@
   <main class="container-main">
   <p id="heading"></p>
     <div>
-      <img src="../../../assets/icon/playez.svg" alt="icono de playez" class="z-logo">
+      <img src="../../../assets/icon/playezLetras.svg" alt="icono de playez" class="z-logo">
     </div>
   
   <form class="form" [formGroup]="formNewUser" (ngSubmit)="Create()">
@@ -83,13 +83,14 @@
       </div>
     </section>
     <!-- Boton submit -->
-    <app-register-button (click)="onSubmit()" [formNewUser]="formNewUser"></app-register-button>
-      
+    <!-- <app-register-button (click)="onSubmit()" [formNewUser]="formNewUser"></app-register-button> -->
+    <app-button-playez (click)="onSubmit()" [formNewUser]="formNewUser" [buttonText]="'entrar'"/>
+    <!-- google registre -->
+    <app-googlelogin></app-googlelogin>  
     <!-- Cuenta existente -->
     <button (click)="navigateToLogin()" class="button3"
     >Ya tengo una cuenta</button>
-    <!-- google registre -->
-    <app-googlelogin></app-googlelogin>
+    
   </form>
 </main>
 </div>
