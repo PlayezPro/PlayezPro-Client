@@ -8,66 +8,47 @@ export class ActionSheetService {
   constructor(private actionSheetController: ActionSheetController) {}
 
   async presentActionSheet(postUrl: string) {
+    const encodedUrl = encodeURIComponent(postUrl);
     const actionSheet = await this.actionSheetController.create({
-      header: 'Options',
+      header: '¡Enseñaselo a todos!',
       buttons: [
         {
-          text: 'Share on Twitter',
+          text: 'Comparte con Twitter',
           icon: 'logo-twitter',
           handler: () => {
-            this.shareOnTwitter(postUrl);
+            window.open(`https://twitter.com/intent/tweet?url=${encodedUrl}`, '_blank');
           }
         },
         {
-          text: 'Share on LinkedIn',
+          text: 'Comparte con LinkedIn',
           icon: 'logo-linkedin',
           handler: () => {
-            this.shareOnLinkedIn(postUrl);
+            window.open(`https://www.linkedin.com/shareArticle?url=${encodedUrl}`, '_blank');
           }
         },
         {
-          text: 'Share on WhatsApp',
+          text: 'Comparte con WhatsApp',
           icon: 'logo-whatsapp',
           handler: () => {
-            this.shareOnWhatsApp(postUrl);
+            window.open(`https://api.whatsapp.com/send?text=${encodedUrl}`, '_blank');
           }
         },
         {
-          text: 'Copy URL',
-          icon: 'link-outline',
+          text: 'Copiar URL',
+          icon: 'copy-outline',
           handler: () => {
-            this.copyToClipboard(postUrl);
+            navigator.clipboard.writeText(postUrl).then(() => {
+              alert('URL copiada a portapapeles');
+            });
           }
         },
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           role: 'cancel',
           icon: 'close',
-          handler: () => {}
         }
       ],
     });
     await actionSheet.present();
-  }
-
-  private shareOnTwitter(url: string) {
-    const twitterUrl = `https://twitter.com/share?url=${encodeURIComponent(url)}`;
-    window.open(twitterUrl, '_blank');
-  }
-
-  private shareOnLinkedIn(url: string) {
-    const linkedInUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
-    window.open(linkedInUrl, '_blank');
-  }
-
-  private shareOnWhatsApp(url: string) {
-    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(url)}`;
-    window.open(whatsappUrl, '_blank');
-  }
-
-  private copyToClipboard(url: string) {
-    navigator.clipboard.writeText(url).then(() => {
-      alert('URL copied to clipboard!');
-    });
   }
 }

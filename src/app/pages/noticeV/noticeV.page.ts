@@ -247,7 +247,12 @@ export class NoticePageV implements OnInit {
     post.showComments = !post.showComments;
   }
 
-
+  changeImage() {
+    this.imageSrc = this.imageSrc === '../../../assets/icon/playezWhite.svg'
+     ? '../../../assets/icon/playez.svg'
+      : '../../../assets/icon/playezWhite.svg';
+  }
+  
   // Método para abrir el ActionSheet al hacer clic en compartir
   presentActionSheet(postUrl: string) {
     this.actionSheetService.presentActionSheet(postUrl);
@@ -256,14 +261,6 @@ export class NoticePageV implements OnInit {
   async sharePost(postId: string) {
     const postUrl = `https://playezpro-client.netlify.app/post/${postId}`;
     this.presentActionSheet(postUrl);
-  }
-
-
-
-  changeImage() {
-    this.imageSrc = this.imageSrc === '../../../assets/icon/playezWhite.svg'
-     ? '../../../assets/icon/playez.svg'
-      : '../../../assets/icon/playezWhite.svg';
   }
   
 }
