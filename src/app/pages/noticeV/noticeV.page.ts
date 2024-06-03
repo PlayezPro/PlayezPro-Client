@@ -45,7 +45,9 @@ export class NoticePageV implements OnInit {
     private cdr: ChangeDetectorRef
     ) { }
 
-  async ngOnInit(): Promise<void> {
+    
+    async ngOnInit(): Promise<void> {
+
     await this.generatePost();
   }
 
@@ -162,6 +164,7 @@ export class NoticePageV implements OnInit {
         post.hasLikes = !post.hasLikes;
         post.totalLikes += post.hasLikes ? 1 : -1;
         this.cdr.detectChanges();
+        this.changeImage(); // Cambia la imagen
       } else {
         console.error('No se puede agregar el like: userId no encontrado en el localStorage');
       }
@@ -250,8 +253,6 @@ export class NoticePageV implements OnInit {
       : '../../../assets/icon/playezWhite.svg';
   }
   
-
-
   // Método para abrir el ActionSheet al hacer clic en compartir
   presentActionSheet(postUrl: string) {
     this.actionSheetService.presentActionSheet(postUrl);
@@ -261,6 +262,5 @@ export class NoticePageV implements OnInit {
     const postUrl = `https://playezpro-client.netlify.app/post/${postId}`;
     this.presentActionSheet(postUrl);
   }
-
-
+  
 }

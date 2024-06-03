@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-button-playez',
@@ -17,4 +18,6 @@ export class ButtonPlayezComponent  implements OnInit {
   @Input() buttonText: string = '';  // Default text
   @Input() iconUrl: string | null = null;  // URL de la imagen
   @Input() svgContent: string | null = null;  // Contenido SVG
+  @Input() formNewUser!: FormGroup; 
+  
 }

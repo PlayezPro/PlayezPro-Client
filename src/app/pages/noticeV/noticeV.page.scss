@@ -121,8 +121,8 @@ i.bi {
 .reels_section {
   .reels-container {
       position: relative;
-      width: 100%;
-      max-height: 100%; // Establece una altura máxima para la sección de reels
+      width: 100dvw;
+      max-height: 100dvh; // Establece una altura máxima para la sección de reels
       overflow-y: auto; // Habilita el desplazamiento vertical cuando el contenido excede la altura máxima
       z-index: 1;
 
