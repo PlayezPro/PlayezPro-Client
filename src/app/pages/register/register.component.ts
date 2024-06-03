@@ -6,13 +6,14 @@ import { Router } from '@angular/router';
 import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
 import { RegisterButtonComponent } from 'src/app/components/ui/register-button/register-button.component';  // Importa el nuevo componente
 import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, GoogleloginComponent, RegisterButtonComponent, ButtonPlayezComponent],
+  imports: [CommonModule, ReactiveFormsModule, GoogleloginComponent, RegisterButtonComponent, ButtonPlayezComponent,  RouterLink],
 })
 export class RegisterComponent {
   //Validaciones

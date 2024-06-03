@@ -10,7 +10,7 @@ export class ActionSheetService {
   async presentActionSheet(postUrl: string) {
     const encodedUrl = encodeURIComponent(postUrl);
     const actionSheet = await this.actionSheetController.create({
-      header: '¡Enseñaselo a todos!',
+      header: '¡Enséñaselo a todos!',
       buttons: [
         {
           text: 'Comparte con Twitter',
