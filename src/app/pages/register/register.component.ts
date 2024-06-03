@@ -5,13 +5,14 @@ import {  UsersService } from '../../services/authService/auth.service'
 import { Router } from '@angular/router';
 import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
 import { RegisterButtonComponent } from 'src/app/components/ui/register-button/register-button.component';  // Importa el nuevo componente
+import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, GoogleloginComponent, RegisterButtonComponent],
+  imports: [CommonModule, ReactiveFormsModule, GoogleloginComponent, RegisterButtonComponent, ButtonPlayezComponent],
 })
 export class RegisterComponent {
   //Validaciones
@@ -47,7 +48,7 @@ export class RegisterComponent {
   }
 
   //Controllers
-  formNewUser = new FormGroup ({
+  'formNewUser' = new FormGroup ({
     
     'name': new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]/)]),
     

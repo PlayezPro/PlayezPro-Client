@@ -121,8 +121,8 @@ i.bi {
 .reels_section {
   .reels-container {
       position: relative;
-      width: 100%;
-      max-height: 100%; // Establece una altura máxima para la sección de reels
+      width: 100dvw;
+      max-height: 100dvh; // Establece una altura máxima para la sección de reels
       overflow-y: auto; // Habilita el desplazamiento vertical cuando el contenido excede la altura máxima
       z-index: 1;
 
@@ -161,7 +161,7 @@ i.bi {
       .vid {
           position: relative;
           width: 100%;
-          min-height: 100vh;
+          min-height: 100dvh;
           padding: 1px 1px 0;
           scroll-snap-align: start;
 
