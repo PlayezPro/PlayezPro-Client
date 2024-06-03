@@ -3,13 +3,11 @@ import { IonicModule } from '@ionic/angular';
 import { PostServiceService } from 'src/app/services/postService/post.service';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import { UserService } from 'src/app/services/userService/user.service';
-import { GoogleloginComponent } from 'src/app/components/googlelogin/googlelogin.component';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { CommentService } from 'src/app/services/commentService/comment.service';
 import { LikesService } from 'src/app/services/likesService/likes.service';
 import { FormsModule } from '@angular/forms';
-import { NgxSpinnerModule } from "ngx-spinner";
 import { LoaderComponent } from 'src/app/components/loader/loader.component';
 import { Router } from '@angular/router';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
@@ -21,7 +19,7 @@ import { ActionSheetService } from 'src/app/services/action-sheet.service';
   templateUrl: './noticeV.page.html',
   styleUrls: ['./noticeV.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, TopbarComponent,  GoogleloginComponent, NgxSpinnerModule, LoaderComponent, BtnFollowComponent]
+  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, TopbarComponent, LoaderComponent, BtnFollowComponent]
 })
 export class NoticePageV implements OnInit {
   userId: string | null = null;
@@ -45,26 +43,10 @@ export class NoticePageV implements OnInit {
     private cdr: ChangeDetectorRef
     ) { }
 
-    
     async ngOnInit(): Promise<void> {
-
     await this.generatePost();
   }
-
-  async ionViewDidEnter() {
-    try {
-      this.isLoading = true; // Activa el loader al entrar en la vista
-      await this.delay(7000); // Espera 9 segundos
-      this.isLoading = false; // Desactiva el loader después de 9 segundos
-    } catch (error) {
-      console.error('Error en ionViewDidEnter:', error);
-    }
-  }
-
-  delay(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
+  
   async generatePost(): Promise<void> {
     try {
       this.isLoading = true; // Iniciar carga
@@ -73,42 +55,45 @@ export class NoticePageV implements OnInit {
       this.isLoadingPosts = new Array(this.posts.length).fill(true); // Inicializar todos los posts como cargando
       const currentUserId = localStorage.getItem('users_id')!;
       console.log(this.posts);
-
+  
       for (let i = 0; i < this.posts.length; i++) {
         const post = this.posts[i];
-
+  
         const totallyLikes = await this.likeService.totalLikes(post._id);
         post.totalLikes = totallyLikes;
-
+  
         const userDetails = await this.userService.getUserById(post.users_id);
         post.userDetails = userDetails;
-
+  
         const postComments = await this.commentService.getCommentsPost(post._id);
         post.allComments = postComments;
-        this.cdr.detectChanges();
-        for (const comments of postComments) {
-          const commentByUser = await this.userService.getUserById(comments.users_id);
-          comments.userComment = commentByUser;
+  
+        // Procesar cada comentario para obtener detalles del usuario
+        for (const comment of postComments) {
+          const commentByUser = await this.userService.getUserById(comment.users_id);
+          comment.userComment = commentByUser;
         }
+  
         post.isModalOpen = false;
-
+  
         const hasLikesResponse = await this.likeService.checkLikes(post._id, currentUserId);
         post.hasLikes = hasLikesResponse;
         this.isLoadingPosts[i] = false; // Marcar el post actual como cargado
         console.log(`Post ID: ${post._id}, isLiked: ${hasLikesResponse}`);
+        
+        // Actualizar la vista después de cargar cada post
+        this.cdr.detectChanges();
       }
-
+  
       // Ordenar los posts por fecha de creación (createdAt) de forma descendente.
       await this.sortPosts();
-
-      // Espera 9 segundos antes de finalizar la carga
-      await this.delay(70000);
+  
       this.isLoading = false; // Finalizar carga
     } catch (error) {
       console.error('Error al obtener los posts:', error);
       this.isLoading = false; // Finalizar carga en caso de error
     }
-  }
+  }  
 
   async sortPosts(): Promise<void> {
     this.posts.sort((a, b) => {

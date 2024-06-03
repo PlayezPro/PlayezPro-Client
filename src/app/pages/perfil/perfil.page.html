@@ -1,13 +1,11 @@
-<app-topbar></app-topbar>
-
+<app-topbar/>
 <ion-content>
   <ion-item>
-    <ion-label>Modo Oscuro</ion-label>
+    <ion-label>Modo Claro</ion-label>
     <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleTheme($event)"></ion-toggle>
   </ion-item>
-  <app-futcard></app-futcard>
+  <app-futcard/>
   <app-create-details/>
   <app-create-skill/>
 </ion-content>
-
-<app-navbar />
+<app-navbar>
