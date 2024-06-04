@@ -12,11 +12,12 @@ import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
   standalone: true,
   imports: [IonicModule, NavbarComponent, FormsModule, NavbarComponent, TopbarComponent]
 })
-export class CreatePostPage implements OnInit{
-
+  export class CreatePostPage implements OnInit{
 
   post: any = {};
   userId: string = '';
+  selectedFile: File | null = null;
+
   constructor(private PostService: PostServiceService ) { }
 
   ngOnInit(): void {
@@ -29,6 +30,12 @@ export class CreatePostPage implements OnInit{
     }
   }
 
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.selectedFile = input.files[0];
+    }
+  }
   async CreatePost() {
     // Asegurarse de que users_id esté presente en el post antes de enviar
     const userId = localStorage.getItem('users_id');
@@ -39,10 +46,16 @@ export class CreatePostPage implements OnInit{
       return; // Salir si no se encuentra users_id
     }
 
+    // Adjuntar el archivo seleccionado al post
+    if (this.selectedFile) {
+      this.post.file = this.selectedFile;
+    }
+
     try {
       await this.PostService.CreatePost(this.post);
       console.log('Post creado exitosamente', this.post);
       this.post = {}; // Limpiar el objeto post después de enviarlo, pero mantener users_id
+      this.selectedFile = null; // Limpiar el archivo seleccionado
     } catch (error) {
       console.error('Error al crear el Post:', error);
     }
