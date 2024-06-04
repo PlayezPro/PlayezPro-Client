@@ -1,0 +1,11 @@
+<div class="container">
+  <div #rendererContainer>
+    <!-- Barra de progreso -->
+    <div *ngIf="isLoading" class="progress-bar-container">
+      <div class="progress-bar" [style.width.%]="progress"></div>
+    </div>
+  </div>
+  <button class="interaction-button" (click)="saludar()">Saludar</button>
+  <button class="interaction-button1" (click)="buscar()">Buscar</button>
+  <button class="interaction-button2" (click)="stopAnimation()">Detener Animación</button>
+</div>

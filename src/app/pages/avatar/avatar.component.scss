@@ -1,0 +1,38 @@
+.progress-bar-container {
+    width: 100%;
+    height: 20px;
+    background-color: #f0f0f0;
+    margin-top: 10px;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: #4caf50;
+    transition: width 4s linear;
+  }
+
+  .container {
+    position: relative;
+  }
+
+  .interaction-button {
+    position: absolute;
+    top: 60px; /* Ajusta la posición vertical */
+    right: 50%; /* Ajusta la posición horizontal */
+    z-index: 1; /* Asegura que el botón esté encima del contenedor */
+    width: auto;
+  }
+  .interaction-button1 {
+    position: absolute;
+    top: 90px; /* Ajusta la posición vertical */
+    right: 70%; /* Ajusta la posición horizontal */
+    z-index: 1; /* Asegura que el botón esté encima del contenedor */
+    width: auto;
+  }
+  .interaction-button2 {
+    position: absolute;
+    top: 90px; /* Ajusta la posición vertical */
+    left: 70%; /* Ajusta la posición horizontal */
+    z-index: 1; /* Asegura que el botón esté encima del contenedor */
+    width: auto;
+  }

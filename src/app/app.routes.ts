@@ -9,12 +9,17 @@ import { RankByGoalComponent } from './pages/rank-by-goal/rank-by-goal.page';
 import { RankByPlayComponent } from './pages/rank-by-play/rank-by-play.page';
 import { RankByDefenseComponent } from './pages/rank-by-defense/rank-by-defense.page';
 import { RankByAssistanceComponent } from './pages/rank-by-assistance/rank-by-assistance.page';
+import { AvatarComponent } from './pages/avatar/avatar.component';
 
 export const routes: Routes = [
   {
     path: '',
     component: LoginComponent
   },  
+  {
+    path: 'trainner',
+    component: AvatarComponent,
+  }, 
   {
     path: 'register',
     component: RegisterComponent,
