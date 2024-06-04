@@ -1,13 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
+import { ButtonPlayezComponent } from '../ui_ux/button-playez/button-playez.component';
+import { IonItem, IonLabel } from "@ionic/angular/standalone";
+import { IonicModule } from '@ionic/angular';
+
+// import "/node_modules/flag-icons/css/flag-icons.min.css";
 
 @Component({
   selector: 'app-setting-details',
   templateUrl: './setting-details.component.html',
   styleUrls: ['./setting-details.component.scss'],
   standalone: true,
-  imports: [FormsModule]
+  imports: [IonLabel, IonItem, FormsModule, ButtonPlayezComponent, IonicModule]
 })
 export class SettingDetailsComponent  implements OnInit {
   userDetails: any = {
