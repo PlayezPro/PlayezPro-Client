@@ -13,8 +13,9 @@ import { LoaderComponent } from 'src/app/components/loader/loader.component';
 import { Router } from '@angular/router';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { BtnFollowComponent } from 'src/app/components/ui_ux/btn-follow/btn-follow.component';
-import { ActionSheetService } from 'src/app/services/action-sheet.service';
-import { fromEvent, tap } from 'rxjs';
+import { ActionSheetService } from 'src/app/services/actionSheetService/action-sheet.service';
+
+
 @Component({
   selector: 'app-noticeV',
   templateUrl: './noticeV.page.html',
