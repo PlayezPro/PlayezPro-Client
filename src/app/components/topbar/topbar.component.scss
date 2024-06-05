@@ -1,32 +1,6 @@
 // Importar el módulo math al principio del archivo
 @use 'sass:math';
 
-// Quitar el fondo de los botones de icono y bordes
-// ion-button.icon-button {
-//     --background: transparent;
-//     --background-activated: transparent;
-//     --background-focused: transparent;
-//     --background-hover: transparent;
-//     --padding-start: 0;
-//     --padding-end: 0;
-//     --border-radius: 0;
-//     --box-shadow: none;
-//     --color: inherit;
-// }
-
-// // Asegurar que los iconos se alineen a la derecha
-// ion-toolbar ion-buttons[slot="end"] {
-//     margin-left: auto;
-//     display: flex;
-//     align-items: center;
-// }
-
-// // Ajustar el tamaño de los iconos si es necesario
-// ion-button.icon-button ion-icon {
-//     font-size: 24px; /* Ajusta el tamaño según tu necesidad */
-//     color: black;
-// }
-
 $nav-links: about, products, media, contact us;
 
 * {
