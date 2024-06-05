@@ -31,6 +31,9 @@
       </ion-select>
     </ion-item>
   </ion-list>
+  <ion-item *ngIf="errorMessage">
+    <ion-label color="danger">{{ errorMessage }}</ion-label>
+  </ion-item>
   <ion-button (click)="createPost()">Guardar</ion-button>
 </ion-content>
 

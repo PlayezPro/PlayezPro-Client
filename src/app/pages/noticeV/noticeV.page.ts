@@ -1,5 +1,6 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { GestureController, GestureDetail } from '@ionic/angular/standalone';
 import { PostServiceService } from 'src/app/services/postService/post.service';
 import { InfiniteScrollCustomEvent } from '@ionic/angular';
 import { UserService } from 'src/app/services/userService/user.service';
@@ -14,6 +15,7 @@ import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { BtnFollowComponent } from 'src/app/components/ui_ux/btn-follow/btn-follow.component';
 import { ActionSheetService } from 'src/app/services/actionSheetService/action-sheet.service';
 
+
 @Component({
   selector: 'app-noticeV',
   templateUrl: './noticeV.page.html',
@@ -21,7 +23,11 @@ import { ActionSheetService } from 'src/app/services/actionSheetService/action-s
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, TopbarComponent, LoaderComponent, BtnFollowComponent]
 })
-export class NoticePageV implements OnInit {
+export class NoticePageV implements OnInit, AfterViewInit {
+  @ViewChild('videoPlayer') videoPlayer!: ElementRef<HTMLVideoElement>;
+  @ViewChild('reelsContainer', {static: true}) reelsContainer!: ElementRef<HTMLDivElement>;
+  
+  // Varibles
   userId: string | null = null;
   comentarioTexto: string = '';
   isModalOpen = false;
@@ -32,6 +38,8 @@ export class NoticePageV implements OnInit {
   isLoading: boolean = true;
   isLoadingPosts: boolean[] = [];
   imageSrc: string = '../../../assets/icon/playezWhite.svg'; // Define la propiedad imageSrc
+  currentIndex = 0;
+  videoUrl: string = ''; // Variable para almacenar la URL del video que viene del controlador de Posts
 
   constructor(
     private postService: PostServiceService,
@@ -40,13 +48,88 @@ export class NoticePageV implements OnInit {
     private likeService: LikesService, 
     private actionSheetService: ActionSheetService,
     private router:Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private gestureCtrl: GestureController
     ) { }
 
     async ngOnInit(): Promise<void> {
     await this.generatePost();
   }
+
+  // Lógica para manejar el reproductor de video
+    ngAfterViewInit() {
+    if (this.reelsContainer && this.reelsContainer.nativeElement){
+      this.initializeReels();
+    }
+  }
+
+  initializeReels() {
+    if (this.reelsContainer) {
+      const gesture = this.gestureCtrl.create({
+        el: this.reelsContainer.nativeElement,
+        gestureName: 'swipe-vertical',
+        onMove: (event) => this.handleSwipe(event),
+        threshold: this.swipeThreshold,
+      });
+      gesture.enable();
+    }
+  }
+
+  //Variables para swipe Gesture
+  private swipeThreshold: number = 500; // Aumenta el umbral de distancia a 500 píxeles
+  private swipeVelocityThreshold: number = 2.0; // Aumenta el umbral de velocidad a 2.0 píxeles/ms
+  private lastSwipeTime: number = 0; // Tiempo del último deslizamiento
+  private swipeCooldown: number = 600; // Milisegundos. Tiempo mínimo entre deslizamientos
+
+  handleSwipe(event: GestureDetail) {
+    const currentTime = new Date().getTime();
+    const timeSinceLastSwipe = currentTime - this.lastSwipeTime;
   
+    if (timeSinceLastSwipe > this.swipeCooldown) {
+      const deltaY = Math.abs(event.deltaY);
+      const velocityY = Math.abs(event.velocityY);
+  
+      if (deltaY > this.swipeThreshold || velocityY > this.swipeVelocityThreshold) {
+        if (event.deltaY > 0) {
+          console.log('Swipe hacia abajo');
+          this.prevStory();
+        } else {
+          console.log('Swipe hacia arriba');
+          this.nextStory();
+        }
+        this.lastSwipeTime = currentTime;
+      }
+    }
+  }
+  
+  nextStory() {
+    if (this.currentIndex < this.posts.length - 1) {
+      this.currentIndex++;
+      this.cdr.detectChanges();
+    }
+  }
+
+  prevStory() {
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
+      this.cdr.detectChanges();
+    }
+  }
+
+  async ionViewDidEnter() {
+    try {
+      this.isLoading = true;
+      await this.delay(7000);
+      this.isLoading = false;
+    } catch (error) {
+      console.error('Error en ionViewDidEnter:', error);
+    }
+  }
+  delay(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+// Generador de Post con los detalles de interacción
   async generatePost(): Promise<void> {
     try {
       this.isLoading = true; // Iniciar carga
@@ -55,10 +138,11 @@ export class NoticePageV implements OnInit {
       this.isLoadingPosts = new Array(this.posts.length).fill(true); // Inicializar todos los posts como cargando
       const currentUserId = localStorage.getItem('users_id')!;
       console.log(this.posts);
-  
+
+      // Detalles de interacciónes
       for (let i = 0; i < this.posts.length; i++) {
         const post = this.posts[i];
-  
+
         const totallyLikes = await this.likeService.totalLikes(post._id);
         post.totalLikes = totallyLikes;
   
@@ -94,7 +178,7 @@ export class NoticePageV implements OnInit {
       this.isLoading = false; // Finalizar carga en caso de error
     }
   }  
-
+  // Función para ordenar los posts
   async sortPosts(): Promise<void> {
     this.posts.sort((a, b) => {
       const dateA = new Date(this.parseDate(a.Created_At));
@@ -103,25 +187,25 @@ export class NoticePageV implements OnInit {
     });
   }
 
+  // Parsear la fecha en el formato "dd-mm-yyyy hh:mm:ss" a "yyyy-mm-dd hh:mm:ss"
   parseDate(dateString: string): string {
-    // Parsear la fecha en el formato "dd-mm-yyyy hh:mm:ss" a "yyyy-mm-dd hh:mm:ss"
     const parts = dateString.split(' ');
     const dateParts = parts[0].split('-');
     return `${dateParts[2]}-${dateParts[1]}-${dateParts[0]} ${parts[1]}`;
   }
-
+  // Infinite Scroll
   async onIonInfinite(ev: any): Promise<void> {
     await this.generatePost();
     setTimeout(() => {
       (ev as InfiniteScrollCustomEvent).target.complete();
     }, 500);
   }
-
+  // Formato Imagen
   isImage(file: string): boolean {
     const isImage = /\.(gif|jpe?g|tiff?|png|webp|bmp)(\?.*)?$/i.test(file);
     return isImage;
   }
-
+  // Refrescador de posts del muro
   async handleRefresh(event: any): Promise<void> {
     try {
       // Llama a generatePost() para actualizar los datos
@@ -138,6 +222,8 @@ export class NoticePageV implements OnInit {
     post.isModalOpen = isOpen;
   }
 
+  // INTERACCIÓNES
+  // Likes
   async addLike(postId: string): Promise<void> {
     this.userId = localStorage.getItem('users_id');
     if (this.userId) {
@@ -159,7 +245,7 @@ export class NoticePageV implements OnInit {
   getUserId(): string | null {
     return localStorage.getItem('users_id');
   }
-
+// Comentarios
   async addComment(postId: string, comentarioTexto: string) {
     if (this.comentarioTexto !== null) {
       this.userId = localStorage.getItem('users_id')!;
@@ -193,7 +279,7 @@ export class NoticePageV implements OnInit {
     }
   }
   
-
+// Eliminar Comentario
   async deleteComment(postId: string, commentId: string) {
     try {
       // Elimina el comentario utilizando el commentId
@@ -218,7 +304,7 @@ export class NoticePageV implements OnInit {
       console.error('Error al eliminar comentario:', error);
     }
   }  
-
+  // Toggle para abrir y cerrar cometnario
   toggleIcon(event: any) {
     const texto = event.target.value || '';
     this.mostrarIcono = event.target.value.trim() !== '';

@@ -5,20 +5,23 @@ import { PostServiceService } from 'src/app/services/postService/post.service';
 import { FormsModule } from '@angular/forms';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { NgIf } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.page.html',
   styleUrls: ['./create-post.page.scss'],
   standalone: true,
-  imports: [IonicModule, NavbarComponent, FormsModule, NavbarComponent, TopbarComponent, NgIf]
+  imports: [IonicModule, NavbarComponent, FormsModule, NavbarComponent, TopbarComponent, NgIf,CommonModule]
 })
 export class CreatePostPage implements OnInit {
 
-
+  errorMessage: string | null = null;
   post: any = {};
   imgSrc: string | undefined;
   imageFile: File | null = null; // Inicializado como null  userId: string = '';
+  selectedFile: File | null = null;
+
   constructor(private PostService: PostServiceService) { }
 
   ngOnInit(): void {
@@ -82,8 +85,9 @@ export class CreatePostPage implements OnInit {
       this.post = { users_id: userId };
       this.imgSrc = undefined;
       this.imageFile = null;
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error al crear el Post:', error);
+      this.errorMessage = error.message || 'Se produjo un error al crear el post';
     }
   }
   

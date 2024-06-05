@@ -33,6 +33,7 @@
     "axios": "^1.6.8",
     "chart.js": "^4.4.3",
     "firebase": "^10.11.1",
+    "flag-icons": "^7.2.3",
     "ionicons": "^7.4.0",
     "jwt-decode": "^4.0.0",
     "ngx-spinner": "^17.0.0",

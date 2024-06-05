@@ -5,8 +5,8 @@
 <app-loader *ngIf="isLoading" />
 
 <section *ngIf="!isLoading" class="section reels_section">
-  <div class="reels-container">
-    <div class="reels_video" *ngFor="let post of posts">
+  <div class="reels-container" #reelsContainer>
+    <div class="reels_video" *ngFor="let post of posts; let i = index" [class.active]="i === currentIndex">
       <!-- contendor de video -->
       <div class="vid">
         <!-- VIDEO PARA TESTING, ELIMINAR AL PASAR A DESPILEGUE-->
@@ -33,11 +33,10 @@
             </div>
             <!-- Action Sheet button -->
             <div>
-              <ion-button (click)="sharePost(post._id)" class="bg-transparent">
-                <ion-icon fill="clear" name="share-social" class="bg-transparent"></ion-icon>
-              </ion-button>              
+              <button (click)="sharePost(post._id)">
+                <img src="../../../assets/icon/share-ball.svg" alt="Ícono de compartir">
+              </button>
             </div>
-            <i class="bi bi-three-dots-vertical"></i>
           </div>
 
           <div class="profile">
