@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services/userService/user.service';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonicModule } from '@ionic/angular';
+import { ButtonPlayezComponent } from '../ui_ux/button-playez/button-playez.component';
 
 @Component({
   selector: 'app-setting-user',
   templateUrl: './setting-user.component.html',
   styleUrls: ['./setting-user.component.scss'],
   standalone: true,
-  imports:[CommonModule, FormsModule,IonContent, IonHeader, IonTitle, IonToolbar],
+  imports:[CommonModule, FormsModule, IonicModule, ButtonPlayezComponent],
   providers: [UserService]
 })
 export class SettingUserComponent  implements OnInit  {

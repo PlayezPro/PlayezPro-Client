@@ -1,38 +1,54 @@
-<div class="container mx-auto">
-  <h1 class="text-4xl font-bold text-center mt-6">Detalles</h1>
-  <form class="max-w-lg mx-auto mt-8" >
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css"
+/>
+
+<div class="main-screen mt-3">
+  <main class="container-main">
+  <h1 class="text-4xl font-bold text-center">Detalles</h1>
+  <form class="grid gap-3">
     <div >
       <label class="block text-sm font-medium text-gray-700">Birth Year</label>
-      <input type="number" [(ngModel)]="userDetails.birthYear" name="birthYear" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+     <!-- <input type="number" [(ngModel)]="userDetails.birthYear" name="birthYear" class="field input-field"> Este es el input traido de los canbios de Jean, no se si recibe el valor en formato date. -->
+      <label for="year" class="block text-sm font-medium text-gray-700">Año de nacimiento:</label>
+      <input [(ngModel)]="userDetails.birthYear" type="date" id="year" name="year" class="field input-field" placeholder="yyyy">
+    </div>
+    <div >
+      <label class="block text-sm font-medium text-gray-700">Nacionalidad</label>
+      <input type="text" [(ngModel)]="userDetails.nationality" name="nationality" class="field input-field">
+      <ion-item>
+        <ion-label>Nacionalidad</ion-label>
+        <ion-select [(ngModel)]="userDetails.nationality">
+          <ion-select-option *ngFor="let nacionalidad of nacionalidades" [value]="nacionalidad.nombre">{{ nacionalidad.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+    <div >
+      <label class="block text-sm font-medium text-gray-700">Equipo Actual</label>
+      <input type="text" [(ngModel)]="userDetails.currentTeam" name="currentTeam" class="field input-field">
     </div>
     <div >
       <label class="block text-sm font-medium text-gray-700">Birth Year</label>
-      <input type="text" [(ngModel)]="userDetails.nationality" name="nationality" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <input type="number" [(ngModel)]="userDetails.dorsal" name="dorsal" class="field input-field">
     </div>
     <div >
-      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
-      <input type="text" [(ngModel)]="userDetails.currentTeam" name="currentTeam" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <label class="block text-sm font-medium text-gray-700">Posición</label>
+      <input type="text" [(ngModel)]="userDetails.favPosition" name="favPosition" class="field input-field">
     </div>
     <div >
-      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
-      <input type="number" [(ngModel)]="userDetails.dorsal" name="dorsal" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <label class="block text-sm font-medium text-gray-700">Pierna Dominante</label>
+      <input type="text" [(ngModel)]="userDetails.mainFoot" name="mainFoot" class="field input-field">
     </div>
     <div >
-      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
-      <input type="text" [(ngModel)]="userDetails.favPosition" name="favPosition" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <label class="block text-sm font-medium text-gray-700">Altura</label>
+      <input type="number" [(ngModel)]="userDetails.weight" name="weight" class="field input-field">
     </div>
     <div >
-      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
-      <input type="text" [(ngModel)]="userDetails.mainFoot" name="mainFoot" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+      <label class="block text-sm font-medium text-gray-700">Peso</label>
+      <input type="text" [(ngModel)]="userDetails.height" name="height" class="field input-field">
     </div>
-    <div >
-      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
-      <input type="text" [(ngModel)]="userDetails.weight" name="weight" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-    </div>
-    <div >
-      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
-      <input type="text" [(ngModel)]="userDetails.height" name="height" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-    </div>
-    <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-6" (click)="updateDetails()">Actualizar</button>
+    <!-- <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 mt-6" (click)="updateDetails()">Actualizar</button> -->
+    <app-button-playez type="submit" (click)="updateDetails()" [buttonText]="'Actualizar'" class="pt-4"/>
   </form>
+  </main>
 </div>
