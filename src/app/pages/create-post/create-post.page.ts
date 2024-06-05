@@ -4,16 +4,18 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { PostServiceService } from 'src/app/services/postService/post.service';
 import { FormsModule } from '@angular/forms';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.page.html',
   styleUrls: ['./create-post.page.scss'],
   standalone: true,
-  imports: [IonicModule, NavbarComponent, FormsModule, NavbarComponent, TopbarComponent]
+  imports: [IonicModule, NavbarComponent, FormsModule, NavbarComponent, TopbarComponent,CommonModule]
 })
-  export class CreatePostPage implements OnInit{
+export class CreatePostPage implements OnInit{
 
+  errorMessage: string | null = null;
   post: any = {};
   userId: string = '';
   selectedFile: File | null = null;
@@ -38,6 +40,7 @@ import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
   }
   async CreatePost() {
     // Asegurarse de que users_id esté presente en el post antes de enviar
+    this.errorMessage = null;
     const userId = localStorage.getItem('users_id');
     if (userId) {
       this.post.users_id = userId;
@@ -53,11 +56,12 @@ import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 
     try {
       await this.PostService.CreatePost(this.post);
-      console.log('Post creado exitosamente', this.post);
-      this.post = {}; // Limpiar el objeto post después de enviarlo, pero mantener users_id
+      console.log('info enviada al srvidor', this.post);
+       // Limpiar el objeto post después de enviarlo, pero mantener users_id
       this.selectedFile = null; // Limpiar el archivo seleccionado
-    } catch (error) {
+    } catch (error:any) {
       console.error('Error al crear el Post:', error);
+      this.errorMessage = error.message || 'Se produjo un error al crear el post';
     }
   }
 }
