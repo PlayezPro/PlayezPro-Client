@@ -76,7 +76,7 @@ $nav-links: about, products, media, contact us;
       position: absolute;
       width: 50px;
       transform: translateX(-50%);
-      z-index: 1;
+      z-index: 4000;
     }
   }
 }
@@ -101,7 +101,7 @@ $nav-links: about, products, media, contact us;
     top: 60px;
     left: 0;
     width: 100%;
-    z-index: 9;
+    z-index: 4000;
     // Dark overlay on open nav
     &::before {
       background: rgba(0, 0, 0, .5);
