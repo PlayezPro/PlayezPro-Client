@@ -11,7 +11,7 @@
       <label class="block text-sm font-medium text-gray-700">Birth Year</label>
 
       <label for="year" class="block text-sm font-medium text-gray-700">Año de nacimiento:</label>
-      <input [(ngModel)]="userDetails.birthYear" type="date" id="year" name="year" class="field input-field" placeholder="yyyy">
+      <input [value]="userDetails.birthYear | date:'yyyy-MM-dd'" type="text" id="year" name="year" class="field input-field" placeholder="yyyy-MM-dd">
     </div>
     <div >
       <label class="block text-sm font-medium text-gray-700">Nacionalidad</label>
