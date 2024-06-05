@@ -4,6 +4,7 @@ import { DetailUsersService } from 'src/app/services/detailService/detail-users.
 import { ButtonPlayezComponent } from '../ui_ux/button-playez/button-playez.component';
 import { IonItem, IonLabel } from "@ionic/angular/standalone";
 import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
 
 // import "/node_modules/flag-icons/css/flag-icons.min.css";
 
@@ -12,7 +13,7 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './setting-details.component.html',
   styleUrls: ['./setting-details.component.scss'],
   standalone: true,
-  imports: [IonLabel, IonItem, FormsModule, ButtonPlayezComponent, IonicModule]
+  imports: [IonLabel, IonItem, FormsModule, ButtonPlayezComponent, IonicModule, CommonModule]
 })
 export class SettingDetailsComponent  implements OnInit {
   userDetails: any = {
