@@ -1,13 +1,17 @@
-<app-topbar></app-topbar>
-
 <ion-content [fullscreen]="true">
   <ion-list>
     <ion-item no-lines>
       <input type="hidden" [(ngModel)]="post.users_id">
     </ion-item>
+
+    <!-- Muestra la imagen capturada si existe -->
+    <ion-avatar *ngIf="imgSrc" slot="start">
+      <img [src]="imgSrc" alt="Imagen del producto">
+    </ion-avatar>
+
     <ion-item>
       <ion-label position="stacked">Contenido</ion-label>
-      <ion-input type="file" [(ngModel)]="post.file" placeholder="URL de tu imagen" autofocus></ion-input>
+      <ion-button (click)="takeImage()">Selecciona tu imagen</ion-button>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Título</ion-label>
@@ -27,13 +31,7 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-button (click)="CreatePost()">Guardar</ion-button>
+  <ion-button (click)="createPost()">Guardar</ion-button>
 </ion-content>
 
 <app-navbar></app-navbar>
-
-
- <!-- <ion-item>
-      <ion-label position="stacked">User</ion-label>
-      <ion-input type="text" [(ngModel)]="post.users_id" placeholder="User" autofocus></ion-input>
-    </ion-item> -->
