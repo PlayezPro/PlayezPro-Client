@@ -15,21 +15,16 @@
 }
 
 .loading-spinner {
-  /* Hace que el div que contiene el spinner ocupe todo el espacio disponible */
+
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-  /* Utiliza flexbox para centrar el contenido tanto horizontal como verticalmente */
-  display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  
-  /* Aplica un fondo semitransparente para resaltar el spinner */
+   display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.5);
-  
-  /* Opcional: añade un z-index alto para que esté por encima del contenido */
   z-index: 2000;
 }
 
@@ -38,16 +33,16 @@
 }
 
 .ball {
-  width: 36px; /* Ajusta según el tamaño del icono */
-  height: 36px; /* Ajusta según el tamaño del icono */
+  width: 24px; /* Ajusta según el tamaño del icono */
+  height: 24px; /* Ajusta según el tamaño del icono */
   mask: url('../../../assets/icon/playez.svg') no-repeat center;
   -webkit-mask: url('../../../assets/icon/playez.svg') no-repeat center;
   background-color: #fff; /* Color cuando no tiene like */
 }
 
 .ball-fill {
-  width: 36px; /* Ajusta según el tamaño del icono */
-  height: 36px; /* Ajusta según el tamaño del icono */
+  width: 24px; /* Ajusta según el tamaño del icono */
+  height: 24px; /* Ajusta según el tamaño del icono */
   mask: url('../../../assets/icon/playez.svg') no-repeat center;
   -webkit-mask: url('../../../assets/icon/playez.svg') no-repeat center;
   background-color: #e7ff0d; /* Color cuando tiene like */
@@ -502,7 +497,7 @@ i.bi {
 
           i {
             margin: 0 0 0 10px;
-            font-size: 25px;
+            font-size: 30px;
             opacity: .7;
             cursor: pointer;
           }
