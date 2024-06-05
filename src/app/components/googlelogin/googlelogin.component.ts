@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from "firebase/analytics";
 import { getAuth, signInWithPopup, GoogleAuthProvider,  } from "firebase/auth";
 import { IonicModule } from '@ionic/angular';
 import { ButtonPlayezComponent } from '../ui_ux/button-playez/button-playez.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-googlelogin',
@@ -26,9 +26,13 @@ export class GoogleloginComponent  implements OnInit {
    app = initializeApp(this.firebaseConfig);
   //  analytics = getAnalytics(this.app);
    auth = getAuth();
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {}
+
+  navigateToHome() { //Ruta hacia Registro en el botón
+    this.router.navigate(["/home"])
+  }
   
   Google(){
     const provider = new GoogleAuthProvider();
@@ -36,6 +40,7 @@ export class GoogleloginComponent  implements OnInit {
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
+    console.log(credential)
     if (credential) {
       // Si se obtienen las credenciales, obtener el token de acceso
       const token = credential.accessToken;
@@ -52,6 +57,7 @@ export class GoogleloginComponent  implements OnInit {
     const users_id = user.uid
     localStorage.setItem('users_id', users_id);
     console.log(users_id)
+    this.navigateToHome()
     // IdP data available using getAdditionalUserInfo(result)
     // ...
   }).catch((error) => {

@@ -28,7 +28,10 @@ export class SettingDetailsComponent  implements OnInit {
   };
   userId: string | null = null;
 
-  constructor(private detailService: DetailUsersService) { }
+  constructor(private detailService: DetailUsersService) {
+    this.userDetails.birthYear = new Date().toISOString().slice(0, 10);
+  }
+
 
   ngOnInit(): void {
     const userId = localStorage.getItem('users_id');
