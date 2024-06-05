@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SkillService } from 'src/app/services/skillService/skill.service';
+import { ButtonPlayezComponent } from '../ui_ux/button-playez/button-playez.component';
 
 @Component({
   selector: 'app-setting-skill',
   templateUrl: './setting-skill.component.html',
   styleUrls: ['./setting-skill.component.scss'],
   standalone: true,
-  imports: [FormsModule]
+  imports: [FormsModule, ButtonPlayezComponent]
 })
 export class SettingSkillComponent implements OnInit {
   userSkill: any = {

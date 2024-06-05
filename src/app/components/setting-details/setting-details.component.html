@@ -9,26 +9,20 @@
   <form class="grid gap-3">
     <div >
       <label class="block text-sm font-medium text-gray-700">Birth Year</label>
-     <!-- <input type="number" [(ngModel)]="userDetails.birthYear" name="birthYear" class="field input-field"> Este es el input traido de los canbios de Jean, no se si recibe el valor en formato date. -->
+
       <label for="year" class="block text-sm font-medium text-gray-700">Año de nacimiento:</label>
       <input [(ngModel)]="userDetails.birthYear" type="date" id="year" name="year" class="field input-field" placeholder="yyyy">
     </div>
     <div >
       <label class="block text-sm font-medium text-gray-700">Nacionalidad</label>
       <input type="text" [(ngModel)]="userDetails.nationality" name="nationality" class="field input-field">
-      <!-- <ion-item>
-        <ion-label>Nacionalidad</ion-label>
-        <ion-select [(ngModel)]="userDetails.nationality">
-          <ion-select-option *ngFor="let nacionalidad of nacionalidades" [value]="nacionalidad.nombre">{{ nacionalidad.nombre }}</ion-select-option>
-        </ion-select>
-      </ion-item> -->
     </div>
     <div >
       <label class="block text-sm font-medium text-gray-700">Equipo Actual</label>
       <input type="text" [(ngModel)]="userDetails.currentTeam" name="currentTeam" class="field input-field">
     </div>
     <div >
-      <label class="block text-sm font-medium text-gray-700">Birth Year</label>
+      <label class="block text-sm font-medium text-gray-700">Dorsal</label>
       <input type="number" [(ngModel)]="userDetails.dorsal" name="dorsal" class="field input-field">
     </div>
     <div >
