@@ -8,11 +8,11 @@
     <form class="form" [formGroup]="formNewUser" (ngSubmit)="Create()">
 
       <!-- Campo Oculto -->
-      <section class="mx-auto max-w-md mb-4 lg:mb-6" style="display: none">
+      <!-- <section class="mx-auto max-w-md mb-4 lg:mb-6" style="display: none">
         <label class="input input-bordered flex items-center gap-4">
             <input type="text" formControlName="hiddenField">
         </label>
-      </section>
+      </section> -->
       <!-- Nombre de Usuario -->
       <section>
         <label class="field">
@@ -93,7 +93,7 @@
       </section>
       <!-- Boton submit -->
       <div class="button-display">
-        <app-button-playez  (click)="onSubmit()" [formNewUser]="formNewUser" [buttonText]="'entrar'" />
+        <app-button-playez  (click)="onSubmit()" [formNewUser]="formNewUser" [buttonText]="'Registrar'" />
         <!-- Google registre -->
         <app-googlelogin></app-googlelogin>
         <!-- Cuenta existente -->
