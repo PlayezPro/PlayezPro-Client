@@ -74,7 +74,7 @@ i.bi{
     width: 100%;
     background: transparent;
     color: #fff;
-    z-index: 99999;
+    z-index: 2000;
 }
 .reels_section .reels-container .head-part h4{
     letter-spacing: .5px;
@@ -109,7 +109,7 @@ i.bi{
     background: transparent;
     color: #fff;
     padding: 5px 10px;
-    z-index: 999999;
+    z-index: 2001;
 }
 .reels_section .reels-container .vid .options div{
     display: flex;
@@ -148,7 +148,7 @@ i.bi{
     height: 70%;
     margin: 0 2px;
     overflow-y: auto;
-    z-index: 999999;
+    z-index: 2002;
 }
 .reels_section .reels-container .vid .comment_counter.active{
     overflow-y: unset;
