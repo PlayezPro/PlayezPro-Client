@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { NgIf } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { AlertController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-create-post',
@@ -17,12 +19,15 @@ import { CommonModule } from '@angular/common';
 export class CreatePostPage implements OnInit {
 
   errorMessage: string | null = null;
+  showAlert:boolean=false;
   post: any = {};
   imgSrc: string | undefined;
   imageFile: File | null = null; // Inicializado como null  userId: string = '';
   selectedFile: File | null = null;
 
-  constructor(private PostService: PostServiceService) { }
+  errorin:string |null=null;
+  aviso:boolean = true ;
+  constructor(private PostService: PostServiceService,private alertController: AlertController) { }
 
   ngOnInit(): void {
     // Recuperar el users_id del localStorage
@@ -33,6 +38,7 @@ export class CreatePostPage implements OnInit {
     } else {
       console.error('users_id no encontrado en localStorage');
     }
+    this.showAviso();
   }
 
   async takeImage() {
@@ -61,6 +67,7 @@ export class CreatePostPage implements OnInit {
   }
 
   async createPost() {
+    this.errorMessage = null;
     const userId = localStorage.getItem('users_id');
     if (!userId) {
       console.error('users_id no encontrado en localStorage');
@@ -91,7 +98,49 @@ export class CreatePostPage implements OnInit {
     }
   }
   
-  
-  
-}
 
+  // async CreatePost() {
+  //   try {
+  //     this.errorMessage = null;
+  //     const userId = localStorage.getItem('users_id');
+  //     if (!userId) {
+  //       console.error('users_id no encontrado en localStorage');
+  //       return;
+  //     } else {
+  //       this.post.users_id = userId;
+  //     }
+  
+  //     const response = await this.PostService.CreatePost(this.post);
+  //     console.log('info enviada al servidor', this.post);
+  
+  //     if (response && response.data) {
+  //       // Si la respuesta es correcta, continuar con el flujo normal
+  //       console.log('Respuesta del servidor:', response.data);
+  //     }
+      
+  //   } catch (error: any) {
+  //     if (error.response && error.response.data && error.response.data.message) {
+  //       this.errorMessage = error.response.data.message;
+  //     }
+  //   }
+  // }
+
+  async showAviso() {
+    const alert = await this.alertController.create({
+      header: 'Aviso',
+      message: 'El archivo debe tener un formato de video, y pesar menos de 20Mb',
+      buttons: [{
+        text: 'Aceptar',
+        handler: () => {
+          this.closeAviso();
+        }
+      }]
+    });
+
+    await alert.present();
+  }
+
+  closeAviso(){
+    this.aviso = false;
+  }
+}
