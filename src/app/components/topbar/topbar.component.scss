@@ -1,209 +1,60 @@
-// Importar el módulo math al principio del archivo
-@use 'sass:math';
-
-$nav-links: about, products, media, contact us;
-
-* {
-  box-sizing: border-box;
-}
-
-// html,
-// body {
-//   height: 100%;
+/* Footer section for all section */
+// footer{
+//   position: absolute;
+//   left: 0;
+//   bottom: 0;
+//   // background: #252525;
+//   display: flex;
+//   justify-content: space-evenly;
+//   align-items: center;
 //   width: 100%;
+//   height: 50px;
+//   padding: 5px;
+//   user-select: none;
+//   z-index: 1000;
+// }
+// footer i.bi, footer img{
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   font-size: 1.3rem;
+//   color: #fff;
+//   padding: 10px;
+//   border-radius: 50%;
+//   cursor: pointer;
+//   transition: .3s ease;
+// }
+// footer img{
+//   width: 50px;
+//   height: 50px;
+// }
+// footer i.bi:hover{
+//   background: #333;
 // }
 
-// body {
-//   background: #404040;
-//   display: table;
+ion-button.icon-button {
+  --background: transparent;
+  --background-activated: transparent;
+  --background-focused: transparent;
+  --background-hover: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-radius: 0;
+  --box-shadow: none;
+  --color: inherit;
+}
+
+/* Quitar el fondo de los botones de icono y bordes /
+
+/ Asegurar que los iconos se alineen a la derecha /
+ion-toolbar ion-buttons[slot="end"] {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+/ Ajustar el tamaño de los iconos si es necesario /
+ion-button.icon-button ion-icon {
+  font-size: 24px; / Ajusta el tamaño según tu necesidad */
+//   color: black;
 // }
-
-// a {
-//   text-decoration: none;
-// }
-
-// Mobile mockup design
-.mobile-wrapper {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-  .mobile-container {
-    background: #24272c;
-    border: 20px solid #666;
-    border-bottom-width: 80px;
-    border-radius: 20px;
-    box-shadow: 0 0 10px 10px rgba(0, 0, 0, .1);
-    display: inline-block;
-    height: 520px;
-    margin: 0 30px;
-    position: relative;
-    width: 320px;
-   
-    &::before {
-      background: #555;
-      border: 2px solid #4a4a4a;
-      border-radius: 50%;
-      bottom: -67px;
-      content: '';
-      display: block;
-      height: 50px;
-      left: 50%;
-      position: absolute;
-      width: 50px;
-      transform: translateX(-50%);
-      z-index: 4000;
-    }
-  }
-}
-
-// Inner mobile canvas
-.content {
-  background: #24272c;
-  display: block;
-  height: 100%;
-  overflow: hidden;
-  width: 100%;
-  nav {
-    background: #24272c;
-    border-bottom: 1px solid #e7ff0c;
-    height: 60px;
-    // position: relative;
-  }
-
-  .nav-links {
-    display: block;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    z-index: 4000;
-    // Dark overlay on open nav
-    &::before {
-      background: rgba(0, 0, 0, .5);
-      content: '';
-      height: 100vh;
-      left: 0;
-      top: 0;
-      position: absolute;
-      opacity: 0;
-      visibility: hidden;
-      width: 100%;
-      transition: all .3s;
-    }
-    li {
-      border-bottom: 1px solid #ddd;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-20px);
-      transition: all .3s;
-      a {
-        background: #373737;
-        color: #e7ff0c;
-        display: block;
-        font-size: 18px;
-        font-weight: 700;
-        padding: 12px 20px;
-        text-align: left;
-        width: 100%;
-        transition: all .3s;
-        &:hover {
-          color: #e7ff0c;
-        }
-      }
-    }
-  }
-}
-
-// Hidden checkbox to trigger mobile nav
-input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-  visibility: hidden;
-  // Nav open styling - achieved with ':checked' selector
-  &:checked + label {
-    border: 4px solid silver;
-    border-radius: 50%;
-    height: 28px;
-    top: 16px;
-    left: 18px;
-    width: 28px;
-    transform: rotate(-135deg);
-    &::before {
-      background: silver;
-      top: 8px;
-      left: 4px;
-      width: 12px;
-    }
-    &::after {
-      background: silver;
-      opacity: 1;
-      top: 8px;
-      left: 4px;
-      visibility: visible;
-      width: 12px;
-    }
-    &:hover {
-      border-color: #e7ff0c;
-      &::before,
-      &::after {
-        background: #e7ff0c;
-      }
-    }
-  }
-  &:checked ~ .nav-links {
-    &::before {
-      opacity: 1;
-      visibility: visible;
-    }
-    li {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-
-      @for $i from 1 through length($nav-links) {
-        &:nth-child(#{$i}) {
-          transition-delay: math.div($i - 1, 10)s;
-        }
-      }
-    }
-  }
-}
-
-// Styling of the linked label element
-label {
-  background: none transparent;
-  border: 4px solid #e7ff0c;
-  border-left: 0 solid transparent;
-  border-right: 0 solid transparent;
-  cursor: pointer;
-  display: block;
-  height: 24px;
-  position: absolute;
-  top: 18px;
-  left: 20px;
-  width: 24px;
-  transition: all .2s;
-  &::before {
-    background: #e7ff0c;
-    content: '';
-    height: 4px;
-    left: 0;
-    position: absolute;
-    top: 6px;
-    width: 24px;
-    transition: all .2s;
-  }
-  &::after {
-    background: #e7ff0c;
-    content: '';
-    height: 4px;
-    left: 0;
-    position: absolute;
-    top: 6px;
-    opacity: 0;
-    visibility: hidden;
-    width: 100%;
-    transform: rotate(90deg);
-    transition: all .2s;
-  }
-}
