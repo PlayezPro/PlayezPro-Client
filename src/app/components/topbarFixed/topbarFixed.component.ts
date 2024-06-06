@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { IonButton, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/angular/standalone';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -10,12 +10,19 @@ import { IonicModule } from '@ionic/angular';
   standalone:true,
   imports: [IonicModule, RouterLink]
 })
+
 export class TopbarComponent  implements OnInit {
 
-  constructor() { }
-
+  constructor(private Router: Router) { }
   ngOnInit() {
     this.initializeHamburgerMenu();
+  }
+
+  onClickLogout(){
+    localStorage.removeItem('Token');
+    localStorage.removeItem('users_id');
+    localStorage.removeItem('dark-mode');
+    this.Router.navigate(['/'])
   }
 
   initializeHamburgerMenu() {

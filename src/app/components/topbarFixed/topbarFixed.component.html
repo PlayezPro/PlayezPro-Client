@@ -21,11 +21,11 @@
       </button>
   </div>
   <div
-      class="toggle hidden w-full md:w-auto md:flex text-right text-bold mt-5 md:mt-0 border-t-2 border-blue-900 md:border-none">
+      class="toggle hidden w-full md:w-auto md:flex text-right text-bold mt-5 md:mt-0 border-t-2 border-playez-500 md:border-none">
       <a href="#"
-          class="block md:inline-block text-blue-900 hover:text-blue-500 px-3 py-3 border-b-2 border-blue-900 md:border-none">Home
+          class="block md:inline-block text-playez-500 hover:text-playez-200 px-3 py-3 border-b-2 border-playez-500 md:border-none"[routerLink]="'/setting'">Ajustes
       </a>
-      <a href="#"
+      <!-- <a href="#"
           class="block md:inline-block text-blue-900 hover:text-blue-500 px-3 py-3 border-b-2 border-blue-900 md:border-none">Products
       </a>
       <a href="#"
@@ -33,12 +33,9 @@
       </a>
       <a href="#"
           class="block md:inline-block text-blue-900 hover:text-blue-500 px-3 py-3 border-b-2 border-blue-900 md:border-none">Contact
-      </a>
+      </a> -->
   </div>
   <a href="#"
-      class="toggle hidden md:flex w-full md:w-auto px-4 py-2 text-right bg-blue-900 hover:bg-blue-500 text-white md:rounded">Create
-      Account
-
-  </a>
+      class="toggle hidden md:flex w-full md:w-auto px-4 py-2 text-right  text-playez-500 hover:text-playez-200  md:rounded"(click)="onClickLogout()">Salir</a>
 </nav>
 
