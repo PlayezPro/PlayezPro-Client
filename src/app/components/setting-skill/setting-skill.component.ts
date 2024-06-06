@@ -19,7 +19,8 @@ export class SettingSkillComponent implements OnInit {
     defense: '',
     physical: '',
   }
-  users_id: string | null = null
+  users_id: string | null = null;
+  
   constructor(private skillService: SkillService) { }
 
   ngOnInit(): void {
@@ -41,19 +42,21 @@ export class SettingSkillComponent implements OnInit {
       console.error('User ID not found in local storage');
     }
   }
-  
 
   async updateSkills() {
     if (this.userSkill && this.userSkill._id) {
       try {
-        const updateSkill = await this.skillService.updateUserSkill(this.userSkill._id, this.userSkill)
-        console.log('skill updates successfully', updateSkill)
+        console.log('Updating skills with:', this.userSkill);
+        const updateSkill = await this.skillService.updateUserSkill(this.userSkill._id, this.userSkill);
+        console.log('Skill updated successfully', updateSkill);
+        // Actualizar los datos de userSkill después de la actualización
+        this.userSkill = { ...this.userSkill, ...updateSkill };
+        console.log(this.userSkill)
       } catch (error) {
-        console.error('error updating user skills', error)
+        console.error('Error updating user skills', error);
       }
     } else {
-      console.error('no user skill found or user skill dont have _id')
+      console.error('No user skill found or user skill does not have _id');
     }
   }
-
 }
