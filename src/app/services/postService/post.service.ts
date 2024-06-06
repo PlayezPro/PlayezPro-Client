@@ -5,8 +5,8 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   providedIn: 'root'
 })
 export class PostServiceService {
-  private apiUrl: string = 'https://playezpro-server.onrender.com/posts'
-  // private apiUrl: string = 'http://localhost:3000/posts/'
+  // private apiUrl: string = 'https://playezpro-server.onrender.com/posts'
+  private apiUrl: string = 'http://localhost:3000/posts/'
 
   constructor() { }
 
@@ -52,9 +52,8 @@ export class PostServiceService {
           return response.data;
         } catch (error:any) {
           if (error.response) {
-            // El servidor devolvió un código de estado diferente de 2xx
-            console.error('Error en la respuesta del servidor:', error.response.data);
-            throw new Error(error.response.data.message); // Lanza un error con el mensaje del servidor
+            console.log(error.response)
+          return error          
           }
         }
       };

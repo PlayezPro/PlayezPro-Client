@@ -20,62 +20,42 @@ export class RegisterComponent {
   //Getters
   
   get name () {
-    return this.formNewUser.get('name') as FormControl
-  } 
-  
+    return this.formNewUser.get('name') as FormControl } 
   get lastName () {
-    return this.formNewUser.get('lastName') as FormControl
-  }
+    return this.formNewUser.get('lastName') as FormControl }
   get userName () {
-    return this.formNewUser.get('userName') as FormControl
-  }
-
+    return this.formNewUser.get('userName') as FormControl }
   get email () {
-    return this.formNewUser.get('email') as FormControl
-  }
+    return this.formNewUser.get('email') as FormControl }
   get phoneNumber () {
-    return this.formNewUser.get('phoneNumber') as FormControl
-  }
+    return this.formNewUser.get('phoneNumber') as FormControl }
   get password () {
-    return this.formNewUser.get('password') as FormControl
-  }
-
+    return this.formNewUser.get('password') as FormControl }
   get repeatPassword () {
-    return this.formNewUser.get('repeatPassword') as FormControl
-  }
-
+    return this.formNewUser.get('repeatPassword') as FormControl }
   get terms () {
-    return this.formNewUser.get('terms') as FormControl
-  }
+    return this.formNewUser.get('terms') as FormControl }
 
   //Controllers
   'formNewUser' = new FormGroup ({
     
     'name': new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]/)]),
-    
     'lastName': new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0-9]+$/)]),
-
     'userName': new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z0-9]/)]),
-    
     'email': new FormControl('', [Validators.required, Validators.email]),
-
     'phoneNumber': new FormControl('', Validators.required),
-
     'password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$%*?&])[A-Za-z\d@$%*?&]+$/)]),
-
     'repeatPassword': new FormControl('', Validators.required),
-
-    'terms': new FormControl(false)
+    'terms': new FormControl(false),
+    'hiddenField': new FormControl('')
   }, { validators: this.passwordMatchValidator });
 
     
 
-  //Funcion personalizada contraseña
+  //Funcion personalizada, comprobación repetir contraseña
   passwordMatchValidator(control:AbstractControl){
     const password = control.get('password')?.value;
-
     const repeatPassword = control.get('repeatPassword')?.value;
-
     if (password === repeatPassword) {
       return null
     } else {
@@ -83,6 +63,7 @@ export class RegisterComponent {
     }
   }
 
+  // Función personalizada, comprobación de campos rellenos
   areAllFieldsFilled(): boolean {
     const formValues = this.formNewUser.value as { [key: string]: string | null };
     for (const key in formValues) {
@@ -97,19 +78,29 @@ export class RegisterComponent {
   }
 
   constructor (private userService: UsersService, private router: Router ) {} 
-
   navigateToLogin() {
     this.router.navigate([""])
   }
   navigateToHome() {
     this.router.navigate(["/home"])
   }
-
+  // Alertas
   showTermsError = false;
   showAlert = false;
   alertMessage: string = '';
   AlertMessage = false;
   showSuccessMessage = false;
+
+  //Alerta campos ocultos
+  ngOnInit(): void {
+    // Agrega un evento de detección de cambios en el campo oculto
+    this.formNewUser.get('hiddenField')?.valueChanges.subscribe(value => {
+      if (value !== '') {
+        this.alertMessage = 'Intento de relleno automatizado. Bloqueando acceso.';
+        this.showAlert = true;
+      }
+    });
+    }
 
   Create() {
     if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value){

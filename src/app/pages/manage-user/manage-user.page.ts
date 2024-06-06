@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { ActivatedRoute } from '@angular/router';
 import { FutcardComponent } from 'src/app/components/futcard/futcard.component';
-import { SkillsGraphicsComponent } from 'src/app/components/graphics/skills-graphics/skills-graphics.component';
+import { SkillsGraphicsComponent } from 'src/app/components/skills-graphics/skills-graphics.component';
 import { UserPostsComponent } from 'src/app/components/userPosts/user-posts/user-posts.component';
 
 @Component({

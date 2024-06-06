@@ -6,8 +6,14 @@
     </div>
 
     <form class="form" [formGroup]="formNewUser" (ngSubmit)="Create()">
-      
-      <!-- //Nombre de Usuario -->
+
+      <!-- Campo Oculto -->
+      <section class="mx-auto max-w-md mb-4 lg:mb-6" style="display: none">
+        <label class="input input-bordered flex items-center gap-4">
+            <input type="text" formControlName="hiddenField">
+        </label>
+      </section>
+      <!-- Nombre de Usuario -->
       <section>
         <label class="field">
           <input class="input-field" type="text" formControlName="userName" placeholder="Usuario" />
@@ -16,7 +22,7 @@
           <span *ngIf="userName.errors?.['required']">El nombre de usuario es obligatorio</span>
         </div>
       </section>
-      <!-- //Nombre -->
+      <!-- Nombre -->
       <section>
         <label class="field">
           <input class="input-field" type="text" formControlName="name" placeholder="Nombre">
@@ -24,7 +30,7 @@
         <div *ngIf="name.invalid && (name.dirty || name.touched)" class="text-red-500">
         </div>
       </section>
-      <!-- //Apellido -->
+      <!-- Apellido -->
       <section>
         <label class="field">
           <input class="input-field" type="text" formControlName="lastName" placeholder="Apellidos">
@@ -32,7 +38,7 @@
         <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="text-red-500">
         </div>
       </section>
-      <!-- //email -->
+      <!-- Email -->
       <section>
         <label class="field">
           <input class="input-field" type="email" formControlName="email" placeholder="Correo">
@@ -42,7 +48,7 @@
           <span *ngIf="email.errors?.['email']">El email debe tener un formato válido</span>
         </div>
       </section>
-      <!-- //telefono -->
+      <!-- Telefono -->
       <section>
         <label class="field">
           <input class="input-field" type="number" formControlName="phoneNumber" placeholder="Número movil">
@@ -51,7 +57,7 @@
           <span *ngIf="phoneNumber.errors?.['required']">Por favor introduce tu número</span>
         </div>
       </section>
-      <!-- //Contraseña -->
+      <!-- Contraseña -->
       <section>
         <label class="field">
           <input class="input-field" type="password" formControlName="password" placeholder="Contraseña">
@@ -63,7 +69,7 @@
             carácteres especiales</span>
         </div>
       </section>
-      <!-- //Repetir contraseña -->
+      <!-- Repetir contraseña -->
       <section>
         <label class="field">
           <input class="input-field" type="password" formControlName="repeatPassword"
@@ -73,7 +79,7 @@
           <span *ngIf="repeatPassword.errors?.['required']">Las contraseñas deben coincidir</span>
         </div>
       </section>
-      <!-- //Terminos & condiciones  -->
+      <!-- Terminos & condiciones  -->
       <section>
         <div class="flex flex-col items-center justify-center p-3">
           <label class="label cursor-pointer ml-2 flex items-center justify-center">
@@ -88,7 +94,7 @@
       <!-- Boton submit -->
       <div class="button-display">
         <app-button-playez  (click)="onSubmit()" [formNewUser]="formNewUser" [buttonText]="'entrar'" />
-        <!-- google registre -->
+        <!-- Google registre -->
         <app-googlelogin></app-googlelogin>
         <!-- Cuenta existente -->
         <p class="sign-up-label">

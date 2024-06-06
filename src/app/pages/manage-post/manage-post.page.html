@@ -1,34 +1,41 @@
+<app-topbar></app-topbar>
 
-<ion-content [fullscreen]="true"> 
-  <app-topbar></app-topbar>
-  <ion-list>
-    <ion-item>
-      <ion-searchbar (ionInput)="filterDetails($event)"></ion-searchbar>
-    </ion-item>
-    <ion-item>
-      <ion-select placeholder="Selecciona una posición" (ionChange)="filterByPosition($event)">
-        <ion-select-option value="">Todos</ion-select-option>
-        <ion-select-option value="delantero">Delantero</ion-select-option>
-        <ion-select-option value="medio">Medio</ion-select-option>
-        <ion-select-option value="defensa">Defensa</ion-select-option>
-        <ion-select-option value="portero">Portero</ion-select-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <div *ngFor="let detail of filteredDetails" class="max-w-sm mx-auto mt-10">
-      <div (click)="passUserId(detail.userId)" class="p-3 flex items-center justify-between border-t cursor-pointer hover:bg-gray-200">
+<section>
+  <div class="p-2 h-[100dvh]">
+    <!-- Texto explicativo -->
+    <div class="search-description text-center h-5 italic py-0 my-6">Encuentra a más jugadores, por equipo, nacionalidad o posición.</div>
+    
+    <!-- Barra de búsqueda -->
+    <ion-list>
+      <ion-item lines="none">
+        <ion-searchbar (ionInput)="filterDetails($event)" class="search-bar text-center py-0 my-0"></ion-searchbar>
+      </ion-item>
+      <ion-item class="custom-select-item text-center">
+        <ion-select class="text-center" placeholder="Selecciona una posición" (ionChange)="filterByPosition($event)" interface="popover">
+          <ion-select-option value="">Todos</ion-select-option>
+          <ion-select-option value="delantero">Delantero</ion-select-option>
+          <ion-select-option value="medio">Medio</ion-select-option>
+          <ion-select-option value="defensa">Defensa</ion-select-option>
+          <ion-select-option value="portero">Portero</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <!-- Resultados de búsqueda con tarjetas -->
+    <div *ngFor="let detail of filteredDetails" class="card flex justify-center ">
+      <div (click)="passUserId(detail.userId)" class="pb-7">
         <div class="flex items-center">
-          <img class="rounded-full h-10 w-10" src="https://loremflickr.com/g/600/600/girl">
-          <div class="ml-2 flex flex-col">
-            <div class="leading-snug text-sm text-gray-900 font-bold">{{  detail.userDetails?.[0]?.name  }}</div>
-            <div class="leading-snug text-[12px] text-gray-500 font-bold">{{  detail.currentTeam }}</div>
-            <div class="leading-snug text-[19px] text-gray-800 font-bold">{{  detail.nationality }}</div>
+          <img class="rounded-full h-10 w-10" [src]="detail.photo">
+          <div class="ml-8 flex flex-col">
+            <div class="player-name">{{ detail.userDetails?.[0]?.name }}</div>
+            <div class="player-team">{{ detail.currentTeam }}</div>
+            <div class="player-nationality">{{ detail.nationality }}</div>
           </div>
+          <button class="follow-button">Follow</button>
         </div>
-        <button class="h-8 px-3 text-md font-bold text-blue-400 border border-blue-400 rounded-full hover:bg-blue-100">Follow</button>
       </div>
     </div>
-  </ion-list>  
-</ion-content>
+  </div>
+</section>
+
 <app-navbar/>

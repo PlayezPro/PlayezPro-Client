@@ -4,7 +4,7 @@
 
 // Light theme
 :root {
-    --ion-background-color: linear-gradient(to bottom, #2A2D32, #32332D);
+    --ion-background-color: #373737;
     --ion-text-color: #F2F2F2;
     --ion-color-primary: #E7FF0D;
     --ion-color-secondary: #BBBF39;
@@ -15,7 +15,7 @@
   
   // Dark theme
   body.dark-mode {
-    --ion-background-color: linear-gradient(to bottom, #F2F2F2, #e5f3cf);
+    // --ion-background-color: linear-gradient(to bottom, #F2F2F2, #e5f3cf);
     --ion-text-color: #32332D;
     --ion-color-primary:  #BBBF39;
     --ion-color-secondary: #E7FF0D;;
