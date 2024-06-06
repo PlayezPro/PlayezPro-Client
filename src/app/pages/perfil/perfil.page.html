@@ -1,11 +1,21 @@
-<app-topbar/>
-<ion-content>
+<app-topbar-fixed></app-topbar-fixed>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+
+
+
+<div>
+
   <ion-item>
     <ion-label>Modo Claro</ion-label>
     <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleTheme($event)"></ion-toggle>
   </ion-item>
-  <app-futcard/>
-  <app-create-details/>
-  <app-create-skill/>
-</ion-content>
+
+
+  <app-futcard />
+  <app-create-details />
+  <app-create-skill />
+</div>
+
 <app-navbar>
