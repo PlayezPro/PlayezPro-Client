@@ -1,4 +1,4 @@
-<div class="mobile-container">
+<!-- <div class="mobile-container">
   <div class="content">
     <nav class="flex justify-between items-center h-60">
       <img src="../../../assets/icon/playez.svg" class="h-8 ml-3" alt="PlayezPro Logo" [routerLink]="'/home'">
@@ -10,6 +10,25 @@
       </ul>
     </nav>
   </div>
-</div>
+</div> -->
 
 
+<ion-header>
+  <ion-toolbar class="bg-playez-dark-50">
+    <ion-title>
+      <img src="../../../assets/icon/playez.svg" class="h-8" alt="PlayezPro Logo">
+    </ion-title>
+    <ion-button slot="end" class="icon-button">
+      <ion-icon slot="icon-only" color="secondary" name="notifications-outline" aria-hidden="true"></ion-icon>
+    </ion-button>
+    <ion-button slot="end" class="icon-button">
+      <ion-icon slot="icon-only" color="secondary" name="mail-outline" aria-hidden="true"></ion-icon>
+    </ion-button>
+    <ion-button slot="end" class="icon-button" [routerLink]="'/setting'">
+      <ion-icon slot="icon-only" color="secondary" name="settings-outline" aria-hidden="true"></ion-icon>
+    </ion-button>
+    <ion-button slot="end" class="icon-button" (click)="onClickLogout()">
+      <ion-icon slot="icon-only" color="secondary" name="log-out-outline" aria-hidden="true"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
