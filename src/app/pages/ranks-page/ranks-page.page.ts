@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
-import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
+import { TopbarComponent } from 'src/app/components/topbarFixed/topbarFixed.component';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
