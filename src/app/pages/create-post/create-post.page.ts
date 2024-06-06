@@ -5,6 +5,8 @@ import { PostServiceService } from 'src/app/services/postService/post.service';
 import { FormsModule } from '@angular/forms';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { CommonModule } from '@angular/common';
+import { AlertController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-create-post',
@@ -14,41 +16,61 @@ import { CommonModule } from '@angular/common';
   imports: [IonicModule, NavbarComponent, FormsModule, NavbarComponent, TopbarComponent,CommonModule]
 })
 export class CreatePostPage implements OnInit{
-
+  
   errorMessage: string | null = null;
+  showAlert:boolean=false;
   post: any = {};
   userId: string = '';
-  constructor(private PostService: PostServiceService ) { }
+  errorin:string |null=null;
+  aviso:boolean = true ;
+  constructor(private PostService: PostServiceService ,private alertController: AlertController) { }
 
   ngOnInit(): void {
-    // Recuperar el users_id del localStorage
-    const userId = localStorage.getItem('users_id');
-    if (userId) {
-      this.post.users_id = userId;
-    } else {
-      console.error('users_id no encontrado en localStorage');
-    }
+    this.showAviso();
   }
 
   async CreatePost() {
-    // Asegurarse de que users_id esté presente en el post antes de enviar
-    this.errorMessage = null;
-    const userId = localStorage.getItem('users_id');
-    if (userId) {
-      this.post.users_id = userId;
-    } else {
-      console.error('users_id no encontrado en localStorage');
-      return; // Salir si no se encuentra users_id
-    }
-
     try {
-      await this.PostService.CreatePost(this.post);
-      console.log('info enviada al srvidor', this.post);
-       // Limpiar el objeto post después de enviarlo, pero mantener users_id
-    } catch (error:any) {
-      console.error('Error al crear el Post:', error);
-      this.errorMessage = error.message || 'Se produjo un error al crear el post';
+      this.errorMessage = null;
+      const userId = localStorage.getItem('users_id');
+      if (!userId) {
+        console.error('users_id no encontrado en localStorage');
+        return;
+      } else {
+        this.post.users_id = userId;
+      }
+  
+      const response = await this.PostService.CreatePost(this.post);
+      console.log('info enviada al servidor', this.post);
+  
+      if (response && response.data) {
+        // Si la respuesta es correcta, continuar con el flujo normal
+        console.log('Respuesta del servidor:', response.data);
+      }
+      
+    } catch (error: any) {
+      if (error.response && error.response.data && error.response.data.message) {
+        this.errorMessage = error.response.data.message;
+      }
     }
   }
+
+  async showAviso() {
+    const alert = await this.alertController.create({
+      header: 'Aviso',
+      message: 'El archivo debe tener un formato de video, y pesar menos de 20Mb',
+      buttons: [{
+        text: 'Aceptar',
+        handler: () => {
+          this.closeAviso();
+        }
+      }]
+    });
+
+    await alert.present();
+  }
+
+  closeAviso(){
+    this.aviso = false;
+  }
 }
- 

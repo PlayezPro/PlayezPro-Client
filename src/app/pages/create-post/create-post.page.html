@@ -1,6 +1,7 @@
 <app-topbar></app-topbar>
-
-<ion-content [fullscreen]="true">
+<div *ngIf="aviso">
+ </div> 
+<ion-content *ngIf="!aviso" [fullscreen]="true">
   <ion-list>
     <ion-item no-lines>
       <input type="hidden" [(ngModel)]="post.users_id">
@@ -8,6 +9,7 @@
     <ion-item>
       <ion-label position="stacked">Contenido</ion-label>
       <ion-input type="file" [(ngModel)]="post.file" placeholder="URL de tu imagen" autofocus></ion-input>
+      
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Título</ion-label>
@@ -27,9 +29,7 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-item *ngIf="errorMessage">
-    <ion-label color="danger">{{ errorMessage }}</ion-label>
-  </ion-item>
+  <span  class="h-9 w-12">{{errorMessage}}</span>
   <ion-button (click)="CreatePost()">Guardar</ion-button>
 </ion-content>
 
