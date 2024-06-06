@@ -41,6 +41,7 @@ export class NoticePageV implements OnInit, AfterViewInit {
   imageSrc: string = '../../../assets/icon/playezWhite.svg'; // Define la propiedad imageSrc
   currentIndex = 0;
   videoUrl: string = ''; // Variable para almacenar la URL del video que viene del controlador de Posts
+  defaultImage: string = '../../../assets/userPic/profileIcon.png'; // Ruta a tu imagen predeterminada
 
   constructor(
     private postService: PostServiceService,
@@ -56,6 +57,10 @@ export class NoticePageV implements OnInit, AfterViewInit {
 
     async ngOnInit(): Promise<void> {
     await this.generatePost();
+  }
+
+  handleImageError(detail: any) {
+    detail.userDetails.photo = this.defaultImage;
   }
 
   // Lógica para manejar el reproductor de video

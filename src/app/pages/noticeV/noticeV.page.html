@@ -43,8 +43,7 @@
           <!-- Cuerpo del post -->
           <div class="profile">
             <div class="row">
-              <img class="profile-img" [src]="post.userDetails?.[0]?.photo">
-              <h4 (click)="passUserId(post.users_id)"> {{ post.userDetails?.[0]?.name }}</h4>
+              <img class="profile-img" [src]="post.userDetails?.[0]?.photo || defaultImage" alt="Pedro" draggable="false" (error)="handleImageError(post)" />              <h4 (click)="passUserId(post.users_id)"> {{ post.userDetails?.[0]?.name }}</h4>
               <!-- <app-btn-follow (click)="passUserId(post.users_id)"></app-btn-follow> -->
             </div>
             <div class="column column-2">
