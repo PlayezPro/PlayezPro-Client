@@ -1,10 +1,10 @@
 <app-topbar></app-topbar>
 
 <ion-content class="bg-base-dark">
-  <ion-button (click)="navigateToRanks()" color="secondary">
+  <!-- <ion-button (click)="navigateToRanks()" color="secondary">
     <ion-icon name="arrow-undo"></ion-icon>
-  </ion-button>
-  <ion-title>Clasificación de acciones defensivas</ion-title>
+  </ion-button> -->
+  <!-- <ion-title>Clasificación de acciones defensivas</ion-title> -->
   <ion-card *ngFor="let post of posts; let i = index">
     <ion-card-header>
       <ion-card-title>{{ post.title }}</ion-card-title>
