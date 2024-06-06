@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
+import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { LikesService } from 'src/app/services/likesService/likes.service';
 import { PostServiceService } from 'src/app/services/postService/post.service';
 import { Router } from '@angular/router';
-import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 
 @Component({
   selector: 'app-rank-by-goal-system',
