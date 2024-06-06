@@ -23,7 +23,7 @@
         </div>
       </div>
       <div class="player-picture">
-        <img [src]="detail.userDetails?.photo" alt="Pedro" draggable="false"/>
+        <img [src]="detail.userDetails?.photo || defaultImage" alt="Pedro" draggable="false" (error)="handleImageError(detail)" />
         <div class="player-extra">
           <span>{{detail.userDetails?.currentTeam}}</span>
           <!-- <span>2*WF</span> -->
