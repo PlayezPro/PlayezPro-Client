@@ -10,8 +10,8 @@
       <!-- contendor de video -->
       <div class="vid">
         <!-- VIDEO PARA TESTING, ELIMINAR AL PASAR A DESPILEGUE-->
-        <video #videoPlayer src="../../../assets/videos/1.mp4"></video> 
-        <!-- <video #videoPlayer [src]="post.file" autoplay loop></video> -->
+        <!-- <video #videoPlayer src="../../../assets/videos/1.mp4"></video>  -->
+        <video #videoPlayer [src]="post.file" muted autoplay loop></video>
         <!-- controladores con informacion del reel  -->
         <div class="info">
           <div class="options">
@@ -31,6 +31,7 @@
               <i class="bi bi-chat" (click)="setOpen(post, true)"></i>
               <span>{{post.totalLikes}}</span>
             </div>
+            
             <!-- Action Sheet button -->
             <div>
               <button (click)="sharePost(post._id)">
@@ -39,18 +40,18 @@
             </div>
           </div>
 
+          <!-- Cuerpo del post -->
           <div class="profile">
             <div class="row">
-              <img class="profile-img" src="../../../assets/images/2.jpg">
+              <img class="profile-img" [src]="post.userDetails?.[0]?.photo">
               <h4> {{ post.userDetails?.[0]?.name }}</h4>
-              <!-- <button (click)="passUserId(post.users_id)">Follow</button> -->
-              <app-btn-follow (click)="passUserId(post.users_id)" />
+              <app-btn-follow (click)="passUserId(post.users_id)"></app-btn-follow>
             </div>
-            <div class="row row2">
-              <p>{{ post.title }} | {{ post.category }}</p>
+            <div class="column column-2">
+              <p class="post-title">{{ post.title }} <br> {{ post.description }} </p>
             </div>
             <div class="row">
-              <p class="audio">{{ post.description }}</p>
+              <p class="post-category h-4">{{ post.category }}</p>
             </div>
           </div>
         </div>

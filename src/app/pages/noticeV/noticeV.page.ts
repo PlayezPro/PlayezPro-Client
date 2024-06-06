@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { BtnFollowComponent } from 'src/app/components/ui_ux/btn-follow/btn-follow.component';
 import { ActionSheetService } from 'src/app/services/actionSheetService/action-sheet.service';
+import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
 
 
 @Component({
@@ -44,6 +45,7 @@ export class NoticePageV implements OnInit, AfterViewInit {
   constructor(
     private postService: PostServiceService,
     private userService: UserService, 
+    private detailUserService: DetailUsersService,
     private commentService: CommentService, 
     private likeService: LikesService, 
     private actionSheetService: ActionSheetService,

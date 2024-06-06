@@ -29,24 +29,11 @@ export class LoginComponent {
   //controladores
   formUser = new FormGroup({
     'email': new FormControl('', [Validators.required]),
-    'password': new FormControl('', [Validators.required])
-
-    // areAllFieldsFilled(): boolean {
-    //   const formValues = this.formUser.value as { [key: string]: string | null };
-    //   for (const key in formValues) {
-    //     if (formValues.hasOwnProperty(key)) {
-    //       const value: string | null = formValues[key];
-    //       if (!value) {
-    //         return false;
-    //       }
-    //     }
-    //     return true;
-    //   }
-    // }
+    'password': new FormControl('', [Validators.required]),
+    'hiddenField': new FormControl('')
   })
 
   //Constructor para las rutas de navegación de la página
-
   constructor(private usersService: UsersService, private router: Router) { }
 
   navigateToRegister() { //Ruta hacia Registro en el botón
@@ -55,18 +42,29 @@ export class LoginComponent {
   navigateToHome() { //Ruta hacia Registro en el botón
     this.router.navigate(["/home"])
   }
-
+  // Alertas
   showAlert = false;
   alertMessage: string = '';
   AlertMessage = false;
 
+  //Alerta campos ocultos
+  ngOnInit(): void {
+    this.formUser.get('hiddenField')?.valueChanges.subscribe(value => {
+      if (value !== '') {
+        this.alertMessage = 'Intento de relleno automatizado. Bloqueando acceso.';
+        this.showAlert = true;
+      }
+    });
+  }
+
+// Limpiar Formulario
   clearForm() {
     this.formUser.reset();
   }
 
   onSubmit() {
     if (this.formUser.valid) {
-        const credentials = {
+        const credentials = { //Comprobación credenciales
             email: this.formUser.value.email,
             password: this.formUser.value.password
         };
