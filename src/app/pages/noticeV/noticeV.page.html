@@ -44,8 +44,8 @@
           <div class="profile">
             <div class="row">
               <img class="profile-img" [src]="post.userDetails?.[0]?.photo">
-              <h4> {{ post.userDetails?.[0]?.name }}</h4>
-              <app-btn-follow (click)="passUserId(post.users_id)"></app-btn-follow>
+              <h4 (click)="passUserId(post.users_id)"> {{ post.userDetails?.[0]?.name }}</h4>
+              <!-- <app-btn-follow (click)="passUserId(post.users_id)"></app-btn-follow> -->
             </div>
             <div class="column column-2">
               <p class="post-title">{{ post.title }} <br> {{ post.description }} </p>
