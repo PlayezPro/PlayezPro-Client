@@ -37,7 +37,7 @@ export class UsersService {
             password: credentials.password,
         };
         return new Observable(observer => {
-            axios.post('http://localhost:3000/auth/signin', loginData)
+            axios.post('https://playezpro-server.onrender.com/auth/signin', loginData)
                 .then(response => {
                     observer.next(response.data);
                     observer.complete();
