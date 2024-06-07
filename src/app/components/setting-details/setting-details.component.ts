@@ -66,6 +66,7 @@ export class SettingDetailsComponent  implements OnInit {
       try {
         const updateDetail = await this.detailService.updateDetailById(this.userDetails._id, this.userDetails);
         console.log('Details updated successfully:', updateDetail);
+        this.reloadPage()
         // Aquí puedes redirigir a otra página o mostrar un mensaje de éxito
       } catch (error) {
         console.error('Error updating user details:', error);
