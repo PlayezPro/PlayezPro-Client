@@ -164,6 +164,7 @@ async generatePost(): Promise<void> {
 
       const postComments = await this.commentService.getCommentsPost(post._id);
       post.allComments = postComments;
+      post.commentCount = postComments.length;
 
       // Encontrar los detalles del usuario correspondiente en postDetails
       const userDetail = postDetails.find((detail: any) => detail.userId === post.users_id);
