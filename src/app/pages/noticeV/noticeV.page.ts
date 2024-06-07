@@ -42,6 +42,8 @@ export class NoticePageV implements OnInit, AfterViewInit {
   imageLike:string = '../../../assets/icon/playez.svg'
   currentIndex = 0;
   videoUrl: string = ''; // Variable para almacenar la URL del video que viene del controlador de Posts
+  defaultImage: string = '../../../assets/userPic/profileIcon.png'; // Ruta a tu imagen predeterminada
+  
 
   constructor(
     private postService: PostServiceService,
@@ -57,6 +59,10 @@ export class NoticePageV implements OnInit, AfterViewInit {
 
     async ngOnInit(): Promise<void> {
     await this.generatePost();
+  }
+
+  handleImageError(detail: any) {
+    detail.userDetails.photo = this.defaultImage;
   }
 
   // Lógica para manejar el reproductor de video
@@ -133,55 +139,66 @@ export class NoticePageV implements OnInit, AfterViewInit {
   }
 
 // Generador de Post con los detalles de interacción
-  async generatePost(): Promise<void> {
-    try {
-      this.isLoading = true; // Iniciar carga
-      const response = await this.postService.getAllPost();
-      this.posts = response.data;
-      this.isLoadingPosts = new Array(this.posts.length).fill(true); // Inicializar todos los posts como cargando
-      const currentUserId = localStorage.getItem('users_id')!;
-      console.log(this.posts);
+async generatePost(): Promise<void> {
+  try {
+    this.isLoading = true; // Iniciar carga
+    const response = await this.postService.getAllPost();
+    this.posts = response.data;
+    this.isLoadingPosts = new Array(this.posts.length).fill(true); // Inicializar todos los posts como cargando
+    const currentUserId = localStorage.getItem('users_id')!;
+    console.log(this.posts);
 
-      // Detalles de interacciónes
-      for (let i = 0; i < this.posts.length; i++) {
-        const post = this.posts[i];
+    // Obtener detalles de todos los usuarios
+    const postDetailsResponse = await this.detailUserService.getAllDetails();
+    const postDetails = postDetailsResponse.data;
 
-        const totallyLikes = await this.likeService.totalLikes(post._id);
-        post.totalLikes = totallyLikes;
-  
-        const userDetails = await this.userService.getUserById(post.users_id);
-        post.userDetails = userDetails;
-  
-        const postComments = await this.commentService.getCommentsPost(post._id);
-        post.allComments = postComments;
-        post.commentCount = postComments.length;
-  
-        // Procesar cada comentario para obtener detalles del usuario
-        for (const comment of postComments) {
-          const commentByUser = await this.userService.getUserById(comment.users_id);
-          comment.userComment = commentByUser;
-        }
-  
-        post.isModalOpen = false;
-  
-        const hasLikesResponse = await this.likeService.checkLikes(post._id, currentUserId);
-        post.hasLikes = hasLikesResponse;
-        this.isLoadingPosts[i] = false; // Marcar el post actual como cargado
-        console.log(`Post ID: ${post._id}, isLiked: ${hasLikesResponse}`);
-        
-        // Actualizar la vista después de cargar cada post
-        this.cdr.detectChanges();
+    // Detalles de interacciones
+    for (let i = 0; i < this.posts.length; i++) {
+      const post = this.posts[i];
+
+      const totallyLikes = await this.likeService.totalLikes(post._id);
+      post.totalLikes = totallyLikes;
+
+      const userDetails = await this.userService.getUserById(post.users_id);
+      post.userDetails = userDetails;
+
+      const postComments = await this.commentService.getCommentsPost(post._id);
+      post.allComments = postComments;
+
+      // Encontrar los detalles del usuario correspondiente en postDetails
+      const userDetail = postDetails.find((detail: any) => detail.userId === post.users_id);
+      if (userDetail) {
+        post.userDetails[0].photo = userDetail.photo; // Asignar la foto del usuario a userDetails
       }
-  
-      // Ordenar los posts por fecha de creación (createdAt) de forma descendente.
-      await this.sortPosts();
-  
-      this.isLoading = false; // Finalizar carga
-    } catch (error) {
-      console.error('Error al obtener los posts:', error);
-      this.isLoading = false; // Finalizar carga en caso de error
+
+      // Procesar cada comentario para obtener detalles del usuario
+      for (const comment of postComments) {
+        const commentByUser = await this.userService.getUserById(comment.users_id);
+        comment.userComment = commentByUser;
+      }
+
+      post.isModalOpen = false;
+
+      const hasLikesResponse = await this.likeService.checkLikes(post._id, currentUserId);
+      post.hasLikes = hasLikesResponse;
+      this.isLoadingPosts[i] = false; // Marcar el post actual como cargado
+      console.log(`Post ID: ${post._id}, isLiked: ${hasLikesResponse}`);
+
+      // Actualizar la vista después de cargar cada post
+      this.cdr.detectChanges();
     }
-  }  
+
+    // Ordenar los posts por fecha de creación (createdAt) de forma descendente.
+    await this.sortPosts();
+
+    this.isLoading = false; // Finalizar carga
+  } catch (error) {
+    console.error('Error al obtener los posts:', error);
+    this.isLoading = false; // Finalizar carga en caso de error
+  }
+}
+
+
   // Función para ordenar los posts
   async sortPosts(): Promise<void> {
     this.posts.sort((a, b) => {

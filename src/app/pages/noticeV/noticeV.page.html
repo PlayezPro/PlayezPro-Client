@@ -38,7 +38,7 @@
           <!-- Cuerpo del post -->
           <div class="profile">
             <div class="row">
-              <img class="profile-img" [src]="post.userDetails?.[0]?.photo">
+              <img class="profile-img" [src]="post.userDetails?.[0]?.photo || defaultImage" alt="{{ post.userDetails?.[0]?.name }}" draggable="false" (error)="handleImageError(post)" />
               <h4 (click)="passUserId(post.users_id)"> {{ post.userDetails?.[0]?.name }}</h4>
             </div>
             <div class="column column-2">

@@ -62,49 +62,59 @@ export class LoginComponent {
     this.formUser.reset();
   }
 
+  loginAttempts: number = 0;
+
   onSubmit() {
     if (this.formUser.valid) {
-        const credentials = { //Comprobación credenciales
-            email: this.formUser.value.email,
-            password: this.formUser.value.password
-        };
+      const credentials = {
+        email: this.formUser.value.email,
+        password: this.formUser.value.password
+      };
 
-        this.usersService.loginUser(credentials).subscribe(
-            (response) => {
-                console.log('Login con éxito:', response);
-                localStorage.setItem('Token', response.token)
-                const tokenOne = localStorage.getItem('Token')
-                if(tokenOne){
-                  const decodedToken: any = jwtDecode(tokenOne);
-                  localStorage.setItem('users_id', decodedToken.id)
-                }
-                this.clearForm()
-                this.alertMessage = '¡Bienvenido!';
-                this.AlertMessage = true;
-                setTimeout(() => {
-                    this.navigateToHome();
-                    this.AlertMessage = false;
-                }, 2000);
-            },
-            (error) => {
-                console.error('Error al logear:', error);
-                this.alertMessage = error.message || 'Error en usuario/contraseña';
-                this.AlertMessage = true; // Mostrar la alerta
-                this.showAlert = true;
-
-                // Ocultar la alerta después de 3 segundos
-                setTimeout(() => {
-                    this.AlertMessage = false;
-                }, 2000);
-            }
-        );
-    } else {
-        this.alertMessage = 'Por favor, complete todos los campos correctamente.';
-        this.AlertMessage = true; // Mostrar la alerta
-        this.showAlert = true;
-        setTimeout(() => {
+      this.usersService.loginUser(credentials).subscribe(
+        (response) => {
+          console.log('Login con éxito:', response);
+          localStorage.setItem('Token', response.token)
+          const tokenOne = localStorage.getItem('Token')
+          if (tokenOne) {
+            const decodedToken: any = jwtDecode(tokenOne);
+            localStorage.setItem('users_id', decodedToken.id)
+          }
+          this.clearForm()
+          this.alertMessage = '¡Bienvenido!';
+          this.AlertMessage = true;
+          setTimeout(() => {
+            this.navigateToHome();
             this.AlertMessage = false;
-        }, 2000);
+          }, 2000);
+        },
+        (error) => {
+          console.error('Error al logear:', error);
+          this.alertMessage = error.message || 'Error en usuario/contraseña';
+          this.AlertMessage = true; // Mostrar la alerta
+          this.showAlert = true;
+
+          // Aumentar el contador de intentos de inicio de sesión
+          this.loginAttempts++;
+
+          // Si se superan los tres intentos, mostrar alerta adicional
+          if (this.loginAttempts >= 3) {
+            this.alertMessage = 'Demasiados intentos de inicio de sesión. Por favor, espere 15 minutos antes de intentarlo nuevamente.';
+          }
+
+          // Ocultar la alerta después de 3 segundos
+          setTimeout(() => {
+            this.AlertMessage = false;
+          }, 2000);
+        }
+      );
+    } else {
+      this.alertMessage = 'Por favor, complete todos los campos correctamente.';
+      this.AlertMessage = true; // Mostrar la alerta
+      this.showAlert = true;
+      setTimeout(() => {
+        this.AlertMessage = false;
+      }, 2000);
     }
   }
 }
