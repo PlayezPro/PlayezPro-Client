@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-details',
@@ -28,13 +29,12 @@ export class CreateDetailsComponent implements OnInit {
     height: ''
   };
 
-  constructor(private detailUserService: DetailUsersService) { }
+  constructor(private detailUserService: DetailUsersService, private router: Router) { }
 
   ngOnInit(): void {
     // Aquí puedes recuperar el userId del localStorage
     this.detailUserData.userId = localStorage.getItem('users_id') || '';
     console.log(this.detailUserData.userId);
-
     // Verificar si existe información de detalle para el usuario
     this.checkDetailInfo();
   }
@@ -57,12 +57,19 @@ export class CreateDetailsComponent implements OnInit {
     this.modalOpen = false;
   }
 
+  reloadPage(): void {
+    this.router.navigateByUrl('/profile', { skipLocationChange: true }).then(() => {
+      this.router.navigate([this.router.url]);
+    });
+  }
+
   async onSubmit(): Promise<void> {
     try {
       const savedDetails = await this.detailUserService.createDetailUser(this.detailUserData);
       console.log('Detail user created successfully:', savedDetails);
       this.closeModal();
       this.hasDetailInfo = true; // Actualizar la variable después de crear los detalles
+      this.reloadPage()
     } catch (error) {
       console.error('Error creating detail user:', error);
     }
