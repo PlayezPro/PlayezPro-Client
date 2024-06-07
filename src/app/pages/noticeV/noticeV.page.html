@@ -7,32 +7,23 @@
 <section *ngIf="!isLoading" class="section reels_section">
   <div class="reels-container" #reelsContainer>
     <div class="reels_video" *ngFor="let post of posts; let i = index" [class.active]="i === currentIndex">
-      <!-- contendor de video -->
+      <!-- Contenedor de video -->
       <div class="vid">
-        <!-- VIDEO PARA TESTING, ELIMINAR AL PASAR A DESPILEGUE-->
-        <!-- <video #videoPlayer src="../../../assets/videos/1.mp4"></video>  -->
         <video #videoPlayer [src]="post.file" muted autoplay loop></video>
-        <!-- controladores con informacion del reel  -->
+        <!-- Controladores con información del reel -->
         <div class="info">
           <div class="options">
             <div>
               <div>
-                <img 
-                [src]="imageSrc" 
-                class="h-8 ml-3 border-none" 
-                alt="PlayezPro Logo"
-                (click)="changeImage(); addLike(post._id)"
-                >
+                <img [src]="imageSrc" class="h-8 ml-3 border-none" alt="PlayezPro Logo"
+                  (click)="changeImage(); addLike(post._id)">
                 <span>{{post.totalLikes}}</span>
               </div>
-
             </div>
             <div>
-              <i class="bi bi-chat" (click)="setOpen(post, true)"></i>
+              <i class="bi bi-chat" (click)="setOpen(post, true)" id="open-modal" expand="block"></i>
               <span>{{post.totalLikes}}</span>
             </div>
-            
-            <!-- Action Sheet button -->
             <div>
               <button (click)="sharePost(post._id)">
                 <img src="../../../assets/icon/share-ball.svg" alt="Ícono de compartir">
@@ -45,7 +36,6 @@
             <div class="row">
               <img class="profile-img" [src]="post.userDetails?.[0]?.photo">
               <h4 (click)="passUserId(post.users_id)"> {{ post.userDetails?.[0]?.name }}</h4>
-              <!-- <app-btn-follow (click)="passUserId(post.users_id)"></app-btn-follow> -->
             </div>
             <div class="column column-2">
               <p class="post-title">{{ post.title }} <br> {{ post.description }} </p>
@@ -58,40 +48,49 @@
 
         <!-- Modal de comentarios -->
         <ion-list lines="h-[50%] full" class="likeMenu">
-          <ion-modal [isOpen]="post.isModalOpen">
+          <ion-modal 
+          trigger="open-modal" 
+          [initialBreakpoint]="0.25" 
+          [breakpoints]="[0, 0.25, 0.5, 0.75]"
+            handleBehavior="cycle" 
+            [isOpen]="post.isModalOpen">
             <ng-template>
               <ion-header>
                 <ion-toolbar>
                   <ion-title>Comentarios</ion-title>
                   <ion-buttons slot="end">
-                    <ion-button (click)="setOpen(post, false)">Close</ion-button>
+                    <ion-button (click)="setOpen(post, false)"> Cerrar</ion-button>
                   </ion-buttons>
                 </ion-toolbar>
               </ion-header>
-              <ion-content class="ion-padding" style="display: flex; flex-direction: column;">
+
+              <ion-content class="ion-padding flex flex-row items-center gap-4">
                 <ion-list style="flex: 1;">
                   <ng-container *ngFor="let comment of post.allComments">
                     <div style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
-                      <img style="width: 10%; height: 10%; " src="../../assets/userPic/profileIcon.png" alt="profile">
+                      <img style="width: 10%; height: 10%;" src="../../assets/userPic/profileIcon.png" alt="profile">
                       <div style="display: flex; flex-direction: column;">
                         <p style="font-size: 10px;">{{ comment.userComment?.[0]?.name }}</p>
                         <div style="display: flex; flex-direction: row; gap: 25px;">
                           <p style="margin-top: 1px;">{{ comment.comments }}</p>
                           <ion-icon color="danger" *ngIf="comment.users_id === getUserId()" name="trash-outline"
-                          (click)="deleteComment(post._id, comment._id)"></ion-icon>
+                            (click)="deleteComment(post._id, comment._id)"></ion-icon>
                         </div>
                       </div>
                     </div>
                   </ng-container>
-                </ion-list>
+                </ion-list> 
+               
+                  <ion-item class="mt-6">
+                    <ion-input label="Añade un comentario" labelPlacement="floating" (input)="toggleIcon($event)">
+                    </ion-input>
+                    <ion-icon color="primary" name="arrow-up-outline" slot="end" *ngIf="mostrarIcono"
+                      (click)="addComment(post._id, comentarioTexto)">
+                    </ion-icon>
+                  </ion-item>
+           
               </ion-content>
-              <ion-footer style="height: 100px;">
-                <ion-item>
-                  <ion-input placeholder="Añade un comentario" (input)="toggleIcon($event)"></ion-input>
-                  <ion-icon color="primary" name="arrow-up-outline" slot="end" *ngIf="mostrarIcono"
-                    (click)="addComment(post._id, comentarioTexto)"></ion-icon>
-                </ion-item>
-              </ion-footer>
+
             </ng-template>
           </ion-modal>
         </ion-list>
@@ -100,3 +99,4 @@
   </div>
 </section>
 <app-navbar>
+</app-navbar>
