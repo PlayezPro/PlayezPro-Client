@@ -84,13 +84,15 @@ export class PostServiceService {
     return axios.get(`${this.apiUrl}/users/${users_id}`)
   }
 
-async getAllPostsOrderedByLikes(): Promise<any> {
-  try {
-    const response = await axios.get(`${this.apiUrl}/rankedLikes`);
-    return response.data;
-  } catch (error) {
-    console.error('Error al obtener los posts ordenados por likes:', error);
-    throw error;
+  async getAllPostsOrderedByLikes(): Promise<any> {
+    try {
+      const response = await axios.get(`${this.apiUrl}/rankedLikes`);
+      return response.data;
+    } catch (error) {
+      console.error('Error al obtener los posts ordenados por likes:', error);
+      throw error;
+    }
   }
-}
+
+  
 }
