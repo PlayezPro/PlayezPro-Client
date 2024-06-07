@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SkillService } from 'src/app/services/skillService/skill.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-skill',
@@ -26,7 +25,7 @@ export class CreateSkillComponent implements OnInit {
     physical: ''
   }
 
-  constructor(private skillService: SkillService, private router: Router) { }
+  constructor(private skillService: SkillService) { }
 
   ngOnInit(): void {
     const users_id = localStorage.getItem('users_id');
@@ -62,9 +61,7 @@ export class CreateSkillComponent implements OnInit {
   }
 
   reloadPage(): void {
-    this.router.navigateByUrl('/profile', { skipLocationChange: true }).then(() => {
-      this.router.navigate([this.router.url]);
-    });
+    window.location.reload();
   }
 
   async CreateSkill(): Promise<void> {

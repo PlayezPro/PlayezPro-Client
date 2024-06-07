@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SkillService } from 'src/app/services/skillService/skill.service';
 import { ButtonPlayezComponent } from '../ui_ux/button-playez/button-playez.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-setting-skill',
@@ -21,7 +22,7 @@ export class SettingSkillComponent implements OnInit {
   }
   users_id: string | null = null;
   
-  constructor(private skillService: SkillService) { }
+  constructor(private skillService: SkillService, private router: Router) { }
 
   ngOnInit(): void {
     const users_id = localStorage.getItem('users_id');
@@ -43,6 +44,12 @@ export class SettingSkillComponent implements OnInit {
     }
   }
 
+  reloadPage(): void {
+    this.router.navigateByUrl('/profile').then(() => {
+      window.location.reload();
+    });
+  }
+
   async updateSkills() {
     if (this.userSkill && this.userSkill._id) {
       try {
@@ -52,6 +59,7 @@ export class SettingSkillComponent implements OnInit {
         // Actualizar los datos de userSkill después de la actualización
         this.userSkill = { ...this.userSkill, ...updateSkill };
         console.log(this.userSkill)
+        this.reloadPage()
       } catch (error) {
         console.error('Error updating user skills', error);
       }

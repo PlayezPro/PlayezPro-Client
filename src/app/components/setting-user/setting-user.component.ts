@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from 'src/app/services/userService/user.service';
 import { IonicModule } from '@ionic/angular';
 import { ButtonPlayezComponent } from '../ui_ux/button-playez/button-playez.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-setting-user',
@@ -25,7 +26,7 @@ export class SettingUserComponent  implements OnInit  {
   };
   userId: string | null = null;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   async ngOnInit() {
     this.userId = localStorage.getItem('users_id');
@@ -48,7 +49,12 @@ export class SettingUserComponent  implements OnInit  {
       console.error('Error al cargar los detalles del usuario:', error);
     }
   }
-  
+
+  reloadPage(): void {
+    this.router.navigateByUrl('/profile').then(() => {
+      window.location.reload();
+    });
+  }
 
   async updateUser() {
     if (this.userId) {
@@ -56,6 +62,7 @@ export class SettingUserComponent  implements OnInit  {
         const updatedUser = await this.userService.updateUser(this.userId, this.user);
         console.log('Usuario actualizado:', updatedUser);
         // Mostrar algún mensaje de éxito si es necesario
+        this.reloadPage()
       } catch (error) {
         console.error('Error al actualizar el usuario:', error);
         // Mostrar algún mensaje de error si es necesario

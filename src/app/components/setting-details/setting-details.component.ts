@@ -5,6 +5,7 @@ import { ButtonPlayezComponent } from '../ui_ux/button-playez/button-playez.comp
 import { IonItem, IonLabel } from "@ionic/angular/standalone";
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 // import "/node_modules/flag-icons/css/flag-icons.min.css";
 
@@ -28,7 +29,7 @@ export class SettingDetailsComponent  implements OnInit {
   };
   userId: string | null = null;
 
-  constructor(private detailService: DetailUsersService) {
+  constructor(private detailService: DetailUsersService, private router: Router) {
     this.userDetails.birthYear = new Date().toISOString().slice(0, 10);
   }
 
@@ -53,6 +54,13 @@ export class SettingDetailsComponent  implements OnInit {
       console.error('User ID not found in local storage.');
     }
   }
+
+  reloadPage(): void {
+    this.router.navigateByUrl('/profile').then(() => {
+      window.location.reload();
+    });
+  }
+  
   async updateDetails() {
     if (this.userDetails && this.userDetails._id) {
       try {
@@ -62,6 +70,7 @@ export class SettingDetailsComponent  implements OnInit {
       } catch (error) {
         console.error('Error updating user details:', error);
         // Aquí puedes manejar el error mostrando un mensaje al usuario
+        this.reloadPage()
       }
     } else {
       console.error('No user details found or user details does not have an _id.');

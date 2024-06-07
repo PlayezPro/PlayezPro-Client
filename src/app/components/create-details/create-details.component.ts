@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-details',
@@ -29,7 +28,7 @@ export class CreateDetailsComponent implements OnInit {
     height: ''
   };
 
-  constructor(private detailUserService: DetailUsersService, private router: Router) { }
+  constructor(private detailUserService: DetailUsersService) { }
 
   ngOnInit(): void {
     // Aquí puedes recuperar el userId del localStorage
@@ -58,9 +57,7 @@ export class CreateDetailsComponent implements OnInit {
   }
 
   reloadPage(): void {
-    this.router.navigateByUrl('/profile', { skipLocationChange: true }).then(() => {
-      this.router.navigate([this.router.url]);
-    });
+    window.location.reload();
   }
 
   async onSubmit(): Promise<void> {
