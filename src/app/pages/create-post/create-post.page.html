@@ -19,11 +19,22 @@
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Título</ion-label>
-      <ion-input type="text" [(ngModel)]="post.title" placeholder="Título"></ion-input>
+      <ion-input 
+      type="text" 
+      [(ngModel)]="post.title" 
+      placeholder="Título"
+      maxlength="30"
+      ></ion-input>
+     
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Descripción</ion-label>
-      <ion-input type="text" [(ngModel)]="post.description" placeholder="Descripción"></ion-input>
+      <ion-input 
+      type="text" 
+      [(ngModel)]="post.description" 
+      placeholder="Descripción"
+      maxlength="100"
+      ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Categoría</ion-label>
