@@ -3,9 +3,7 @@
   <footer class="bg-[#252525]">
     <i id="home_btn" class="bi bi-house-door-fill" [routerLink]="'/home'" tab="home"></i>
     <i id="search_btn" class="bi bi-search" [routerLink]="'/search'" tab="search"></i>
-    <app-button-add [routerLink]="'/create-post'" class="mb-8"/>
-    <!-- <i id="reels_btn" class="bi bi-plus" [routerLink]="'/create-post'" tab="library">
-    </i> -->
+    <app-button-add (click)="openCreatePostModal()" class="mb-8"></app-button-add>
     <i id="reels_btn" class="bi bi-trophy" [routerLink]="'/ranking'" tab="library"></i>
     <i id="notify_btn" class="bi bi-person" [routerLink]="'/profile'" tab="person-circle-outline"></i>
   </footer>
