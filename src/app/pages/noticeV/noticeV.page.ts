@@ -39,6 +39,7 @@ export class NoticePageV implements OnInit, AfterViewInit {
   isLoading: boolean = true;
   isLoadingPosts: boolean[] = [];
   imageSrc: string = '../../../assets/icon/playezWhite.svg'; // Define la propiedad imageSrc
+  imageLike:string = '../../../assets/icon/playez.svg'
   currentIndex = 0;
   videoUrl: string = ''; // Variable para almacenar la URL del video que viene del controlador de Posts
 
@@ -153,6 +154,7 @@ export class NoticePageV implements OnInit, AfterViewInit {
   
         const postComments = await this.commentService.getCommentsPost(post._id);
         post.allComments = postComments;
+        post.commentCount = postComments.length;
   
         // Procesar cada comentario para obtener detalles del usuario
         for (const comment of postComments) {
@@ -318,6 +320,10 @@ export class NoticePageV implements OnInit, AfterViewInit {
   }
   async toggleComments(post: any): Promise<void> {
     post.showComments = !post.showComments;
+  }
+
+  getImageSrc(isLiked: boolean): string {
+    return isLiked ? this.imageLike : this.imageSrc;
   }
 
   changeImage() {

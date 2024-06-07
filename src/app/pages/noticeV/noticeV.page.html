@@ -18,7 +18,7 @@
             <div>
               <div>
                 <img 
-                [src]="imageSrc" 
+                [src]="getImageSrc(post.hasLikes)" 
                 class="h-8 ml-3 border-none" 
                 alt="PlayezPro Logo"
                 (click)="changeImage(); addLike(post._id)"
@@ -29,7 +29,7 @@
             </div>
             <div>
               <i class="bi bi-chat" (click)="setOpen(post, true)"></i>
-              <span>{{post.totalLikes}}</span>
+              <span>{{post.commentCount}}</span>
             </div>
             
             <!-- Action Sheet button -->
