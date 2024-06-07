@@ -15,14 +15,18 @@
           <div class="options">
             <div>
               <div>
-                <img [src]="imageSrc" class="h-8 ml-3 border-none" alt="PlayezPro Logo"
-                  (click)="changeImage(); addLike(post._id)">
+                <img 
+                [src]="getImageSrc(post.hasLikes)" 
+                class="h-8 ml-3 border-none" 
+                alt="PlayezPro Logo"
+                (click)="changeImage(); addLike(post._id)"
+                >
                 <span>{{post.totalLikes}}</span>
               </div>
             </div>
             <div>
-              <i class="bi bi-chat" (click)="setOpen(post, true)" id="open-modal" expand="block"></i>
-              <span>{{post.totalLikes}}</span>
+              <i class="bi bi-chat" (click)="setOpen(post, true)"></i>
+              <span>{{post.commentCount}}</span>
             </div>
             <div>
               <button (click)="sharePost(post._id)">
