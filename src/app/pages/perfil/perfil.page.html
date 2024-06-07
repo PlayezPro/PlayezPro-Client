@@ -5,17 +5,18 @@
 
 
 
-<div>
+
 
   <!-- <ion-item>
     <ion-label>Modo Claro</ion-label>
     <ion-toggle [(ngModel)]="isDarkMode" (ionChange)="toggleTheme($event)"></ion-toggle>
   </ion-item> -->
-
-
+<ion-content [fullscreen]="true">
   <app-futcard />
+  <app-user-posts [users_id]="users_id"></app-user-posts>
   <app-create-details />
   <app-create-skill />
-</div>
+  <app-skills-graphics  [users_id]="users_id"></app-skills-graphics>
+</ion-content >
 
 <app-navbar>
