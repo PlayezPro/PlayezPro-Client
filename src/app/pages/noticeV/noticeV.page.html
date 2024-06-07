@@ -59,7 +59,7 @@
                 <ion-toolbar>
                   <ion-title>Comentarios</ion-title>
                   <ion-buttons slot="end">
-                    <ion-button (click)="setOpen(post, false)"> Cerrar</ion-button>
+                    <ion-button (click)="setOpen(post, false)">Cerrar</ion-button>
                   </ion-buttons>
                 </ion-toolbar>
               </ion-header>
@@ -68,7 +68,7 @@
                 <ion-list style="flex: 1;">
                   <ng-container *ngFor="let comment of post.allComments">
                     <div style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
-                      <img style="width: 10%; height: 10%;" src="../../assets/userPic/profileIcon.png" alt="profile">
+                      <img style="width: 10%; height: 10%; " [src]="comment.userComment?.photo" alt="User">
                       <div style="display: flex; flex-direction: column;">
                         <p style="font-size: 10px;">{{ comment.userComment?.[0]?.name }}</p>
                         <div style="display: flex; flex-direction: row; gap: 25px;">

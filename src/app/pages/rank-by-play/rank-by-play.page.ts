@@ -6,52 +6,71 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { LikesService } from 'src/app/services/likesService/likes.service';
 import { PostServiceService } from 'src/app/services/postService/post.service';
+import { UserService } from 'src/app/services/userService/user.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-rank-by-play',
+  selector: 'app-rank-by-play-system',
   templateUrl: './rank-by-play.page.html',
   styleUrls: ['./rank-by-play.page.scss'],
   standalone: true,
-  imports: [NavbarComponent, TopbarComponent, IonCardSubtitle, IonCard, IonIcon, IonButton, IonCardHeader, IonCardContent, IonCardTitle, IonHeader, IonTitle, IonContent, IonToolbar, CommonModule, FormsModule]
+  imports: [
+    NavbarComponent, TopbarComponent, IonCardSubtitle, IonCard, IonIcon,
+    IonButton, IonCardHeader, IonCardContent, IonCardTitle, IonHeader,
+    IonTitle, IonContent, IonToolbar, CommonModule, FormsModule
+  ]
 })
 export class RankByPlayComponent implements OnInit {
+  // Variables
   posts: any[] = [];
+  users: { [key: string]: any } = {}; // Definir el mapeo de usuarios
   isLoadingPosts: boolean[] = [];
   selectedCategory: string = '';
+  userId: string | null = null;
   categories: string[] = ['Gol', 'Jugadas', 'Asistencias', 'Defensa']; // Ejemplo de categorías
 
-  constructor(private router: Router, private postService: PostServiceService, private likeService: LikesService) { }
-
-  navigateToRanks(){
-    this.router.navigate(["ranking"])
-  }
+  constructor(
+    private router: Router,
+    private postService: PostServiceService,
+    private likeService: LikesService,
+    private userService: UserService
+  ) {}
 
   async ngOnInit(): Promise<void> {
     await this.loadPosts();
   }
-
   async loadPosts(): Promise<void> {
     try {
       const response = await this.postService.getAllPost();
       const allPosts = response.data;
-      this.posts = allPosts.filter((post: { category: string; }) => post.category === 'Jugadas'); // Filtrar por la categoría de "gol"
-  
-      this.isLoadingPosts = new Array(this.posts.length).fill(true); 
-  
-      console.log(this.posts);
-  
-      for (let i = 0; i < this.posts.length; i++) {
-        const post = this.posts[i];
-        const totalLikes = await this.likeService.totalLikes(post._id);
-        post.totalLikes = totalLikes;
-      }
-      this.sortByLikesAndCategory();
-    } catch (error) {
-      console.error('Error al obtener los posts:', error);
-    }
-  }
+      this.posts = allPosts.filter((post: { category: string }) => post.category === 'Jugada'); // Filtrar por la categoría de "gol"
+      this.isLoadingPosts = new Array(this.posts.length).fill(true);
+        for(let i = 0; i < this.posts.length; i++) {
+          const post = this.posts[i];
+          const userDetails = await this.userService.getUserById(post.users_id);
+          post.userDetails = userDetails;
+        }
+      // Obtener detalles de usuarios
+        const userIds = Array.from(new Set(this.posts.map(post => post.users_id)));
+        const userPromises = userIds.map(id => this.userService.getUserById(id));
+        const userResponses = await Promise.all(userPromises);
+        userResponses.forEach(user => {
+          this.users[user._id] = user;
+        });
 
+        // Detalles de likes
+        for (let i = 0; i < this.posts.length; i++) {
+          const post = this.posts[i];
+          const totalLikes = await this.likeService.totalLikes(post._id);
+          post.totalLikes = totalLikes;
+        }
+        // Orden conjunto por categoria y numero de likes
+        this.sortByLikesAndCategory();
+      } catch (error) {
+          console.error('Error al obtener los posts:', error);
+        }
+  }
+  // Orden conjunto por categoria y numero de likes
   sortByLikesAndCategory(): void {
     if (this.selectedCategory) {
       this.posts = this.posts.filter(post => post.category === this.selectedCategory);
@@ -63,11 +82,3 @@ export class RankByPlayComponent implements OnInit {
     this.sortByLikesAndCategory();
   }
 }
-
-
-// posts: Post[] = [];
-//   this.likesService.getRankedPosts().then(posts => {
-//     this.posts = posts;
-//   }).catch(error => {
-//     console.error("Error al obtener el ranking de posts:", error);
-//   });
