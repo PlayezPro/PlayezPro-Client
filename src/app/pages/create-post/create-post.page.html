@@ -3,14 +3,12 @@
 </div>
 <ion-content *ngIf="!aviso">
   <ion-card >
-    <!-- <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" /> -->
     <ion-card-content>
       <ion-grid>
         <ion-row>
           <ion-col>
             <ion-card-header>
               <ion-card-title class="text-playez-300">Subir Reel</ion-card-title>
-              <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
             </ion-card-header>
           </ion-col>
           <ion-col size="auto">
@@ -29,33 +27,20 @@
 
 
       <ion-list>
-        <!-- Muestra la imagen capturada si existe -->
-        <!-- <ion-avatar *ngIf="imgSrc" slot="start">
-          <img [src]="imgSrc" alt="Imagen del producto">
-        </ion-avatar> -->
+
         <ion-item>
           <ion-label>Selecciona un archivo</ion-label>
           <ion-button (click)="takeImage()" slot="end">Buscar</ion-button>
         </ion-item>
         <ion-item>
-          <!-- <ion-label position="stacked">Título</ion-label> -->
           <ion-input label="Título" label-placement="floating" fill="outline" [(ngModel)]="post.title" placeholder="Título"></ion-input>
-          <!-- <input type="text" [(ngModel)]="post.title" placeholder="Título" /> -->
         </ion-item>
         <ion-item>
           <ion-input label="Descripción" label-placement="floating" fill="outline" placeholder="Descripción" [(ngModel)]="post.description">
-          <!-- <ion-input type="text" [(ngModel)]="post.description"
-            placeholder="Descripción"> -->
           </ion-input>
         </ion-item>
         <ion-item>
-          <!-- <ion-label position="stacked">Categoría</ion-label> -->
-          <!-- <ion-select [(ngModel)]="post.category" placeholder="Selecciona una categoría">
-            <ion-select-option value="Goal">Gol</ion-select-option>
-            <ion-select-option value="Play">Jugadas</ion-select-option>
-            <ion-select-option value="Assistance">Asistencia</ion-select-option>
-            <ion-select-option value="Defense">Acción Defensiva</ion-select-option>
-          </ion-select> -->
+
           <ion-select [(ngModel)]="post.category" label="Selecciona una categoría" label-placement="floating" fill="outline">
             <ion-select-option class="text-playez-dark-50" value="apple">Gol</ion-select-option>
             <ion-select-option value="banana">Jugadas</ion-select-option>

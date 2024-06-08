@@ -2,13 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
+import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
 
 @Component({
   selector: 'app-create-details',
   templateUrl: './create-details.component.html',
   styleUrls: ['./create-details.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, ButtonPlayezComponent],
 })
 export class CreateDetailsComponent implements OnInit {
 
