@@ -20,8 +20,8 @@ export class NavbarComponent implements OnInit {
   async openCreatePostModal() {
     const modal = await this.modalController.create({
       component: CreatePostPage,
-      initialBreakpoint: 0.5,
-      breakpoints: [0, 0.5, 1]
+      initialBreakpoint: 0.6,
+      breakpoints: [0, 0.6, 1]
     });
     return await modal.present();
   }

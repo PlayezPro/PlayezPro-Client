@@ -2,64 +2,79 @@
 <div *ngIf="aviso">
 </div>
 <ion-content *ngIf="!aviso">
-  <ion-card class="m-[7%]">
+  <ion-card >
     <!-- <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" /> -->
-
-    <ion-card-header>
-      <ion-card-title class="text-playez-300">Subir Reel</ion-card-title>
-      <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
-    </ion-card-header>
-
     <ion-card-content>
-      El archivo debe tener un formato de video y no pesar mas de 20MB.
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card-header>
+              <ion-card-title class="text-playez-300">Subir Reel</ion-card-title>
+              <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
+            </ion-card-header>
+          </ion-col>
+          <ion-col size="auto">
+            <div > 
+              <ion-item height="0" no-lines>
+                <ion-thumbnail *ngIf="imgSrc" slot="start">
+                  <input type="hidden" [(ngModel)]="post.users_id">
+                  <img [src]="imgSrc" alt="Imagen del producto">
+                </ion-thumbnail>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>El archivo debe tener un formato de video y no pesar mas de 20MB.
+      </ion-grid>
+      
 
 
       <ion-list>
-        <ion-item no-lines>
-          <input type="hidden" [(ngModel)]="post.users_id">
-        </ion-item>
-
         <!-- Muestra la imagen capturada si existe -->
         <!-- <ion-avatar *ngIf="imgSrc" slot="start">
           <img [src]="imgSrc" alt="Imagen del producto">
         </ion-avatar> -->
-        <ion-thumbnail  *ngIf="imgSrc" slot="start">
-          <img [src]="imgSrc" alt="Imagen del producto">
-        </ion-thumbnail>
-        
         <ion-item>
-
           <ion-label>Selecciona un archivo</ion-label>
           <ion-button (click)="takeImage()" slot="end">Buscar</ion-button>
         </ion-item>
         <ion-item>
-
-          <!-- <ion-label position="stacked">Contenido</ion-label> -->
-          <app-button-playez (click)="takeImage()" [buttonText]="'Seleccionar'" />
-          <!-- <ion-button (click)="takeImage()">Selecciona tu imagen</ion-button> -->
-        </ion-item>
-        <ion-item>
           <!-- <ion-label position="stacked">Título</ion-label> -->
-          <input class="field input-field" type="text" [(ngModel)]="post.title" placeholder="Título" />
+          <ion-input label="Título" label-placement="floating" fill="outline" [(ngModel)]="post.title" placeholder="Título"></ion-input>
+          <!-- <input type="text" [(ngModel)]="post.title" placeholder="Título" /> -->
         </ion-item>
         <ion-item>
-          <!-- <ion-label position="stacked">Descripción</ion-label> -->
-          <ion-input class="field input-field" type="text" [(ngModel)]="post.description"
-            placeholder="Descripción"></ion-input>
+          <ion-input label="Descripción" label-placement="floating" fill="outline" placeholder="Descripción" [(ngModel)]="post.description">
+          <!-- <ion-input type="text" [(ngModel)]="post.description"
+            placeholder="Descripción"> -->
+          </ion-input>
         </ion-item>
         <ion-item>
           <!-- <ion-label position="stacked">Categoría</ion-label> -->
-          <ion-select [(ngModel)]="post.category" placeholder="Selecciona una categoría">
+          <!-- <ion-select [(ngModel)]="post.category" placeholder="Selecciona una categoría">
             <ion-select-option value="Goal">Gol</ion-select-option>
             <ion-select-option value="Play">Jugadas</ion-select-option>
             <ion-select-option value="Assistance">Asistencia</ion-select-option>
             <ion-select-option value="Defense">Acción Defensiva</ion-select-option>
+          </ion-select> -->
+          <ion-select [(ngModel)]="post.category" label="Selecciona una categoría" label-placement="floating" fill="outline">
+            <ion-select-option class="text-playez-dark-50" value="apple">Gol</ion-select-option>
+            <ion-select-option value="banana">Jugadas</ion-select-option>
+            <ion-select-option value="orange">Asistencia</ion-select-option>
+            <ion-select-option value="orange">Acción Defensiva</ion-select-option>
+
           </ion-select>
         </ion-item>
       </ion-list>
       <span class="h-9 w-12">{{errorMessage}}</span>
-      <app-button-playez (click)="createPost()" [buttonText]="'Guardar'" />
-      <!-- <ion-button (click)="createPost()">Guardar</ion-button> -->
+      <!-- <app-button-playez (click)="createPost()" [buttonText]="'Guardar'" /> -->
+      <ion-grid [fixed]="true">
+        <ion-row>
+          <ion-col size="12"></ion-col>
+          <ion-col size="8"><ion-button (click)="createPost()">Guardar</ion-button></ion-col>
+          <ion-col size="8"></ion-col>
+        </ion-row>
+      </ion-grid>
+
     </ion-card-content>
   </ion-card>
 </ion-content>

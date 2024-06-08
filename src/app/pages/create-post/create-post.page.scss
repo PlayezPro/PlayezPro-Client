@@ -1,106 +1,62 @@
-.main-screen {
-    font-family: Arial, sans-serif;
-    background-color: #373737;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: auto; // Permitir el desplazamiento en la pantalla principal
-  
-    .container-main {
-      background-color: #373737;
-      border-radius: 10px;
-      padding: 0 20px;
-      width: 100dvw; // Ajusta el ancho según sea necesario
-      max-width: 99vw; // Ajusta el ancho máximo según sea necesario
-      text-align: center;
-      max-height: 100dvh; // Asegura que el contenedor principal no exceda la altura de la pantalla
-      margin-top: -5dvh;
-    }
-  }
-  .logo-grid {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 3%;
-  }
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding-left: 2em;
-    padding-right: 2em;
-    padding-bottom: 0.4em;
-    background-color: #373737;
-    border-radius: 25px;
-    transition: 0.4s ease-in-out;
-  }
-  
-  .z-logo {
-    width: 65dvw;
-    height: auto;
-    padding: 7% 0;
-  }
-  
-  .z-logo:hover {
-    transform: scale(1.05);
-    border: 1px solid black;
-  }
-  
-  #heading {
-    text-align: center;
-    margin: 2em;
-    color: rgb(255, 255, 255);
-    font-size: 1.2em;
-  }
-  
-  .field {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    border-radius: 25px;
-    padding: 0.6em;
-    border: none;
-    outline: none;
-    color: white;
-    background-color: #373737;
-    box-shadow: inset 2px 5px 10px rgba(5, 5, 5, 0.598);
-  }
-  
-  .input-icon {
-    height: 1.3em;
-    width: 1.3em;
-    fill: white;
-  }
-  
-  .input-field {
-    background: none;
-    border: none;
-    outline: none;
-    width: 100dvw;
-    height: 30px;
-    color: #d3d3d3;
-  }
-  
-  .sign-up-label {
-    margin: 0;
-    font-size: 14px;
-    color: #fff;
-  }
-  
-  .sign-up-link {
-    margin-left: 9px;
-    font-size: 15px;
-    text-decoration: underline;
-    text-decoration-color: #e7ff0d;
-    color: #e7ff0d;
-    cursor: pointer;
-    font-weight: 800;
-  }
-  
-  .button-display {
-    display: grid;
-    gap: 11%;
-  }
-  
+
+ion-button {
+  --background: #373737;
+  // --background-hover: #9ce0be;
+  --background-activated: #373737;
+  --background-focused: #88f4be;
+
+  --color: #e7ff0d;
+
+  --border-radius: 30px;
+  --border-color: none;
+  --border-style: solid;
+  --border-width: 0px;
+
+  --box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.25),
+                -6px -6px 12px rgb(255 255 255 / 14%);
+
+  --ripple-color: none;
+
+  // --padding-top: 10px;
+  // --padding-bottom: 10px;
+ 
+}
+
+ion-item{
+  --background:#373737;
+  --background-focused: none;
+ --padding-bottom: 14px;
+}
+
+[aria-checked=true].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md {
+  color: var(--ion-color-step-850, var(--ion-text-color-step-150, #f2f2f2));
+}
+
+.alert-radio-label.sc-ion-alert-md {
+  color: var(--ion-color-step-850, var(--ion-text-color-step-150, #f2f2f2));
+}
+
+.ion-valid.sc-ion-input-md-h {
+  --highlight-color: #e7ff0d;
+}
+
+.input-fill-outline.sc-ion-input-md-h {
+  --border-color: var(--ion-color-step-300, var(--ion-background-color-step-300, #f2f2f2));
+  --border-radius: 4px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  min-height: 56px;
+  --margin:30px;
+}
+
+ion-select.ion-valid.ion-touched{
+  --highlight-color: #e7ff0d;
+  --padding-top: 4px;
+}
+
+.sc-ion-input-md-h {
+  --padding-top: 4px;
+}
+.card-content-md{
+  --padding-inline-start: 0px;
+}
