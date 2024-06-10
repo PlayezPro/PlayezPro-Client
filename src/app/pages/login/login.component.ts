@@ -30,7 +30,6 @@ export class LoginComponent {
   formUser = new FormGroup({
     'email': new FormControl('', [Validators.required]),
     'password': new FormControl('', [Validators.required]),
-    'hiddenField': new FormControl('')
   })
 
   //Constructor para las rutas de navegación de la página
@@ -46,16 +45,6 @@ export class LoginComponent {
   showAlert = false;
   alertMessage: string = '';
   AlertMessage = false;
-
-  //Alerta campos ocultos
-  ngOnInit(): void {
-    this.formUser.get('hiddenField')?.valueChanges.subscribe(value => {
-      if (value !== '') {
-        this.alertMessage = 'Intento de relleno automatizado. Bloqueando acceso.';
-        this.showAlert = true;
-      }
-    });
-  }
 
 // Limpiar Formulario
   clearForm() {
