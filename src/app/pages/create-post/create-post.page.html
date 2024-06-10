@@ -39,12 +39,13 @@
           </ion-input>
         </ion-item>
 
-        <ion-item>
-          <ion-select [(ngModel)]="post.category" label="Selecciona una categoría" label-placement="floating" fill="outline">
-            <ion-select-option class="text-playez-dark-50" value="gol">Gol</ion-select-option>
-            <ion-select-option class="text-playez-dark-50" value="jugadas">Jugadas</ion-select-option>
-            <ion-select-option class="text-playez-dark-50" value="asistencia">Asistencia</ion-select-option>
-            <ion-select-option class="text-playez-dark-50" value="defensa">Acción Defensiva</ion-select-option>
+        <ion-item >
+
+          <ion-select   [(ngModel)]="post.category" label="Selecciona una categoría" label-placement="floating" fill="outline">
+            <ion-select-option value="gol">Gol</ion-select-option>
+            <ion-select-option value="jugadas">Jugadas</ion-select-option>
+            <ion-select-option value="asistencia">Asistencia</ion-select-option>
+            <ion-select-option value="defensa">Acción Defensiva</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>
