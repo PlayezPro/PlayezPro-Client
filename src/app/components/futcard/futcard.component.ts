@@ -19,6 +19,8 @@ export class FutcardComponent implements OnInit, OnChanges {
   userId: string | null = null;
   userDetail: any[] = [];
   defaultImage: string = '../../../assets/userPic/profileIcon.png'; // Ruta a tu imagen predeterminada
+  imageFile: File | null = null;
+  isGeneratedCard: boolean = false;
 
   constructor(private detailsService: DetailUsersService, private userServices: UserService, private skillService: SkillService, private followService: FollowService, private cdr: ChangeDetectorRef) { }
 
@@ -54,6 +56,7 @@ export class FutcardComponent implements OnInit, OnChanges {
         detail.userDetails = userDetails;
         console.log(userDetails)
       }
+      this.isGeneratedCard = true;
     } catch (error) {
       console.error('Error al generar la tarjeta:', error);
     }
@@ -62,9 +65,7 @@ export class FutcardComponent implements OnInit, OnChanges {
   async cardVisitor(users_id: string) {
     try {
       const response = await this.userServices.getUserById(users_id);
-      console.log(users_id);
       this.userDetail = response // Asegúrate de que estás accediendo correctamente a la propiedad `data` de la respuesta
-      console.log(this.userDetail);
       for (const detail of this.userDetail) {
         const userSkill = await this.skillService.getUserSkill(users_id)
         detail.userSkills = userSkill;
@@ -99,5 +100,44 @@ export class FutcardComponent implements OnInit, OnChanges {
 
   handleImageError(detail: any) {
     detail.userDetails.photo = this.defaultImage;
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.imageFile = file;
+      console.log('Archivo seleccionado:', this.imageFile);
+    }
+  }
+  
+
+  async uploadImage() {
+    if (this.imageFile) {
+      this.userId = localStorage.getItem('users_id');
+
+      if (this.userId) {
+        try {
+          const userDetails = await this.detailsService.getDetailById(this.userId);
+          console.log(userDetails)
+          const detailId = userDetails._id; // Extrae el campo _id del response
+
+          const formData = new FormData();
+          formData.append('imagen', this.imageFile);
+          formData.forEach((value, key) => {
+            console.log(key, value);
+          });
+
+          const response = await this.detailsService.addImageProfile(detailId, formData);
+          console.log('Imagen subida exitosamente', response);
+          return response.data;
+        } catch (error) {
+          console.error('Error al subir la imagen', error);
+        }
+      } else {
+        console.error('No se ha encontrado el userId en el localStorage');
+      }
+    } else {
+      console.error('No se ha seleccionado ningún archivo');
+    }
   }
 }
