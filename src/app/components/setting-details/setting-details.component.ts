@@ -18,6 +18,8 @@ import { CountryService } from 'src/app/services/countryService/country.service'
 })
 export class SettingDetailsComponent  implements OnInit {
   countries: any[] = [];
+  selectedCountry: any = null;
+  dropdownOpen: boolean = false;
 
   userDetails: any = {
     birthYear: '',
@@ -65,15 +67,19 @@ export class SettingDetailsComponent  implements OnInit {
     });
   }
   
-  loadCountries(): void {
-    this.countryService.getCountries().subscribe(
-      countries => {
-        this.countries = countries;
-      },
-      error => {
-        console.error('Error loading countries:', error);
-      }
-    );
+  async loadCountries(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.countryService.getCountries().subscribe(
+        countries => {
+          this.countries = countries;
+          resolve();
+        },
+        error => {
+          console.error('Error loading countries:', error);
+          reject(error);
+        }
+      );
+    });
   }
 
 
@@ -93,5 +99,18 @@ export class SettingDetailsComponent  implements OnInit {
       console.error('No user details found or user details does not have an _id.');
     }
   }
-  
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
+  selectCountry(country: any) {
+    this.selectedCountry = country;
+    this.userDetails.nationality = country.name;
+    this.dropdownOpen = false;
+  }
+
+  getCountryFlag(nationality: string): string {
+    const selectedCountry = this.countries.find(country => country.name === nationality);
+    return selectedCountry ? `../../../assets/icon/flags/4x3/${selectedCountry.code}.svg` : '';
+  }
 }

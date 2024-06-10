@@ -9,16 +9,20 @@
         <input [value]="userDetails.birthYear | date:'yyyy-MM-dd'" type="text" id="year" name="year"
           class="field input-field" placeholder="yyyy-MM-dd">
       </div>
-      <!-- <div>
-        <label class="block text-sm font-medium text-gray-700">Nacionalidad</label>
-        <input type="text" [(ngModel)]="userDetails.nationality" name="nationality" class="field input-field">
-      </div> -->
       <div>
-        <label for="nationality">Nacionalidad</label>
-        <select class="field input-field" id="nationality" name="nationality" [(ngModel)]="userDetails.nationality">
-          <option value="" disabled selected>Selecciona:</option>
-          <option *ngFor="let country of countries" [value]="country.name">{{ country.name }}</option>
-        </select>
+        <label class="block text-sm font-medium text-gray-700">Nacionalidad</label>
+        <div class="custom-select-container">
+          <div class="custom-select" (click)="toggleDropdown()">
+            <span>{{ userDetails.nationality ? userDetails.nationality : 'Selecciona:' }}</span>
+            <img *ngIf="userDetails.nationality" [src]="getCountryFlag(userDetails.nationality)" class="selected-flag" alt="flag">
+          </div>
+          <ul class="custom-options" [class.show]="dropdownOpen">
+            <li *ngFor="let country of countries" (click)="selectCountry(country)">
+              <img [src]="'../../../assets/icon/flags/4x3/' + country.code + '.svg'" class="flag" alt="flag">
+              {{ country.name }}
+            </li>
+          </ul>
+        </div>
       </div>
       
       <div>
