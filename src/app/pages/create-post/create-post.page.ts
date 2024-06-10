@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { IonicModule, ModalController } from '@ionic/angular';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { PostServiceService } from 'src/app/services/postService/post.service';
@@ -18,13 +18,16 @@ import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/bu
 })
 export class CreatePostPage implements OnInit {
 
+  @ViewChild('fileInput') fileInputRef!: ElementRef<HTMLInputElement>;
+
   errorMessage: string | null = null;
   showAlert: boolean = false;
   post: any = {};
   imgSrc: string | undefined;
   imageFile: File | null = null;
   aviso: boolean = true;
-
+  videoSrc: string | undefined;
+fileInput: any;
   constructor(private PostService: PostServiceService, private alertController: AlertController, private modalController: ModalController) {}
 
   ngOnInit(): void {
@@ -37,23 +40,19 @@ export class CreatePostPage implements OnInit {
     this.showAviso();
   }
 
-  async takeImage() {
-    try {
-      const photoData = await this.PostService.takePicture('Imagen del producto');
-      if (photoData && photoData.webPath) {
-        const response = await fetch(photoData.webPath);
-        const blob = await response.blob();
-        const file = new File([blob], `imagen.${photoData.format}`);
-        this.imageFile = file;
-        this.imgSrc = URL.createObjectURL(file);
-      } else {
-        console.error('No se seleccionó ninguna imagen.');
-      }
-    } catch (error) {
-      console.error('Error al tomar la foto:', error);
-    }
+  onFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    this.imageFile = file; // Establecer this.imageFile con el archivo seleccionado
+    const reader = new FileReader();
+    
+    reader.onload = () => {
+      this.videoSrc = reader.result as string;
+    };
+    
+    reader.readAsDataURL(file);
   }
-
+  
+  
   async createPost() {
     this.errorMessage = null;
     const userId = localStorage.getItem('users_id');
@@ -61,13 +60,13 @@ export class CreatePostPage implements OnInit {
       console.error('users_id no encontrado en localStorage');
       return;
     }
-
+  
     try {
       if (!this.imageFile) {
-        console.error('No se ha seleccionado ninguna imagen.');
+        console.error('No se ha seleccionado ningún archivo de video.');
         return;
       }
-
+  
       const newPost = { ...this.post, users_id: userId };
       await this.PostService.CreatePost(newPost, this.imageFile);
       this.post = { users_id: userId };
@@ -78,7 +77,7 @@ export class CreatePostPage implements OnInit {
       console.error('Error al crear el Post:', error);
       this.errorMessage = error.message || 'Se produjo un error al crear el post';
     }
-  }
+  }  
 
   async showAviso() {
     const alert = await this.alertController.create({
