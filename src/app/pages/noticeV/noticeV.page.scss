@@ -115,11 +115,11 @@ i.bi {
     z-index: 2001;
 
     .reels_video {
-      position: relative;
-      width: 100%;
-      min-height: 100vh;
-      scroll-snap-align: start;
-      user-select: none;
+      width: 100dvw;
+      height: 90dvh; /* Cambiado a 90vh para que ocupe el 90% del viewport height */
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
       &.active {
         display: block;
