@@ -1,14 +1,7 @@
 <!-- detail-user.component.html -->
 <app-button-playez *ngIf="!hasDetailInfo" (click)="openModal()" [buttonText]="'Crear detalles'"
   class="justify-center m-4 p3" />
-<!-- <button *ngIf="!hasDetailInfo" (click)="openModal()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Crear Detalles</button> -->
-      <ion-list>
-        <ion-item>
-          <ion-select aria-label="Country" interface="action-sheet" placeholder="País:" [(ngModel)]="detailUserData.nationality">
-            <ion-select-option *ngFor="let country of countries" [value]="country.code">{{ country.name }}</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
+
 <div *ngIf="modalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
   <!-- Agrega z-50 para establecer un z-index mayor -->
   <div class="bg-white p-8 rounded-lg shadow-lg">

@@ -39,7 +39,7 @@ export class SettingDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-this.loadCountries();//Esta aqui por que no puedo traer la lista de los paises, hay qu emeterlo en el if en cuanto se reciba el userDetail
+    this.loadCountries();//Esta aqui por que no puedo traer la lista de los paises, hay qu emeterlo en el if en cuanto se reciba el userDetail
     const userId = localStorage.getItem('users_id');
     if (userId !== null) {
       this.userId = userId;
