@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-// import { UserService } from 'src/app/services/userService/user.service';
+import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { SkillService } from 'src/app/services/skillService/skill.service';
@@ -10,7 +10,7 @@ import { Chart} from 'chart.js/auto';
   templateUrl: './skills-graphics.component.html',
   styleUrls: ['./skills-graphics.component.scss'],
   standalone: true,
-  imports : [CommonModule, IonicModule]
+  imports : [CommonModule, IonicModule, ButtonPlayezComponent]
 })
 
 export class SkillsGraphicsComponent implements OnInit, OnChanges {

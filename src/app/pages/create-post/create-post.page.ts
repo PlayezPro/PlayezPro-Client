@@ -73,17 +73,36 @@ export class CreatePostPage implements OnInit {
       this.post = { users_id: userId };
       this.imgSrc = undefined;
       this.imageFile = null;
-      await this.modalController.dismiss();
+
+      // Mostrar el modal de confirmación
+      await this.showConfirmationModal();
     } catch (error: any) {
       console.error('Error al crear el Post:', error);
       this.errorMessage = error.message || 'Se produjo un error al crear el post';
     }
   }
 
+  async showConfirmationModal() {
+    const alert = await this.alertController.create({
+      header: 'Éxito',
+      message: 'El post se ha subido correctamente.',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            this.modalController.dismiss();  // Cerrar el modal de confirmación y el modal general
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   async showAviso() {
     const alert = await this.alertController.create({
       header: 'Aviso',
-      message: 'El archivo debe tener un formato de video, y pesar menos de 20Mb',
+      message: 'El archivo debe tener un formato de video y pesar menos de 20Mb',
       buttons: [{
         text: 'Aceptar',
         handler: () => {

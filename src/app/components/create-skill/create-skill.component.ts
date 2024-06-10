@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SkillService } from 'src/app/services/skillService/skill.service';
+import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
 
 @Component({
   selector: 'app-create-skill',
   templateUrl: './create-skill.component.html',
   styleUrls: ['./create-skill.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, ButtonPlayezComponent]
 })
 export class CreateSkillComponent implements OnInit {
 
