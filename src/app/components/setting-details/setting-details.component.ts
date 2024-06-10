@@ -2,22 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
 import { ButtonPlayezComponent } from '../ui_ux/button-playez/button-playez.component';
+import { IonItem, IonLabel } from "@ionic/angular/standalone";
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { CountryService } from 'src/app/services/countryService/country.service';
-// import "/node_modules/flag-icons/css/flag-icons.min.css";
+
 
 @Component({
   selector: 'app-setting-details',
   templateUrl: './setting-details.component.html',
   styleUrls: ['./setting-details.component.scss'],
   standalone: true,
-  imports: [FormsModule, ButtonPlayezComponent, IonicModule, CommonModule]
+  imports: [FormsModule, ButtonPlayezComponent, IonicModule, CommonModule, IonItem, IonLabel]
 })
-export class SettingDetailsComponent implements OnInit {
+export class SettingDetailsComponent  implements OnInit {
   countries: any[] = [];
-
 
   userDetails: any = {
     birthYear: '',
@@ -31,19 +31,17 @@ export class SettingDetailsComponent implements OnInit {
   };
   userId: string | null = null;
 
-  constructor(private detailService: DetailUsersService,
-    private countryService: CountryService,
-    private router: Router) {
+  constructor(private detailService: DetailUsersService,  private countryService: CountryService, private router: Router) {
     this.userDetails.birthYear = new Date().toISOString().slice(0, 10);
   }
 
 
   ngOnInit(): void {
-    this.loadCountries();//Esta aqui por que no puedo traer la lista de los paises, hay qu emeterlo en el if en cuanto se reciba el userDetail
+    
     const userId = localStorage.getItem('users_id');
     if (userId !== null) {
       this.userId = userId;
-     
+      this.loadCountries();
       this.detailService.getAllDetails().then((data: any) => {
         // Filtra los detalles para encontrar aquellos con el userId deseado
         const userDetail = data.data.find((detail: any) => detail.userId === userId);
@@ -53,7 +51,6 @@ export class SettingDetailsComponent implements OnInit {
         } else {
           console.error('User details not found for userId:', userId);
         }
-        
       }).catch(error => {
         console.error('Error fetching user details:', error);
       });
@@ -67,7 +64,7 @@ export class SettingDetailsComponent implements OnInit {
       window.location.reload();
     });
   }
-
+  
   loadCountries(): void {
     this.countryService.getCountries().subscribe(
       countries => {
@@ -78,6 +75,7 @@ export class SettingDetailsComponent implements OnInit {
       }
     );
   }
+
 
   async updateDetails() {
     if (this.userDetails && this.userDetails._id) {
@@ -95,5 +93,5 @@ export class SettingDetailsComponent implements OnInit {
       console.error('No user details found or user details does not have an _id.');
     }
   }
-
+  
 }

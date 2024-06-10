@@ -85,28 +85,43 @@
     border: none;
     outline: none;
     width: 75dvw;
-    height: 30px;
+    height: 38px;
     color: #d3d3d3;
+    border-radius: 25px;
   }
   
-  .sign-up-label {
-    margin: 0;
-    font-size: 14px;
-    color: #fff;
-  }
   
-  .sign-up-link {
-    margin-left: 9px;
-    font-size: 15px;
-    text-decoration: underline;
-    text-decoration-color: #e7ff0d;
-    color: #e7ff0d;
-    cursor: pointer;
-    font-weight: 800;
-  }
   
   .button-display {
     display: grid;
     gap: 11%;
   }
+    
+ 
+  /* Estilos adicionales para el desplegable */
+  select.field.input-field {
+    background-color: #373737;
+    color: #d3d3d3;
+    border-radius: 30px;
+    padding: 10px;
+    font-size: 1em;
+  }
   
+  /* Icono de la flecha del desplegable */
+  select.field.input-field::-ms-expand {
+    display: none;
+  }
+  
+  select.field.input-field {
+
+    background-repeat: no-repeat;
+    background-position: right 0.5em top 50%;
+    background-size: 0.65em auto;
+    padding-right: 1.5em;
+  }
+  
+  /* Cambia el color de la opción seleccionada */
+  select.field.input-field option {
+    background-color: #373737;
+    color: #f2f2f2;
+  }

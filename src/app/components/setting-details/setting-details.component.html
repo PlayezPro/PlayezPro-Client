@@ -1,4 +1,4 @@
-<!-- <link rel="stylesheet" href="../../../assets/icon/flags/flag-icons.css" /> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
 
 <div class="main-screen mt-3">
   <main class="container-main">
@@ -13,14 +13,14 @@
         <label class="block text-sm font-medium text-gray-700">Nacionalidad</label>
         <input type="text" [(ngModel)]="userDetails.nationality" name="nationality" class="field input-field">
       </div> -->
-    
-      <label for="nationality">Select nationality:</label>
-      <ion-select class="field input-field" interface="action-sheet" placeholder="País:" [(ngModel)]="userDetails.nationality">
-        <ion-select-option *ngFor="let country of countries" [value]="country.name">
-          <i class="fi-ad"></i>{{ country.name }}
-        </ion-select-option>
-      </ion-select>
-
+      <div>
+        <label for="nationality">Nacionalidad</label>
+        <select class="field input-field" id="nationality" name="nationality" [(ngModel)]="userDetails.nationality">
+          <option value="" disabled selected>Selecciona:</option>
+          <option *ngFor="let country of countries" [value]="country.name">{{ country.name }}</option>
+        </select>
+      </div>
+      
       <div>
         <label class="block text-sm font-medium text-gray-700">Equipo Actual</label>
         <input type="text" [(ngModel)]="userDetails.currentTeam" name="currentTeam" class="field input-field">
