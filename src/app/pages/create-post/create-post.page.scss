@@ -32,9 +32,6 @@ ion-item{
   color: var(--ion-color-step-850, var(--ion-text-color-step-150, #f2f2f2));
 }
 
-.alert-radio-label.sc-ion-alert-md {
-  color: var(--ion-color-step-850, var(--ion-text-color-step-150, #f2f2f2));
-}
 
 .ion-valid.sc-ion-input-md-h {
   --highlight-color: #e7ff0d;
@@ -47,6 +44,9 @@ ion-item{
   --padding-end: 16px;
   min-height: 56px;
   --margin:30px;
+}
+.sc-ion-alert-md {
+  color:#f2f2f2;
 }
 
 ion-select.ion-valid.ion-touched{
