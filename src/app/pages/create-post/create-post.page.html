@@ -22,26 +22,29 @@
           </ion-col>
         </ion-row>El archivo debe tener un formato de video y no pesar mas de 20MB.
       </ion-grid>
+      
       <ion-list>
         <ion-item>
           <ion-label>Selecciona un archivo</ion-label>
-          <input #fileInput type="file" (change)="onFileSelected($event)" accept="video/*" style="display: none;">
-          <ion-button (click)="fileInput.click()" slot="end">Buscar</ion-button>
-        </ion-item>        
+          <ion-button (click)="takeImage()" slot="end">Buscar</ion-button>
+        </ion-item>
+
         <ion-item>
           <ion-input label="Título" label-placement="floating" fill="outline" [(ngModel)]="post.title" placeholder="Título"></ion-input>
         </ion-item>
+
         <ion-item>
           <ion-input label="Descripción" label-placement="floating" fill="outline" placeholder="Descripción" [(ngModel)]="post.description">
           </ion-input>
         </ion-item>
-        <ion-item>
-          <ion-select [(ngModel)]="post.category" label="Selecciona una categoría" label-placement="floating" fill="outline">
-            <ion-select-option class="text-playez-dark-50" value="Gol">Gol</ion-select-option>
-            <ion-select-option value="Jugadas">Jugadas</ion-select-option>
-            <ion-select-option value="Asistencia">Asistencia</ion-select-option>
-            <ion-select-option value="accion Defensiva">Acción Defensiva</ion-select-option>
 
+        <ion-item >
+
+          <ion-select   [(ngModel)]="post.category" label="Selecciona una categoría" label-placement="floating" fill="outline">
+            <ion-select-option value="gol">Gol</ion-select-option>
+            <ion-select-option value="jugadas">Jugadas</ion-select-option>
+            <ion-select-option value="asistencia">Asistencia</ion-select-option>
+            <ion-select-option value="defensa">Acción Defensiva</ion-select-option>
           </ion-select>
         </ion-item>
       </ion-list>

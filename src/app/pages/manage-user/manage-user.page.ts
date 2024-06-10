@@ -7,13 +7,13 @@ import { ActivatedRoute } from '@angular/router';
 import { FutcardComponent } from 'src/app/components/futcard/futcard.component';
 import { SkillsGraphicsComponent } from 'src/app/components/skills-graphics/skills-graphics.component';
 import { UserPostsComponent } from 'src/app/components/userPosts/user-posts/user-posts.component';
-
+import { SettingDetailsComponent } from 'src/app/components/setting-details/setting-details.component';
 @Component({
   selector: 'app-manage-user',
   templateUrl: './manage-user.page.html',
   styleUrls: ['./manage-user.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, FutcardComponent, SkillsGraphicsComponent, UserPostsComponent]
+  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, FutcardComponent, SkillsGraphicsComponent, UserPostsComponent, SettingDetailsComponent ]
 })
 export class ManageUserPage implements OnInit {
   users_id: string | null = null;
