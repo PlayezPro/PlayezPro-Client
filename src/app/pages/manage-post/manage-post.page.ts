@@ -7,12 +7,13 @@ import { CommonModule } from '@angular/common';
 import { UserService } from 'src/app/services/userService/user.service';
 import { Router } from '@angular/router';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
+import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
 
 @Component({
   selector: 'app-manage-post',
   templateUrl: './manage-post.page.html',
   styleUrls: ['./manage-post.page.scss'],
-  imports: [ CommonModule, FormsModule, NavbarComponent, TopbarComponent, IonicModule],
+  imports: [ CommonModule, FormsModule, NavbarComponent, TopbarComponent, IonicModule, ButtonPlayezComponent],
   standalone: true
 })
 export class ManagePostPage implements OnInit {
@@ -20,7 +21,10 @@ export class ManagePostPage implements OnInit {
   filteredDetails: any[] = [];
   searchTerm: string = '';
   selectedPosition: string = '';
-  constructor(private DetailService: DetailUsersService, private userService: UserService,private router:Router) { }
+  constructor(
+    private DetailService: DetailUsersService, 
+    private userService: UserService, 
+    private router:Router) { }
 
   ngOnInit() {
     this.userAllDetails();
