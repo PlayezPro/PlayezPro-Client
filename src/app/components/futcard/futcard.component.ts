@@ -1,19 +1,19 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { UserService } from 'src/app/services/userService/user.service';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonPopover, IonList,IonItem } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonPopover, IonList,IonItem, IonIcon } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { SkillService } from 'src/app/services/skillService/skill.service';
 import { FollowService } from 'src/app/services/followService/follows.service';
 import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
 import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
 import { CountryService } from 'src/app/services/countryService/country.service';
-
+import { Router, RouterLink } from '@angular/router';
 @Component({
   selector: 'app-futcard',
   templateUrl: './futcard.component.html',
   styleUrls: ['./futcard.component.scss'],
   standalone: true,
-  imports: [IonList, IonPopover, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, IonButton, ButtonPlayezComponent, IonItem]
+  imports: [IonIcon, IonList, IonPopover, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, IonButton, ButtonPlayezComponent, IonItem, RouterLink]
 })
 export class FutcardComponent implements OnInit, OnChanges {
   countries: any[] = [];
