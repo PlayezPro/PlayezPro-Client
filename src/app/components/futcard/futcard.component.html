@@ -65,7 +65,7 @@
       </div>
     </div>
   </div>
-  <div *ngIf="isGeneratedCard" class="flex items-center gap-4">
+  <!-- <div class="flex items-center gap-4">
     <label for="file-upload" class="flex items-center text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-600">
       <svg class="w-6 h-6 fill-current mr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M10 8h4v8h-4z" />
@@ -74,7 +74,42 @@
       <input type="file" id="file-upload" class="hidden" (change)="onFileSelected($event)" />
     </label>
     <button class="bg-green-500 text-white  p-2 rounded hover:bg-green-600 focus:outline-none" (click)="uploadImage()">update Image</button>
-  </div>
+  </div> -->
+  <div *ngIf="isGeneratedCard">
+    <ion-button  id="popover-button">Open Menu</ion-button>
+    <ion-popover trigger="popover-button" [dismissOnSelect]="true">
+      <ng-template>
+        <ion-content>
+          <ion-list>
+            <ion-item >
+              <label for="file-upload" class="flex items-center text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-600">
+                <!-- <svg class="w-6 h-6 fill-current mr-2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 8h4v8h-4z" />
+                  <path d="M17 13h-2v-2h2v2zm-4 0h-2v-2h2v2zm0-4h-2v-2h2v2zm4 0h-2v-2h2v2zm-8-9h-4c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7h2v-2h-2v-2h2v-2h-2v-2h2v-2h-2v-2h2v-1c0-1.1-.9-2-2-2zm0 18h-4v-14h4v14zm6-8h-2v-2h2v2zm0-4h-2v-2h2v2z"/>
+                </svg> -->Seleccionar Imagen
+                <input type="file" id="file-upload" class="hidden" (change)="onFileSelected($event)" />
+              </label>
+            </ion-item>
+            <ion-item >
+            <button class="bg-green-500 text-white  p-2 rounded hover:bg-green-600 focus:outline-none" (click)="uploadImage()">Aceptar</button>
+            </ion-item>
+            <!-- <ion-item [button]="true" [detail]="false">Option 2</ion-item> -->
+            <!-- <ion-item [button]="true" id="nested-trigger">More options...</ion-item> -->
+
+            <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
+              <ng-template>
+                <ion-content>
+                  <ion-list>
+                    <ion-item [button]="true" [detail]="false">Nested option</ion-item>
+                  </ion-list>
+                </ion-content>
+              </ng-template>
+            </ion-popover>
+          </ion-list>
+        </ion-content>
+      </ng-template>
+    </ion-popover>
+  </div>  
   <div>
     <app-button-playez *ngIf="detail.hasRelation === false" expand="full" (click)="createRelation(detail._id)" [buttonText]="' Seguir'"></app-button-playez>
     <ion-button *ngIf="detail.hasRelation === true" expand="full">
