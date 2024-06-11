@@ -151,6 +151,7 @@ async generatePost(): Promise<void> {
     // Obtener detalles de todos los usuarios
     const postDetailsResponse = await this.detailUserService.getAllDetails();
     const postDetails = postDetailsResponse.data;
+    console.log(postDetails)
 
     // Detalles de interacciones
     for (let i = 0; i < this.posts.length; i++) {
@@ -164,6 +165,7 @@ async generatePost(): Promise<void> {
 
       const postComments = await this.commentService.getCommentsPost(post._id);
       post.allComments = postComments;
+      console.log(post.allComments)
       post.commentCount = postComments.length;
 
       // Encontrar los detalles del usuario correspondiente en postDetails
@@ -176,6 +178,12 @@ async generatePost(): Promise<void> {
       for (const comment of postComments) {
         const commentByUser = await this.userService.getUserById(comment.users_id);
         comment.userComment = commentByUser;
+
+        // Encontrar el detalle del usuario correspondiente en postDetails
+        const userDetail = postDetails.find((detail: any) => detail.userId === comment.users_id);
+        if (userDetail) {
+          comment.userDetail = userDetail; // Asignar detalles del usuario al comentario
+        }
       }
 
       post.isModalOpen = false;
@@ -198,6 +206,7 @@ async generatePost(): Promise<void> {
     this.isLoading = false; // Finalizar carga en caso de error
   }
 }
+
 
 
   // Función para ordenar los posts

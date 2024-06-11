@@ -21,10 +21,9 @@ export class ManagePostPage implements OnInit {
   filteredDetails: any[] = [];
   searchTerm: string = '';
   selectedPosition: string = '';
-  constructor(
-    private DetailService: DetailUsersService, 
-    private userService: UserService, 
-    private router:Router) { }
+  defaultImage: string = '../../../assets/userPic/profileIcon.png'
+
+  constructor(private DetailService: DetailUsersService, private userService: UserService,private router:Router) { }
 
   ngOnInit() {
     this.userAllDetails();
@@ -34,7 +33,6 @@ export class ManagePostPage implements OnInit {
     try {
       const response = await this.DetailService.getAllDetails();
       this.details = response.data;
-      console.log(response.data);
 
       for (const detail of this.details) {
         const userDetails = await this.userService.getUserById(detail.userId);
@@ -44,7 +42,15 @@ export class ManagePostPage implements OnInit {
       console.error(error);
     }
     this.filteredDetails = this.details;
-    console.log(this.filterDetails)
+    console.log(this.filteredDetails)
+  }
+
+  async handleImageError(detail: any) {
+    try {
+      detail.photo = this.defaultImage; // Assuming detail has a 'photo' property
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   filterDetails(event: any) {
@@ -72,7 +78,5 @@ export class ManagePostPage implements OnInit {
   }
   passUserId(userId: string) {
     this.router.navigate(['/manage-user', userId]);
-  }
-
-  
+  } 
 }
