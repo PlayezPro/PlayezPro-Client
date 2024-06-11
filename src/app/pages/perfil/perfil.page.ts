@@ -6,7 +6,6 @@ import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { FutcardComponent } from 'src/app/components/futcard/futcard.component';
 import { SkillsGraphicsComponent } from 'src/app/components/skills-graphics/skills-graphics.component';
 import { UserPostsComponent } from 'src/app/components/userPosts/user-posts/user-posts.component';
-
 import { ThemeService } from 'src/app/services/themeServices/theme.service';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { CreateDetailsComponent } from 'src/app/components/create-details/create-details.component';
