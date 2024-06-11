@@ -81,4 +81,38 @@
       Siguiendo
     </ion-button>
   </div>
+  <div class="flex justify-center items-center h-[240px] mt-16">
+    <table class="custom-bg border-collapse border border-gray-800">
+      <tr>
+        <td class="border border-gray-800 p-4">Fecha de nacimiento</td>
+        <td class="border border-gray-800 p-4 text-center">{{detail.userDetails?.birthYear}}</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-800 p-4">Nacionalidad</td>
+        <td class="border border-gray-800 p-4 text-center" >{{ detail.userDetails?.nationality }}</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-800 p-4">Equipo</td>
+        <td class="border border-gray-800 p-4 text-center">{{detail.userDetails?.currentTeam}}</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-800 p-4">Posición</td>
+        <td class="border border-gray-800 p-4 text-center">{{ detail.userDetails?.favPosition }}</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-800 p-4">Altura</td>
+        <td class="border border-gray-800 p-4 text-center">{{ detail.userDetails?.height }}</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-800 p-4">Peso</td>
+        <td class="border border-gray-800 p-4 text-center">{{ detail.userDetails?.weight }}</td>
+      </tr>
+      <tr>
+        <td class="border border-gray-800 p-4">Pierna</td>
+        <td class="border border-gray-800 p-4 text-center">{{ detail.userDetails?.mainFoot }}</td>
+      </tr>
+    </table>
+  </div>
+  
+  
 </div>
