@@ -146,7 +146,7 @@ async generatePost(): Promise<void> {
     this.posts = response.data;
     this.isLoadingPosts = new Array(this.posts.length).fill(true); // Inicializar todos los posts como cargando
     const currentUserId = localStorage.getItem('users_id')!;
-    console.log(this.posts);
+    // console.log(this.posts);
 
     // Obtener detalles de todos los usuarios
     const postDetailsResponse = await this.detailUserService.getAllDetails();
@@ -183,7 +183,7 @@ async generatePost(): Promise<void> {
       const hasLikesResponse = await this.likeService.checkLikes(post._id, currentUserId);
       post.hasLikes = hasLikesResponse;
       this.isLoadingPosts[i] = false; // Marcar el post actual como cargado
-      console.log(`Post ID: ${post._id}, isLiked: ${hasLikesResponse}`);
+      // console.log(`Post ID: ${post._id}, isLiked: ${hasLikesResponse}`);
 
       // Actualizar la vista después de cargar cada post
       this.cdr.detectChanges();
