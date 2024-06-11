@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { UserService } from 'src/app/services/userService/user.service';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonPopover, IonList,IonItem } from '@ionic/angular/standalone';
 import { CommonModule } from '@angular/common';
 import { SkillService } from 'src/app/services/skillService/skill.service';
 import { FollowService } from 'src/app/services/followService/follows.service';
@@ -13,7 +13,7 @@ import { CountryService } from 'src/app/services/countryService/country.service'
   templateUrl: './futcard.component.html',
   styleUrls: ['./futcard.component.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, IonButton, ButtonPlayezComponent]
+  imports: [IonList, IonPopover, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, IonButton, ButtonPlayezComponent, IonItem]
 })
 export class FutcardComponent implements OnInit, OnChanges {
   countries: any[] = [];

@@ -12,7 +12,7 @@
       </ion-item>
       <ion-item class="custom-select-item text-center">
         <ion-select class="text-center" placeholder="Selecciona una posición" (ionChange)="filterByPosition($event)" interface="popover">
-          <ion-select-option value="">Todos</ion-select-option>
+          <ion-select-option value="todos">Todos</ion-select-option>
           <ion-select-option value="delantero">Delantero</ion-select-option>
           <ion-select-option value="medio">Medio</ion-select-option>
           <ion-select-option value="defensa">Defensa</ion-select-option>
@@ -21,20 +21,21 @@
       </ion-item>
     </ion-list>
 
-    <!-- Resultados de búsqueda con tarjetas -->
-    <div *ngFor="let detail of filteredDetails" class="card flex justify-center ">
-      <div (click)="passUserId(detail.userId)" class="pb-7">
-        <div class="flex items-center">
-          <img class="rounded-full h-10 w-10" [src]="detail.photo">
-          <div class="ml-8 flex flex-col">
-            <div class="player-name">{{ detail.userDetails?.[0]?.name }}</div>
-            <div class="player-team">{{ detail.currentTeam }}</div>
+    <!-- Resultados busqueda -->
+    <div *ngFor="let detail of filteredDetails" class="card justify-center">
+      <div (click)="passUserId(detail.userId)" class="py-5 px-8 flex justify-around items-center">
+        <img class="rounded-full h-10 w-10" [src]="detail.photo">
+        <div class="ml-8 flex flex-col">
+          <div class="player-name">{{ detail.userDetails?.[0]?.name }}</div>
+          <div class="flex-column">
+            <div class="player-team mr-4">{{ detail.currentTeam }}</div>
             <div class="player-nationality">{{ detail.nationality }}</div>
           </div>
-          <button class="follow-button">Follow</button>
         </div>
+        <app-button-playez [buttonText]="'Ver'"></app-button-playez>
       </div>
     </div>
+    
   </div>
 </section>
 

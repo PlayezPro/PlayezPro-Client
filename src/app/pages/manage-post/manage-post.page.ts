@@ -7,12 +7,13 @@ import { CommonModule } from '@angular/common';
 import { UserService } from 'src/app/services/userService/user.service';
 import { Router } from '@angular/router';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
+import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
 
 @Component({
   selector: 'app-manage-post',
   templateUrl: './manage-post.page.html',
   styleUrls: ['./manage-post.page.scss'],
-  imports: [ CommonModule, FormsModule, NavbarComponent, TopbarComponent, IonicModule],
+  imports: [ CommonModule, FormsModule, NavbarComponent, TopbarComponent, IonicModule, ButtonPlayezComponent],
   standalone: true
 })
 export class ManagePostPage implements OnInit {
@@ -20,6 +21,8 @@ export class ManagePostPage implements OnInit {
   filteredDetails: any[] = [];
   searchTerm: string = '';
   selectedPosition: string = '';
+  defaultImage: string = '../../../assets/userPic/profileIcon.png'
+
   constructor(private DetailService: DetailUsersService, private userService: UserService,private router:Router) { }
 
   ngOnInit() {
@@ -30,7 +33,6 @@ export class ManagePostPage implements OnInit {
     try {
       const response = await this.DetailService.getAllDetails();
       this.details = response.data;
-      console.log(response.data);
 
       for (const detail of this.details) {
         const userDetails = await this.userService.getUserById(detail.userId);
@@ -40,7 +42,15 @@ export class ManagePostPage implements OnInit {
       console.error(error);
     }
     this.filteredDetails = this.details;
-    console.log(this.filterDetails)
+    console.log(this.filteredDetails)
+  }
+
+  async handleImageError(detail: any) {
+    try {
+      detail.photo = this.defaultImage; // Assuming detail has a 'photo' property
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   filterDetails(event: any) {
@@ -68,7 +78,5 @@ export class ManagePostPage implements OnInit {
   }
   passUserId(userId: string) {
     this.router.navigate(['/manage-user', userId]);
-  }
-
-  
+  } 
 }
