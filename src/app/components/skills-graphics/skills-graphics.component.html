@@ -10,7 +10,7 @@
       <ion-card-content>
         <canvas id="radarCanvas" width="400" height="400"></canvas>
       </ion-card-content>
-      <ion-button (click)="compararSkills()" class="m-4">Comparar</ion-button>
+      <ion-button  *ngIf="isManageUserPage" (click)="compararSkills()" class="m-4">Comparar</ion-button>
     </ion-card>
   </div>
  
