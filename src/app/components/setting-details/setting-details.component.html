@@ -11,12 +11,13 @@
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700">Nacionalidad</label>
-        <div class="custom-select-container">
+        <div class="field input-field">
           <div class="custom-select" (click)="toggleDropdown()">
             <span>{{ userDetails.nationality ? userDetails.nationality : 'Selecciona:' }}</span>
             <img *ngIf="userDetails.nationality" [src]="getCountryFlag(userDetails.nationality)" class="selected-flag" alt="flag">
           </div>
           <ul class="custom-options" [class.show]="dropdownOpen">
+            <li class="close-btn" (click)="closeDropdown()">Cerrar</li>
             <li *ngFor="let country of countries" (click)="selectCountry(country)">
               <img [src]="'../../../assets/icon/flags/4x3/' + country.code + '.svg'" class="flag" alt="flag">
               {{ country.name }}
@@ -24,6 +25,7 @@
           </ul>
         </div>
       </div>
+      
       
       <div>
         <label class="block text-sm font-medium text-gray-700">Equipo Actual</label>

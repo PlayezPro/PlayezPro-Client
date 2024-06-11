@@ -109,8 +109,14 @@ export class SettingDetailsComponent  implements OnInit {
     this.dropdownOpen = false;
   }
 
+  closeDropdown() {
+    this.dropdownOpen = false;
+  }
+
   getCountryFlag(nationality: string): string {
     const selectedCountry = this.countries.find(country => country.name === nationality);
     return selectedCountry ? `../../../assets/icon/flags/4x3/${selectedCountry.code}.svg` : '';
   }
+
+  
 }
