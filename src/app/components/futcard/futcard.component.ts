@@ -6,6 +6,7 @@ import { SkillService } from 'src/app/services/skillService/skill.service';
 import { FollowService } from 'src/app/services/followService/follows.service';
 import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
 import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
+import { CountryService } from 'src/app/services/countryService/country.service';
 
 @Component({
   selector: 'app-futcard',
@@ -15,6 +16,10 @@ import { DetailUsersService } from 'src/app/services/detailService/detail-users.
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, IonButton, ButtonPlayezComponent]
 })
 export class FutcardComponent implements OnInit, OnChanges {
+  countries: any[] = [];
+  selectedCountry: any = null;
+  dropdownOpen: boolean = false;
+
   @Input() users_id: string | null = null;
   userId: string | null = null;
   userDetail: any[] = [];
@@ -22,9 +27,10 @@ export class FutcardComponent implements OnInit, OnChanges {
   imageFile: File | null = null;
   isGeneratedCard: boolean = false;
 
-  constructor(private detailsService: DetailUsersService, private userServices: UserService, private skillService: SkillService, private followService: FollowService, private cdr: ChangeDetectorRef) { }
+  constructor(private detailsService: DetailUsersService, private userServices: UserService, private skillService: SkillService, private followService: FollowService, private cdr: ChangeDetectorRef,  private countryService: CountryService,) { }
 
   ngOnInit() {
+    this.loadCountries();
     if (this.users_id) {
       this.cardVisitor(this.users_id);
     } else {
@@ -60,6 +66,21 @@ export class FutcardComponent implements OnInit, OnChanges {
     } catch (error) {
       console.error('Error al generar la tarjeta:', error);
     }
+  }
+
+  async loadCountries(): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.countryService.getCountries().subscribe(
+        countries => {
+          this.countries = countries;
+          resolve();
+        },
+        error => {
+          console.error('Error loading countries:', error);
+          reject(error);
+        }
+      );
+    });
   }
 
   async cardVisitor(users_id: string) {
@@ -140,4 +161,10 @@ export class FutcardComponent implements OnInit, OnChanges {
       console.error('No se ha seleccionado ningún archivo');
     }
   }
+
+  getCountryFlag(nationality: string): string {
+    const selectedCountry = this.countries.find(country => country.name === nationality);
+    return selectedCountry ? `../../../assets/icon/flags/4x3/${selectedCountry.code}.svg` : '';
+  }
+
 }

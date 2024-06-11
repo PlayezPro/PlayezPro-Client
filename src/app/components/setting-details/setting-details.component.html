@@ -1,12 +1,5 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
-<ion-list>
-  <ion-item>
-    <ion-label position="stacked">Select nationality:</ion-label>
-    <ion-select interface="action-sheet" placeholder="País:" [(ngModel)]="userDetails.nationality">
-      <ion-select-option *ngFor="let country of countries" [value]="country.name">{{ country.name }}</ion-select-option>
-    </ion-select>
-  </ion-item>
-</ion-list>
+
 <div class="main-screen mt-3">
   <main class="container-main">
     <h1 class="text-4xl font-bold text-center">Detalles</h1>
@@ -18,15 +11,22 @@
       </div>
       <div>
         <label class="block text-sm font-medium text-gray-700">Nacionalidad</label>
-        <input type="text" [(ngModel)]="userDetails.nationality" name="nationality" class="field input-field">
+        <div class="field input-field">
+          <div class="custom-select" (click)="toggleDropdown()">
+            <span>{{ userDetails.nationality ? userDetails.nationality : 'Selecciona:' }}</span>
+            <img *ngIf="userDetails.nationality" [src]="getCountryFlag(userDetails.nationality)" class="selected-flag" alt="flag">
+          </div>
+          <ul class="custom-options" [class.show]="dropdownOpen">
+            <li class="close-btn" (click)="closeDropdown()">Cerrar</li>
+            <li *ngFor="let country of countries" (click)="selectCountry(country)">
+              <img [src]="'../../../assets/icon/flags/4x3/' + country.code + '.svg'" class="flag" alt="flag">
+              {{ country.name }}
+            </li>
+          </ul>
+        </div>
       </div>
-    
-      <label for="nationality">Select nationality:</label>
-      <ion-select class="field input-field" interface="action-sheet" placeholder="País:" [(ngModel)]="userDetails.nationality">
-        <ion-select-option *ngFor="let country of countries" [value]="country.name">{{ country.name }}</ion-select-option>
-      </ion-select>
-
-
+      
+      
       <div>
         <label class="block text-sm font-medium text-gray-700">Equipo Actual</label>
         <input type="text" [(ngModel)]="userDetails.currentTeam" name="currentTeam" class="field input-field">
