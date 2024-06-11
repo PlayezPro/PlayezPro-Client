@@ -1,0 +1,63 @@
+<div *ngFor="let detail of userDetail">
+  <!-- Tab Content -->
+  <div id="tab1" class="tab-content bg-playez-dark-900 shadow-md rounded-lg" [class.hidden]="activeTab !== 'tab1'">
+    <h2 class="text-2xl font-semibold mb-2 text-playez-300">Edad</h2>
+    <p>
+      {{detail.userDetails?.birthYear}}
+    </p>
+  </div>
+  <!-- <div id="tab2" class="p-4 tab-content bg-playez-dark-900 shadow-md rounded-lg" [class.hidden]="activeTab !== 'tab2'">
+    <h2 class="text-2xl font-semibold mb-2  text-playez-300">Nacionalidad</h2>
+    <p>{{ detail.userDetails?.nationality }}</p>
+  </div> -->
+  <!-- <div id="tab3" class="p-4 tab-content bg-playez-dark-900 shadow-md rounded-lg" [class.hidden]="activeTab !== 'tab3'">
+    <h2 class="text-2xl font-semibold mb-2  text-playez-300">Equipo</h2>
+    <p>{{detail.userDetails?.currentTeam}}</p>
+  </div> -->
+  <!-- <div id="tab4" class="p-4 tab-content bg-playez-dark-900 shadow-md rounded-lg" [class.hidden]="activeTab !== 'tab4'">
+    <h2 class="text-2xl font-semibold mb-2  text-playez-300">Posición</h2>
+    <p>{{ detail.userDetails?.favPosition }}</p>
+  </div> -->
+  <div id="tab5" class="p-4 tab-content bg-playez-dark-900 shadow-md rounded-lg" [class.hidden]="activeTab !== 'tab5'">
+    <h2 class="text-2xl font-semibold mb-2  text-playez-300">Altura</h2>
+    <p>{{ detail.userDetails?.height }}</p>
+  </div>
+  <div id="tab6" class="p-4 tab-content bg-playez-dark-900 shadow-md rounded-lg" [class.hidden]="activeTab !== 'tab6'">
+    <h2 class="text-2xl font-semibold mb-2  text-playez-300">Peso</h2>
+    <p>{{ detail.userDetails?.weight }}</p>
+  </div>
+  <div id="tab7" class="p-4 tab-content bg-playez-dark-900 shadow-md rounded-lg" [class.hidden]="activeTab !== 'tab7'">
+    <h2 class="text-2xl font-semibold mb-2  text-playez-300">Pierna</h2>
+    <p>{{ detail.userDetails?.mainFoot }}</p>
+  </div>
+</div>
+
+<div class="w-auto mt-20 max-w-xl mx-auto">
+  <!-- Tab Buttons -->
+  <div class="bg-playez-dark-900 p-2 rounded-t-lg">
+    <div class="flex flex-wrap flex-row justify-evenly">
+      <button
+        class="px-4 py-2 text-white font-semibold border-b-4 border-playez-900 hover:bg-playez-900 focus:outline-none tab-button"
+        [class.active]="activeTab === 'tab1'" (click)="showTab('tab1')">Edad</button>
+      <!-- <button
+        class="px-4 py-2 text-white font-semibold border-b-4 border-playez-900 hover:bg-playez-900 focus:outline-none tab-button"
+        [class.active]="activeTab === 'tab2'" (click)="showTab('tab2')">Nacionalidad</button>
+      <button
+        class="px-4 py-2 text-white font-semibold border-b-4 border-playez-900 hover:bg-playez-900 focus:outline-none tab-button"
+        [class.active]="activeTab === 'tab3'" (click)="showTab('tab3')">Equipo</button>
+      <button
+        class="px-4 py-2 text-white font-semibold border-b-4 border-playez-900 hover:bg-playez-900 focus:outline-none tab-button"
+        [class.active]="activeTab === 'tab4'" (click)="showTab('tab4')">Posición</button> -->
+      <button
+        class="px-4 py-2 text-white font-semibold border-b-4 border-playez-900 hover:bg-playez-900 focus:outline-none tab-button"
+        [class.active]="activeTab === 'tab5'" (click)="showTab('tab5')">Altura</button>
+      <button
+        class="px-4 py-2 text-white font-semibold border-b-4 border-playez-900 hover:bg-playez-900 focus:outline-none tab-button"
+        [class.active]="activeTab === 'tab6'" (click)="showTab('tab5')">Peso</button>
+      <button
+        class="px-4 py-2 text-white font-semibold border-b-4 border-playez-900 hover:bg-playez-900 focus:outline-none tab-button"
+        [class.active]="activeTab === 'tab7'" (click)="showTab('tab7')">Pierna</button>
+    </div>
+  </div>
+
+</div>

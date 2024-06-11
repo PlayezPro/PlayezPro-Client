@@ -10,6 +10,7 @@ import { ThemeService } from 'src/app/services/themeServices/theme.service';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { CreateDetailsComponent } from 'src/app/components/create-details/create-details.component';
 import { CreateSkillComponent } from 'src/app/components/create-skill/create-skill.component';
+import { TableInfoComponent } from 'src/app/components/table-info/table-info.component';
 
 @Component({
   selector: 'app-perfil',
@@ -25,7 +26,9 @@ import { CreateSkillComponent } from 'src/app/components/create-skill/create-ski
      CreateDetailsComponent, 
      CreateSkillComponent,
      SkillsGraphicsComponent,
-     UserPostsComponent]
+     UserPostsComponent,
+    TableInfoComponent
+    ]
 })
 export class PerfilPage implements OnInit {
   isDarkMode: boolean = false; // Inicialización de isDarkMode

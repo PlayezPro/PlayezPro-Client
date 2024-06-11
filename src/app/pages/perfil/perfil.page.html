@@ -5,15 +5,11 @@
 <ion-content [fullscreen]="true">
   <ion-card>
     <app-futcard />
-    <!-- <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" /> -->
-    <!-- <ion-card-header> -->
-      <!-- <ion-card-title>Card Title</ion-card-title> -->
-      <app-user-posts [users_id]="users_id" ></app-user-posts>
-      <!-- <ion-card-subtitle>Card Subtitle</ion-card-subtitle> -->
-    <!-- </ion-card-header> -->
+    <app-table-info />
+    <app-user-posts [users_id]="users_id"></app-user-posts>
     <div class="flex justify-center flex-col items-center mt-1 ">
-      <app-create-details class="m-3"/>
-      <app-create-skill class="m-3"/>
+      <app-create-details class="m-3" />
+      <app-create-skill class="m-3" />
     </div>
   </ion-card>
   <ion-card>
@@ -22,7 +18,5 @@
       <app-skills-graphics [users_id]="users_id"></app-skills-graphics>
     </ion-card-header>
   </ion-card>
-
 </ion-content>
-
 <app-navbar>
