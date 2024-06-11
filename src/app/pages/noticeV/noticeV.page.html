@@ -72,7 +72,7 @@
                 <ion-list style="flex: 1;">
                   <ng-container *ngFor="let comment of post.allComments">
                     <div style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
-                      <img class="w-10 h-10" [src]="comment.userComment?.photo || defaultImage" alt="User" (error)="handleImageError(comment.userComment)">
+                      <img class="w-10 h-10" [src]="comment.userDetail?.photo || defaultImage" alt="User" (error)="handleImageError(comment.userComment)">
                       <div style="display: flex; flex-direction: column;">
                         <p style="font-size: 10px;">{{ comment.userComment?.[0]?.name }}</p>
                         <div style="display: flex; flex-direction: row; gap: 25px;">
@@ -82,7 +82,7 @@
                         </div>
                       </div>
                     </div>
-                  </ng-container>
+                  </ng-container>                  
                 </ion-list> 
                
                   <ion-item class="mt-6">
