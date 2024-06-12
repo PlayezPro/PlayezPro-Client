@@ -111,8 +111,8 @@
     </ion-popover>
   </div>  
   <div>
-    <app-button-playez *ngIf="detail.hasRelation === false" expand="full" (click)="createRelation(detail._id)" [buttonText]="' Seguir'"></app-button-playez>
-    <ion-button *ngIf="detail.hasRelation === true" expand="full">
+    <app-button-playez *ngIf="!detail.hasRelation " expand="full" (click)="createRelation(detail._id)" [buttonText]="' Seguir'"></app-button-playez>
+    <ion-button *ngIf="detail.hasRelation" expand="full" (click)="deleteRelation(detail._id)">
       Siguiendo
     </ion-button>
   </div>
