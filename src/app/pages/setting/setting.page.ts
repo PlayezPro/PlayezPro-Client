@@ -11,14 +11,15 @@ import { UserService } from 'src/app/services/userService/user.service';
 import { CommonModule } from '@angular/common';
 import { SkillService } from 'src/app/services/skillService/skill.service';
 import { FollowService } from 'src/app/services/followService/follows.service';
-
+import { PopoverController } from '@ionic/angular';
+import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
 
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.page.html',
   styleUrls: ['./setting.page.scss'],
   standalone: true,
-  imports: [IonicModule, SettingDetailsComponent, SettingUserComponent, SettingSkillComponent, TopbarComponent, NavbarComponent, CommonModule]
+  imports: [IonicModule, SettingDetailsComponent, SettingUserComponent, SettingSkillComponent, TopbarComponent, NavbarComponent, CommonModule, ButtonPlayezComponent ]
 })
 
 
@@ -35,7 +36,7 @@ export class SettingPage implements OnInit, OnChanges {
   imageFile: File | null = null;
   isGeneratedCard: boolean = false;
 
-  constructor(private detailsService: DetailUsersService, private userServices: UserService, private skillService: SkillService, private followService: FollowService, private cdr: ChangeDetectorRef, ) { }
+  constructor(private detailsService: DetailUsersService, private userServices: UserService, private skillService: SkillService, private followService: FollowService, private cdr: ChangeDetectorRef, private popoverController: PopoverController ) { }
 
   ngOnInit() {
     if (this.users_id) {
@@ -75,7 +76,7 @@ export class SettingPage implements OnInit, OnChanges {
     }
   }
 
-  
+
 
   async cardVisitor(users_id: string) {
     try {
@@ -124,7 +125,7 @@ export class SettingPage implements OnInit, OnChanges {
       console.log('Archivo seleccionado:', this.imageFile);
     }
   }
-  
+
 
   async uploadImage() {
     if (this.imageFile) {
@@ -141,9 +142,13 @@ export class SettingPage implements OnInit, OnChanges {
           formData.forEach((value, key) => {
             console.log(key, value);
           });
-
           const response = await this.detailsService.addImageProfile(detailId, formData);
           console.log('Imagen subida exitosamente', response);
+          const popover = await this.popoverController.getTop();
+          if (popover) {
+            await popover.dismiss();
+          }
+         
           return response.data;
         } catch (error) {
           console.error('Error al subir la imagen', error);
@@ -152,7 +157,7 @@ export class SettingPage implements OnInit, OnChanges {
         console.error('No se ha encontrado el userId en el localStorage');
       }
     } else {
-      console.error('No se ha seleccionado ningún archivo');
+      console.error('No has seleccionado ningún archivo');
     }
   }
 
