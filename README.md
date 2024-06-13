@@ -20,10 +20,11 @@ git clone https://github.com/PlayezPro/PlayezPro-Client
 cd PlayezPro-Client
 npm install
 
-#### Inicia el servidor:
- Debido a que el proyecto esta funcionando en servidores gratuitos, necesitarás tener tambien el repositorio backend funcionando en local para ciertas funciones. Puedes clonarlo desde aqui: https://github.com/PlayezPro/PlayezPro-Server
+#### Clona e inicia el servidor:
+ Debido a que el proyecto esta funcionando en servidores gratuitos, necesitarás tener tambien el repositorio backend funcionando localmente para ciertas funciones.
+Puedes clonarlo desde aqui: [PlayezPro-Server] (https://github.com/PlayezPro/PlayezPro-Server)
 
-##### En frontend
+##### Inicia el frontend
 
 ```bash
 ng build
@@ -53,6 +54,33 @@ Nuestra aplicación ofrece las siguientes funcionalidades principales:
 - **Comparación Estadística**: La aplicación ofrece gráficos comparativos de habilidades entre jugadores, además de vistas gráficas individuales de las habilidades y registros de cada jugador.
 
 - **Seguridad**: La seguridad de los datos de los usuarios es una prioridad. Implementamos medidas de seguridad robustas para proteger la información confidencial.
+
+## Auditoría de Seguridad
+ ### Puedes encontrar los informes detallados de la auditoría en [esta carpeta]([https://drive.google.com/drive/folders/1VbTvAuEa2qrxj7jduQGv6-sK0qOUWcjo?usp=sharing](https://docs.google.com/document/d/1w-k0dhe9dQJ4XGQXfQO-YSDAMmh9-AgcXRBcYvq_ZK0/edit?usp=drive_link))
+
+### Resoluciones y Correcciones Implementadas
+
+#### Configuración de Cabeceras de Seguridad
+- Se ha configurado la cabecera X-Frame-Options con el valor "DENY" para evitar ataques de clickjacking.
+- Se ha añadido la cabecera X-Content-Type-Options con el valor "nosniff" para prevenir MIME-sniffing.
+
+#### Mejora de CORS
+- Se ha ajustado la configuración de CORS para permitir únicamente dominios específicos y autorizados, restringiendo así el acceso de dominios no autorizados.
+
+#### Revisión y Control de Scripts de Terceros
+- Se han revisado las fuentes de los archivos JavaScript y se han asegurado de que se carguen únicamente desde dominios de confianza.
+
+#### Deshabilitación de Compresión en Respuestas Sensibles
+- Se ha deshabilitado la compresión HTTP en respuestas que contienen datos sensibles para mitigar la vulnerabilidad BREACH.
+
+#### Configuración de ETags
+- Se ha configurado el servidor para deshabilitar las ETags, evitando así la fuga de inodos.
+
+#### Implementación de Content Security Policy (CSP)
+- Se ha implementado una política CSP adecuada para restringir las fuentes de contenido a dominios de confianza, mitigando el riesgo de ataques XSS.
+
+### Conclusión
+La auditoría reveló varias vulnerabilidades significativas en la aplicación web, principalmente relacionadas con la configuración de cabeceras de seguridad y el manejo de scripts de terceros. Las medidas correctivas se centraron en reforzar las configuraciones de cabeceras de seguridad, ajustar las políticas de CORS y CSP, y revisar las prácticas de inclusión de scripts. Con estas acciones, se ha incrementado significativamente la seguridad y la protección contra ataques comunes en la aplicación web auditada.
 
 ## Tech Stack :cd:
 Nuestra aplicación utiliza el siguiente stack tecnológico:
