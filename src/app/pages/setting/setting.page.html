@@ -6,7 +6,7 @@
     <ion-thumbnail class="p-2">
       <img [src]="detail.userDetails?.photo || defaultImage" alt="Pedro" draggable="false"
         (error)="handleImageError(detail)" />
-      <ion-icon name="create-outline" id="open-custom-dialog" expand="block" size="large" class=" fixed top-[184px] text-playez-300"></ion-icon>
+      <ion-icon name="create-outline" id="open-custom-dialog" expand="block" size="large" class="absolute top-[116px] text-playez-300"></ion-icon>
     </ion-thumbnail>
     <ion-content>
       <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
@@ -46,38 +46,7 @@
         </ng-template>
       </ion-modal>
     </ion-content>
-    <!-- <div *ngIf="isGeneratedCard">
-      <ion-button id="popover-button" fill="clear">cambiar Foto</ion-button>
-      <ion-popover trigger="popover-button" [dismissOnSelect]="false">
-        <ng-template>
-          <ion-content>
-            <ion-list>
-              <ion-item>
-                <label for="file-upload"
-                 class="flex items-center text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-600">
-                  <input type="file" id="file-upload" class="hidden" (change)="onFileSelected($event)"/>
-                  <app-button-playez></app-button-playez>
-                  <p>Aqui que hay?</p>
-                </label>
-              </ion-item>
-              <ion-item>
-                <button class="bg-green-500 text-white  p-2 rounded hover:bg-green-600 focus:outline-none" 
-                  (click)="uploadImage()">Aceptar</button>
-              </ion-item>
-              <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
-                <ng-template>
-                  <ion-content>
-                    <ion-list>
-                      <ion-item [button]="true" [detail]="false">Nested option</ion-item>
-                    </ion-list>
-                  </ion-content>
-                </ng-template>
-              </ion-popover>
-            </ion-list>
-          </ion-content>
-        </ng-template>
-      </ion-popover>
-    </div> -->
+
   </div>
   <app-setting-user />
   <app-setting-details />
