@@ -13,7 +13,7 @@ import { SkillService } from 'src/app/services/skillService/skill.service';
 import { FollowService } from 'src/app/services/followService/follows.service';
 import { PopoverController } from '@ionic/angular';
 import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.page.html',
@@ -36,7 +36,7 @@ export class SettingPage implements OnInit, OnChanges {
   imageFile: File | null = null;
   isGeneratedCard: boolean = false;
 
-  constructor(private detailsService: DetailUsersService, private userServices: UserService, private skillService: SkillService, private followService: FollowService, private cdr: ChangeDetectorRef, private popoverController: PopoverController ) { }
+  constructor(private detailsService: DetailUsersService, private userServices: UserService, private skillService: SkillService, private followService: FollowService, private cdr: ChangeDetectorRef, private popoverController: PopoverController, private router: Router ) { }
 
   ngOnInit() {
     if (this.users_id) {
@@ -76,6 +76,12 @@ export class SettingPage implements OnInit, OnChanges {
     }
   }
 
+  reloadPage(): void {
+    this.router.navigateByUrl('/profile').then(() => {
+      window.location.reload();
+    });
+  }
+  
 
 
   async cardVisitor(users_id: string) {
@@ -136,7 +142,7 @@ export class SettingPage implements OnInit, OnChanges {
           const userDetails = await this.detailsService.getDetailById(this.userId);
           console.log(userDetails)
           const detailId = userDetails._id; // Extrae el campo _id del response
-
+          this.reloadPage()
           const formData = new FormData();
           formData.append('imagen', this.imageFile);
           formData.forEach((value, key) => {
