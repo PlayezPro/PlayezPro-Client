@@ -73,37 +73,7 @@
     </div>
   </div>
 
-  <!-- <div *ngIf="isGeneratedCard">
-    <ion-button id="popover-button">Open Menu</ion-button>
-    <ion-popover trigger="popover-button" [dismissOnSelect]="true">
-      <ng-template>
-        <ion-content>
-          <ion-list>
-            <ion-item>
-              <label for="file-upload"
-                class="flex items-center text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-600">
-                <input type="file" id="file-upload" class="hidden" (change)="onFileSelected($event)" />
-              </label>
-            </ion-item>
-            <ion-item>
-              <button class="bg-green-500 text-white  p-2 rounded hover:bg-green-600 focus:outline-none"
-                (click)="uploadImage()">Aceptar</button>
-            </ion-item>
-
-            <ion-popover trigger="nested-trigger" [dismissOnSelect]="true" side="end">
-              <ng-template>
-                <ion-content>
-                  <ion-list>
-                    <ion-item [button]="true" [detail]="false">Nested option</ion-item>
-                  </ion-list>
-                </ion-content>
-              </ng-template>
-            </ion-popover>
-          </ion-list>
-        </ion-content>
-      </ng-template>
-    </ion-popover>
-  </div> -->
+ 
   <div>
     <app-button-playez *ngIf="!detail.hasRelation " expand="full" (click)="createRelation(detail._id)" [buttonText]="' Seguir'"></app-button-playez>
     <ion-button *ngIf="detail.hasRelation" expand="full" (click)="deleteRelation(detail._id)">
