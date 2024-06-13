@@ -41,10 +41,6 @@ module.exports = {
       
 
       },
-      
-      // backgroundImage: theme => ({
-      //   'gradient-to-dark': 'linear-gradient(to bottom, #2A2D32, #131313)',
-      // }),
     },
   },
   plugins: [

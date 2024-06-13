@@ -18,7 +18,7 @@ export class DetailUsersService {
 
   async getDetailById(userId: string): Promise<any> {
     try {
-      const response = await axios.get(`http://localhost:3000/details/${userId}`);
+      const response = await axios.get(`${this.detailURL}/${userId}`);
       return response.data;
     } catch (error) {
       console.error(`There was an error fetching details for user with ID ${userId}:`, error);
@@ -48,7 +48,7 @@ export class DetailUsersService {
 
   async addImageProfile(detail_id:any,updateImage:FormData):Promise<any>{
     try {
-      const response = await axios.put(`http://localhost:3000/details/profile/${detail_id}`,updateImage,{
+      const response = await axios.put(`${this.detailURL}/profile/${detail_id}`,updateImage,{
         headers: {
           'Content-Type': 'multipart/form-data'
         }

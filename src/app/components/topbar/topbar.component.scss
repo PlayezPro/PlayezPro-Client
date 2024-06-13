@@ -1,5 +1,4 @@
 
-
 ion-button.icon-button {
   --background: transparent;
   --background-activated: transparent;
@@ -12,3 +11,6 @@ ion-button.icon-button {
   --color: #e7ff0e;
 }
 
+ion-button{
+  max-height: 24px;
+}

@@ -1,16 +1,6 @@
-![Landing](png)
-¡Bienvenido a Scoutify! Esta aplicación está diseñada específicamente para reclutadores y cazatalentos en el mundo del fútbol. Scoutify simplifica el seguimiento de jugadores en diversas ligas, te permite crear informes detallados de cada partido y jugador para que lo tengas todo bajo control ¿Te parece poco? Nuestra aplicación tambien cuenta con un comparador de estadisticas de todos los jugadores disponibles.
+![Banner](/src/assets/screencapture/playezBanenr.png)
 
-## Asi se ve la app :soccer:
-
-![Landing](png)
-![Login](png)
-![Home](png)
-![Players](png)
-![Player](png)
-![Graph](png)
-![Graph](.png)
-
+¡Bienvenido a Playez! Si eres un apasionado del fútbol y sueñas con llegar a las ligas mayores, PlayezPro es tu lugar ideal. Independientemente de tu nivel, liga o club deportivo, en Playez podrás desarrollar y mostrar tu carrera deportiva como futbolista a todos los fans del deporte. En esta red social, podrás crear tus propios posts, elaborar un perfil con todas tus estadísticas como jugador, ¡y mucho más!
 
 ## Como empezar :rocket:
 
@@ -46,15 +36,23 @@ Finalmente, abre tu navegador web y visita [http://localhost:4200](http://localh
 ## Features
 Nuestra aplicación ofrece las siguientes funcionalidades principales:
 
-- Registro de Jugadores: Los reclutadors pueden registrar nuevos fichajes en la plataforma y proporcionar detalles sobre su historial deportivo, habilidades y estadísticas.
+- **Muro de Publicaciones**: Visualiza las publicaciones de todos los jugadores registrados en un solo lugar, manteniéndote al día con las últimas novedades y actividades.
 
-- Creación de informes: Los ojdeadores pueden realizar varios informes sobre cada jugador, calificando su desempeño en cada partido
+- **Búsqueda de Jugadores**: Encuentra y conecta con nuevos jugadores mediante una búsqueda optimizada, ampliando tu red de contactos en el mundo del fútbol.
 
-- Gestión de Perfiles: Los reclutadores pueden gestionar los perfiles de los jugadores, agregar comentarios, realizar seguimientos y calificar el potencial de los jugadores.
+- **Creación de Posts**: Comparte tus propios logros, pensamientos y actualizaciones creando posts personalizados para tus seguidores y otros jugadores.
 
-- Registro estatístico: La aplicación cuenta con una gáfica comparativa de habilidades entre jugadores, además de una vista gráficapor cada jugadores de sus registros de habilidad.
+- **Ranking Mensual**: Consulta el ranking mensual de los jugadores más gustados, destacando a los futbolistas más populares y activos en la plataforma.
 
-- Seguridad: La seguridad de los datos de los usuarios es una prioridad. Implementamos medidas de seguridad robustas para proteger la información confidencial.
+- **Gestión de Perfiles de Jugadores**: Crea y gestiona tu perfil de jugador con estadísticas detalladas y gráficos que reflejan tu desempeño y habilidades.
+
+- **Registro de Jugadores**: Los reclutadores pueden registrar nuevos fichajes en la plataforma, proporcionando detalles sobre su historial deportivo, habilidades y estadísticas.
+
+- **Creación de Informes**: Los ojeadores pueden realizar varios informes sobre cada jugador, calificando su desempeño en cada partido y proporcionando un análisis detallado.
+
+- **Comparación Estadística**: La aplicación ofrece gráficos comparativos de habilidades entre jugadores, además de vistas gráficas individuales de las habilidades y registros de cada jugador.
+
+- **Seguridad**: La seguridad de los datos de los usuarios es una prioridad. Implementamos medidas de seguridad robustas para proteger la información confidencial.
 
 ## Tech Stack :cd:
 Nuestra aplicación utiliza el siguiente stack tecnológico:
