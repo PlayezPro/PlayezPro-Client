@@ -51,5 +51,18 @@ export class FollowService {
           return false;
         }
     }
+
+    async deleteRelation(followed:string, follower:string) {
+        try {
+            const data = { userfollow: followed, userfollower: follower };
+            const response = await axios.delete('http://localhost:3000/follow', {
+                data: data
+            });
+            return response.data
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
     
 }
