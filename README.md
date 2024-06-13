@@ -56,7 +56,8 @@ Nuestra aplicación ofrece las siguientes funcionalidades principales:
 - **Seguridad**: La seguridad de los datos de los usuarios es una prioridad. Implementamos medidas de seguridad robustas para proteger la información confidencial.
 
 ## Auditoría de Seguridad
- ### Puedes encontrar los informes detallados de la auditoría en [esta carpeta]([https://drive.google.com/drive/folders/1VbTvAuEa2qrxj7jduQGv6-sK0qOUWcjo?usp=sharing](https://docs.google.com/document/d/1w-k0dhe9dQJ4XGQXfQO-YSDAMmh9-AgcXRBcYvq_ZK0/edit?usp=drive_link))
+
+Puedes encontrar los informes detallados de la auditoría en [esta carpeta](https://drive.google.com/drive/folders/1lnZ0dvR3Lh83fTWxmserJpEnYn9ZSdvC?usp=drive_link).
 
 ### Resoluciones y Correcciones Implementadas
 
