@@ -49,8 +49,6 @@ Nuestra aplicación ofrece las siguientes funcionalidades principales:
 
 - **Registro de Jugadores**: Los reclutadores pueden registrar nuevos fichajes en la plataforma, proporcionando detalles sobre su historial deportivo, habilidades y estadísticas.
 
-- **Creación de Informes**: Los ojeadores pueden realizar varios informes sobre cada jugador, calificando su desempeño en cada partido y proporcionando un análisis detallado.
-
 - **Comparación Estadística**: La aplicación ofrece gráficos comparativos de habilidades entre jugadores, además de vistas gráficas individuales de las habilidades y registros de cada jugador.
 
 - **Seguridad**: La seguridad de los datos de los usuarios es una prioridad. Implementamos medidas de seguridad robustas para proteger la información confidencial.
