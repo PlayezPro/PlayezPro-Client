@@ -10,6 +10,7 @@ import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/bu
 import { LogoAnimationComponent } from 'src/app/components/ui_ux/logo-animation/logo-animation.component';
 import { RouterLink } from '@angular/router';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -70,17 +71,17 @@ export class LoginComponent {
         email: this.formUser.value.email,
         password: this.formUser.value.password
       };
-
+  
       this.usersService.loginUser(credentials).subscribe(
         (response) => {
           console.log('Login con éxito:', response);
-          localStorage.setItem('Token', response.token)
-          const tokenOne = localStorage.getItem('Token')
+          localStorage.setItem('Token', response.token);
+          const tokenOne = localStorage.getItem('Token');
           if (tokenOne) {
             const decodedToken: any = jwtDecode(tokenOne);
-            localStorage.setItem('users_id', decodedToken.id)
+            localStorage.setItem('users_id', decodedToken.id);
           }
-          this.clearForm()
+          this.clearForm();
           this.alertMessage = '¡Bienvenido!';
           this.AlertMessage = true;
           setTimeout(() => {
@@ -93,15 +94,12 @@ export class LoginComponent {
           this.alertMessage = error.message || 'Error en usuario/contraseña';
           this.AlertMessage = true; // Mostrar la alerta
           this.showAlert = true;
-
+  
           // Aumentar el contador de intentos de inicio de sesión
           this.loginAttempts++;
-
-          // Si se superan los tres intentos, mostrar alerta adicional
           if (this.loginAttempts >= 3) {
             this.alertMessage = 'Demasiados intentos de inicio de sesión. Por favor, espere 15 minutos antes de intentarlo nuevamente.';
           }
-
           // Ocultar la alerta después de 3 segundos
           setTimeout(() => {
             this.AlertMessage = false;
@@ -117,4 +115,6 @@ export class LoginComponent {
       }, 2000);
     }
   }
+  
+  
 }
