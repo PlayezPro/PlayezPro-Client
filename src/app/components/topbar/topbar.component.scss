@@ -1,36 +1,7 @@
-/* Footer section for all section */
-// footer{
-//   position: absolute;
-//   left: 0;
-//   bottom: 0;
-//   // background: #252525;
-//   display: flex;
-//   justify-content: space-evenly;
-//   align-items: center;
-//   width: 100%;
-//   height: 50px;
-//   padding: 5px;
-//   user-select: none;
-//   z-index: 1000;
-// }
-// footer i.bi, footer img{
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   font-size: 1.3rem;
-//   color: #fff;
-//   padding: 10px;
-//   border-radius: 50%;
-//   cursor: pointer;
-//   transition: .3s ease;
-// }
-// footer img{
-//   width: 50px;
-//   height: 50px;
-// }
-// footer i.bi:hover{
-//   background: #333;
-// }
+ion-toolbar {
+  display: flex;
+  align-items: center;
+}
 
 ion-button.icon-button {
   --background: transparent;
@@ -41,20 +12,22 @@ ion-button.icon-button {
   --padding-end: 0;
   --border-radius: 0;
   --box-shadow: none;
-  --color: inherit;
-}
-
-/* Quitar el fondo de los botones de icono y bordes /
-
-/ Asegurar que los iconos se alineen a la derecha /
-ion-toolbar ion-buttons[slot="end"] {
-  margin-left: auto;
+  --color: #e7ff0e;
+  max-height: 24px;
   display: flex;
   align-items: center;
 }
 
-/ Ajustar el tamaño de los iconos si es necesario /
-ion-button.icon-button ion-icon {
-  font-size: 24px; / Ajusta el tamaño según tu necesidad */
-//   color: black;
-// }
+ion-button {
+  max-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+ion-title img {
+  height: 32px; /* Ajusta el tamaño de la imagen según sea necesario */
+}
+
+.button-inner{
+  align-items: normal;
+}

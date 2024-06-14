@@ -45,4 +45,17 @@ export class DetailUsersService {
       throw error;
     }
   }
+
+  async addImageProfile(detail_id:any,updateImage:FormData):Promise<any>{
+    try {
+      const response = await axios.put(`${this.detailURL}/profile/${detail_id}`,updateImage,{
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      return response.data;
+    } catch (error) {
+      console.error('Error al actualizar la imagen',error)
+    }
+  }
 }

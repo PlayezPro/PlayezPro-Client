@@ -43,9 +43,7 @@ export class FollowService {
     async checkRelation(followed:string, follower:string): Promise<boolean>{
         try {
             const data = {userfollow:followed, userfollower:follower};
-            console.log('Sending data to server:', data);
-            const response = await axios.post('https://playezpro-server.onrender.com/follow/relation/',data)
-            console.log('Server response:', response.data);
+            const response = await axios.post('${this.followersUrl}/relation/',data)
             const isRelation = response.data.inRelation as boolean;
             console.log('Is relation:', isRelation);
         return isRelation; 
@@ -53,5 +51,18 @@ export class FollowService {
           return false;
         }
     }
+
+    async deleteRelation(followed:string, follower:string) {
+        try {
+            const data = { userfollow: followed, userfollower: follower };
+            const response = await axios.delete('${this.followersUrl}', {
+                data: data
+            });
+            return response.data
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    
     
 }

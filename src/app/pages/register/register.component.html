@@ -6,15 +6,6 @@
     </div>
 
     <form class="form" [formGroup]="formNewUser" (ngSubmit)="Create()">
-      <!-- Nombre de Usuario -->
-      <section>
-        <label class="field">
-          <input class="input-field" type="text" formControlName="userName" placeholder="Usuario" />
-        </label>
-        <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="text-red-500">
-          <span *ngIf="userName.errors?.['required']">El nombre de usuario es obligatorio</span>
-        </div>
-      </section>
       <!-- Nombre -->
       <section>
         <label class="field">
@@ -29,6 +20,15 @@
           <input class="input-field" type="text" formControlName="lastName" placeholder="Apellidos">
         </label>
         <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="text-red-500">
+        </div>
+      </section>
+      <!-- Nombre de Usuario -->
+      <section>
+        <label class="field">
+          <input class="input-field" type="text" formControlName="userName" placeholder="Usuario" />
+        </label>
+        <div *ngIf="userName.invalid && (userName.dirty || userName.touched)" class="text-red-500">
+          <span *ngIf="userName.errors?.['required']">El nombre de usuario es obligatorio</span>
         </div>
       </section>
       <!-- Email -->

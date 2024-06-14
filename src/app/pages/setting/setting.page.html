@@ -1,12 +1,55 @@
-<!-- <ion-header>
-  <ion-toolbar class="bg-black">
-    <ion-title class="text-white">Configuración</ion-title>
-  </ion-toolbar>
-</ion-header> -->
 <app-topbar></app-topbar>
-<ion-content class="p-4">
-  <app-setting-user/>
-  <app-setting-details/>
-  <app-setting-skill/>
+
+<ion-content class="p-4 mb-6" *ngFor="let detail of userDetail">
+
+  <div class="flex flex-col items-center m-3">
+    <ion-thumbnail class="p-2">
+      <img [src]="detail.userDetails?.photo || defaultImage" alt="Pedro" draggable="false"
+        (error)="handleImageError(detail)" />
+      <ion-icon name="create-outline" id="open-custom-dialog" expand="block" size="large" class="absolute top-[116px] text-playez-300"></ion-icon>
+    </ion-thumbnail>
+    <ion-content>
+      <ion-modal id="example-modal" #modal trigger="open-custom-dialog">
+        <ng-template>
+          <div class="wrapper">
+            <ion-card >
+              <ion-card-content>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <ion-card-header>
+                        <ion-card-title class="text-playez-300">Cambiar foto de perfil</ion-card-title>
+                      </ion-card-header>
+                    </ion-col>
+                    <ion-col size="auto">
+                      <div > 
+                        <ion-item>
+                          <label for="file-upload" class="flex items-center text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-600">
+                            <input type="file" id="file-upload" (change)="onFileSelected($event)"/>
+                          </label>
+                        </ion-item>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                <ion-grid [fixed]="true">
+                  <ion-row>
+                    <ion-col size="12"></ion-col>
+                    <ion-col size="8"><ion-button (click)="uploadImage()">Subir</ion-button></ion-col>
+                    <ion-col size="8"></ion-col>
+                  </ion-row>
+                </ion-grid>
+          
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ng-template>
+      </ion-modal>
+    </ion-content>
+
+  </div>
+  <app-setting-user />
+  <app-setting-details />
+  <app-setting-skill />
 </ion-content>
 <app-navbar></app-navbar>

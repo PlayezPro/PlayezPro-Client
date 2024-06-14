@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CommentsComponent } from './comments.component';
+import { FotoPerfilComponent } from './foto-perfil.component';
 
-describe('CommentsComponent', () => {
-  let component: CommentsComponent;
-  let fixture: ComponentFixture<CommentsComponent>;
+describe('FotoPerfilComponent', () => {
+  let component: FotoPerfilComponent;
+  let fixture: ComponentFixture<FotoPerfilComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommentsComponent ],
+      declarations: [ FotoPerfilComponent ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CommentsComponent);
+    fixture = TestBed.createComponent(FotoPerfilComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

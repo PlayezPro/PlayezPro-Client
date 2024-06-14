@@ -3,24 +3,26 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailUsersService } from 'src/app/services/detailService/detail-users.service';
 import { ButtonPlayezComponent } from 'src/app/components/ui_ux/button-playez/button-playez.component';
-
+import { IonicModule } from '@ionic/angular';
+import { CountryService } from 'src/app/services/countryService/country.service';
 @Component({
   selector: 'app-create-details',
   templateUrl: './create-details.component.html',
   styleUrls: ['./create-details.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, ButtonPlayezComponent],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, ButtonPlayezComponent, IonicModule],
 })
 export class CreateDetailsComponent implements OnInit {
+  countries: any[] = [];
 
   modalOpen = false;
-  hasDetailInfo = false; // Variable para controlar la visibilidad del botón
+  hasDetailInfo = false;
 
   detailUserData: any = {
-    userId: '', // Aquí puedes recuperar el userId del localStorage
+    userId: '', 
     photo: '',
     birthYear: '',
-    nationality: '',
+    nationality: '', // Cambiado a nationality
     currentTeam: '',
     dorsal: '',
     favPosition: '',
@@ -29,14 +31,23 @@ export class CreateDetailsComponent implements OnInit {
     height: ''
   };
 
-  constructor(private detailUserService: DetailUsersService) { }
+  constructor(private detailUserService: DetailUsersService, private countryService: CountryService) {}
 
   ngOnInit(): void {
-    // Aquí puedes recuperar el userId del localStorage
     this.detailUserData.userId = localStorage.getItem('users_id') || '';
-    console.log(this.detailUserData.userId);
-    // Verificar si existe información de detalle para el usuario
     this.checkDetailInfo();
+    this.loadCountries();
+  }
+
+  loadCountries(): void {
+    this.countryService.getCountries().subscribe(
+      countries => {
+        this.countries = countries;
+      },
+      error => {
+        console.error('Error loading countries:', error);
+      }
+    );
   }
 
   async checkDetailInfo(): Promise<void> {

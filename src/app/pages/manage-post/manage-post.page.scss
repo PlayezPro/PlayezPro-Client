@@ -1,3 +1,8 @@
+section {
+  overflow-y: auto; 
+  margin-bottom: 15%;
+}
+
 .card {
   width: 85vw;
   height: auto;
@@ -41,4 +46,29 @@
 .follow-button:hover {
   background-color: #E7FF0D;
   color: #fff;
+}
+
+button {
+  min-width: 1vw;
+  color: #e7ff0d;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: bold;
+  font-size: 12px; /* Reducido de 17px a 12px */
+  padding: 0.5rem 1rem; /* Reducido de 1rem 2rem a 0.5rem 1rem */
+  border-radius: 15px; /* Reducido de 30px a 15px */
+  background: #373737;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25), /* Reducido de 6px 6px 12px a 3px 3px 6px */
+              -3px -3px 6px rgb(255 255 255 / 14%); /* Reducido de -6px -6px 12px a -3px -3px 6px */
+
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+button:active {
+  color: #e7ff0d;
+  background: #373737;
+  box-shadow: 
+    inset 3px 3px 6px rgba(0, 0, 0, 0.25),   /* Dark shadow */
+    inset -3px -3px 6px rgba(255, 255, 255, 0.25);  /* Light shadow */
+  transition: box-shadow 0.3s ease-in-out;
 }

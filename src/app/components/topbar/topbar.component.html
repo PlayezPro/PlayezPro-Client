@@ -1,34 +1,16 @@
-<!-- <div class="mobile-container">
-  <div class="content">
-    <nav class="flex justify-between items-center h-60">
-      <img src="../../../assets/icon/playez.svg" class="h-8 ml-3" alt="PlayezPro Logo" [routerLink]="'/home'">
-      <input type="checkbox" id="hamburger1" />
-      <label for="hamburger1" class="ml-[85%]"></label>
-      <ul class="nav-links">
-        <li><a [routerLink]="'/setting'">Ajustes</a></li>
-        <li><a (click)="onClickLogout()">Salir</a></li>
-      </ul>
-    </nav>
-  </div>
-</div> -->
-
-
 <ion-header>
   <ion-toolbar>
     <ion-title>
       <img src="../../../assets/icon/playez.svg" class="h-8" alt="PlayezPro Logo" [routerLink]="'/home'">
     </ion-title>
-    <ion-button slot="end" class="icon-button">
-      <ion-icon slot="icon-only" color="secondary" name="notifications-outline" aria-hidden="true"></ion-icon>
+
+    <ion-button slot="end" class="icon-button" [routerLink]="'/home'">
+      <app-back-button />
     </ion-button>
-    <!-- <ion-button slot="end" class="icon-button">
-      <ion-icon slot="icon-only" color="secondary" name="mail-outline" aria-hidden="true"></ion-icon>
-    </ion-button> -->
-    <ion-button slot="end" class="icon-button" [routerLink]="'/setting'">
-      <ion-icon slot="icon-only" color="secondary" name="settings-outline" aria-hidden="true"></ion-icon>
-    </ion-button>
-    <ion-button slot="end" class="icon-button" (click)="onClickLogout()">
-      <ion-icon slot="icon-only" color="secondary" name="log-out-outline" aria-hidden="true"></ion-icon>
+
+    <ion-button slot="end" class="icon-button mr-3"  (click)="onClickLogout()">
+      <ion-icon slot="icon-only" color="secondary" name="power-outline" aria-hidden="true"
+     ></ion-icon>
     </ion-button>
   </ion-toolbar>
 </ion-header>

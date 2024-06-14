@@ -5,12 +5,13 @@ import { CommonModule } from '@angular/common';
 import { SkillService } from 'src/app/services/skillService/skill.service';
 // import { ChartDataset, ChartOptions } from 'chart.js';
 import { Chart} from 'chart.js/auto';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-skills-graphics',
   templateUrl: './skills-graphics.component.html',
   styleUrls: ['./skills-graphics.component.scss'],
   standalone: true,
-  imports : [CommonModule, IonicModule, ButtonPlayezComponent]
+  imports : [CommonModule, IonicModule, ButtonPlayezComponent,]
 })
 
 export class SkillsGraphicsComponent implements OnInit, OnChanges {
@@ -18,10 +19,14 @@ export class SkillsGraphicsComponent implements OnInit, OnChanges {
   dataSets: any[] = [];
   radarChart: any;
   private comparisonDone: boolean = false;
+  isManageUserPage: boolean = false;
 
-  constructor(private skillService: SkillService) {}
+  constructor(private skillService: SkillService,private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
+    this.router.events.subscribe(() => {
+      this.isManageUserPage = this.router.url.includes('manage-user');
+    });
     this.destroyChart();
   }
 
