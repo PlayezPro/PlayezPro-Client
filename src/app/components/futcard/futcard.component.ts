@@ -26,6 +26,7 @@ export class FutcardComponent implements OnInit, OnChanges {
   defaultImage: string = '../../../assets/userPic/profileIcon.png'; // Ruta a tu imagen predeterminada
   imageFile: File | null = null;
   isGeneratedCard: boolean = false;
+  relation:boolean = false;
 
   constructor(private detailsService: DetailUsersService, private userServices: UserService, private skillService: SkillService, private followService: FollowService, private cdr: ChangeDetectorRef,  private countryService: CountryService,) { }
 
@@ -111,11 +112,31 @@ export class FutcardComponent implements OnInit, OnChanges {
       if (userFollower && followedID) {
         await this.followService.addFollower(followedID, userFollower);
         console.log('Follower added successfully');
+        
       } else {
         console.error('User ID or Followed ID is missing');
       }
+      this.relation = true;
+      this.cdr.detectChanges();
     } catch (error) {
       console.error('Error adding follower:', error);
+    }
+  }
+
+  async deleteRelation(followedID: string): Promise<void>{
+    try {
+      const userFollower = localStorage.getItem('users_id');
+      if (userFollower && followedID) {
+        await this.followService.deleteRelation(followedID, userFollower);
+        
+        console.log('Relacion Borrada');
+      } else {
+        console.error('User ID or Followed ID is missing');
+      }
+      this.relation = false;
+      this.cdr.detectChanges();
+    } catch (error) {
+      
     }
   }
 

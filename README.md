@@ -1,16 +1,6 @@
-![Landing](png)
-¡Bienvenido a Scoutify! Esta aplicación está diseñada específicamente para reclutadores y cazatalentos en el mundo del fútbol. Scoutify simplifica el seguimiento de jugadores en diversas ligas, te permite crear informes detallados de cada partido y jugador para que lo tengas todo bajo control ¿Te parece poco? Nuestra aplicación tambien cuenta con un comparador de estadisticas de todos los jugadores disponibles.
+![Banner](/src/assets/screencapture/playezBanenr.png)
 
-## Asi se ve la app :soccer:
-
-![Landing](png)
-![Login](png)
-![Home](png)
-![Players](png)
-![Player](png)
-![Graph](png)
-![Graph](.png)
-
+¡Bienvenido a Playez! Si eres un apasionado del fútbol y sueñas con llegar a las ligas mayores, PlayezPro es tu lugar ideal. Independientemente de tu nivel, liga o club deportivo, en Playez podrás desarrollar y mostrar tu carrera deportiva como futbolista a todos los fans del deporte. En esta red social, podrás crear tus propios posts, elaborar un perfil con todas tus estadísticas como jugador, ¡y mucho más!
 
 ## Como empezar :rocket:
 
@@ -30,10 +20,11 @@ git clone https://github.com/PlayezPro/PlayezPro-Client
 cd PlayezPro-Client
 npm install
 
-#### Inicia el servidor:
- Debido a que el proyecto esta funcionando en servidores gratuitos, necesitarás tener tambien el repositorio backend funcionando en local para ciertas funciones. Puedes clonarlo desde aqui: https://github.com/PlayezPro/PlayezPro-Server
+#### Clona e inicia el servidor:
+ Debido a que el proyecto esta funcionando en servidores gratuitos, necesitarás tener tambien el repositorio backend funcionando localmente para ciertas funciones.
+Puedes clonarlo desde aqui: [PlayezPro-Server] (https://github.com/PlayezPro/PlayezPro-Server)
 
-##### En frontend
+##### Inicia el frontend
 
 ```bash
 ng build
@@ -46,15 +37,49 @@ Finalmente, abre tu navegador web y visita [http://localhost:4200](http://localh
 ## Features
 Nuestra aplicación ofrece las siguientes funcionalidades principales:
 
-- Registro de Jugadores: Los reclutadors pueden registrar nuevos fichajes en la plataforma y proporcionar detalles sobre su historial deportivo, habilidades y estadísticas.
+- **Muro de Publicaciones**: Visualiza las publicaciones de todos los jugadores registrados en un solo lugar, manteniéndote al día con las últimas novedades y actividades.
 
-- Creación de informes: Los ojdeadores pueden realizar varios informes sobre cada jugador, calificando su desempeño en cada partido
+- **Búsqueda de Jugadores**: Encuentra y conecta con nuevos jugadores mediante una búsqueda optimizada, ampliando tu red de contactos en el mundo del fútbol.
 
-- Gestión de Perfiles: Los reclutadores pueden gestionar los perfiles de los jugadores, agregar comentarios, realizar seguimientos y calificar el potencial de los jugadores.
+- **Creación de Posts**: Comparte tus propios logros, pensamientos y actualizaciones creando posts personalizados para tus seguidores y otros jugadores.
 
-- Registro estatístico: La aplicación cuenta con una gáfica comparativa de habilidades entre jugadores, además de una vista gráficapor cada jugadores de sus registros de habilidad.
+- **Ranking Mensual**: Consulta el ranking mensual de los jugadores más gustados, destacando a los futbolistas más populares y activos en la plataforma.
 
-- Seguridad: La seguridad de los datos de los usuarios es una prioridad. Implementamos medidas de seguridad robustas para proteger la información confidencial.
+- **Gestión de Perfiles de Jugadores**: Crea y gestiona tu perfil de jugador con estadísticas detalladas y gráficos que reflejan tu desempeño y habilidades.
+
+- **Registro de Jugadores**: Los reclutadores pueden registrar nuevos fichajes en la plataforma, proporcionando detalles sobre su historial deportivo, habilidades y estadísticas.
+
+- **Comparación Estadística**: La aplicación ofrece gráficos comparativos de habilidades entre jugadores, además de vistas gráficas individuales de las habilidades y registros de cada jugador.
+
+- **Seguridad**: La seguridad de los datos de los usuarios es una prioridad. Implementamos medidas de seguridad robustas para proteger la información confidencial.
+
+## Auditoría de Seguridad
+
+Puedes encontrar los informes detallados de la auditoría en [esta carpeta](https://drive.google.com/drive/folders/1lnZ0dvR3Lh83fTWxmserJpEnYn9ZSdvC?usp=drive_link).
+
+### Resoluciones y Correcciones Implementadas
+
+#### Configuración de Cabeceras de Seguridad
+- Se ha configurado la cabecera X-Frame-Options con el valor "DENY" para evitar ataques de clickjacking.
+- Se ha añadido la cabecera X-Content-Type-Options con el valor "nosniff" para prevenir MIME-sniffing.
+
+#### Mejora de CORS
+- Se ha ajustado la configuración de CORS para permitir únicamente dominios específicos y autorizados, restringiendo así el acceso de dominios no autorizados.
+
+#### Revisión y Control de Scripts de Terceros
+- Se han revisado las fuentes de los archivos JavaScript y se han asegurado de que se carguen únicamente desde dominios de confianza.
+
+#### Deshabilitación de Compresión en Respuestas Sensibles
+- Se ha deshabilitado la compresión HTTP en respuestas que contienen datos sensibles para mitigar la vulnerabilidad BREACH.
+
+#### Configuración de ETags
+- Se ha configurado el servidor para deshabilitar las ETags, evitando así la fuga de inodos.
+
+#### Implementación de Content Security Policy (CSP)
+- Se ha implementado una política CSP adecuada para restringir las fuentes de contenido a dominios de confianza, mitigando el riesgo de ataques XSS.
+
+### Conclusión
+La auditoría reveló varias vulnerabilidades significativas en la aplicación web, principalmente relacionadas con la configuración de cabeceras de seguridad y el manejo de scripts de terceros. Las medidas correctivas se centraron en reforzar las configuraciones de cabeceras de seguridad, ajustar las políticas de CORS y CSP, y revisar las prácticas de inclusión de scripts. Con estas acciones, se ha incrementado significativamente la seguridad y la protección contra ataques comunes en la aplicación web auditada.
 
 ## Tech Stack :cd:
 Nuestra aplicación utiliza el siguiente stack tecnológico:
