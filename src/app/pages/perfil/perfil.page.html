@@ -1,27 +1,38 @@
 <app-topbar></app-topbar>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700" />
 
-<section>
+<ion-content class="scroll" [fullscreen]="true">
 
-  <ion-content [fullscreen]="true">
-    <ion-card>
+  <ion-card>
     <app-futcard class="m-10"/>
-    <app-table-info class="flex justify-center"/>
-    <app-user-posts [users_id]="users_id"></app-user-posts>
-    <div class="flex justify-center flex-col items-center mt-1 ">
-      <app-create-details class="m-3" />
-      <app-create-skill class="m-3" />
-    </div>
-    </ion-card>
-    <ion-card class="mb-10">
-      <ion-card-header>
-        <ion-card-title></ion-card-title>
-        <app-skills-graphics [users_id]="users_id"></app-skills-graphics>
-      </ion-card-header>
-    </ion-card>
-  </ion-content>
 
-</section>
+    <ion-card-title class="ion-text-center" color="primary" size="small" style="margin-top: 30px; margin-bottom: 10px;">
+      Detalles del Jugador
+    </ion-card-title>
+
+    <app-table-info class="flex justify-center"/>
+
+    <ion-card-header class="ion-no-padding">
+      <ion-card-title class="ion-text-center" color="primary" size="small" style="margin-top: 50px; margin-bottom: 10px;">
+        Publicaciones
+      </ion-card-title>
+    </ion-card-header>
+
+    <app-user-posts [users_id]="users_id"></app-user-posts>
+    <app-create-details class="m-3" />
+    <app-create-skill class="m-3" />
+
+    
+    <ion-card-header>
+      <ion-card-title class="ion-text-center" color="primary" size="small" style="margin-top: 10px; margin-bottom: 10px;">
+        Gráfico de Atributos
+      </ion-card-title>
+      <app-skills-graphics [users_id]="users_id"></app-skills-graphics>
+    </ion-card-header>
+  </ion-card>
+</ion-content>
+
 
 <app-navbar>

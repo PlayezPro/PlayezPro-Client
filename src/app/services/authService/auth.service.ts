@@ -6,8 +6,8 @@ import { Observable } from "rxjs";
     providedIn: 'root'
 })
 export class UsersService {
-    private baseUrl: string = 'https://playezpro-server.onrender.com'; // Production URL
-    // private baseUrl: string = 'http://localhost:3000'; // Development URL (Uncomment for local testing)
+    // private baseUrl: string = 'https://playezpro-server.onrender.com'; // Production URL
+    private baseUrl: string = 'http://localhost:3000'; // Development URL (Uncomment for local testing)
 
     constructor() { }
 
@@ -40,7 +40,7 @@ export class UsersService {
           password: credentials.password,
         };
         return new Observable(observer => {
-          axios.post('https://playezpro-server.onrender.com/auth/signin', loginData)
+          axios.post(`${this.baseUrl}/auth/signin`, loginData)
             .then(response => {
               localStorage.setItem('Token', response.data.token); // Guarda el token en localStorage
               observer.next(response.data);
