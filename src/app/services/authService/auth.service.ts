@@ -40,15 +40,15 @@ export class UsersService {
           password: credentials.password,
         };
         return new Observable(observer => {
-          axios.post(`${this.baseUrl}/auth/signin`, loginData)
-            .then(response => {
-              localStorage.setItem('Token', response.data.token); // Guarda el token en localStorage
-              observer.next(response.data);
-              observer.complete();
-            })
-            .catch(error => {
-              observer.error({ message: 'Error al iniciar sesión', error: error });
-            });
+            axios.post(`${this.baseUrl}/auth/signin`, loginData)
+                .then(response => {
+                    observer.next(response.data);
+                    observer.complete();
+                })
+                .catch(error => {
+                    const errorMsg = this.handleError(error);
+                    observer.error({ message: 'Error al iniciar sesión', error: errorMsg });
+                });
         });
     }
 
