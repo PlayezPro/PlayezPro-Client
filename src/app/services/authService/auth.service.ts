@@ -6,8 +6,8 @@ import { Observable } from "rxjs";
     providedIn: 'root'
 })
 export class UsersService {
-    private baseUrl: string = 'https://playezpro-server.onrender.com'; // Production URL
-    // private baseUrl: string = 'http://localhost:3000'; // Development URL (Uncomment for local testing)
+    // private baseUrl: string = 'https://playezpro-server.onrender.com'; // Production URL
+    private baseUrl: string = 'http://localhost:3000'; // Development URL (Uncomment for local testing)
 
     constructor() { }
 
@@ -36,8 +36,8 @@ export class UsersService {
 
     loginUser(credentials: any): Observable<any> {
         const loginData = {
-            email: credentials.email,
-            password: credentials.password,
+          email: credentials.email,
+          password: credentials.password,
         };
         return new Observable(observer => {
             axios.post(`${this.baseUrl}/auth/signin`, loginData)

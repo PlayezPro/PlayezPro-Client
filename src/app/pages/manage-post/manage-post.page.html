@@ -24,8 +24,8 @@
     <!-- Resultados busqueda -->
     <div *ngFor="let detail of filteredDetails" class="card justify-center">
       <div (click)="passUserId(detail.userId)" class="py-5 px-8 flex justify-around items-center">
-        <img class="rounded-full h-10 w-10" [src]="detail.photo">
-        <div class="ml-8 flex flex-col">
+        <img class="rounded-full h-10 w-10" [src]="detail.photo || defaultImage">
+          <div class="ml-8 flex flex-col">
           <div class="player-name">{{ detail.userDetails?.[0]?.name }}</div>
           <div class="flex-column">
             <div class="player-team mr-4">{{ detail.currentTeam }}</div>
