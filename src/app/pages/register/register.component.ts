@@ -47,7 +47,6 @@ export class RegisterComponent {
     'password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$%*?&])[A-Za-z\d@$%*?&]+$/)]),
     'repeatPassword': new FormControl('', Validators.required),
     'terms': new FormControl(false),
-    // 'hiddenField': new FormControl('')
   }, { validators: this.passwordMatchValidator });
 
     
@@ -90,17 +89,6 @@ export class RegisterComponent {
   alertMessage: string = '';
   AlertMessage = false;
   showSuccessMessage = false;
-
-  //Alerta campos ocultos
-  // ngOnInit(): void {
-    // Agrega un evento de detección de cambios en el campo oculto
-    // this.formNewUser.get('hiddenField')?.valueChanges.subscribe(value => {
-    //   if (value !== '') {
-    //     this.alertMessage = 'Intento de relleno automatizado. Bloqueando acceso.';
-    //     this.showAlert = true;
-    //   }
-    // });
-    // }
 
   Create() {
     if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value){
