@@ -12,3 +12,10 @@ ion-button.icon-button {
   --color: #e7ff0e;
 }
 
+ion-button{
+  max-height: 24px;
+}
+
+.button-inner{
+  align-items: normal;
+}
