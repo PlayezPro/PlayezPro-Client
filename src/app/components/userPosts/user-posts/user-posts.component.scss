@@ -1,0 +1,46 @@
+.grid {
+  display: grid;
+  gap: 0.03rem; /* Reducir aún más el espacio entre elementos */
+}
+
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid-row-2{
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.p-0 {
+  padding: 0;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}

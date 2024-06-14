@@ -9,7 +9,7 @@
     <div class="reels_video" *ngFor="let post of posts; let i = index" [class.active]="i === currentIndex">
       <!-- Contenedor de video -->
       <div class="vid">
-        <video #videoPlayer [src]="post.file" controls="false" muted autoplay loop></video>
+        <video #videoPlayer [src]="post.file" muted autoplay loop></video>
         <!-- Controladores con información del reel -->
         <div class="info">
           <div class="options">

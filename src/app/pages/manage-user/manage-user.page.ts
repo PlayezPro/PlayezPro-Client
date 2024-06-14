@@ -9,12 +9,13 @@ import { SkillsGraphicsComponent } from 'src/app/components/skills-graphics/skil
 import { UserPostsComponent } from 'src/app/components/userPosts/user-posts/user-posts.component';
 import { SettingDetailsComponent } from 'src/app/components/setting-details/setting-details.component';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
+import { TableInfoComponent } from 'src/app/components/table-info/table-info.component';
 @Component({
   selector: 'app-manage-user',
   templateUrl: './manage-user.page.html',
   styleUrls: ['./manage-user.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, FutcardComponent, SkillsGraphicsComponent, UserPostsComponent, SettingDetailsComponent, TopbarComponent ]
+  imports: [IonicModule, CommonModule, FormsModule, NavbarComponent, FutcardComponent, SkillsGraphicsComponent, UserPostsComponent, SettingDetailsComponent, TopbarComponent, TableInfoComponent ]
 })
 export class ManageUserPage implements OnInit {
   users_id: string | null = null;
