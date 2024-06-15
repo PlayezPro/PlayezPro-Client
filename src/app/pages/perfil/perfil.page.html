@@ -8,10 +8,16 @@
   <ion-card>
     <app-futcard class="m-10"/>
 
+    <div class="create-buttons">
+      <app-create-details class="small-button"/>
+      <app-create-skill class="small-button"/>
+    </div>
+
     <ion-card-title class="ion-text-center" color="primary" size="small" style="margin-top: 30px; margin-bottom: 10px;">
       Detalles del Jugador
     </ion-card-title>
-
+    
+    <!-- Tabla info -->
     <app-table-info class="flex justify-center"/>
 
     <ion-card-header class="ion-no-padding">
@@ -21,9 +27,6 @@
     </ion-card-header>
 
     <app-user-posts [users_id]="users_id"></app-user-posts>
-    <app-create-details class="m-3" />
-    <app-create-skill class="m-3" />
-
     
     <ion-card-header>
       <ion-card-title class="ion-text-center" color="primary" size="small" style="margin-top: 10px; margin-bottom: 10px;">
@@ -33,6 +36,5 @@
     </ion-card-header>
   </ion-card>
 </ion-content>
-
 
 <app-navbar>
