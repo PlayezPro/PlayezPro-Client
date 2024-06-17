@@ -1,81 +1,71 @@
+// cypress/e2e/noticeV.cy.ts
+describe('NoticeV Page', () => {
+  beforeEach(() => {
+    // Escuchar excepciones no capturadas para evitar que Cypress falle automáticamente
+    Cypress.on('uncaught:exception', (err, runnable) => {
+      // Devuelve false para evitar que Cypress falle en excepciones no capturadas
+      return false;
+    });
 
+    // Asegurarse de visitar la página de inicio de sesión y realizar el inicio de sesión
+    cy.visit('http://localhost:4200/');
+    cy.viewport('iphone-6');
 
+    // Asegurarse de que el formulario de inicio de sesión esté disponible antes de interactuar
+    cy.get('form').should('be.visible').within(() => {
+      cy.get('[formControlName="email"]').type('ramon@gmail.com');
+      cy.get('[formControlName="password"]').type('Ramon123@');
+    });
 
+    cy.contains('entrar').click(); // Cambiar según el texto del botón en tu aplicación
 
+    // Verificar que se haya iniciado sesión correctamente
+    cy.contains('¡Bienvenido!').should('be.visible');
+    cy.url().should('include', '/home'); // Verificar que se redirige a la página de inicio (/home)
+  });
 
+  it('should display the NoticeV page with posts after successful login', () => {
+    // Verifica que la sección de muro de publicaciones esté presente y contenga al menos un post visible
+    cy.get('section.reels_section').should('be.visible');
+    cy.get('.reels_video').should('be.visible');
+  });
 
-// import test from '@playwright/test';
-// import expect from '@playwright/test';
+  it('should interact with post functionalities like like, comment, and share', () => {
+    // Selecciona un post específico para interactuar
+    cy.get('.reels_video').eq(0).within(() => {
+      // Interactúa con el botón de like
+      cy.get('.options div:nth-child(1) img').click();
+      cy.get('.options div:nth-child(1) span').should('contain', '1'); // Verifica que el contador de likes se actualizó
 
+      // Interactúa con el botón de comentario
+      cy.get('.bi-chat').click();
+      // Verifica que se abrió el modal de comentarios
+      cy.get('ion-modal').should('be.visible');
 
-// test.describe('Login and Wall functionalities', () => {
-//   test.beforeEach(async ({ page }) => {
-//     // Navega a la página de inicio
-//     await page.goto('http://localhost:4200/');
+      // Escribe un comentario
+      cy.get('ion-input input').type('¡Gran publicación!');
+      cy.get('ion-icon[name="arrow-up-outline"]').click();
+      cy.contains('¡Gran publicación!').should('be.visible'); // Verifica que el comentario se agregó correctamente
+    });
 
-//     // Ajustar la vista a tamaño móvil
-//     await page.setViewportSize({ width: 375, height: 667 });
-//   });
+    // Comprueba la funcionalidad de compartir un post
+    cy.get('.reels_video').eq(0).within(() => {
+      cy.get('button').click(); // Haz clic en el botón de compartir
+    });
+    // Verifica que se abrió el action sheet para compartir
+    cy.get('ion-action-sheet').should('be.visible');
+    // Puedes continuar verificando más detalles específicos de la funcionalidad de compartir según la implementación real
+  });
 
-//   test('should display error messages on invalid form submission', async ({ page }) => {
-//     // Llenar el formulario con credenciales inválidas
-//     await page.fill('[formControlName="email"]', 'Invalid@gmail.com');
-//     await page.fill('[formControlName="password"]', 'InvalidPassword');
-//     await page.click('text=entrar');
+  it('should navigate to user profile page on clicking user name', () => {
+    // Selecciona el nombre de usuario en un post específico para navegar a su perfil
+    cy.get('.reels_video').eq(0).within(() => {
+      cy.get('h4').click(); // Haz clic en el nombre de usuario
+    });
+    // Verifica que la URL haya cambiado a la página de perfil del usuario
+    cy.url().should('include', '/manage-user');
+  });
 
-//     // Verificar que se muestren los mensajes de error
-//     await expect(page.locator('text=Error al iniciar sesión')).toBeVisible();
+  // Puedes agregar más pruebas para otras funcionalidades del muro de publicaciones según las necesidades de tu aplicación
 
-//     // Verificar que no se redirige a /home
-//     await expect(page).not.toHaveURL('**/home');
-//   });
-
-//   test('should login successfully with correct credentials and test wall functionalities', async ({ page }) => {
-//     // Llenar el formulario con credenciales válidas
-//     await page.fill('[formControlName="email"]', 'ramon@gmail.com');
-//     await page.fill('[formControlName="password"]', 'Ramon123@');
-//     await page.click('text=entrar');
-
-//     // Verificar que se muestre el mensaje de bienvenida
-//     await expect(page.locator('text=¡Bienvenido!')).toBeVisible();
-
-//     // Verificar la redirección a la página de inicio
-//     await expect(page).toHaveURL('**/home');
-
-//     // Espera a que la redirección después del login se complete y el muro cargue
-//     await page.waitForTimeout(15000); // Aumenta el tiempo de espera a 15 segundos
-
-//     // Verifica que la página de muro se haya cargado correctamente
-//     await expect(page.locator('.reels_section')).toBeVisible();
-
-//     // Like functionality
-//     const likeButton = page.locator('.bi-hand-thumbs-up');
-//     const likeCount = page.locator('.bi-hand-thumbs-up + span');
-//     const initialLikeCount = await likeCount.textContent();
-
-//     await likeButton.click();
-//     await page.waitForTimeout(1000); // Espera un segundo para que el conteo de likes se actualice
-//     const updatedLikeCount = await likeCount.textContent();
-//     expect(parseInt(updatedLikeCount)).toBe(parseInt(initialLikeCount) + 1);
-
-//     // Comment functionality
-//     const commentButton = page.locator('.bi-chat');
-//     await commentButton.click();
-//     await page.fill('ion-input[label="Añade un comentario"]', 'Este es un comentario de prueba');
-//     await page.click('ion-icon[name="arrow-up-outline"]');
-//     await page.waitForTimeout(2000); // Espera dos segundos para que el comentario se añada
-
-//     const commentList = page.locator('ion-list > ng-container');
-//     const comments = await commentList.allTextContents();
-//     expect(comments.some(comment => comment.includes('Este es un comentario de prueba'))).toBe(true);
-
-//     // Share functionality
-//     const shareButton = page.locator('button:has-text("Compartir")');
-//     await shareButton.click();
-//     const actionSheet = page.locator('ion-action-sheet');
-//     await expect(actionSheet).toBeVisible();
-
-//     // Cierra el ActionSheet
-//     await page.click('ion-action-sheet button:has-text("Cerrar")');
-//   });
-// });
+});
