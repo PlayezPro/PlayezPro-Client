@@ -1,0 +1,14 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+      "types": ["@playwright/test"],
+      "strict": false,
+        "noImplicitAny": false
+    },
+    "include": ["tests/**/*.ts"],
+    "scripts": {
+        "test:e2e": "npx playwright test --config=tsconfig.playwright.json"
+    }
+    
+  }
+  
