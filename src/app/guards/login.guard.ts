@@ -5,9 +5,8 @@ export const blockPage = () => {
     const router = inject(Router);
 
     const token = localStorage.getItem('Token');
-    const userId = localStorage.getItem('users_id');
 
-    if (token && userId) {
+    if (token) {
         return true;
     } else {
         router.navigate(['/']);

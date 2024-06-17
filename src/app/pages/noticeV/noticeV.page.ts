@@ -188,7 +188,7 @@ async generatePost(): Promise<void> {
 
       post.isModalOpen = false;
 
-      const hasLikesResponse = await this.likeService.checkLikes(post._id, currentUserId);
+      const hasLikesResponse = await this.likeService.checkLikes(post._id);
       post.hasLikes = hasLikesResponse;
       this.isLoadingPosts[i] = false; // Marcar el post actual como cargado
       // console.log(`Post ID: ${post._id}, isLiked: ${hasLikesResponse}`);
@@ -256,10 +256,11 @@ async generatePost(): Promise<void> {
   // INTERACCIÓNES
   // Likes
   async addLike(postId: string): Promise<void> {
-    this.userId = localStorage.getItem('users_id');
-    if (this.userId) {
+    // this.userId = localStorage.getItem('users_id');
+    // if (this.userId) {
       // Llama a tu servicio para agregar el like, pasando el postId y el userId
-      await this.likeService.addLike(postId, this.userId);
+      try {
+      await this.likeService.addLike(postId);
       const postIndex = this.posts.findIndex(post => post._id === postId);
       if (postIndex !== -1) {
         const post = this.posts[postIndex];
@@ -267,16 +268,19 @@ async generatePost(): Promise<void> {
         post.totalLikes += post.hasLikes ? 1 : -1;
         this.cdr.detectChanges();
         this.changeImage(); // Cambia la imagen
-      } else {
-        console.error('No se puede agregar el like: userId no encontrado en el localStorage');
+      // } else {
+      //   console.error('No se puede agregar el like: userId no encontrado en el localStorage');
+      // }
       }
+    }catch {
+      console.error('No se puede agregar el like')
     }
   }
 
   getUserId(): string | null {
     return localStorage.getItem('users_id');
   }
-// Comentarios
+// Comentarios 
   async addComment(postId: string, comentarioTexto: string) {
     if (this.comentarioTexto !== null) {
       this.userId = localStorage.getItem('users_id')!;

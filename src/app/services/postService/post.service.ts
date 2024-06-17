@@ -5,9 +5,9 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   providedIn: 'root'
 })
 export class PostServiceService {
-  private apiUrl: string = 'https://playezpro-server.onrender.com/posts'
-  // private apiUrl: string = 'http://localhost:3000/posts/'
-
+  // private apiUrl: string = 'https://playezpro-server.onrender.com/posts'
+  private apiUrl: string = 'http://localhost:3000/posts/'
+  private token :string | null= localStorage.getItem('Token')
   constructor() { }
 
   async CreatePost(newPost: any, file: File): Promise<any> {
@@ -36,7 +36,11 @@ export class PostServiceService {
   
   
   async getAllPost()  {
-    return axios.get(this.apiUrl);
+    return axios.get(this.apiUrl, {
+      headers:{
+        'Authorization': `Bearer ${this.token}`
+      }
+    });
     
   }
 

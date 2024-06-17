@@ -5,18 +5,24 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class LikesService {
-  private likesUrl: string = 'https://playezpro-server.onrender.com/likes'
+  // private likesUrl: string = 'https://playezpro-server.onrender.com/likes'
+  private likesUrl: string = 'http://localhost:3000/likes'
+  private token :string | null= localStorage.getItem('Token')
   constructor() { }
   
-  async addLike(postId: string, userId: string): Promise<void> {
+  async addLike(postId: string): Promise<void> {
     try {
-      const data = { posts_id: postId, users_id: userId };
-      const response = await axios.post(this.likesUrl, data);
+      const data = { posts_id: postId };
+      const response = await axios.post(this.likesUrl, data,{
+        headers:{
+          'Authorization': `Bearer ${this.token}`
+        }
+      });
       console.log('Like añadido correctamente');
     } catch (error:any) {
       if (error.response && error.response.status === 400) {
         console.error('El usuario ya ha dado like a este post');
-        await this.deleteLike(postId, userId);
+        await this.deleteLike(postId);
         console.log("el like ha sido borrado")
       } else {
         console.error('Error al añadir el like:', error);
@@ -24,20 +30,30 @@ export class LikesService {
     }
   }
 
-  async deleteLike(postId: string, userId: string): Promise<void> {
+  async deleteLike(postId: string): Promise<void> {
     try {
-      const data = { posts_id: postId, users_id: userId };
-      await axios.delete(this.likesUrl, { data });
+      const data = { posts_id: postId };
+      await axios.delete(this.likesUrl, {
+        headers: {
+          'Authorization': `Bearer ${this.token}`
+        },
+        data: data
+      });
       console.log('Like eliminado correctamente');
     } catch (error) {
       console.error('Error al eliminar el like:', error);
     }
   }
 
-  async checkLikes(postId: string, userId: string): Promise<boolean> {
+  async checkLikes(postId: string): Promise<boolean> {
     try {
-        const data = { posts_id: postId, users_id: userId };
-        const response = await axios.post(`${this.likesUrl}/likecheck`, data );
+        console.log(this.token)
+        const data = { posts_id: postId };
+        const response = await axios.post(`${this.likesUrl}/likecheck`, data , {
+          headers:{
+            'Authorization': `Bearer ${this.token}`
+          }
+        });
         const isLiked = response.data.isLiked as boolean;
         return isLiked; 
     } catch (error) {

@@ -5,7 +5,9 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class CommentService {
-  private commentUrl:string = 'https://playezpro-server.onrender.com/comment'
+  // private commentUrl:string = 'https://playezpro-server.onrender.com/comment'
+  private commentUrl: string = 'http://localhost:3000/comment'
+  private token :string | null= localStorage.getItem('Token')
   constructor() { }
 
   async getCommentsPost(postId:string){
@@ -22,7 +24,11 @@ export class CommentService {
   async writeComment(postsID:string, userID:string,comments:string){
     try {
       const data = {posts_id:postsID, users_id:userID, comments};
-      const response = await axios.post(this.commentUrl, data)
+      const response = await axios.post(this.commentUrl, data, {
+        headers:{
+          'Authorization': `Bearer ${this.token}`
+        }
+      })
     } catch (error) {
       console.error("no se ha añadido el comentario")
     }

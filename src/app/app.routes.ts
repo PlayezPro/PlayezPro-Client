@@ -15,7 +15,7 @@ export const routes: Routes = [
   {
     path: '',
     component: LoginComponent,
-    canActivate: [blockPage]
+    // canActivate: [blockPage]
   },
   {
     path: 'register',
