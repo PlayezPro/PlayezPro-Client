@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { UserService } from 'src/app/services/userService/user.service';
-// import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonList } from '@ionic/angular/standalone';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { SkillService } from 'src/app/services/skillService/skill.service';
@@ -15,9 +14,9 @@ import { TabService } from 'src/app/services/tabService/tab.service';
   templateUrl: './table-info.component.html',
   styleUrls: ['./table-info.component.scss'],
   standalone: true,
-  imports: [ CommonModule, ButtonPlayezComponent,IonicModule]
+  imports: [CommonModule, ButtonPlayezComponent, IonicModule]
 })
-export class TableInfoComponent  implements OnInit {
+export class TableInfoComponent implements OnInit, OnChanges {
   countries: any[] = [];
   selectedCountry: any = null;
   dropdownOpen: boolean = false;
@@ -29,8 +28,17 @@ export class TableInfoComponent  implements OnInit {
   defaultImage: string = '../../../assets/userPic/profileIcon.png'; // Ruta a tu imagen predeterminada
   imageFile: File | null = null;
   isGeneratedCard: boolean = false;
+  birthYear: string | null = null; // Nueva propiedad para almacenar birthYear
 
-  constructor(private detailsService: DetailUsersService, private userServices: UserService, private skillService: SkillService, private followService: FollowService, private cdr: ChangeDetectorRef,  private countryService: CountryService, private tabService: TabService) { }
+  constructor(
+    private detailsService: DetailUsersService,
+    private userServices: UserService,
+    private skillService: SkillService,
+    private followService: FollowService,
+    private cdr: ChangeDetectorRef,
+    private countryService: CountryService,
+    private tabService: TabService
+  ) {}
 
   ngOnInit() {
     this.loadCountries();
@@ -50,7 +58,6 @@ export class TableInfoComponent  implements OnInit {
 
   async generateCard() {
     try {
-      // Obtener el valor de user de localStorage
       this.userId = localStorage.getItem('users_id');
       if (this.userId === null) {
         console.error('El valor de user en localStorage es null');
@@ -64,7 +71,7 @@ export class TableInfoComponent  implements OnInit {
         detail.userSkills = userSkill;
         const userDetails = await this.detailsService.getDetailById(this.userId)
         detail.userDetails = userDetails;
-        console.log(userDetails)
+        this.birthYear = userDetails.birthYear; // Asignar el birthYear aquí
       }
       this.isGeneratedCard = true;
     } catch (error) {
@@ -90,17 +97,16 @@ export class TableInfoComponent  implements OnInit {
   async cardVisitor(users_id: string) {
     try {
       const response = await this.userServices.getUserById(users_id);
-      this.userDetail = response // Asegúrate de que estás accediendo correctamente a la propiedad `data` de la respuesta
+      this.userDetail = response; // Asegúrate de que estás accediendo correctamente a la propiedad `data` de la respuesta
       for (const detail of this.userDetail) {
         const userSkill = await this.skillService.getUserSkill(users_id)
         detail.userSkills = userSkill;
         const userDetails = await this.detailsService.getDetailById(users_id)
         detail.userDetails = userDetails;
+        this.birthYear = userDetails.birthYear; // Asignar el birthYear aquí
         const follower = localStorage.getItem('users_id')!;
         const verifyRelation = await this.followService.checkRelation(detail._id, follower)
         detail.hasRelation = verifyRelation;
-        // this.cdr.detectChanges();
-        console.log(`Post ID: ${detail._id},followerID:${follower}, isRelation: ${verifyRelation}`);
       }
     } catch (error) {
       console.error('Error al generar la tarjeta del visitante:', error);
@@ -114,7 +120,6 @@ export class TableInfoComponent  implements OnInit {
       // Verifica que los IDs no sean null antes de usarlos
       if (userFollower && followedID) {
         await this.followService.addFollower(followedID, userFollower);
-        console.log('Follower added successfully');
       } else {
         console.error('User ID or Followed ID is missing');
       }
@@ -131,10 +136,8 @@ export class TableInfoComponent  implements OnInit {
     const file = event.target.files[0];
     if (file) {
       this.imageFile = file;
-      console.log('Archivo seleccionado:', this.imageFile);
     }
   }
-  
 
   async uploadImage() {
     if (this.imageFile) {
@@ -143,17 +146,14 @@ export class TableInfoComponent  implements OnInit {
       if (this.userId) {
         try {
           const userDetails = await this.detailsService.getDetailById(this.userId);
-          console.log(userDetails)
           const detailId = userDetails._id; // Extrae el campo _id del response
 
           const formData = new FormData();
           formData.append('imagen', this.imageFile);
           formData.forEach((value, key) => {
-            console.log(key, value);
           });
 
           const response = await this.detailsService.addImageProfile(detailId, formData);
-          console.log('Imagen subida exitosamente', response);
           return response.data;
         } catch (error) {
           console.error('Error al subir la imagen', error);
@@ -185,6 +185,9 @@ export class TableInfoComponent  implements OnInit {
   }
 
   calculateAge(dateString: string): number {
+    if (!dateString) {
+      return 0;
+    }
     const birthDate = new Date(dateString);
     const today = new Date();
     let age = today.getFullYear() - birthDate.getFullYear();
@@ -194,4 +197,5 @@ export class TableInfoComponent  implements OnInit {
     }
     return age;
   }
+  
 }

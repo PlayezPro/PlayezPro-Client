@@ -97,7 +97,8 @@ export class RegisterComponent {
         response => {
           console.log('Usuario creado con éxito', response);
           this.showSuccessMessage = true;
-          alert('Gracias por registrarte'); 
+          this.AlertMessage = true;
+          this.alertMessage = 'Gracias por Registrarte Correctamente'; 
           setTimeout(() => {
             this.navigateToHome();
           }, 2000);

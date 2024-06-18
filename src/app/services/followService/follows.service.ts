@@ -45,7 +45,7 @@ export class FollowService {
             const data = {userfollow:followed, userfollower:follower};
             const response = await axios.post('${this.followersUrl}/relation/',data)
             const isRelation = response.data.inRelation as boolean;
-            console.log('Is relation:', isRelation);
+            // console.log('Is relation:', isRelation);
         return isRelation; 
         } catch (error) {
           return false;

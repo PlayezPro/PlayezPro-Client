@@ -70,18 +70,17 @@
 
               <ion-content class="ion-padding flex flex-row items-center gap-4">
                 <ion-list style="flex: 1;">
-                  <ng-container *ngFor="let comment of post.allComments">
-                    <div style="display: flex; flex-direction: row; align-items: center; gap: 15px;">
-                      <img class="w-10 h-10" [src]="comment.userDetail?.photo || defaultImage" alt="User" (error)="handleImageError(comment.userComment)">
-                      <div style="display: flex; flex-direction: column;">
-                        <p style="font-size: 10px;">{{ comment.userComment?.[0]?.name }}</p>
-                        <div style="display: flex; flex-direction: row; gap: 25px;">
-                          <p style="margin-top: 1px;">{{ comment.comments }}</p>
-                          <ion-icon color="danger" *ngIf="comment.users_id === getUserId()" name="trash-outline"
-                            (click)="deleteComment(post._id, comment._id)"></ion-icon>
+                  <ng-container *ngFor="let comment of post.allComments" class="mt-4">
+                    <div class="flex flex-row items-center gap-4 mt-4">
+                      <img class="w-10 h-10 rounded-full object-cover" [src]="comment.userDetail?.photo || defaultImage" alt="User" (error)="handleImageError(comment.userComment)">
+                      <div class="flex flex-col">
+                        <p class="text-xs">{{ comment.userComment?.[0]?.name }}</p>
+                        <div class="flex flex-row gap-6">
+                          <p class="mt-1">{{ comment.comments }}</p>
+                          <ion-icon color="danger" *ngIf="comment.users_id === getUserId()" name="trash-outline" (click)="deleteComment(post._id, comment._id)"></ion-icon>
                         </div>
                       </div>
-                    </div>
+                    </div>                    
                   </ng-container>                  
                 </ion-list> 
                

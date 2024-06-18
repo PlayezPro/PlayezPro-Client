@@ -1,0 +1,17 @@
+.scroll {
+    overflow-y: auto; 
+    margin-bottom: 15%;
+  }
+  
+  ion-card-title {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 14px;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
+                -4px -4px 8px rgba(255, 255, 255, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  

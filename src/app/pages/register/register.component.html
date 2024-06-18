@@ -5,7 +5,7 @@
       <img src="../../../assets/icon/playezLetras.svg" alt="icono de playez" class="z-logo">
     </div>
 
-    <form class="form" [formGroup]="formNewUser" (ngSubmit)="Create()">
+    <form class="form" [formGroup]="formNewUser">
       <!-- Nombre -->
       <section>
         <label class="field">
@@ -86,7 +86,7 @@
       </section>
       <!-- Boton submit -->
       <div class="button-display">
-        <app-button-playez  (click)="onSubmit()" [formNewUser]="formNewUser" [buttonText]="'Registrar'" />
+        <app-button-playez  (click)="Create()" [formNewUser]="formNewUser" [buttonText]="'Registrar'" />
         <!-- Google registre -->
         <app-googlelogin></app-googlelogin>
         <!-- Cuenta existente -->

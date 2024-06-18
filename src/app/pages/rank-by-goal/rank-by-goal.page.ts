@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { NavbarComponent } from 'src/app/components/navbar/navbar.component';
 import { TopbarComponent } from 'src/app/components/topbar/topbar.component';
 import { LikesService } from 'src/app/services/likesService/likes.service';
@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
   imports: [
     NavbarComponent, TopbarComponent, IonCardSubtitle, IonCard, IonIcon,
     IonButton, IonCardHeader, IonCardContent, IonCardTitle, IonHeader,
-    IonTitle, IonContent, IonToolbar, CommonModule, FormsModule
+    IonTitle, IonContent, IonToolbar, CommonModule, FormsModule, IonItem, IonLabel
   ]
 })
 export class RankByGoalComponent implements OnInit {
@@ -80,5 +80,10 @@ export class RankByGoalComponent implements OnInit {
 
   filterPosts(): void {
     this.sortByLikesAndCategory();
+  }
+
+  isImage(file: string): boolean {
+    const isImage = /\.(gif|jpe?g|tiff?|png|webp|bmp)(\?.*)?$/i.test(file);
+    return isImage;
   }
 }

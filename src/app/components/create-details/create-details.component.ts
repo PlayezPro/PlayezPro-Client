@@ -14,9 +14,10 @@ import { CountryService } from 'src/app/services/countryService/country.service'
 })
 export class CreateDetailsComponent implements OnInit {
   countries: any[] = [];
-
+  selectedCountry: any = null;
   modalOpen = false;
   hasDetailInfo = false;
+  dropdownOpen: boolean = false;
 
   detailUserData: any = {
     userId: '', 
@@ -72,7 +73,7 @@ export class CreateDetailsComponent implements OnInit {
     window.location.reload();
   }
 
-  async onSubmit(): Promise<void> {
+  async Crear(): Promise<void> {
     try {
       const savedDetails = await this.detailUserService.createDetailUser(this.detailUserData);
       console.log('Detail user created successfully:', savedDetails);
@@ -82,6 +83,26 @@ export class CreateDetailsComponent implements OnInit {
     } catch (error) {
       console.error('Error creating detail user:', error);
     }
+  }
+  
+
+  toggleDropdown() {
+    this.dropdownOpen = !this.dropdownOpen;
+  }
+
+  selectCountry(country: any) {
+    this.selectedCountry = country;
+    this.detailUserData.nationality = country.name;
+    this.dropdownOpen = false;
+  }
+
+  closeDropdown() {
+    this.dropdownOpen = false;
+  }
+
+  getCountryFlag(nationality: string): string {
+    const selectedCountry = this.countries.find(country => country.name === nationality);
+    return selectedCountry ? `../../../assets/icon/flags/4x3/${selectedCountry.code}.svg` : '';
   }
 
 }

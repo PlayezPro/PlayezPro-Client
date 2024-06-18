@@ -1,12 +1,7 @@
-<section class="mt-4 -ml-4 p-1 mb-4">
-<ion-list class="grid grid-cols-3  object-cover">
-  <ion-item class="w-[400px] ml-0 p-1" *ngFor="let post of posts">
-    <div class="relative w-[33.3%] h-0 pb-[56.25%]"> <!-- 16:9 Aspect Ratio -->
-      <video class="absolute inset-0 w-[150px] h-full object-cover p-1 rounded-xl" [src]="post.file" controls="false" muted></video>
+<section class="grid grid-cols-3 grid-row-2">
+  <ion-item class="p-0 m-0" *ngFor="let post of posts">
+    <div class="relative w-full h-0 pb-[100%]"> 
+      <video class="absolute inset-0 w-full h-full object-cover rounded-xl" [src]="post.file" muted preload="metadata" controlslist="nodownload"></video>
     </div>  
   </ion-item>
-</ion-list>
 </section>
-
-
-

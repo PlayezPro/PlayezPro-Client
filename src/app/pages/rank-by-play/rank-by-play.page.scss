@@ -1,0 +1,108 @@
+section {
+    overflow-y: auto;
+    margin-bottom: 15%;
+  }
+  
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    margin-top: 10px;
+    margin-left: 6%;
+  }
+  
+  .title {
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: left;
+    color: #ffffff;
+    margin-bottom: 2px;
+  }
+  
+  .p-2 {
+    padding: 8px;
+  }
+  
+  .post-card {
+    width: 92vw;
+    max-width: 600px;
+    border-radius: 30px;
+    background: #373737;
+    padding-inline: 4%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin: 2%;
+    margin-bottom: 4%;
+    box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60);
+    overflow: hidden;
+  }
+  
+  .post-content {
+    display: flex;
+    align-items: center;
+  }
+  
+  .left-column {
+    width: 60%; 
+    margin-right: 32%;
+  }
+  
+  .right-column {
+    width: 60%;
+    align-content: flex-end;
+    margin-top: 2%;
+  }
+  
+  .post-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #e7ff0c;
+    text-align: left;
+  }
+  
+  .media-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  
+  .media {
+    width: 70%; 
+    height: 90px; 
+    display: block;
+    border-radius: 12px;
+    object-fit: cover; 
+    pointer-events: none;
+  }  
+  
+  .likes {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: #e7ff0c;
+    margin-top: 4px;
+  }
+  
+  .likes ion-icon {
+    margin-right: 4px; /* Espacio entre el ícono de likes y el texto */
+    font-size: 1rem;
+  }
+  
+  .post-subtitle {
+    color: #fff;
+    font-size: 0.9rem;
+    margin-top: 4px; /* Espacio entre los likes y el subtítulo */
+  }
+  
+  .post-text {
+    font-size: 0.8rem;
+    color: #fff;
+    text-align: left;
+    margin-top: 12px;
+    overflow: hidden; /* Manejo del desbordamiento de texto */
+    text-overflow: ellipsis; /* Truncar texto largo */
+    white-space: nowrap; /* No envolver el texto */
+  }
+  
