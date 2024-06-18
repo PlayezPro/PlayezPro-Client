@@ -6,7 +6,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 })
 export class PostServiceService {
   private apiUrl: string = 'https://playezpro-server.onrender.com/posts'
-  // private apiUrl: string = 'http://localhost:3000/posts/'
+  // private apiUrl: string = 'http://localhost:3000/posts/';
 
   constructor() { }
 
