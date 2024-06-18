@@ -1,0 +1,184 @@
+.main-screen {
+  background-color: #373737;
+  display: flex;
+  justify-content: center;
+  overflow: auto; // Permitir el desplazamiento en la pantalla principal
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0 20px 0;
+
+  .container-main {
+    background-color: #373737;
+    border-radius: 10px;
+    padding: 10px 20px;
+    width: 100dvw;
+    max-width: 99vw;
+    max-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    label {
+      color: #e7ff0d;
+      padding: 10px 0 10px 0;
+    }
+  }
+}
+.logo-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3%;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-left: 2em;
+  padding-right: 2em;
+  padding-bottom: 0.4em;
+  background-color: #373737;
+  border-radius: 25px;
+  transition: 0.4s ease-in-out;
+}
+
+.z-logo {
+  width: 65dvw;
+  height: auto;
+  padding: 7% 0;
+}
+
+.z-logo:hover {
+  transform: scale(1.05);
+  border: 1px solid black;
+}
+
+#heading {
+  text-align: center;
+  margin: 2em;
+  color: rgb(255, 255, 255);
+  font-size: 1.2em;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  border-radius: 25px;
+  padding: 0.6em;
+  border: none;
+  outline: none;
+  color: white;
+  background-color: #373737;
+  box-shadow: inset 2px 5px 10px rgba(2, 2, 2, 0.598);
+}
+
+.input-icon {
+  height: 1.3em;
+  width: 1.3em;
+  fill: white;
+}
+
+.input-field {
+  background: none;
+  border: none;
+  outline: none;
+  width: 75dvw;
+  height: 38px;
+  color: #d3d3d3;
+  border-radius: 25px;
+}
+
+.button-display {
+  display: grid;
+  gap: 11%;
+}
+
+/* Estilos adicionales para el desplegable */
+select.field.input-field {
+  background-color: #373737;
+  color: #d3d3d3;
+  border-radius: 30px;
+  padding: 10px;
+  font-size: 1em;
+}
+
+/* Icono de la flecha del desplegable */
+select.field.input-field::-ms-expand {
+  display: none;
+}
+
+select.field.input-field {
+  background-repeat: no-repeat;
+  background-position: right 0.5em top 50%;
+  background-size: 0.65em auto;
+  padding-right: 1.5em;
+}
+
+/* Cambia el color de la opción seleccionada */
+select.field.input-field option {
+  background-color: #373737;
+  color: #f2f2f2;
+}
+
+.custom-select-container {
+  position: relative;
+  display: inline-block;
+  height: 38px;
+  
+}
+
+.custom-select {
+  // background-color: #373737;
+  color: #d3d3d3;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  width: 75dvw;
+  // background-color: #373737;
+  // box-shadow: inset 2px 5px 10px rgba(2, 2, 2, 0.598);
+}
+
+.custom-select img.selected-flag {
+  height: 20px;
+  width: auto;
+  margin-left: 10px;
+}
+
+.custom-options {
+  display: none;
+  position: absolute;
+  background-color: #373737;
+  border-radius: 10px;
+  width: 80%;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-top: 5px;
+}
+
+.custom-options.show {
+  display: block;
+}
+
+.custom-options li {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.custom-options li:hover {
+  background-color: #555;
+}
+
+.custom-options img.flag {
+  height: 20px;
+  width: auto;
+  margin-right: 10px;
+}

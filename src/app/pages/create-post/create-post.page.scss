@@ -1,0 +1,83 @@
+ion-button {
+  --background: #373737;
+  // --background-hover: #9ce0be;
+  --background-activated: #373737;
+  --background-focused: #88f4be;
+
+  --color: #e7ff0d;
+
+  --border-radius: 30px;
+  --border-color: none;
+  --border-style: solid;
+  --border-width: 0px;
+
+  --box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.25),
+                -6px -6px 12px rgb(255 255 255 / 14%);
+
+  --ripple-color: none;
+
+  // --padding-top: 10px;
+  // --padding-bottom: 10px;
+}
+
+ion-item {
+  --background: #373737;
+  --background-focused: none;
+  --padding-bottom: 14px;
+}
+
+ion-select {
+  --placeholder-color: #e7ff0d;
+  --placeholder-opacity: 1;
+  width: 100%;
+  justify-content: center;
+
+  &::part(placeholder),
+  &::part(text) {
+    flex: 0 0 auto;
+  }
+
+  &::part(placeholder)::first-letter {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  &::part(text) {
+    color: #545ca7;
+  }
+
+  &::part(icon) {
+    color: #e7ff0d;
+    opacity: 1;
+  }
+
+  &.ion-valid.ion-touched {
+    --highlight-color: #e7ff0d;
+    --padding-top: 4px;
+  }
+}
+
+.ion-valid.sc-ion-input-md-h {
+  --highlight-color: #e7ff0d;
+}
+
+.input-fill-outline.sc-ion-input-md-h {
+  --border-color: var(--ion-color-step-300, var(--ion-background-color-step-300, #f2f2f2));
+  --border-radius: 4px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  min-height: 56px;
+  --margin: 30px;
+}
+
+.sc-ion-alert-md {
+  color: #f2f2f2;
+}
+
+.sc-ion-input-md-h {
+  --padding-top: 4px;
+}
+
+.card-content-md {
+  --padding-inline-start: 0px;
+}

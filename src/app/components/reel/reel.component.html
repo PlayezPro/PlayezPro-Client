@@ -1,0 +1,297 @@
+<!-- Reels section -->
+<section class="section reels_section">
+  <div class="reels-container">
+    <div class="reels_video" *ngFor="let video of videos">
+      <div class="head-part">
+        <h4>Reels</h4>
+        <i class="bi bi-camera"></i>
+      </div>
+      <div class="vid">
+        <!-- Ajusta la URL del video según sea necesario -->
+        <video #videoPlayer [src]="video"></video>
+        <div class="options">
+          <div>
+            <i class="bi bi-heart"></i>
+            <span>27.5k</span>
+          </div>
+          <div>
+            <i class="bi bi-chat"></i>
+            <span>11.1k</span>
+          </div>
+          <div>
+            <i class="bi bi-send"></i>
+          </div>
+          <i class="bi bi-three-dots-vertical"></i>
+          <img src="../../../assets/images/2.jpg">
+        </div>
+        <div class="like_counter">
+          <i class="bi bi-x-lg"></i>
+          <h3>Play & reactions</h3>
+          <div class="underline"></div>
+          <div class="search">
+            <input type="text" placeholder="Search">
+            <i class="bi bi-search"></i>
+          </div>
+          <div class="play_count">
+            <i class="bi bi-play"></i>
+            <h4>15,08,942 plays</h4>
+          </div>
+          <div class="liked_and_reactions">
+            <h4>Liked By</h4>
+            <p>1,26,326 likes and reactions</p>
+          </div>
+          <div class="underline two"></div>
+          <div class="underline-big"></div>
+          <div class="play">
+            <div class="imgDiv">
+              <i class="bi bi-facebook"></i>
+            </div>
+            <p>10 reactions and 216 play come from Facebook. <a href="#">Learn more</a></p>
+          </div>
+          <div class="play">
+            <img src="images/2.jpg" alt="">
+            <div>
+              <h4>abi.gail</h4>
+              <h4>Abigail</h4>
+            </div>
+            <button>Follow</button>
+          </div>
+          <div class="play">
+            <img src="images/3.jpg" alt="">
+            <div>
+              <h4>amelia</h4>
+              <h4>amelia</h4>
+            </div>
+            <button>Follow</button>
+          </div>
+          <div class="play">
+            <img src="images/4.jpg" alt="">
+            <div>
+              <h4>john_taylor</h4>
+              <h4>John Taylor</h4>
+            </div>
+            <button>Follow</button>
+          </div>
+          <div class="play">
+            <img src="images/5.jpg" alt="">
+            <div>
+              <h4>david_bro</h4>
+              <h4>David Brown</h4>
+            </div>
+            <button>Follow</button>
+          </div>
+          <div class="play">
+            <img src="images/6.jpg" alt="">
+            <div>
+              <h4>patricia</h4>
+              <h4>Patricia Robinson</h4>
+            </div>
+            <button>Follow</button>
+          </div>
+          <div class="play">
+            <img src="images/7.jpg" alt="">
+            <div>
+              <h4>jessica_.w</h4>
+              <h4>Jessica Wilson</h4>
+            </div>
+            <button>Follow</button>
+          </div>
+          <div class="play">
+            <img src="images/8.jpg" alt="">
+            <div>
+              <h4>steven</h4>
+              <h4>Steven Anderson</h4>
+            </div>
+            <button>Follow</button>
+          </div>
+        </div>
+        <div class="comment_counter">
+          <div class="Comment_Box">
+            <i class="bi bi-x-lg"></i>
+            <h4>Comments</h4>
+            <div class="underline"></div>
+            <div class="Box center">
+              <img src="images/2.jpg" alt="">
+              <div class="commentBox">
+                <div class="username">
+                  <h5>abi.gail</h5>
+                  <p><span>.</span> <a href="#">Follow</a> <span>1w</span></p>
+                </div>
+                <p>This is my first video on Instagram</p>
+                <div class="re_comment">
+                  <a href="#">See translation</a>
+                </div>
+              </div>
+              <div class="comment_like center">
+                <i class="bi bi-heart"></i>
+                <p>4</p>
+              </div>
+            </div>
+            <div class="underline outside"></div>
+            <div class="Box center">
+              <img src="images/3.jpg" alt="">
+              <div class="commentBox">
+                <h5>amelia</h5>
+                <p>Wow, nice video</p>
+                <div class="re_comment">
+                  <a href="#">Reply</a>
+                  <a href="#">See translation</a>
+                </div>
+              </div>
+              <div class="comment_like center">
+                <i class="bi bi-heart"></i>
+                <p>3</p>
+              </div>
+            </div>
+            <div class="Box center">
+              <img src="images/4.jpg" alt="">
+              <div class="commentBox">
+                <h5>john_taylor</h5>
+                <p>amazing video 💕💕</p>
+                <div class="re_comment">
+                  <a href="#">Reply</a>
+                  <a href="#">See translation</a>
+                </div>
+              </div>
+              <div class="comment_like center">
+                <i class="bi bi-heart"></i>
+                <p>3</p>
+              </div>
+            </div>
+            <div class="Box center">
+              <img src="images/5.jpg" alt="">
+              <div class="commentBox">
+                <h5>david_bro</h5>
+                <p>best video on internet, keep posting dude🤞🤞</p>
+                <div class="re_comment">
+                  <a href="#">Reply</a>
+                  <a href="#">See translation</a>
+                </div>
+              </div>
+              <div class="comment_like center">
+                <i class="bi bi-heart"></i>
+                <p>17</p>
+              </div>
+            </div>
+            <div class="Box center">
+              <img src="images/6.jpg" alt="">
+              <div class="commentBox">
+                <h5>patricia</h5>
+                <p>cool</p>
+                <div class="re_comment">
+                  <a href="#">Reply</a>
+                  <a href="#">See translation</a>
+                </div>
+              </div>
+              <div class="comment_like center">
+                <i class="bi bi-heart"></i>
+                <p>1</p>
+              </div>
+            </div>
+            <div class="Box center">
+              <img src="images/7.jpg" alt="">
+              <div class="commentBox">
+                <h5>jessica_.w</h5>
+                <p>👍👍👍Amazing</p>
+                <div class="re_comment">
+                  <a href="#">Reply</a>
+                  <a href="#">See translation</a>
+                </div>
+              </div>
+              <div class="comment_like center">
+                <i class="bi bi-heart"></i>
+                <p>11</p>
+              </div>
+            </div>
+            <div class="Box center">
+              <img src="images/8.jpg" alt="">
+              <div class="commentBox">
+                <h5>steven</h5>
+                <p>Wow</p>
+                <div class="re_comment">
+                  <a href="#">Reply</a>
+                  <a href="#">See translation</a>
+                </div>
+              </div>
+              <div class="comment_like center">
+                <i class="bi bi-heart"></i>
+                <p>7</p>
+              </div>
+            </div>
+          </div>
+          <div class="Box absolute">
+            <!-- <img src="images/2.jpg" alt=""> -->
+            <i class="bi bi-person-circle center"></i>
+            <input type="text" placeholder="Add a comment for abi.gail">
+            <a href="#">Post</a>
+          </div>
+        </div>
+        <div class="share_video">
+          <i class="bi bi-x-lg"></i>
+          <div class="icons center">
+            <div>
+              <i class="bi bi-share"></i>
+              <small>Share</small>
+            </div>
+            <div>
+              <i class="bi bi-link-45deg"></i>
+              <small>Link</small>
+            </div>
+            <div>
+              <i class="bi bi-bookmark"></i>
+              <small>Save</small>
+            </div>
+            <div>
+              <i class="bi bi-arrow-repeat"></i>
+              <small>Remix original reel</small>
+            </div>
+          </div>
+          <div class="underline"></div>
+          <div class="n-interested">
+            <i class="bi bi-eye-slash"></i>
+            <a href="#">Not Interested</a>
+          </div>
+          <div class="report">
+            <i class="bi bi-exclamation-octagon"></i>
+            <a href="#">Report</a>
+          </div>
+        </div>
+        <div class="profile">
+          <div class="row">
+            <img src="images/2.jpg">
+            <h4>abi.gail</h4>
+            <button>Follow</button>
+          </div>
+          <div class="row row2">
+            <p>Sapne teri chahto ke song | Original sounds with cutie</p>
+          </div>
+          <div class="row">
+            <p class="audio">prachi_sinha .Original audio </p>
+          </div>
+        </div>
+      </div>
+      <div class="send_video">
+        <i class="bi bi-x-lg"></i>
+        <input class="input" type="text" placeholder="Write a message...">
+        <div class="search_div center">
+          <i class="bi bi-search"></i>
+          <i class="bi bi-person-plus"></i>
+          <input type="text" placeholder="Search">
+        </div>
+        <div class="userDiv">
+          <img src="images/1.jpg" alt="">
+          <a href="#">Add reels to your story</a>
+          <i class="bi bi-chevron-right"></i>
+        </div>
+        <div class="play">
+          <img src="images/2.jpg" alt="">
+          <div>
+            <h4>abi.gail</h4>
+            <h4>Abigail</h4>
+          </div>
+          <button>Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

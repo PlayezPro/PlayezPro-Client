@@ -1,13 +1,3 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
 
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
@@ -25,13 +15,19 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+
+// Estilos para actionsheet
+ion-action-sheet.custom-action-sheet {
+    --background: #ffffff; /* Fondo blanco */
+    --color: #000000; /* Texto negro */
+    --button-background-hover: #e0e0e0; /* Fondo de botón al pasar el ratón */
+    --button-background-focused: #e0e0e0; /* Fondo de botón al enfocarse */
+    --button-background-activated: #e0e0e0; /* Fondo de botón al activarse */
+    --button-color: #000000; /* Color del texto de los botones */
+    
+  }
+  

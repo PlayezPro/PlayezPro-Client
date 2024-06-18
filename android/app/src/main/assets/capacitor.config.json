@@ -1,0 +1,11 @@
+{
+	"appId": "com.playez.app",
+	"appName": "PlayezPro",
+	"webDir": "dist/client",
+	"server": {
+		"cleartext": true,
+		"allowNavigation": [
+			"http://localhost:4200"
+		]
+	}
+}

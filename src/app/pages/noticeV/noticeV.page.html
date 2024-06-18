@@ -1,0 +1,105 @@
+<app-topbar></app-topbar>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+<app-loader *ngIf="isLoading" />
+
+<section *ngIf="!isLoading" class="section reels_section">
+  <div class="reels-container" #reelsContainer>
+    <div class="reels_video" *ngFor="let post of posts; let i = index" [class.active]="i === currentIndex">
+      <!-- Contenedor de video -->
+      <div class="vid">
+        <video #videoPlayer [src]="post.file" muted autoplay loop></video>
+        <!-- Controladores con información del reel -->
+        <div class="info">
+          <div class="options">
+            <div>
+              <div>
+                <img 
+                [src]="getImageSrc(post.hasLikes)" 
+                class="h-8 ml-3 border-none" 
+                alt="PlayezPro Logo"
+                (click)="changeImage(); addLike(post._id)"
+                >
+                <span>{{post.totalLikes}}</span>
+              </div>
+            </div>
+            <div>
+              <i class="bi bi-chat" (click)="setOpen(post, true)"></i>
+              <span>{{post.commentCount}}</span>
+            </div>
+            <div>
+              <button (click)="sharePost(post._id)">
+                <img src="../../../assets/icon/share-ball.svg" alt="Ícono de compartir">
+              </button>
+            </div>
+          </div>
+
+          <!-- Cuerpo del post -->
+          <div class="profile">
+            <div class="row">
+              <img class="profile-img" [src]="post.userDetails?.[0]?.photo || defaultImage" alt="{{ post.userDetails?.[0]?.name }}" draggable="false" (error)="handleImageError(post)" />
+              <h4 (click)="passUserId(post.users_id)"> {{ post.userDetails?.[0]?.name }}</h4>
+            </div>
+            <div class="column column-2">
+              <p class="post-title">{{ post.title }} <br> {{ post.description }} </p>
+            </div>
+            <div class="row">
+              <p class="post-category h-4">{{ post.category }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal de comentarios -->
+        <ion-list lines="h-[50%] full" class="likeMenu">
+          <ion-modal 
+          [isOpen]="isModalOpen" 
+          [initialBreakpoint]="0.25" 
+          [breakpoints]="[0, 0.25, 0.5, 0.75]"
+            handleBehavior="cycle" 
+            [isOpen]="post.isModalOpen">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>Comentarios</ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button (click)="setOpen(post, false)">Cerrar</ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+
+              <ion-content class="ion-padding flex flex-row items-center gap-4">
+                <ion-list style="flex: 1;">
+                  <ng-container *ngFor="let comment of post.allComments" class="mt-4">
+                    <div class="flex flex-row items-center gap-4 mt-4">
+                      <img class="w-10 h-10 rounded-full object-cover" [src]="comment.userDetail?.photo || defaultImage" alt="User" (error)="handleImageError(comment.userComment)">
+                      <div class="flex flex-col">
+                        <p class="text-xs">{{ comment.userComment?.[0]?.name }}</p>
+                        <div class="flex flex-row gap-6">
+                          <p class="mt-1">{{ comment.comments }}</p>
+                          <ion-icon color="danger" *ngIf="comment.users_id === getUserId()" name="trash-outline" (click)="deleteComment(post._id, comment._id)"></ion-icon>
+                        </div>
+                      </div>
+                    </div>                    
+                  </ng-container>                  
+                </ion-list> 
+               
+                  <ion-item class="mt-6">
+                    <ion-input label="Añade un comentario" labelPlacement="floating" (input)="toggleIcon($event)">
+                    </ion-input>
+                    <ion-icon color="primary" name="arrow-up-outline" slot="end" *ngIf="mostrarIcono"
+                      (click)="addComment(post._id, comentarioTexto)">
+                    </ion-icon>
+                  </ion-item>
+           
+              </ion-content>
+
+            </ng-template>
+          </ion-modal>
+        </ion-list>
+      </div>
+    </div>
+  </div>
+</section>
+<app-navbar>
+</app-navbar>

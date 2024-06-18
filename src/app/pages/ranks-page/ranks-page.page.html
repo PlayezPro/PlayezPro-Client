@@ -1,0 +1,38 @@
+<app-topbar></app-topbar>
+
+<section>
+  <div class="title-container">
+    <h1 class="title">Clasificación Mensual</h1>
+    <h2 class="subtitle">Descubre los post más populares de cada categoría</h2>
+  </div>
+
+  <div class="p-2 h-[100dvh]">
+    <div class="card flex justify-center">
+      <div class="pb-8">
+        <p class="text-4xl font-bold p-4 flex justify-center text-[#E7FF0C]">GOLES</p>
+        <app-button-playez (click)="navigateToRankGoals()" [buttonText]="'VER'"></app-button-playez>
+      </div>
+    </div>
+    <div class="card flex justify-center">
+      <div class="pb-8">
+        <p class="text-4xl font-bold p-4 flex justify-center text-[#E7FF0C]">JUGADAS</p>
+        <app-button-playez (click)="navigateToRankPlays()" [buttonText]="'VER'"></app-button-playez>
+      </div>
+    </div>
+    <div class="card flex justify-center">
+      <div class="pb-8">
+        <p class="text-4xl font-bold p-4 flex justify-center text-[#E7FF0C]">ASISTENCIAS</p>
+        <app-button-playez (click)="navigateToRankAssistance()" [buttonText]="'VER'"></app-button-playez>
+      </div>
+    </div>
+    <div class="card flex justify-center">
+      <div class="pb-8">
+        <p class="text-4xl font-bold p-4 flex justify-center text-[#E7FF0C]">DEFENSAS</p>
+        <app-button-playez (click)="navigateToRankDefense()" [buttonText]="'VER'"></app-button-playez>
+      </div>
+    </div>
+  </div>
+  <p class="footer-text">Se añadirán más categorías próximamente.</p>
+</section>
+
+<app-navbar class="z-[5000]"></app-navbar>

@@ -1,0 +1,45 @@
+.card {
+    width: 85dvw;
+    height: auto;
+    border-radius: 30px;
+    background: #373737;
+    margin: 5%;
+    box-shadow: 15px 15px 30px rgb(25, 25, 25),
+                -15px -15px 30px rgb(60, 60, 60);
+  }
+  
+  section {
+    overflow-y: auto;
+    margin-bottom: 20%;
+  }
+  
+  .title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 12px;
+    margin-top: 15px;
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #E7FF0D; 
+    margin-bottom: 5px;
+  }
+  
+  .subtitle {
+    font-size: 0.75rem; 
+    text-align: center;
+    color: #fff; 
+    font-style: italic; 
+  }
+  
+  .footer-text {
+    font-size: 0.65rem; 
+    text-align: center;
+    color: #fff;
+    font-style: italic; 
+    margin-bottom: 10px; 
+  }

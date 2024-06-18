@@ -1,0 +1,33 @@
+ion-toolbar {
+  display: flex;
+  align-items: center;
+}
+
+ion-button.icon-button {
+  --background: transparent;
+  --background-activated: transparent;
+  --background-focused: transparent;
+  --background-hover: transparent;
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-radius: 0;
+  --box-shadow: none;
+  --color: #e7ff0e;
+  max-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+ion-button {
+  max-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+ion-title img {
+  height: 32px; /* Ajusta el tamaño de la imagen según sea necesario */
+}
+
+.button-inner{
+  align-items: normal;
+}

@@ -1,0 +1,57 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.0.0/css/flag-icons.min.css" />
+
+<div class="main-screen mt-3">
+  <main class="container-main">
+    <h1 class="text-4xl font-bold text-center">Detalles</h1>
+    <form class="grid gap-3">
+      <div>
+        <label for="year" class="block text-sm font-medium text-gray-700">Año de nacimiento:</label>
+        <input [value]="userDetails.birthYear | date:'yyyy-MM-dd'" type="text" id="year" name="year"
+          class="field input-field" placeholder="yyyy-MM-dd">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Nacionalidad</label>
+        <div class="field input-field">
+          <div class="custom-select" (click)="toggleDropdown()">
+            <span>{{ userDetails.nationality ? userDetails.nationality : 'Selecciona:' }}</span>
+            <img *ngIf="userDetails.nationality" [src]="getCountryFlag(userDetails.nationality)" class="selected-flag" alt="flag">
+          </div>
+          <ul class="custom-options" [class.show]="dropdownOpen">
+            <li class="close-btn" (click)="closeDropdown()">Cerrar</li>
+            <li *ngFor="let country of countries" (click)="selectCountry(country)">
+              <img [src]="'../../../assets/icon/flags/4x3/' + country.code + '.svg'" class="flag" alt="flag">
+              {{ country.name }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Equipo Actual</label>
+        <input type="text" [(ngModel)]="userDetails.currentTeam" name="currentTeam" class="field input-field">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Dorsal</label>
+        <input type="number" [(ngModel)]="userDetails.dorsal" name="dorsal" class="field input-field">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Posición</label>
+        <input type="text" [(ngModel)]="userDetails.favPosition" name="favPosition" class="field input-field">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Pierna Dominante</label>
+        <input type="text" [(ngModel)]="userDetails.mainFoot" name="mainFoot" class="field input-field">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Altura</label>
+        <input type="number" [(ngModel)]="userDetails.weight" name="weight" class="field input-field">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Peso</label>
+        <input type="text" [(ngModel)]="userDetails.height" name="height" class="field input-field">
+      </div>
+      <app-button-playez type="submit" (click)="updateDetails()" [buttonText]="'Actualizar'" class="pt-4" />
+    </form>
+  </main>
+</div>

@@ -1,0 +1,33 @@
+.scroll {
+  overflow-y: auto; 
+  margin-bottom: 15%;
+}
+
+ion-card-title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2),
+              -4px -4px 8px rgba(255, 255, 255, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.create-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.7rem; /* Tamaño de letra más pequeño */
+  width: 24%;
+}
+
+.small-button {
+  width: 70%; /* Ancho ajustado para que sean más pequeños en relación al contenedor */
+  margin: 3px 0;
+  font-size: 0.7rem; /* Tamaño de letra más pequeño */
+  padding: 4px; /* Padding ajustado */
+  text-align: center;
+  border-radius: 5px;
+}

@@ -1,0 +1,19 @@
+<app-button-playez *ngIf="!hasSkillInfo" (click)="openModal()" [buttonText]="'Crea tu ficha'" class=" justify-center m-2 font-xs"/>
+
+<div *ngIf="modalOpen" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
+  <div class="bg-[#373737] p-8 rounded-lg shadow-lg">
+    <h2 class="text-xl font-bold text-center text-[#e7ff0d] mb-4">Crea tu ficha de Habilidades</h2>
+    <form (ngSubmit)="CreateSkill()" class="space-y-4">
+      <input type="number" name="pace" [(ngModel)]="SkillData.pace" placeholder="Ritmo" class="field input-field w-full">
+      <input type="number" name="shot" [(ngModel)]="SkillData.shot" placeholder="Tiro" class="field input-field w-full">
+      <input type="number" name="pas" [(ngModel)]="SkillData.pas" placeholder="Pase" class="field input-field w-full">
+      <input type="number" name="dribble" [(ngModel)]="SkillData.dribble" placeholder="Regate" class="field input-field w-full">
+      <input type="number" name="defense" [(ngModel)]="SkillData.defense" placeholder="Defensa" class="field input-field w-full">
+      <input type="number" name="physical" [(ngModel)]="SkillData.physical" placeholder="Físico" class="field input-field w-full">
+      <div class="flex justify-end">
+        <button type="button" (click)="closeModal()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded mr-2">Cancelar</button>
+        <button type="submit" class="bg-[#e7ff0d] hover:bg-[#d4e00b] text-[#373737] font-bold py-2 px-4 rounded">Crear Ficha</button>
+      </div>
+    </form>
+  </div>
+</div>

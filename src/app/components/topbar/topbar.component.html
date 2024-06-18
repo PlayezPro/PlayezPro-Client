@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <img src="../../../assets/icon/playez.svg" class="h-8" alt="PlayezPro Logo" [routerLink]="'/home'">
+    </ion-title>
+
+    <ion-button slot="end" class="icon-button" [routerLink]="'/home'">
+      <app-back-button />
+    </ion-button>
+
+    <ion-button slot="end" class="icon-button mr-3"  (click)="onClickLogout()">
+      <ion-icon slot="icon-only" color="secondary" name="power-outline" aria-hidden="true"
+     ></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>

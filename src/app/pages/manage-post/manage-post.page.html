@@ -1,0 +1,44 @@
+<app-topbar></app-topbar>
+
+<section>
+  <div class="p-2 h-[100dvh]">
+    <!-- Texto explicativo -->
+    <div class="search-description text-center h-5 italic py-0 my-6">Encuentra a más jugadores, por equipo, nacionalidad o posición.</div>
+    
+    <!-- Barra de búsqueda -->
+    <ion-list>
+      <ion-item lines="none">
+        <ion-searchbar (ionInput)="filterDetails($event)" class="search-bar text-center py-0 my-0"></ion-searchbar>
+      </ion-item>
+      <ion-item class="custom-select-item text-center">
+        <ion-select class="text-center" placeholder="Selecciona una posición" (ionChange)="filterByPosition($event)" interface="popover">
+          <ion-select-option value="todos">Todos</ion-select-option>
+          <ion-select-option value="delantero">Delantero</ion-select-option>
+          <ion-select-option value="medio">Medio</ion-select-option>
+          <ion-select-option value="defensa">Defensa</ion-select-option>
+          <ion-select-option value="portero">Portero</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+
+    <!-- Resultados busqueda -->
+    <div *ngFor="let detail of filteredDetails" class="card justify-center">
+      <div (click)="passUserId(detail.userId)" class="py-5 px-8 flex justify-around items-center">
+        <img class="rounded-full h-10 w-10" [src]="detail.photo || defaultImage">
+          <div class="ml-8 flex flex-col">
+          <div class="player-name">{{ detail.userDetails?.[0]?.name }}</div>
+          <div class="flex-column">
+            <div class="player-team mr-4">{{ detail.currentTeam }}</div>
+            <div class="player-nationality">{{ detail.nationality }}</div>
+          </div>
+        </div>
+        <div>
+          <button class="button">Ver</button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<app-navbar/>

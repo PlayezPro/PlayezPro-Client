@@ -1,0 +1,33 @@
+<div class="main-screen mt-3">
+  <main class="container-main">
+    <h1 class="text-4xl font-bold text-center">Skills</h1>
+    <form class="grid gap-3" (ngSubmit)="updateSkills()">
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Aceleración</label>
+        <input type="number" [(ngModel)]="userSkill.pace" name="pace" class="field input-field">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Disparo</label>
+        <input type="text" [(ngModel)]="userSkill.shot" name="shot" class="field input-field">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Pase</label>
+        <input type="text" [(ngModel)]="userSkill.pas" name="pas" class="field input-field">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Regate</label>
+        <input type="number" [(ngModel)]="userSkill.dribble" name="dribble" class="field input-field">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Defensa</label>
+        <input type="text" [(ngModel)]="userSkill.defense" name="defense" class="field input-field">
+      </div>
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Resistencia</label>
+        <input type="text" [(ngModel)]="userSkill.physical" name="physical" class="field input-field">
+      </div>
+      <app-button-playez type="submit" [buttonText]="'Actualizar'" class="pt-4"></app-button-playez>
+    </form>
+    <div class="m-4"></div>
+  </main>
+</div>

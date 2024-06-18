@@ -1,0 +1,7 @@
+<section class="grid grid-cols-3 grid-row-2">
+  <ion-item class="p-0 m-0" *ngFor="let post of posts">
+    <div class="relative w-full h-0 pb-[100%]"> 
+      <video class="absolute inset-0 w-full h-full object-cover rounded-xl" [src]="post.file" muted preload="metadata" controlslist="nodownload"></video>
+    </div>  
+  </ion-item>
+</section>

@@ -1,0 +1,14 @@
+@keyframes draw {
+    from {
+      stroke-dasharray: 0, 1000;
+    }
+    to {
+      stroke-dasharray: 1000, 0;
+    }
+  }
+  
+  .path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw 5s forwards;
+  }

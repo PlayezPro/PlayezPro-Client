@@ -1,0 +1,83 @@
+<!-- FONT -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Saira+Semi+Condensed:300,400,700" />
+
+
+<!-- ## fut-player-card ## -->
+<div *ngFor="let detail of userDetail" class="card-container">
+  <div class="fixed right-2">
+    <ion-button slot="end" fill="clear" [routerLink]="'/setting'">
+      <ion-icon slot="icon-only" color="secondary" name="settings-outline" aria-hidden="true"></ion-icon>
+    </ion-button>
+  </div>
+  <div class="fut-player-card mt-[-3px]">
+    <div class="player-card-top">
+      <div class="player-master-info">
+        <div class="player-rating">
+          <span>97</span>
+        </div>
+        <div class="player-position">
+          <span>RW</span>
+        </div>
+        <div class="player-nation">
+          <img *ngIf="detail.userDetails?.nationality" [src]="getCountryFlag(detail.userDetails.nationality)"
+            class="selected-flag" alt="flag" draggable="false" />
+        </div>
+        <div class="player-club">
+          <span class="player-position">#{{detail.userDetails?.dorsal}}</span>
+        </div>
+      </div>
+      <div class="player-picture">
+        <img [src]="detail.userDetails?.photo || defaultImage" alt="Pedro" draggable="false"
+          (error)="handleImageError(detail)" />
+        <div class="player-extra">
+          <span>{{detail.userDetails?.currentTeam}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="player-card-bottom">
+      <div class="player-info">
+        <div class="player-name">
+          <p>{{detail.name}}</p>
+        </div>
+        <div class="player-features">
+          <div class="player-features-col">
+            <span>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.pace}}</div>
+              <div class="player-feature-title">PACE</div>
+            </span>
+            <span>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.shot}}</div>
+              <div class="player-feature-title">SHO</div>
+            </span>
+            <span>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.pas}}</div>
+              <div class="player-feature-title">PAS</div>
+            </span>
+          </div>
+          <div class="player-features-col">
+            <span>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.dribble}}</div>
+              <div class="player-feature-title">DRI</div>
+            </span>
+            <span>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.defense}}</div>
+              <div class="player-feature-title">DEF</div>
+            </span>
+            <span>
+              <div class="player-feature-value">{{detail.userSkills?.[0]?.physical}}</div>
+              <div class="player-feature-title">PHY</div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- Boton de Follows -->
+  <div>
+    <app-button-playez *ngIf="!detail.hasRelation " expand="full" (click)="createRelation(detail._id)" [buttonText]="' Seguir'"></app-button-playez>
+    <ion-button *ngIf="detail.hasRelation" expand="full" (click)="deleteRelation(detail._id)">
+      Siguiendo
+    </ion-button>
+  </div>
+</div>

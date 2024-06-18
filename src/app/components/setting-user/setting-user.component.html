@@ -1,0 +1,38 @@
+<div class="main-screen">
+  <main class="container-main">
+  <h1 class="text-4xl font-bold text-center">Usuario</h1>
+  <form class="grid gap-3">
+    <div>
+      <label for="name" class="block text-sm font-medium text-gray-700">Nombre:</label>
+      <input type="text" id="name" [(ngModel)]="user.name" name="name" class="field input-field">
+    </div>
+    <div>
+      <label for="lastName" class="block text-sm font-medium text-gray-700">Apellidos:</label>
+      <input type="text" id="lastName" [(ngModel)]="user.lastName" name="lastName" class="field input-field">
+    </div>
+    <div>
+      <label for="userName" class="block text-sm font-medium text-gray-700">Nombre de Usuario:</label>
+      <input type="text" id="userName" [(ngModel)]="user.userName" name="userName" class="field input-field">
+    </div>
+    <div>
+      <label for="email" class="block text-sm font-medium text-gray-700">Correo electrónico:</label>
+      <input type="email" id="email" [(ngModel)]="user.email" name="email" class="field input-field">
+    </div>
+    <div>
+      <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Numero de telefono:</label>
+      <input type="text" id="phoneNumber" [(ngModel)]="user.phoneNumber" name="phoneNumber" class="field input-field">
+    </div>
+    <!-- <div>
+      <label for="password" class="block text-sm font-medium text-gray-700">Nombre de Usuario:</label>
+      <input type="password" id="password" [(ngModel)]="user.password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div>
+    <div>
+      <label for="repeatPassword" class="block text-sm font-medium text-gray-700">Nombre de Usuario:</label>
+      <input type="password" id="repeatPassword" [(ngModel)]="user.repeatPassword" name="repeatPassword" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+    </div> -->
+    
+    <app-button-playez type="submit" (click)="updateUser()" [buttonText]="'Actualizar'" class="pt-4"/>
+    <!-- <button class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" >Actualizar</button> -->
+  </form>
+  </main>
+</div>
