@@ -6,8 +6,8 @@ import axios from 'axios';
 })
 
 export class DetailUsersService {
-  private detailURL: string = "https://playezpro-server.onrender.com/details"
-  // private detailURL: string = "http://localhost:3000/details"
+  // private detailURL: string = "https://playezpro-server.onrender.com/details"
+  private detailURL: string = "http://localhost:3000/details"
 
   constructor() { }
 

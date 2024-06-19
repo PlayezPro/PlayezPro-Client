@@ -5,8 +5,8 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class LikesService {
-  private likesUrl: string = 'https://playezpro-server.onrender.com/likes'
-  // private likesUrl: string = 'http://localhost:3000/likes'; // Development URL (Uncomment for local testing)
+  // private likesUrl: string = 'https://playezpro-server.onrender.com/likes'
+  private likesUrl: string = 'http://localhost:3000/likes'; // Development URL (Uncomment for local testing)
 
   constructor() { }
   
