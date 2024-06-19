@@ -1,8 +1,3 @@
-ion-toolbar {
-  display: flex;
-  align-items: center;
-}
-
 ion-button.icon-button {
   --background: transparent;
   --background-activated: transparent;
@@ -13,7 +8,7 @@ ion-button.icon-button {
   --border-radius: 0;
   --box-shadow: none;
   --color: #e7ff0e;
-  max-height: 24px;
+  max-height: 0%;
   display: flex;
   align-items: center;
 }
@@ -30,4 +25,5 @@ ion-title img {
 
 .button-inner{
   align-items: normal;
+  --color: #e7ff0e;
 }
