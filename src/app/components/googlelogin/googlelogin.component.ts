@@ -40,7 +40,6 @@ export class GoogleloginComponent  implements OnInit {
   .then((result) => {
     // This gives you a Google Access Token. You can use it to access the Google API.
     const credential = GoogleAuthProvider.credentialFromResult(result);
-    console.log(credential)
     if (credential) {
       // Si se obtienen las credenciales, obtener el token de acceso
       const token = credential.accessToken;
@@ -56,7 +55,6 @@ export class GoogleloginComponent  implements OnInit {
     const user = result.user;
     const users_id = user.uid
     localStorage.setItem('users_id', users_id);
-    console.log(users_id)
     this.navigateToHome()
     // IdP data available using getAdditionalUserInfo(result)
     // ...

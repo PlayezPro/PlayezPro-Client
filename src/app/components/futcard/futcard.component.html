@@ -74,10 +74,8 @@
   </div>
 
  <!-- Boton de Follows -->
-  <div>
-    <app-button-playez *ngIf="!detail.hasRelation " expand="full" (click)="createRelation(detail._id)" [buttonText]="' Seguir'"></app-button-playez>
-    <ion-button *ngIf="detail.hasRelation" expand="full" (click)="deleteRelation(detail._id)">
-      Siguiendo
-    </ion-button>
+  <div *ngif="!isGeneratedCard">
+    <app-button-playez *ngIf="!detail.hasRelation" expand="full" (click)="createRelation(detail._id)" [buttonText]="' Seguir'"></app-button-playez>
+    <app-button-playez *ngIf="detail.hasRelation" expand="full" (click)="deleteRelation(detail._id)"  [buttonText]="' Siguiendo'" ></app-button-playez>
   </div>
 </div>

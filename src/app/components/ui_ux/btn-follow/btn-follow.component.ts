@@ -20,7 +20,6 @@ async createRelation(followedID: string): Promise<void> {
     // Verifica que los IDs no sean null antes de usarlos
     if (userFollower && followedID) {
       await this.followService.addFollower(followedID,userFollower); 
-      console.log('Follower added successfully');
     } else {
       console.error('User ID or Followed ID is missing');
     }

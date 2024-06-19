@@ -61,7 +61,6 @@ export class FutcardComponent implements OnInit, OnChanges {
         detail.userSkills = userSkill;
         const userDetails = await this.detailsService.getDetailById(this.userId)
         detail.userDetails = userDetails;
-        // console.log(userDetails)
       }
       this.isGeneratedCard = true;
     } catch (error) {
@@ -97,7 +96,6 @@ export class FutcardComponent implements OnInit, OnChanges {
         const verifyRelation = await this.followService.checkRelation(detail._id, follower)
         detail.hasRelation = verifyRelation;
         // this.cdr.detectChanges();
-        // console.log(`Post ID: ${detail._id},followerID:${follower}, isRelation: ${verifyRelation}`);
       }
     } catch (error) {
       console.error('Error al generar la tarjeta del visitante:', error);
@@ -111,7 +109,6 @@ export class FutcardComponent implements OnInit, OnChanges {
       // Verifica que los IDs no sean null antes de usarlos
       if (userFollower && followedID) {
         await this.followService.addFollower(followedID, userFollower);
-        // console.log('Follower added successfully');
         
       } else {
         console.error('User ID or Followed ID is missing');
@@ -129,7 +126,6 @@ export class FutcardComponent implements OnInit, OnChanges {
       if (userFollower && followedID) {
         await this.followService.deleteRelation(followedID, userFollower);
         
-        // console.log('Relacion Borrada');
       } else {
         console.error('User ID or Followed ID is missing');
       }
@@ -148,7 +144,6 @@ export class FutcardComponent implements OnInit, OnChanges {
     const file = event.target.files[0];
     if (file) {
       this.imageFile = file;
-      // console.log('Archivo seleccionado:', this.imageFile);
     }
   }
   
@@ -160,17 +155,14 @@ export class FutcardComponent implements OnInit, OnChanges {
       if (this.userId) {
         try {
           const userDetails = await this.detailsService.getDetailById(this.userId);
-          // console.log(userDetails)
           const detailId = userDetails._id; // Extrae el campo _id del response
 
           const formData = new FormData();
           formData.append('imagen', this.imageFile);
           formData.forEach((value, key) => {
-            // console.log(key, value);
           });
 
           const response = await this.detailsService.addImageProfile(detailId, formData);
-          // console.log('Imagen subida exitosamente', response);
           return response.data;
         } catch (error) {
           console.error('Error al subir la imagen', error);

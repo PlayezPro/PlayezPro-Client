@@ -60,7 +60,6 @@ export class NoticePage implements OnInit {
       this.posts = response.data;
       this.isLoadingPosts = new Array(this.posts.length).fill(true); // Inicializar todos los posts como cargando
       const currentUserId = localStorage.getItem('users_id')!;
-      console.log(this.posts);
 
       for (let i = 0; i < this.posts.length; i++) {
         const post = this.posts[i];
@@ -82,7 +81,6 @@ export class NoticePage implements OnInit {
         const hasLikesResponse = await this.likeService.checkLikes(post._id, currentUserId);
         post.hasLikes = hasLikesResponse;
         this.isLoadingPosts[i] = false; // Marcar el post actual como cargado
-        console.log(`Post ID: ${post._id}, isLiked: ${hasLikesResponse}`);
       }
 
       // Ordenar los posts por fecha de creación (createdAt) de forma descendente.
@@ -180,7 +178,6 @@ export class NoticePage implements OnInit {
   async deleteComment(postId: string) {
     try {
       await this.commentService.deleteComment(postId)
-      console.log(postId)
     } catch (error) {
 
     }

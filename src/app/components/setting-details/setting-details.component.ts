@@ -49,7 +49,6 @@ export class SettingDetailsComponent  implements OnInit {
         const userDetail = data.data.find((detail: any) => detail.userId === userId);
         if (userDetail) {
           this.userDetails = userDetail;
-          console.log('Details data:', this.userDetails)
         } else {
           console.error('User details not found for userId:', userId);
         }
@@ -87,7 +86,6 @@ export class SettingDetailsComponent  implements OnInit {
     if (this.userDetails && this.userDetails._id) {
       try {
         const updateDetail = await this.detailService.updateDetailById(this.userDetails._id, this.userDetails);
-        console.log('Details updated successfully:', updateDetail);
         this.reloadPage()
         // Aquí puedes redirigir a otra página o mostrar un mensaje de éxito
       } catch (error) {

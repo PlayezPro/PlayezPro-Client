@@ -87,7 +87,6 @@ export class SkillsGraphicsComponent implements OnInit, OnChanges {
 
   async compararSkills() {
     if (this.comparisonDone) {
-      console.log('La comparación ya se ha realizado.');
       return;
     }
 

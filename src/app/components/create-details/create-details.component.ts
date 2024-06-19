@@ -76,7 +76,6 @@ export class CreateDetailsComponent implements OnInit {
   async Crear(): Promise<void> {
     try {
       const savedDetails = await this.detailUserService.createDetailUser(this.detailUserData);
-      console.log('Detail user created successfully:', savedDetails);
       this.closeModal();
       this.hasDetailInfo = true; // Actualizar la variable después de crear los detalles
       this.reloadPage()

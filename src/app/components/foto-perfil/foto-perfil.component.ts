@@ -32,7 +32,6 @@ export class FotoPerfilComponent {
     const file = event.target.files[0];
     if (file) {
       this.imageFile = file;
-      console.log('Archivo seleccionado:', this.imageFile);
     }
   }
 
@@ -47,10 +46,8 @@ export class FotoPerfilComponent {
           const formData = new FormData();
           formData.append('imagen', this.imageFile);
           formData.forEach((value, key) => {
-            console.log(key, value);
           });
           const response = await this.detailsService.addImageProfile(detailId, formData);
-          console.log('Imagen subida exitosamente', response);
 
           // Actualizar la foto
           this.photoChanged.emit(response.data.photo);

@@ -27,7 +27,6 @@ export class RegisterButtonComponent {
       this.showTermsError = false;
       this.userService.createUser(this.formNewUser.value).subscribe(
         response => {
-          console.log('Usuario creado con éxito', response);
           this.showSuccessMessage = true;
           alert('Gracias por registrarte'); 
           setTimeout(() => {

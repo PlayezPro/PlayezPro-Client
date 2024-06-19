@@ -43,7 +43,6 @@ export class CreateSkillComponent implements OnInit {
     try {
       // Llamar al servicio para verificar si existe información de habilidades para el usuario
       const skillInfo = await this.skillService.getUserSkill(this.SkillData.users_id);
-      // console.log(skillInfo);
       this.hasSkillInfo = skillInfo && skillInfo.length > 0; // Asignar false si no hay información, true si hay información
     } catch (error) {
       console.error('Error fetching skill information:', error);
@@ -68,7 +67,6 @@ export class CreateSkillComponent implements OnInit {
   async CreateSkill(): Promise<void> {
     try {
       const savedSkill = await this.skillService.createUserSkill(this.SkillData);
-      // console.log('Skill user created successfully', savedSkill);
       this.closeModal();
       this.hasSkillInfo = true; // Actualizar la variable después de crear las habilidades
       this.reloadPage()

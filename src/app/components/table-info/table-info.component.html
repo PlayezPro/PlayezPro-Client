@@ -1,9 +1,9 @@
 
-<div class="card flex justify-center flex-col">
+<div class="card flex justify-center flex-col mt-8">
   <div *ngFor="let detail of userDetail">
     <div class="p-4 max-w-xl mx-auto">
 
-      <div class="p-2 rounded-t-lg">
+      <div class="p-2 rounded-t-lg ">
         <div class="flex flex-wrap flex-row justify-evenly">
           <ion-list lines="full" class="w-full">
             <ion-item class="flex justify-between">
@@ -12,15 +12,15 @@
             </ion-item>
             <ion-item class="flex justify-between">
               <ion-label class="w-1/2">Altura</ion-label>
-              <ion-label class="w-1/2 text-right">{{ detail.userDetails?.height }}</ion-label>
+              <ion-label class="w-1/2 text-right">{{ detail.userDetails?.height  || 0}}</ion-label>
             </ion-item>
             <ion-item class="flex justify-between">
               <ion-label class="w-1/2">Peso</ion-label>
-              <ion-label class="w-1/2 text-right">{{ detail.userDetails?.weight }}</ion-label>
+              <ion-label class="w-1/2 text-right">{{ detail.userDetails?.weight || 0}} </ion-label>
             </ion-item>
             <ion-item class="flex justify-between">
               <ion-label class="w-1/2">Pierna</ion-label>
-              <ion-label class="w-1/2 text-right">{{ detail.userDetails?.mainFoot }}</ion-label>
+              <ion-label class="w-1/2 text-right">{{ detail.userDetails?.mainFoot || 0 }}</ion-label>
             </ion-item>
           </ion-list>
         </div>
