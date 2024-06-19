@@ -30,7 +30,6 @@ export class UserPostsComponent  implements OnInit, OnChanges {
     try {
       const response = await this.postService.getUserPosts(this.users_id);
       this.posts = response.data
-      // console.log(this.posts)
     } catch (error) {
       console.error('Error al mostrar los blogs del usuario', error);
     }

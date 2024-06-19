@@ -32,7 +32,6 @@ export class SettingSkillComponent implements OnInit {
         const userSkill = data.find((skill: any) => skill.users_id === this.users_id);
         if (userSkill) {
           this.userSkill = userSkill;
-          console.log('Skill data:', this.userSkill);
         } else {
           console.error('User skills not found for users_id:', this.users_id);
         }
@@ -53,12 +52,9 @@ export class SettingSkillComponent implements OnInit {
   async updateSkills() {
     if (this.userSkill && this.userSkill._id) {
       try {
-        console.log('Updating skills with:', this.userSkill);
         const updateSkill = await this.skillService.updateUserSkill(this.userSkill._id, this.userSkill);
-        console.log('Skill updated successfully', updateSkill);
         // Actualizar los datos de userSkill después de la actualización
         this.userSkill = { ...this.userSkill, ...updateSkill };
-        console.log(this.userSkill)
         this.reloadPage()
       } catch (error) {
         console.error('Error updating user skills', error);

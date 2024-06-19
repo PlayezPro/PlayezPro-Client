@@ -6,18 +6,18 @@ import axios from 'axios';
 })
 export class LikesService {
   private likesUrl: string = 'https://playezpro-server.onrender.com/likes'
+  // private likesUrl: string = 'http://localhost:3000/likes'; // Development URL (Uncomment for local testing)
+
   constructor() { }
   
   async addLike(postId: string, userId: string): Promise<void> {
     try {
       const data = { posts_id: postId, users_id: userId };
       const response = await axios.post(this.likesUrl, data);
-      console.log('Like añadido correctamente');
     } catch (error:any) {
       if (error.response && error.response.status === 400) {
         console.error('El usuario ya ha dado like a este post');
         await this.deleteLike(postId, userId);
-        console.log("el like ha sido borrado")
       } else {
         console.error('Error al añadir el like:', error);
       }
@@ -28,7 +28,6 @@ export class LikesService {
     try {
       const data = { posts_id: postId, users_id: userId };
       await axios.delete(this.likesUrl, { data });
-      console.log('Like eliminado correctamente');
     } catch (error) {
       console.error('Error al eliminar el like:', error);
     }

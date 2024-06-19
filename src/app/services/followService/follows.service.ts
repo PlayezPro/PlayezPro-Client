@@ -8,6 +8,7 @@ import axios from "axios";
 })
 export class FollowService {
     private followersUrl: string = 'https://playezpro-server.onrender.com/follow';
+    // private followersUrl: string = 'http://localhost:3000/follow'; // Development URL (Uncomment for local testing)
 
     constructor(private http: HttpClient) { }
 
@@ -43,9 +44,8 @@ export class FollowService {
     async checkRelation(followed:string, follower:string): Promise<boolean>{
         try {
             const data = {userfollow:followed, userfollower:follower};
-            const response = await axios.post('${this.followersUrl}/relation/',data)
+            const response = await axios.post(`${this.followersUrl}/relation`, data);
             const isRelation = response.data.inRelation as boolean;
-            // console.log('Is relation:', isRelation);
         return isRelation; 
         } catch (error) {
           return false;
@@ -55,7 +55,7 @@ export class FollowService {
     async deleteRelation(followed:string, follower:string) {
         try {
             const data = { userfollow: followed, userfollower: follower };
-            const response = await axios.delete('${this.followersUrl}', {
+            const response = await axios.delete(`${this.followersUrl}`, {
                 data: data
             });
             return response.data

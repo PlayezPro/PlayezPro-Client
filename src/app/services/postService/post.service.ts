@@ -6,7 +6,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 })
 export class PostServiceService {
   private apiUrl: string = 'https://playezpro-server.onrender.com/posts'
-  // private apiUrl: string = 'http://localhost:3000/posts/';
+  // private apiUrl: string = 'http://localhost:3000/posts';
 
   constructor() { }
 
@@ -19,7 +19,7 @@ export class PostServiceService {
     formData.append('file', file);
   
     try {
-      const response = await axios.post('http://localhost:3000/posts/', formData, {
+      const response = await axios.post(`${this.apiUrl}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -27,7 +27,6 @@ export class PostServiceService {
       return response.data;
     } catch (error: any) {
       if (error.response) {
-        console.log(error.response);
         return error;
       }
     }

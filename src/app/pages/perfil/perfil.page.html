@@ -8,9 +8,9 @@
   <ion-card>
     <app-futcard class="m-10"/>
 
-    <div class="create-buttons">
-      <app-create-details class="small-button"/>
-      <app-create-skill class="small-button"/>
+    <div class="create-buttons flex w-auto">
+      <app-create-details class="small-button mb-4"/>
+      <app-create-skill class="small-button mb-4"/>
     </div>
 
     <ion-card-title class="ion-text-center" color="primary" size="small" style="margin-top: 30px; margin-bottom: 10px;">
@@ -28,12 +28,12 @@
 
     <app-user-posts [users_id]="users_id"></app-user-posts>
     
-    <ion-card-header>
+    <ion-card-header class="ion-no-padding">
       <ion-card-title class="ion-text-center" color="primary" size="small" style="margin-top: 10px; margin-bottom: 10px;">
         Gráfico de Atributos
       </ion-card-title>
-      <app-skills-graphics [users_id]="users_id"></app-skills-graphics>
     </ion-card-header>
+    <app-skills-graphics [users_id]="users_id"></app-skills-graphics>
   </ion-card>
 </ion-content>
 

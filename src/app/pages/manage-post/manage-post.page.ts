@@ -42,7 +42,6 @@ export class ManagePostPage implements OnInit {
       console.error(error);
     }
     this.filteredDetails = this.details;
-    // console.log(this.filteredDetails)
   }
 
   async handleImageError(detail: any) {
@@ -74,7 +73,6 @@ export class ManagePostPage implements OnInit {
         (detail.favPosition && detail.favPosition.toLowerCase() === this.selectedPosition);
       return matchesSearchTerm && matchesPosition;
     });
-    // console.log(this.filteredDetails); // Aquí imprimimos los resultados filtrados
   }
   passUserId(userId: string) {
     this.router.navigate(['/manage-user', userId]);

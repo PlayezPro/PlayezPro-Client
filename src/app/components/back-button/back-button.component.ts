@@ -14,7 +14,6 @@ export class BackButtonComponent {
   constructor(private navCtrl: NavController) { }
 
   goBack() {
-    console.log('Botón de retroceso clicado');
     this.navCtrl.back(); // Utiliza el método 'back' en lugar de 'pop'
   }
 }

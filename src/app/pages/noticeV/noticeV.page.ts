@@ -100,10 +100,8 @@ export class NoticePageV implements OnInit, AfterViewInit {
   
       if (deltaY > this.swipeThreshold || velocityY > this.swipeVelocityThreshold) {
         if (event.deltaY > 0) {
-          // console.log('Swipe hacia abajo');
           this.prevStory();
         } else {
-          // console.log('Swipe hacia arriba');
           this.nextStory();
         }
         this.lastSwipeTime = currentTime;
@@ -146,12 +144,10 @@ async generatePost(): Promise<void> {
     this.posts = response.data;
     this.isLoadingPosts = new Array(this.posts.length).fill(true); // Inicializar todos los posts como cargando
     const currentUserId = localStorage.getItem('users_id')!;
-    // console.log(this.posts);
 
     // Obtener detalles de todos los usuarios
     const postDetailsResponse = await this.detailUserService.getAllDetails();
     const postDetails = postDetailsResponse.data;
-    // console.log(postDetails)
 
     // Detalles de interacciones
     for (let i = 0; i < this.posts.length; i++) {
@@ -165,7 +161,6 @@ async generatePost(): Promise<void> {
 
       const postComments = await this.commentService.getCommentsPost(post._id);
       post.allComments = postComments;
-      // console.log(post.allComments)
       post.commentCount = postComments.length;
 
       // Encontrar los detalles del usuario correspondiente en postDetails
@@ -191,7 +186,6 @@ async generatePost(): Promise<void> {
       const hasLikesResponse = await this.likeService.checkLikes(post._id, currentUserId);
       post.hasLikes = hasLikesResponse;
       this.isLoadingPosts[i] = false; // Marcar el post actual como cargado
-      // console.log(`Post ID: ${post._id}, isLiked: ${hasLikesResponse}`);
 
       // Actualizar la vista después de cargar cada post
       this.cdr.detectChanges();
@@ -315,7 +309,6 @@ async generatePost(): Promise<void> {
     try {
       // Elimina el comentario utilizando el commentId
       await this.commentService.deleteComment(commentId);
-      // console.log(`Comentario eliminado: ${commentId}`);
       
       // Encuentra el post correspondiente y actualiza su lista de comentarios
       const postIndex = this.posts.findIndex(post => post._id === postId);

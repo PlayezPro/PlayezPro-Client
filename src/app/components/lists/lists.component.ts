@@ -24,7 +24,6 @@ export class ListsComponent implements OnInit {
     try {
       const response = await this.DetailService.getAllDetails();
       this.details = response.data;
-      console.log(this.details);
 
       for (const detail of this.details) {
         const userDetails = await this.userService.getUserById(detail.userId);

@@ -30,7 +30,6 @@ export class SettingUserComponent  implements OnInit  {
 
   async ngOnInit() {
     this.userId = localStorage.getItem('users_id');
-    console.log('User ID from localStorage:', this.userId);
     if (this.userId) {
       await this.loadUserDetails(this.userId);
     }
@@ -41,7 +40,6 @@ export class SettingUserComponent  implements OnInit  {
       const userDetails = await this.userService.getUserById(userId);
       if (userDetails && userDetails.length > 0) {
         this.user = userDetails[0];
-        console.log('User data:', this.user);
       } else {
         console.error('No se encontraron detalles del usuario.');
       }
@@ -60,7 +58,6 @@ export class SettingUserComponent  implements OnInit  {
     if (this.userId) {
       try {
         const updatedUser = await this.userService.updateUser(this.userId, this.user);
-        console.log('Usuario actualizado:', updatedUser);
         // Mostrar algún mensaje de éxito si es necesario
         this.reloadPage()
       } catch (error) {

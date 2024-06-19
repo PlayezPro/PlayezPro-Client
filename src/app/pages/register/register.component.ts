@@ -95,7 +95,6 @@ export class RegisterComponent {
       this.showTermsError = false;
       this.userService.createUser(this.formNewUser.value).subscribe(
         response => {
-          console.log('Usuario creado con éxito', response);
           this.showSuccessMessage = true;
           this.AlertMessage = true;
           this.alertMessage = 'Gracias por Registrarte Correctamente'; 
