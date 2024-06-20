@@ -23,11 +23,29 @@
 // Estilos para actionsheet
 ion-action-sheet.custom-action-sheet {
     --background: #252525; /* Fondo blanco */
-    --color: #e7ff0e; /* Texto negro */
+    --color: #e7ff0e; /* Texto amarillo */
     --button-background-hover: #e0e0e0; /* Fondo de botón al pasar el ratón */
     --button-background-focused: #e0e0e0; /* Fondo de botón al enfocarse */
     --button-background-activated: #e0e0e0; /* Fondo de botón al activarse */
     --button-color: #e7ff0e /* Color del texto de los botones */
-    
   }
+
+  .custom-alert .alert-wrapper {
+    --background: #252525; /* Fondo negro */
+    --color: #e7ff0e; /* Texto amarillo */
+  }
+  
+  .custom-alert .alert-button {
+    --color: #e7ff0e; /* Color del texto de los botones */
+  }
+  
+  .custom-alert .alert-button:hover,
+  .custom-alert .alert-button:focus,
+  .custom-alert .alert-button:active {
+    --background: #e0e0e0; /* Fondo de botón al enfocarse y activarse */
+  }
+
+  
+
+  
   

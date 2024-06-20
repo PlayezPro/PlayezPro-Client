@@ -92,7 +92,8 @@ fileInput: any;
             this.modalController.dismiss();  // Cerrar el modal de confirmación y el modal general
           }
         }
-      ]
+      ], 
+      cssClass: 'custom-alert'
     });
 
     await alert.present();
@@ -107,11 +108,13 @@ fileInput: any;
         handler: () => {
           this.closeAviso();
         }
-      }]
+      }],
+      cssClass: 'custom-alert'
     });
-
+  
     await alert.present();
   }
+  
 
   closeAviso(){
     this.aviso = false;
